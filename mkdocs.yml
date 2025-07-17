@@ -1,4 +1,4 @@
-site_name: Shiny Legion MANY
+site_name: Shiny Legion [MANY]
 
 theme:
   name: material
@@ -16,25 +16,22 @@ theme:
     - search.highlight
     - search.share
 
+plugins:
+  - search
+
+
+    
+
 extra:
   homepage: index.md
-  hero:
-    name: Shiny Legion
-    text: >
-      We are the elite force of shiny hunters. Join our journey, learn, hunt, and showcase.
-    icon: material/pokeball
-    image: assets/parallax/background.jpg
-    actions:
-      - icon: material/star-four-points
-        text: Join the Team
-        link: join.md
-      - icon: material/book
-        text: View Guides
-        link: guides/index.md
+  year: !ENV [YEAR, "2025"]
 
 extra_css:
-  - main.css
   - assets/extra.css
+  - main.css
+
+extra_javascript:
+  - assets/extra.js
 
 nav:
   - Home: index.md

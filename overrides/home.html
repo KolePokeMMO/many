@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
+{% block title %}Home{% endblock %}
+
+
+
 {% block content %}
+
+  {{ super() }}
 
   <section class="hero">
     <div class="hero__content">
@@ -11,6 +17,64 @@
     </div>
   </section>
 
-  {{ super() }}
+<section class="team-stats">
+  <div class="team-stats-grid">
+    
+    <!-- Total Shinies -->
+    <div class="stat-card">
+      <h3>Total Shinies Caught</h3>
+      <p class="stat-value">312</p>
+      <p class="stat-note">Across all regions, updated weekly</p>
+    </div>
+
+<div class="stat-card" id="latest-shiny-card">
+  <h3>Latest Shinies</h3>
+  <img id="latest-shiny-img" class="stat-image" alt="Random Shiny">
+  <p id="latest-shiny-name">Loading...</p>
+  <p id="latest-shiny-caption">Caught by ...</p>
+</div>
+
+
+    <!-- Upcoming Events -->
+    <div class="stat-card">
+      <h3>Upcoming Events</h3>
+      <ul class="stat-list">
+        <li>Shiny Race – July 20</li>
+        <li>Team Tourney – July 27</li>
+        <li>Horde Hunt Night – Aug 3</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  fetch("/assets/data/latest-shinies.json")
+    .then(res => res.json())
+    .then(data => {
+      const shiny = data[Math.floor(Math.random() * data.length)];
+      const name = shiny.pokemon;
+      const trainer = shiny.trainer;
+      const date = shiny.date;
+
+      document.getElementById("latest-shiny-img").src =
+        `https://play.pokemonshowdown.com/sprites/gen5ani-shiny/${name.toLowerCase()}.gif`;
+      document.getElementById("latest-shiny-img").alt = `Shiny ${name}`;
+
+      document.getElementById("latest-shiny-name").textContent =
+        `Shiny ${name.charAt(0).toUpperCase() + name.slice(1)}`;
+
+      document.getElementById("latest-shiny-caption").textContent =
+        `Caught by ${trainer} — ${date}`;
+    })
+    .catch(err => {
+      console.error("Error loading shiny data:", err);
+      document.getElementById("latest-shiny-caption").textContent = "Unable to load shiny info.";
+    });
+</script>
+
+
+
 
 {% endblock %}
+
