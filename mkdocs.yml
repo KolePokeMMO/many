@@ -23,7 +23,7 @@ extra:
     text: >
       We are the elite force of shiny hunters. Join our journey, learn, hunt, and showcase.
     icon: material/pokeball
-    image: assets/img/hero-background.webp
+    image: assets/parallax/background.jpg
     actions:
       - icon: material/star-four-points
         text: Join the Team
