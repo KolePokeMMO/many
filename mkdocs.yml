@@ -1,6 +1,9 @@
 site_name: Shiny Legion MANY
+
 theme:
   name: material
+  custom_dir: overrides
+  favicon: assets/images/favicon.png
   palette:
     scheme: slate  # dark theme
   features:
@@ -11,6 +14,10 @@ theme:
     - content.tabs.link
     - search.highlight
     - search.share
+
+extra_css:
+  - main.css
+
 nav:
   - Home: index.md
   - Guides:

@@ -1,0 +1,17 @@
+.mdx-hero {
+  position: relative;
+  overflow: hidden;
+  height: 50vh;
+}
+.mdx-hero-image img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+.mdx-hero-content {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+}
