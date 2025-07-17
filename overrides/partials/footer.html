@@ -1,0 +1,40 @@
+{% block footer %}
+<footer class="custom-footer md-footer" style="padding: 2rem 1rem; background-color: var(--md-default-bg-color); color: var(--md-default-fg-color); border-top: 10px solid var(--md-accent-fg-color);">
+  <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; align-items: start; text-align: left;">
+
+    <!-- Logo and Tagline -->
+    <div>
+      <img src="{{ config.site_url }}assets/images/logo.png" alt="Shiny Legion Logo" style="height: 85px; margin-bottom: 0.5rem;">
+      <p style="margin: 0;">Elite force of shiny hunters.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 style="margin-bottom: 0.5rem;">Quick Links</h4>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li><a href="/" class="md-footer-link">Home</a></li>
+        <li><a href="/getting-started/" class="md-footer-link">Guides</a></li>
+        <li><a href="/showcase/" class="md-footer-link">Showcase</a></li>
+        
+      </ul>
+    </div>
+
+    <!-- Team Staff -->
+    <div>
+      <h4 style="margin-bottom: 0.5rem;">Team Staff</h4>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li>Kelly - Team Leader</li>
+        <li>Kole - Team Executioner</li>
+        <li>Torake - Team Officer</li>
+      </ul>
+    </div>
+
+    <!-- Copyright + Last Updated -->
+    <div>
+      <h4 style="margin-bottom: 0.5rem;">Meta</h4>
+      <p style="margin: 0;">© {{ config.site_name }} </p>
+    </div>
+
+  </div>
+</footer>
+{% endblock %}
