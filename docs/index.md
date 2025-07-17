@@ -4,6 +4,14 @@ template: home.html
 
 <!-- optional second line -> leave blank -->
 
+---
+hide:
+  - navigation
+  - toc
+---
+
+{{ hero }}
+
 # Welcome to MkDocs
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
