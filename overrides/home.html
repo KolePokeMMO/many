@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="mdx-hero">
-  <div class="mdx-hero-content">
-    <h1>Welcome to Shiny Legion</h1>
-    <p>Your guide to PokeMMO shiny hunting.</p>
-  </div>
-  <div class="mdx-hero-image">
-    <img src="assets/images/banner-placeholder.png" alt="Banner">
-  </div>
-</div>
-{{ super() }}
+
+  <section class="hero">
+    <div class="hero__content">
+      <h1>Welcome to Shiny Legion</h1>
+      <p>Your guide to <strong>PokeMMO</strong> shiny hunting.</p>
+      <a class="md-button md-button--primary" href="/many/guides/">Start Hunting</a>
+      <a class="md-button" href="/many/showcase/">See Showcase</a>
+    </div>
+  </section>
+
+  {{ super() }}
+
 {% endblock %}

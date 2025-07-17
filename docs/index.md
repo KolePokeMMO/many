@@ -1,16 +1,9 @@
 ---
 template: home.html
----
-
-<!-- optional second line -> leave blank -->
-
----
 hide:
   - navigation
   - toc
 ---
-
-{{ hero }}
 
 # Welcome to MkDocs
 
