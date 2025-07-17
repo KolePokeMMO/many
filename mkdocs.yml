@@ -16,6 +16,22 @@ theme:
     - search.highlight
     - search.share
 
+extra:
+  homepage: index.md
+  hero:
+    name: Shiny Legion
+    text: >
+      We are the elite force of shiny hunters. Join our journey, learn, hunt, and showcase.
+    icon: material/pokeball
+    image: assets/img/hero-background.webp
+    actions:
+      - icon: material/star-four-points
+        text: Join the Team
+        link: join.md
+      - icon: material/book
+        text: View Guides
+        link: guides/index.md
+
 extra_css:
   - main.css
   - assets/extra.css
