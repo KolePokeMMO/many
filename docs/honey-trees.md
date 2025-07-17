@@ -10,6 +10,6 @@
     <p>Honey Gather Pokémon: Combee or Teddiursa [HA], [HM Defog], [Repel]</p>
   </div>
 
-<p>[p: Bulbasaur]</p>
-
 </div>
+
+<p>[p: Bulbasaur]</p>
