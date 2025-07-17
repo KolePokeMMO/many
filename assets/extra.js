@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const targetTags = ["p", "li"];
-  const dexPath = "/many/assets/data/pokedex.json"; // adjust if needed
+const dexPath = window.location.pathname.includes("/many/")
+  ? "/many/assets/data/pokedex.json"
+  : "/assets/data/pokedex.json";
+
   let pokedex = {};
 
   try {
