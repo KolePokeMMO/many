@@ -1,0 +1,19 @@
+site_name: Shiny Legion MANY
+theme:
+  name: material
+  palette:
+    scheme: slate  # dark theme
+  features:
+    - navigation.expand
+    - navigation.tabs
+    - navigation.top
+    - content.code.annotate
+    - content.tabs.link
+    - search.highlight
+    - search.share
+nav:
+  - Home: index.md
+  - Guides:
+      - Getting Started: getting-started.md
+      - Honey Trees: honey-trees.md
+  - Showcase: showcase.md
