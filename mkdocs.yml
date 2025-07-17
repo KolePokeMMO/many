@@ -18,6 +18,7 @@ theme:
 
 extra_css:
   - main.css
+  - assets/extra.css
 
 nav:
   - Home: index.md
