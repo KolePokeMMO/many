@@ -1,0 +1,120 @@
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px;
+  scroll-behavior: smooth;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.layer-bg {
+  background-image: url('../assets/parallax/background.jpg');
+  transform: translateZ(-2px) scale(3);
+  z-index: 1;
+}
+
+.layer-mid {
+  background-image: url('../assets/parallax/midground.png');
+  transform: translateZ(-1px) scale(2);
+  z-index: 2;
+}
+
+.layer-fg {
+  background-image: url('../assets/parallax/foreground.png');
+  transform: translateZ(0);
+  z-index: 3;
+}
+
+.hero.parallax-text {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  top: 30vh;
+  color: white;
+}
+
+.hero__content {
+  background: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+}
+
+.hero__content h1,
+.hero__content p {
+  margin: 0 0 1rem;
+  color: #fff;
+}
+
+
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px;
+  scroll-behavior: smooth;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.layer-bg {
+  background-image: url('../assets/parallax/background.jpg');
+  transform: translateZ(-2px) scale(3);
+  z-index: 1;
+}
+
+.layer-mid {
+  background-image: url('../assets/parallax/midground.png');
+  transform: translateZ(-1px) scale(2);
+  z-index: 2;
+}
+
+.layer-fg {
+  background-image: url('../assets/parallax/foreground.png');
+  transform: translateZ(0);
+  z-index: 3;
+}
+
+.hero.parallax-text {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  top: 30vh;
+  color: white;
+}
+
+.hero__content {
+  background: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+}
+
+.hero__content h1,
+.hero__content p {
+  margin: 0 0 1rem;
+  color: #fff;
+}
