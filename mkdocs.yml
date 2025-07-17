@@ -3,6 +3,7 @@ site_name: Shiny Legion MANY
 theme:
   name: material
   custom_dir: overrides
+  logo: assets/images/logo.png
   favicon: assets/images/favicon.png
   palette:
     scheme: slate  # dark theme
