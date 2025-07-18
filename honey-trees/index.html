@@ -556,6 +556,51 @@
   </div>
 </section>
 
+<section class="honey-tree-section">
+  <div class="honey-tree-row">
+    <div class="honey-tree-name">
+      <h3>🍯 Honey Tree 1</h3>
+      <p><em>Canalave City → Route 218</em></p>
+      <ul>
+        <li>Fly to <strong>Canalave City</strong></li>
+        <li>Go South, then East into <strong>Route 218 Gate</strong></li>
+        <li>Find the Honey Tree near the water</li>
+      </ul>
+    </div>
+    <div class="honey-tree-image">
+      <img src="../assets/images/guides/canalave-city-1.png" alt="Canalave City Honey Tree">
+    </div>
+    <div class="honey-tree-image">
+      <img src="../assets/images/guides/route-218-1.png" alt="Route 218 Honey Tree">
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.createElement('div');
+    modal.classList.add('image-modal', 'hidden');
+    modal.innerHTML = `<img src="" alt="Zoomed Image">`;
+    document.body.appendChild(modal);
+
+    const modalImage = modal.querySelector('img');
+    const images = document.querySelectorAll('.honey-tree-image img');
+
+    images.forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        modalImage.src = img.src;
+        modal.classList.remove('hidden');
+      });
+    });
+
+    modal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modalImage.src = '';
+    });
+  });
+</script>
+
 
 
 
