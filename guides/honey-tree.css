@@ -175,9 +175,11 @@
 
 /* Images scale nicely and control max height */
 .honey-tree-image img {
+  width: 100%;
+  height: auto;
   max-height: 300px;
   max-width: 100%;
-  border-radius: 40px;
+  border-radius: 0px;
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
   object-fit: contain;
   cursor: zoom-in;
