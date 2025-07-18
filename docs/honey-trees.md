@@ -12,4 +12,4 @@
 
 </div>
 
-<p>[p: Bulbasaur]</p>
+<p>[p: Bulbasaur]</p><p>[p: Ivysaur]</p><p>[p: Charizard]</p
