@@ -40,7 +40,7 @@ extra_javascript:
   - assets/word-split.js
 
 nav:
-  - Home: index.md
+  - Home: docs/index.md
   - Guides:
       - Getting Started: getting-started.md
       - Honey Trees: honey-trees.md

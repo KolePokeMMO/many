@@ -459,7 +459,7 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/celestic-town-1.png" alt="Celestic Town Honey Tree">
+      <img src="../assets/images/guides/celestic-town-2.png" alt="Celestic Town Honey Tree">
     </div>
     <div class="honey-tree-image">
       <img src="../assets/images/guides/route-210-2.png" alt="Route 210 Honey Tree">
