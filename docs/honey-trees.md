@@ -127,7 +127,7 @@
       <ul>
         <li>Fly to Floaroma Town</li>
         <li>Go West, then North into Floaroma Meadow</li>
-        <li>Talk to NPC, buy [60] Honey</li>
+        <li>Talk to NPC, you need a total of [60] Honey</li>
         <li>Find the Honey Tree east of the NPC</li></li>
       </ul>
     </div>
@@ -223,7 +223,7 @@
       <img src="../assets/images/guides/fuego-ironworks-1.png" alt="Fuego Ironworks Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-2.png" alt="Route 205 Honey Tree">
+      <img src="../assets/images/guides/route-205-3.png" alt="Route 205 Honey Tree">
     </div>
     <div class="honey-tree-image">
       <img src="../assets/images/guides/eterna-forest-1.png" alt="Eterna Forest Honey Tree">
@@ -246,7 +246,7 @@
       <img src="../assets/images/guides/eterna-city-1.png" alt="Eterna City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-1.png" alt="Route 205 Honey Tree">
+      <img src="../assets/images/guides/route-205-4.png" alt="Route 205 Honey Tree">
     </div>
   </div>
 </section>
@@ -318,7 +318,7 @@
 </section>
 
 <section class="honey-tree-section">
-  <div class="honey-tree-row">
+  <div class="honey-tree-row" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
     <div class="honey-tree-name">
       <h3>🍯 Honey Tree 11</h3>
       <p><em>Route 208 → Hearthome City → Route 212</em></p>
@@ -334,7 +334,7 @@
       <img src="../assets/images/guides/route-208-1.png" alt="Route 208 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/hearthome-city-1.png" alt="Hearthome City Honey Tree">
+      <img src="../assets/images/guides/hearthome-city-2.png" alt="Hearthome City Honey Tree">
     </div>
     <div class="honey-tree-image">
       <img src="../assets/images/guides/route-212-1.png" alt="Route 212 Honey Tree">
@@ -343,7 +343,7 @@
 </section>
 
 <section class="honey-tree-section">
-  <div class="honey-tree-row">
+  <div class="honey-tree-row" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
     <div class="honey-tree-name">
       <h3>🍯 Honey Tree 12</h3>
       <p><em>Route 212 → Hearthome City → Route 209</em></p>
@@ -358,7 +358,7 @@
       <img src="../assets/images/guides/route-212-1.png" alt="Route 212 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/hearthome-city-1.png" alt="Hearthome City Honey Tree">
+      <img src="../assets/images/guides/hearthome-city-3.png" alt="Hearthome City Honey Tree">
     </div>
     <div class="honey-tree-image">
       <img src="../assets/images/guides/route-209-1.png" alt="Route 209 Honey Tree">
@@ -367,7 +367,7 @@
 </section>
 
 <section class="honey-tree-section">
-  <div class="honey-tree-row">
+  <div class="honey-tree-row" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
     <div class="honey-tree-name">
       <h3>🍯 Honey Tree 13</h3>
       <p><em>Route 209 → Solaceon Town → Route 210</em></p>
@@ -462,7 +462,7 @@
       <img src="../assets/images/guides/celestic-town-1.png" alt="Celestic Town Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-210-1.png" alt="Route 210 Honey Tree">
+      <img src="../assets/images/guides/route-210-2.png" alt="Route 210 Honey Tree">
     </div>
   </div>
 </section>
