@@ -158,6 +158,13 @@
   margin-bottom: 0rem;
 }
 
+.honey-tree-grid.four-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
 /* Left column stays fixed size */
 .honey-tree-name {
   font-weight: bold;
