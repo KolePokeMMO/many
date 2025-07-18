@@ -84,12 +84,13 @@
 }
  
 .honey-intro h1 {
-  color: #1e90ff;
+  color: var(--md-accent-fg-color);
   font-size: 1.2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--md-accent-fg-color);
   padding-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .honey-intro .columns {
@@ -133,3 +134,102 @@
 .honey-intro .rarity.very-rare { color: #d2a8ff; }
 
 
+/* ────────────────────────────────────────────────
+   Honey Tree Sections with images
+   File: guides/honey-tree.css
+──────────────────────────────────────────────── */
+
+/* === Honey Tree Guide Section === */
+.honey-tree-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #131313;
+  border: 2px solid #111;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+}
+
+/* Use grid with fixed left column */
+.honey-tree-row {
+  display: grid;
+  grid-template-columns: 250px 1fr 1fr; /* Left fixed, right two flexible */
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0rem;
+}
+
+/* Left column stays fixed size */
+.honey-tree-name {
+  font-weight: bold;
+  color: var(--md-typeset-a-color, #ffcb05);
+  /* Prevent shrinking */
+  overflow-wrap: break-word;
+}
+
+/* Align images container cells to the right */
+.honey-tree-image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Images scale nicely and control max height */
+.honey-tree-image img {
+  max-height: 300px;
+  max-width: 100%;
+  border-radius: 40px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+/* Heading style in left col */
+.honey-tree-name h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--md-accent-fg-color);
+}
+
+/* Italic location under heading */
+.honey-tree-name p {
+  margin: 0 0 0.5rem;
+  font-style: italic;
+  color: var(--md-typeset-color, #ccc);
+}
+
+/* Bullet list style */
+.honey-tree-name ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+  color: var(--md-typeset-color, #eee);
+}
+
+/* =====================
+   Modal styles for image zoom
+====================== */
+.image-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  cursor: zoom-out;
+}
+
+.hidden {
+  display: none;
+}
