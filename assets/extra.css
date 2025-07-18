@@ -1,3 +1,103 @@
+/* ────────────────────────────────────────────────
+   Custom font and colour adjustments
+   File: extra.css
+──────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
+
+:root {
+  --md-text-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --md-code-font: 'Fira Mono', monospace;
+}
+
+/* In assets/extra.css */
+body, input, button, textarea, select {
+  font-family: '', system-ui, sans-serif !important;
+}
+
+/* Header Logo Colour/Animate effect */
+.md-header__title .shiny-legion {
+  color: #72c4cc; /* teal */
+  font-weight: 600;
+}
+
+.md-header__title .many {
+  color: #bb43cc; /* purple */
+  font-weight: 700;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Animation */
+.md-header__title .many {
+  background: linear-gradient(270deg, 
+    #bb43cc, 
+    #00ffff, 
+    #ff99ff, 
+    #bb43cc
+  );
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  
+  animation: gradientFade 8s ease-in-out infinite;
+}
+
+@keyframes gradientFade {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+/* ────────────────────────────────────────────────
+   Universal Styles
+   File: extra.css
+──────────────────────────────────────────────── */
+
+.md-main {
+  background-color: #151515;
+}
+
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+    background: none;
+    box-shadow: none;
+
+}
+
+.md-header {
+  background-color: #151515;
+  box-shadow: 0 0 .2rem #0000,0 .2rem .4rem #0000;
+}
+
+.md-header__title {
+  font-family: "Piedra", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.8rem;
+  line-height: 4.0rem;
+  color: #d400ff;
+}
+
+
+
+
+
+
+
+
+
+/* ────────────────────────────────────────────────
+   Universal Layout + Container Adjustments
+   File: extra.css
+──────────────────────────────────────────────── */
 .md-grid {
   margin-left: auto;
   margin-right: auto;
@@ -10,16 +110,28 @@
   }
 }
 
-/* Resize the logo in the top-left corner */
+
+
+/* ────────────────────────────────────────────────
+   Header Logo Resizing
+   File: extra.css
+──────────────────────────────────────────────── */
 .md-header__button.md-logo {
-  width: 110px;      /* Adjust this */
+  width: 110px;
   height: auto;
 }
 
 .md-header__button.md-logo img {
-  max-height: 110px; /* Adjust this */
+  max-height: 110px;
   width: auto;
+  height: 110px !important;
+  max-height: none !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  object-fit: contain;
 }
+
 @media screen and (min-width: 768px) {
   .md-header__button.md-logo {
     width: 110px;
@@ -29,22 +141,18 @@
     max-height: 64px;
   }
 }
-/* Force logo container and image to desired size */
-.md-header__button.md-logo img {
-  height: 110px !important;       /* Or whatever you prefer */
-  width: auto !important;
-  max-height: none !important;
-  max-width: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  object-fit: contain;
-}
+
+/* ────────────────────────────────────────────────
+   Hero Section Styles
+   File: extra.css
+──────────────────────────────────────────────── */
 .md-hero {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
+
 .hero {
   padding: 6rem 2rem;
   text-align: center;
@@ -62,9 +170,10 @@
   margin-bottom: 2rem;
 }
 
-.md-button {
-  margin: 0 0.5rem;
-}
+/* ────────────────────────────────────────────────
+   Footer Links and Small Footer Text
+   File: extra.css
+──────────────────────────────────────────────── */
 .md-footer-link {
   color: var(--md-accent-fg-color);
   text-decoration: none;
@@ -73,23 +182,25 @@
 .md-footer-link:hover {
   text-decoration: underline;
 }
+
 .custom-footer {
   font-size: 0.7rem;
 }
-.custom-footer h4 {
-  font-size: 0.7rem;
-  font-weight: bold;
-}
+
+.custom-footer h4,
 .custom-footer p,
 .custom-footer li,
 .custom-footer a {
   font-size: 0.7rem;
+  font-weight: bold;
 }
 
-/* Grid container for homepage stats */
+/* ────────────────────────────────────────────────
+   Homepage Stat Card Layout
+   File: extra.css
+──────────────────────────────────────────────── */
 .team-stats {
   margin: 3rem 0;
-  padding: 0 0rem;
 }
 
 .team-stats-grid {
@@ -99,7 +210,6 @@
   align-items: stretch;
 }
 
-/* Individual stat card styling */
 .stat-card {
   background: var(--md-default-bg-color);
   border-left: 5px solid var(--md-accent-fg-color);
@@ -125,7 +235,6 @@
 }
 
 .stat-image {
-  
   width: 100px;
   margin: 0.5rem 0;
 }
@@ -133,448 +242,4 @@
 .stat-list {
   margin: 0;
   padding-left: 1.2rem;
-}
-
-
-
-/* Honey Tree Guide Grid layout */
-.grid-2.status-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-/* Shared box styling */
-.status-box {
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  color: white;
-  font-weight: 300;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  line-height: 1.1;
-}
-
-[data-md-color-scheme="slate"] {
-  --md-default-bg-color: #191919;
-}
-
-.md-typeset {
-  font-size: 11px;
-}
-
-/* Base style */
-.bracketed {
-  font-weight: bold;
-  padding: 0.35em 0.5em;
-  border-radius: 1px;
-  font-size: 0.95em;
-  display: inline-block;
-  margin: 0 0.2em;
-  font-family: inherit;
-}
-
-/* Hidden Ability */
-.bracketed-ha {
-  background-color: #d43f8d;
-  color: white;
-}
-
-/* Hidden Machine */
-.bracketed-hm {
-  background-color: #2a5ba8;
-  color: white;
-}
-
-.bracketed-number {
-  color: #2b2b2b;
-  background-color: #e0c341;
-  padding: 0.2em 0.3em;
-  border-radius: 0px;
-  font-weight: bold;
-  font-size: 0.95em;
-}
-
-/* Everything else */
-.bracketed-generic {
-  background-color: #087c3c;
-  color: #eee;
-  border: 0px solid #555;
-}
-
-.pokemon-highlight {
-  color: #ffd700;
-  font-weight: bold;
-  cursor: help;
-  position: relative;
-}
-
-
-
-
-
-
-
-
-
-
-.tooltip-container .tooltip {
-  visibility: hidden;
-  opacity: 0;
-  background: #222;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #444;
-  position: absolute;
-  z-index: 100;
-  top: 100%;
-  left: 0;
-  width: 250px;
-  margin-top: 0.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  transition: opacity 0.2s;
-}
-
-.tooltip-container:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-.sprite-row {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-}
-
-.sprite-row img {
-  height: 56px;
-}
-
-.type {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  color: #fff;
-  margin-right: 0.25rem;
-}
-
-.type.grass { background: #78C850; }
-.type.poison { background: #A040A0; }
-.type.fire { background: #F08030; }
-.type.flying { background: #A890F0; }
-/* Add more types as needed */
-
-
-
-
-.tooltip-container {
-  position: relative;
-  display: inline-block;
-  cursor: help;
-  color: #77d6ff;
-  font-weight: bold;
-}
-
-.tooltip-container .tooltip {
-  display: none;
-  position: absolute;
-  z-index: 999;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1f1f1f;
-  color: #fff;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  border: 1px solid #555;
-  border-radius: 8px;
-  width: max-content;
-  min-width: 250px;
-  box-shadow: 0 0 10px #0008;
-  font-size: 0.85rem;
-  white-space: normal;
-}
-
-.tooltip-container:hover .tooltip {
-  display: block;
-}
-
-.pokedex-tooltip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pokedex-tooltip .stat {
-  display: block;
-  font-size: 0.75rem;
-  margin-top: 0.2rem;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem 1.9rem;
-  font-size: 0.6rem;
-  line-height: 0.6;
-  margin-top: 0rem;
-}
-
-.stat-entry {
-  display: flex;
-  justify-content: space-between;
-}
-
-.stat-label {
-  font-weight: bold;
-  color: #ccc;
-}
-
-.stat-value {
-    font-size: 0.6rem;
-  font-weight: normal;
-  color: #fff;
-  margin: 0rem 1.2rem;
-}
-
-
-.sprite-row {
-  display: flex;
-  gap: 2rem;
-}
-
-.sprite-row img {
-  width: 45px;
-  
-  
-  object-fit: contain;
-  image-rendering: smooth;
-}
-
-.type {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin: 0 2px;
-  background: #333;
-  color: #fff;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-}
-
-.type.fire { background: #f08030; }
-.type.water { background: #6890f0; }
-.type.grass { background: #78c850; }
-.type.electric { background: #f8d030; }
-.type.ice { background: #98d8d8; }
-.type.fighting { background: #c03028; }
-.type.poison { background: #a040a0; }
-.type.ground { background: #e0c068; }
-.type.flying { background: #a890f0; }
-.type.psychic { background: #f85888; }
-.type.bug { background: #a8b820; }
-.type.rock { background: #b8a038; }
-.type.ghost { background: #705898; }
-.type.dragon { background: #7038f8; }
-.type.dark { background: #705848; }
-.type.steel { background: #b8b8d0; }
-.type.fairy { background: #ee99ac; }
-.type.normal { background: #a8a878; }
-
-
-
-
-/* Pokémon tooltip styles */
-.pokemon-highlight {
-  color: #ffd700;
-  font-weight: bold;
-  cursor: help;
-  position: relative;
-}
-
-/* Tooltip container */
-.tooltip-container {
-  position: relative;
-  display: inline-block;
-  cursor: help;
-  color: #77d6ff;
-  font-weight: bold;
-}
-
-.tooltip-container .tooltip {
-  display: none;
-  position: absolute;
-  z-index: 999;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1f1f1f;
-  color: #fff;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  border: 1px solid #555;
-  border-radius: 8px;
-  width: max-content;
-  min-width: 250px;
-  box-shadow: 0 0 10px #0008;
-  font-size: 0.85rem;
-  white-space: normal;
-}
-
-.tooltip-container:hover .tooltip {
-  display: block;
-}
-
-/* Tooltip content layout */
-.pokedex-tooltip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Sprite row */
-.sprite-row {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-}
-
-.sprite-row img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  image-rendering: pixelated;
-}
-
-/* Type tags */
-.type {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin: 0 2px;
-  background: #333;
-  color: #fff;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-}
-
-/* Stat layout */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem 1.9rem;
-  font-size: 0.6rem;
-  line-height: 0.6;
-  margin-top: 0rem;
-}
-
-.stat-entry {
-  display: flex;
-  justify-content: space-between;
-}
-
-.stat-label {
-  font-weight: bold;
-  color: #ccc;
-}
-
-.stat-value {
-  font-size: 0.6rem;
-  font-weight: normal;
-  color: #fff;
-  margin-left: 0.5rem;
-}
-
-
-
-.honey-intro {
-  font-family: 'Segoe UI', sans-serif;
-  color: #e0e0e0;
-  
-  
-
-  margin-bottom: 2rem;
-}
-
-.honey-intro h1 {
-  color: #1e90ff;
-  font-size: 1.5rem;
-  margin-bottom: 0rem;
-  text-transform: uppercase;
-}
-
-.honey-intro .columns {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-.honey-intro .left,
-.honey-intro .right {
-  flex: 1 1 400px;
-  min-width: 300px;
-}
-
-.honey-intro h2, .honey-intro h3 {
-  color: #fefefe;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.honey-intro ul,
-.honey-intro ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.honey-intro ul li {
-  margin-bottom: 0.3rem;
-}
-
-.honey-intro .rarity {
-  font-weight: bold;
-}
-
-.honey-intro .rarity.common {
-  color: #39d353;
-}
-
-.honey-intro .rarity.uncommon {
-  color: #ffa657;
-}
-
-.honey-intro .rarity.rare {
-  color: #58a6ff;
-}
-
-.honey-intro .rarity.very-rare {
-  color: #d2a8ff;
-}
-
-
-
-.status-box h3 {
-  margin: 0;
-  font-size: 0.5rem;
-  font-weight: bold;
-}
-
-.status-box p {
-  margin: 0.8rem 0;
-  font-size: 0.6rem;
-}
-/* Error and warning colors */
-.error-box {
-  background: #362422;
-}
-
-.warning-box {
-  background: #38281e;
 }

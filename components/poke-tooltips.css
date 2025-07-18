@@ -1,0 +1,182 @@
+/* ────────────────────────────────────────────────
+   Pokémon Highlight + Tooltip Container
+   File: components/poke-tooltips.css
+──────────────────────────────────────────────── */
+.pokemon-highlight {
+  color: #ffd700;
+  font-weight: bold;
+  cursor: help;
+  position: relative;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  color: #77d6ff;
+  font-weight: bold;
+}
+
+.tooltip-container .tooltip {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f1f1f;
+  color: #fff;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid #555;
+  border-radius: 8px;
+  width: max-content;
+  min-width: 250px;
+  box-shadow: 0 0 10px #0008;
+  font-size: 0.85rem;
+  white-space: normal;
+}
+
+.tooltip-container:hover .tooltip {
+  display: block;
+}
+
+/* ────────────────────────────────────────────────
+   Tooltip Layout & Stats Grid
+   File: components/poke-tooltips.css
+──────────────────────────────────────────────── */
+.pokedex-tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem 1.9rem;
+  font-size: 0.6rem;
+  line-height: 0.6;
+  margin-top: 0;
+}
+
+.stat-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-label {
+  font-weight: bold;
+  color: #ccc;
+}
+
+.stat-value {
+  font-size: 0.6rem;
+  font-weight: normal;
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+/* ────────────────────────────────────────────────
+   Sprite Display
+   File: components/poke-tooltips.css
+──────────────────────────────────────────────── */
+.sprite-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.sprite-row img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* ────────────────────────────────────────────────
+   Type Tags for Pokémon
+   File: components/poke-tooltips.css
+──────────────────────────────────────────────── */
+.type {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin: 0 2px;
+  background: #333;
+  color: #fff;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.type.fire     { background: #f08030; }
+.type.water    { background: #6890f0; }
+.type.grass    { background: #78c850; }
+.type.electric { background: #f8d030; }
+.type.ice      { background: #98d8d8; }
+.type.fighting { background: #c03028; }
+.type.poison   { background: #a040a0; }
+.type.ground   { background: #e0c068; }
+.type.flying   { background: #a890f0; }
+.type.psychic  { background: #f85888; }
+.type.bug      { background: #a8b820; }
+.type.rock     { background: #b8a038; }
+.type.ghost    { background: #705898; }
+.type.dragon   { background: #7038f8; }
+.type.dark     { background: #705848; }
+.type.steel    { background: #b8b8d0; }
+.type.fairy    { background: #ee99ac; }
+.type.normal   { background: #a8a878; }
+
+/* ────────────────────────────────────────────────
+   HM TM ITEM Tags
+   File: components/poke-tooltips.css
+──────────────────────────────────────────────── */
+
+/* Base style */
+.bracketed {
+  font-weight: bold;
+  padding: 0.35em 0.5em;
+  border-radius: 1px;
+  font-size: 0.95em;
+  display: inline-block;
+  margin: 0 0.2em;
+  font-family: inherit;
+}
+
+/* Hidden Ability */
+.bracketed-ha {
+  background-color: #d43f8d;
+  color: white;
+}
+
+/* Hidden Machine */
+.bracketed-hm {
+  background-color: #2a5ba8;
+  color: white;
+}
+
+.bracketed-number {
+  color: #2b2b2b;
+  background-color: #e0c341;
+  padding: 0.2em 0.3em;
+  border-radius: 0px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+/* Everything else */
+.bracketed-generic {
+  background-color: #087c3c;
+  color: #eee;
+  border: 0px solid #555;
+}
+
+.pokemon-highlight {
+  color: #ffd700;
+  font-weight: bold;
+  cursor: help;
+  position: relative;
+}
