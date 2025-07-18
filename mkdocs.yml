@@ -27,7 +27,7 @@ plugins:
 extra:
   homepage: index.md
   year: !ENV [YEAR, "2025"]
-
+ 
 extra_css:
   - assets/extra.css
   - main.css
@@ -40,7 +40,7 @@ extra_javascript:
   - assets/word-split.js
 
 nav:
-  - Home: docs/index.md
+  - Home: index.md
   - Guides:
       - Getting Started: getting-started.md
       - Honey Trees: honey-trees.md
