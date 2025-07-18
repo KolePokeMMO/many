@@ -11,7 +11,7 @@
 
 /* In assets/extra.css */
 body, input, button, textarea, select {
-  font-family: '', system-ui, sans-serif !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
 }
 
 /* Header Logo Colour/Animate effect */
@@ -242,4 +242,138 @@ body, input, button, textarea, select {
 .stat-list {
   margin: 0;
   padding-left: 1.2rem;
+}
+
+
+
+
+
+
+/* ────────────────────────────────────────────────
+   Footer Layout
+   File: extra.css
+──────────────────────────────────────────────── */
+
+.md-footer {
+  background-color: #151515;
+}
+
+/* Custom Footer Styles */
+.custom-footer {
+  padding: 2rem 1rem;
+
+  color: #dfdfdf;
+  border-top: 10px solid var(--md-accent-fg-color);
+}
+
+/* Grid Layout for Footer Content */
+.custom-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  text-align: left;
+}
+
+/* Footer Logo */
+.custom-footer img {
+  height: 85px;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Paragraphs */
+.custom-footer p {
+  margin: 0;
+}
+
+/* Section Headings */
+.custom-footer h4 {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Link Lists */
+.custom-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Optional: Link Styling */
+.custom-footer a.md-footer-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.custom-footer a.md-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* ────────────────────────────────────────────────
+   Shiny Sparkle Background for Footer
+──────────────────────────────────────────────── */
+
+.footer-animated-bg {
+  position: relative;
+  background-color: #151515; /* base footer bg */
+  overflow: hidden;
+}
+
+/* Container for sparkles */
+.shiny-stars {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* A single sparkle */
+.shiny-star {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: calc(16px * var(--star-scale, 1));
+  transform: rotate(45deg) scale(var(--star-scale, 1));
+  opacity: 0;
+  animation: sparkleSpin 4s infinite ease-in-out;
+}
+
+.shiny-star::before {
+  content: "✩";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 10%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 5px rgb(255, 208, 0);
+}
+
+/* Optional: remove ::after if you want a single ✩ */
+.shiny-star::after {
+  content: "";
+}
+
+/* Sparkle animation */
+@keyframes sparkleSpin {
+  0% {
+    transform: rotate(0deg) scale(var(--star-scale, 1));
+    opacity: 0;
+  }
+  25% {
+    transform: rotate(90deg) scale(calc(var(--star-scale, 1) * 1.1));
+    opacity: 0.9;
+  }
+  50% {
+    transform: rotate(180deg) scale(calc(var(--star-scale, 1) * 0.8));
+    opacity: 0.4;
+  }
+  75% {
+    transform: rotate(270deg) scale(calc(var(--star-scale, 1) * 1.2));
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg) scale(var(--star-scale, 1));
+    opacity: 0;
+  }
 }
