@@ -493,6 +493,70 @@
 
 
 
+.honey-intro {
+  font-family: 'Segoe UI', sans-serif;
+  color: #e0e0e0;
+  
+  
+
+  margin-bottom: 2rem;
+}
+
+.honey-intro h1 {
+  color: #1e90ff;
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
+  text-transform: uppercase;
+}
+
+.honey-intro .columns {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.honey-intro .left,
+.honey-intro .right {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+
+.honey-intro h2, .honey-intro h3 {
+  color: #fefefe;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.honey-intro ul,
+.honey-intro ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.honey-intro ul li {
+  margin-bottom: 0.3rem;
+}
+
+.honey-intro .rarity {
+  font-weight: bold;
+}
+
+.honey-intro .rarity.common {
+  color: #39d353;
+}
+
+.honey-intro .rarity.uncommon {
+  color: #ffa657;
+}
+
+.honey-intro .rarity.rare {
+  color: #58a6ff;
+}
+
+.honey-intro .rarity.very-rare {
+  color: #d2a8ff;
+}
 
 
 
