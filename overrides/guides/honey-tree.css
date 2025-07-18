@@ -1,0 +1,135 @@
+/* ────────────────────────────────────────────────
+   Honey Tree Grid & Box Styling
+   File: guides/honey-tree.css
+──────────────────────────────────────────────── */
+.grid-2.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+} 
+
+/* ────────────────────────────────────────────────
+   Error and Warning Box Styling
+   File: guides/honey-tree.css
+──────────────────────────────────────────────── */
+.status-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.6rem;
+  border-left: 6px solid #fff; /* Overwritten per type */
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  color: #eee;
+  font-family: var(--md-text-font, 'Inter', sans-serif);
+  line-height: 1.4;
+}
+
+/* Headings */
+.status-box h3 {
+  margin: 0 0 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Paragraphs */
+.status-box p {
+  margin: 0;
+  font-size: 0.60rem;
+  font-weight: 400;
+}
+
+/* Icon Placeholder (you can replace with actual SVGs or ::before with emojis) */
+.status-box::before {
+  content: "⚠️"; /* Placeholder – replace with actual image for better result */
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* Types */
+.error-box {
+  background: #1d1d1d;
+  border-left-color: #e74c3c;
+}
+
+.error-box h3 {
+  color: #e74c3c;
+}
+
+.warning-box {
+  background: #1d1d1d;
+  border-left-color: #f1c40f;
+}
+
+.warning-box h3 {
+  color: #f1c40f;
+}
+
+
+/* ────────────────────────────────────────────────
+   Honey Tree Intro Box
+   File: guides/honey-tree.css
+──────────────────────────────────────────────── */
+.honey-intro {
+  font-family: 'Inter', sans-serif;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  font-size: 0.6rem;
+}
+ 
+.honey-intro h1 {
+  color: #1e90ff;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+.honey-intro .columns {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.honey-intro .column {
+  flex: 1 1 300px;
+  min-width: 260px;
+}
+
+.honey-intro h2, .honey-intro h3 {
+  color: #fefefe;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.honey-intro ul,
+.honey-intro ol {
+  padding-left: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.honey-intro li {
+  margin-bottom: 0.4rem;
+}
+
+/* ────────────────────────────────────────────────
+   Honey Tree Rarity Colours
+   File: guides/honey-tree.css
+──────────────────────────────────────────────── */
+.honey-intro .rarity {
+  font-weight: bold;
+}
+
+.honey-intro .rarity.common { color: #39d353; }
+.honey-intro .rarity.uncommon { color: #ffa657; }
+.honey-intro .rarity.rare { color: #58a6ff; }
+.honey-intro .rarity.very-rare { color: #d2a8ff; }
+
+

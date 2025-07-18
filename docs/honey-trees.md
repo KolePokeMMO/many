@@ -13,13 +13,12 @@
 
 </div>
 </section>
-
 <section class="honey-intro">
-
   <h1>INTRODUCTION</h1>
 
   <div class="columns">
-    <div class="left">
+    <!-- Left Column -->
+    <div class="column">
       <h2>Honey Tree Shiny Hunting Guide</h2>
       <p>
         This guide will teach you how to efficiently shiny hunt Honey Trees, which are exclusive to the <strong>Sinnoh</strong> region.
@@ -47,7 +46,8 @@
       <p><em>Not a member yet?</em> Mail or whisper Kelly to join or learn more.</p>
     </div>
 
-    <div class="right">
+    <!-- Middle Column -->
+    <div class="column">
       <h3>Timing</h3>
       <ul>
         <li>Trees take 1 hour to attract Pokémon after applying honey.</li>
@@ -63,7 +63,10 @@
           <li>Bright Powder</li>
         </ul></li>
       </ul>
+    </div>
 
+    <!-- Right Column -->
+    <div class="column">
       <h3>Available Pokémon</h3>
       <ul>
         <li><span class="rarity common">Common</span>
@@ -94,5 +97,5 @@
       </ul>
     </div>
   </div>
-
 </section>
+

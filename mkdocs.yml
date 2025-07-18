@@ -2,15 +2,19 @@ site_name: Shiny Legion [MANY]
 
 theme:
   name: material
+  font:
+    text: Inter
+    code: Fira Mono
   custom_dir: overrides
   logo: assets/images/logo.png
   favicon: assets/images/favicon.png
   palette:
-    scheme: slate  # dark theme
+    scheme: slate
   features:
     - navigation.expand
     - navigation.tabs
     - navigation.top
+    - navigation.breadcrumbs
     - content.code.annotate
     - content.tabs.link
     - search.highlight
@@ -19,9 +23,6 @@ theme:
 plugins:
   - search
 
-
-    
-
 extra:
   homepage: index.md
   year: !ENV [YEAR, "2025"]
@@ -29,9 +30,13 @@ extra:
 extra_css:
   - assets/extra.css
   - main.css
+  - guides/honey-tree.css
+  - components/poke-tooltips.css
 
 extra_javascript:
   - assets/extra.js
+  - https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
+  - assets/word-split.js
 
 nav:
   - Home: index.md
