@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Zubat",
+    "dex": 41,
+    "caught_on": "2025-07-18",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/zubat.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/zubat.gif",
+    "location": "Mt. Moon",
+    "trainer": "Kole",
+    "notes": "Full odds in the dark!"
+  }
+]
