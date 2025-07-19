@@ -1,4 +1,10 @@
-{% extends "base.html" %}
+{% extends "main.html" %}
+
+{% block header_logo %}
+  <a class="md-header__button md-logo" href="{{ base_url }}/many/">
+    <img src="{{ base_url }}/assets/images/logo.png" alt="Logo" />
+  </a>
+{% endblock %}
 
 {% block site_nav %}
   {{ super() }}
