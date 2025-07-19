@@ -87,6 +87,10 @@ body, input, button, textarea, select {
   color: #72c4cc;
 }
 
+.custom-footer .visitors img {
+  height: 20px;;
+}
+
 /* ────────────────────────────────────────────────
    Sidebar Adjustments
    File: extra.css
