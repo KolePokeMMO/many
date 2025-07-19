@@ -63,7 +63,7 @@ body, input, button, textarea, select {
 ──────────────────────────────────────────────── */
 
 .md-main {
-  background-color: #151515;
+  background-color: #0e1011; 
 }
 
 .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
@@ -73,8 +73,9 @@ body, input, button, textarea, select {
 }
  
 .md-header {
-  background-color: #151515;
-  box-shadow: 0 0 .2rem #0000,0 .2rem .4rem #0000;
+  background-color: #17191a;
+  border-bottom: 2px solid var(--md-accent-fg-color);
+  box-shadow: none; /* remove the old shadow */
 }
 
 .md-header__title {
@@ -86,12 +87,31 @@ body, input, button, textarea, select {
   color: #72c4cc;
 }
 
+/* ────────────────────────────────────────────────
+   Sidebar Adjustments
+   File: extra.css
+──────────────────────────────────────────────── */
 
+.md-sidebar, .md-sidebar--primary,
+.md-sidebar__scrollwrap {
+  background-color: #17191a;
+  width: 200px;
+  margin-right: 30px;
+  border-radius: 20px;
+}
 
+.md-sidebar__scrollwrap {
+  margin: 0 0rem;
+}
 
-
-
-
+.md-nav__item {
+  margin-left: 10px;
+}
+ 
+.md-sidebar__scrollwrap {
+  min-height: 643px; /* or a safe default you like */
+  transition: height 0.3s ease; /* smooth height adjustment */
+}
 
 /* ────────────────────────────────────────────────
    Universal Layout + Container Adjustments
@@ -254,7 +274,7 @@ body, input, button, textarea, select {
 ──────────────────────────────────────────────── */
 
 .md-footer {
-  background-color: #151515;
+  background-color: #17191a;
 }
 
 /* Custom Footer Styles */
@@ -262,7 +282,7 @@ body, input, button, textarea, select {
   padding: 2rem 1rem;
 
   color: #dfdfdf;
-  border-top: 10px solid var(--md-accent-fg-color);
+  border-top: 2px solid var(--md-accent-fg-color);
 }
 
 /* Grid Layout for Footer Content */
@@ -313,7 +333,7 @@ body, input, button, textarea, select {
 
 .footer-animated-bg {
   position: relative;
-  background-color: #151515; /* base footer bg */
+  background-color: #17191a; /* base footer bg */
   overflow: hidden;
 }
 

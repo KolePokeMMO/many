@@ -99,6 +99,10 @@
   </div>
 </section>
 
+<section class="honey-intro">
+  <h1>HONEY TREE LOCATIONS</h1>
+</section>
+
 <section class="honey-tree-section">
   <div class="honey-tree-row">
     <div class="honey-tree-name">
