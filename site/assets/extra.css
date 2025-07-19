@@ -129,6 +129,13 @@ body, input, button, textarea, select {
   }
 }
 
+.md-content {
+  background-image: url('../assets/images/backgrounds/honey-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+}
 
 
 /* ────────────────────────────────────────────────
