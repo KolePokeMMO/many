@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block site_nav %}
+  {{ super() }}
+  <script>
+    // Force the logo to link to the real homepage
+    document.addEventListener("DOMContentLoaded", function() {
+      const logo = document.querySelector(".md-header__button.md-logo");
+      if (logo) logo.setAttribute("href", "{{ base_url }}/many/");
+    });
+  </script>
+{% endblock %}
