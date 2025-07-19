@@ -35,9 +35,10 @@ extra_css:
   - components/poke-tooltips.css
 
 extra_javascript:
+  - assets/pokemon.js
   - assets/extra.js
-  - https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap
   - assets/word-split.js
+
 
 nav:
   - Home: index.md
