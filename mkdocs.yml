@@ -25,7 +25,7 @@ plugins:
   - search
 
 extra:
-  homepage: index.md
+
   year: !ENV [YEAR, "2025"]
  
 extra_css:
