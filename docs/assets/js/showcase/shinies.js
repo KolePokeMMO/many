@@ -1,31 +1,32 @@
-fetch('/many/assets/data/shinies.json')
-  .then(res => res.json())
-  .then(data => {
-    const grid = document.getElementById('shiny-grid');
-    data.forEach(shiny => {
-      const card = document.createElement('div');
-      card.className = 'shiny-card';
-      card.innerHTML = `
-        <div class="shiny-card-inner">
-          <div class="shiny-card-front">
-            <img src="${shiny.sprite_normal}" alt="${shiny.name} sprite">
-            <strong>${shiny.name}</strong>
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('/many/assets/data/shinies.json')
+    .then(res => res.json())
+    .then(data => {
+      const grid = document.getElementById('shiny-grid');
+      data.forEach(shiny => {
+        const card = document.createElement('div');
+        card.className = 'shiny-card';
+        card.innerHTML = `
+          <div class="shiny-card-inner">
+            <div class="shiny-card-front">
+              <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite">
+              <strong>${shiny.name}</strong>
+            </div>
+            <div class="shiny-card-back">
+              <span><strong>#${shiny.dex}</strong></span>
+              <span><em>Location:</em> ${shiny.location}</span>
+              <span><em>Caught on:</em> ${shiny.caught_on}</span>
+              <span><em>Trainer:</em> ${shiny.trainer}</span>
+              <p><em>Notes:</em> ${shiny.notes}</p>
+            </div>
           </div>
-          <div class="shiny-card-back">
-            <img src="${shiny.sprite_shiny}" alt="${shiny.name} sprite">
-            <span>#${shiny.dex}</span>
-            <span>${shiny.location}</span>
-            <span>${shiny.caught_on}</span>
-          </div>
-        </div>
-      `;
-      card.onclick = () => showModal(shiny);
-      grid.appendChild(card);
+        `;
+        card.onclick = () => showModal(shiny);
+        grid.appendChild(card);
+      });
     })
-.catch(err => console.error('Fetch error:', err));
-    ;
-    
-  });
+    .catch(err => console.error('Fetch error:', err));
+});
 
 function showModal(shiny) {
   const modal = document.createElement('div');
@@ -37,11 +38,11 @@ function showModal(shiny) {
       <div style="display:flex; gap:1rem; align-items:center; justify-content:center; margin-bottom:1rem;">
         <div>
           <div style="font-size:0.85em;">Normal</div>
-          <img src="${shiny.sprite_normal}">
+          <img src="${shiny.sprite_normal}" alt="${shiny.name} normal sprite">
         </div>
         <div>
           <div style="font-size:0.85em;">Shiny</div>
-          <img src="${shiny.sprite_shiny}">
+          <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite">
         </div>
       </div>
       <p><strong>Caught on:</strong> ${shiny.caught_on}</p>
