@@ -33,12 +33,17 @@ extra_css:
   - assets/css/showcase/showcase.css
   - assets/css/comp/poke-tooltips.css
   - assets/css/comp/showcase.css
+  - https://cdn.jsdelivr.net/gh/simeydotme/pokemon-cards-css@main/src/pokemon-card.css
 
 extra_javascript:
   - assets/js/pokemon.js
   - assets/js/extra.js
   - assets/js/word-split.js
   - assets/js/showcase/shinies.js
+  - assets/js/showcase/card-base.js
+  - https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js
+  - https://cdn.jsdelivr.net/gh/simeydotme/pokemon-cards-css@main/src/pokemon-card.js
+
 
 
 nav:
