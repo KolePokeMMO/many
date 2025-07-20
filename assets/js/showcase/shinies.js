@@ -1,48 +1,97 @@
-document.addEventListener('DOMContentLoaded', () => {
-  fetch('/many/assets/data/shinies.json')
-    .then(res => res.json())
-    .then(data => {
-      const grid = document.getElementById('shiny-grid');
-      data.forEach(shiny => {
-        const card = document.createElement('div');
-        card.className = 'shiny-card';
+let shinyShowcaseInitialized = false;
 
-        card.innerHTML = `
-          <div class="shiny-card-inner">
-            <div class="shiny-card-front">
-              <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
-              <div class="card-front-info">
-                <strong>${shiny.trainer}</strong>
-                <span>Shiny #${shiny.shiny_number || '-'}</span>
-                <span>${shiny.caught_on}</span>
-              </div>
-            </div>
-            <div class="shiny-card-back">
-              <strong>${shiny.name} (#${shiny.dex})</strong>
-              <span><em>Location:</em> ${shiny.location}</span>
-              <span><em>Encounter:</em> ${shiny.encounter || 'Unknown'}</span>
-              <span><em>Region:</em> ${shiny.region || 'Unknown'}</span>
-              <span><em>Phase:</em> ${shiny.phase || 0}</span>
-              <span><em>Trainer:</em> ${shiny.trainer}</span>
-              <p><em>Click for more info</em></p>
+function initShinyShowcase() {
+  if (shinyShowcaseInitialized) return;
+  shinyShowcaseInitialized = true;
+
+  const grid = document.getElementById('shiny-grid');
+  const controls = document.getElementById('shiny-controls');
+  const pagination = document.getElementById('pagination');
+  if (!grid || !controls || !pagination) return;
+
+  const filters = controls.querySelectorAll('select, input');
+  let shinyData = [];
+  const state = { search:'', region:'', shiny_type:'', encounter:'', alpha:false, page:1, perPage:20 };
+
+  filters.forEach(f => {
+    f.addEventListener('input', () => {
+      state[f.name] = f.type === 'checkbox' ? f.checked : f.value;
+      state.page = 1;
+      renderCards();
+    });
+  });
+
+  fetch('/many/assets/data/shinies.json')
+    .then(r => r.json())
+    .then(data => {
+      shinyData = data.sort((a,b) => new Date(b.caught_on) - new Date(a.caught_on));
+      renderCards();
+    });
+
+  function renderCards() {
+    const filtered = shinyData.filter(s =>
+      (!state.region || s.region === state.region) &&
+      (!state.shiny_type || s.shiny_type === state.shiny_type) &&
+      (!state.encounter || s.encounter === state.encounter) &&
+      (!state.alpha || s.alpha) &&
+      (!state.search || [s.name,s.trainer,s.location].some(v => (v||'').toLowerCase().includes(state.search.toLowerCase())))
+    );
+
+    const start = (state.page-1)*state.perPage;
+    const pageData = filtered.slice(start, start + state.perPage);
+
+    grid.innerHTML = '';
+    pageData.forEach(shiny => {
+      const card = document.createElement('div');
+      card.className = 'shiny-card';
+      card.innerHTML = `
+        <div class="shiny-card-inner">
+          <div class="shiny-card-front">
+            <img src="${shiny.sprite_shiny}" />
+            <div class="card-front-info">
+              <strong>${shiny.trainer}</strong>
+              <span>#${shiny.shiny_number}</span>
+              <span>${shiny.caught_on}</span>
             </div>
           </div>
-        `;
+          <div class="shiny-card-back">
+            <strong>${shiny.name} (#${shiny.dex})</strong>
+            <p>${shiny.location} | ${shiny.encounter}</p>
+            <p>${shiny.region} | Phase ${shiny.phase}</p>
+            <p>Trainer: ${shiny.trainer}</p>
+            <p><em>Click for more info</em></p>
+          </div>
+        </div>`;
+      card.onclick = () => showModal(shiny);
+      grid.appendChild(card);
+    });
 
-        card.onclick = () => showModal(shiny);
-        grid.appendChild(card);
-      });
-    })
-    .catch(err => console.error('Fetch error:', err));
-});
+    pagination.innerHTML = '';
+    const totalPages = Math.ceil(filtered.length / state.perPage);
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.className = i === state.page ? 'active' : '';
+      btn.textContent = i;
+      btn.onclick = () => { state.page = i; renderCards(); };
+      pagination.appendChild(btn);
+    }
+  }
+}
 
+document.addEventListener('DOMContentLoaded', initShinyShowcase);
+
+// Modal with requestAnimationFrame fix
+// Modal and Escape close logic unchanged
 function showModal(shiny) {
+  document.querySelector('.shiny-modal')?.remove();
+  document.removeEventListener('keydown', escClose);
+
   const modal = document.createElement('div');
   modal.className = 'shiny-modal';
 
   modal.innerHTML = `
     <div class="shiny-modal-content">
-      <button class="shiny-modal-close" aria-label="Close modal" onclick="this.closest('.shiny-modal').remove()">✕</button>
+      <button class="shiny-modal-close" aria-label="Close modal">✕</button>
       <h2>
         ${shiny.name} OT <span>#${shiny.dex}</span> 
         ${shiny.alpha ? `<span class="badge alpha">Alpha</span>` : ''}
@@ -87,7 +136,6 @@ function showModal(shiny) {
 
   document.body.appendChild(modal);
 
-  // Tab switching
   const tabs = modal.querySelectorAll('.tab');
   const contents = modal.querySelectorAll('.tab-content');
 
@@ -100,7 +148,11 @@ function showModal(shiny) {
     });
   });
 
-  // Close on escape
+  modal.querySelector('.shiny-modal-close').addEventListener('click', () => {
+    modal.remove();
+    document.removeEventListener('keydown', escClose);
+  });
+
   document.addEventListener('keydown', escClose);
 }
 

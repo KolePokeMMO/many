@@ -430,3 +430,35 @@ body.page-honey-trees .md-main {
     opacity: 0;
   }
 }
+
+/* ────────────────────────────────────────────────
+   Admin Section Styles
+──────────────────────────────────────────────── */
+
+#admin-panel {
+  padding: 2rem;
+  background: #17191a;
+  border-radius: 8px;
+  color: white;
+}
+
+#shiny-table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+#shiny-table th,
+#shiny-table td {
+  padding: 0.5rem;
+  border: 1px solid #292c2e;
+  text-align: left;
+}
+
+#shiny-table input {
+  width: 100%;
+  background: #17191a;
+  color: white;
+  border: none;
+  padding: 0.3rem;
+}
