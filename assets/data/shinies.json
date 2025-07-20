@@ -98,5 +98,106 @@
     "location": "Old Rod",
     "trainer": "Kole",
     "notes": "Flopping towards greatness."
+  },
+
+  {
+    "name": "Gengar",
+    "dex": 94,
+    "caught_on": "2025-07-17",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/gengar.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/gengar.gif",
+    "location": "Pokémon Tower",
+    "trainer": "Kole",
+    "notes": "Spooky and mischievous."
+  },
+  {
+    "name": "Dragonite",
+    "dex": 149,
+    "caught_on": "2025-07-14",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/dragonite.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/dragonite.gif",
+    "location": "Dragon’s Den",
+    "trainer": "Kole",
+    "notes": "Majestic and powerful."
+  },
+  {
+    "name": "Snorlax",
+    "dex": 143,
+    "caught_on": "2025-07-09",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/snorlax.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/snorlax.gif",
+    "location": "Route 12",
+    "trainer": "Kole",
+    "notes": "Big, sleepy and lovable."
+  },
+  {
+    "name": "Lapras",
+    "dex": 131,
+    "caught_on": "2025-07-13",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/lapras.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/lapras.gif",
+    "location": "Union Cave",
+    "trainer": "Kole",
+    "notes": "Gentle giant of the sea."
+  },
+  {
+    "name": "Alakazam",
+    "dex": 65,
+    "caught_on": "2025-07-11",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/alakazam.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/alakazam.gif",
+    "location": "Saffron City",
+    "trainer": "Kole",
+    "notes": "Mind-blowing psychic power."
+  },
+  {
+    "name": "Gyarados",
+    "dex": 130,
+    "caught_on": "2025-07-06",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/gyarados.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/gyarados.gif",
+    "location": "Lake of Rage",
+    "trainer": "Kole",
+    "notes": "Ferocious and fiery."
+  },
+  {
+    "name": "Jolteon",
+    "dex": 135,
+    "caught_on": "2025-07-04",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/jolteon.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/jolteon.gif",
+    "location": "Route 10",
+    "trainer": "Kole",
+    "notes": "Electric and fast."
+  },
+  {
+    "name": "Machamp",
+    "dex": 68,
+    "caught_on": "2025-07-07",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/machamp.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/machamp.gif",
+    "location": "Rock Tunnel",
+    "trainer": "Kole",
+    "notes": "Strongest arms in town."
+  },
+  {
+    "name": "Aerodactyl",
+    "dex": 142,
+    "caught_on": "2025-07-02",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/aerodactyl.gif",
+    "location": "Fossil Restoration",
+    "trainer": "Kole",
+    "notes": "Ancient and fierce."
+  },
+  {
+    "name": "Clefairy",
+    "dex": 35,
+    "caught_on": "2025-07-01",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/clefairy.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/clefairy.gif",
+    "location": "Mt. Moon",
+    "trainer": "Kole",
+    "notes": "Cute and magical."
   }
 ]
