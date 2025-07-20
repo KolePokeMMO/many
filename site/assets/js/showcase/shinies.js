@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  const grid = document.getElementById('shiny-grid');
+  if (!grid) return; // don't continue if grid not on this page
+
   fetch('/many/assets/data/shinies.json')
     .then(res => res.json())
     .then(data => {
