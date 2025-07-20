@@ -15,11 +15,11 @@
   cursor: pointer;
   perspective: 1000px;
   transition: transform 0.3s ease;
-  box-shadow: 0 0 10px var(--md-accent-fg-color);
+  box-shadow: 0 0 2px rgba(0,0,0,0.6);
 }
 
 .shiny-card:hover {
-  transform: scale(1.08);
+  transform: scale(1.00);
 }
 
 .shiny-card-inner {
@@ -51,7 +51,7 @@
 }
 
 .shiny-card-front img {
-  max-height: 90px;
+  max-height: 120px;
   margin-bottom: 0.5rem;
 }
 
@@ -77,14 +77,14 @@
 
 .shiny-modal-content {
   background: #17191a;
-  border-radius: 1rem;
-  max-width: 600px;
+  border-radius: 0rem;
+  max-width: 400px;
   width: 100%;
   padding: 2rem;
   color: #eee;
   position: relative;
   border: var(--md-accent-fg-color) solid 2px;
-  box-shadow: 0 0 30px var(--md-accent-fg-color);
+  box-shadow: 0 0 5px rgba(0,0,0,0.8);
 }
 
 .shiny-modal-content h2 {
@@ -111,4 +111,103 @@
 
 .shiny-modal-close:hover {
   color: #fff;
+}
+
+
+/* === ADDITIONS === */
+
+/* Front card minimal info container */
+.card-front-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  color: #ccc;
+  gap: 0.2rem;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+/* Badges for modal */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 8px;
+  background: var(--md-accent-fg-color);
+  color: #17191a;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.badge.alpha {
+  background: #ff5f5f;
+  color: white;
+  box-shadow: 0 0 8px #ff5f5f;
+}
+
+/* Modal sprites row */
+.sprites-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sprite-label {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 0.25rem;
+}
+
+/* Tabs container */
+.modal-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.modal-tabs .tab {
+  background: #222425;
+  border: none;
+  color: #bbb;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 1.2rem;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+
+.modal-tabs .tab:hover {
+  background: var(--md-accent-fg-color);
+  color: #17191a;
+}
+
+.modal-tabs .tab.active {
+  background: var(--md-accent-fg-color);
+  color: #17191a;
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+  font-size: 0.85rem;
+  color: #ddd;
+  line-height: 1.4;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Responsive tweaks */
+@media (max-width: 450px) {
+  .sprites-row {
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -6,21 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
       data.forEach(shiny => {
         const card = document.createElement('div');
         card.className = 'shiny-card';
+
         card.innerHTML = `
           <div class="shiny-card-inner">
             <div class="shiny-card-front">
-              <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite">
-              <strong>${shiny.name}</strong>
+              <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
+              <div class="card-front-info">
+                <strong>${shiny.trainer}</strong>
+                <span>Shiny #${shiny.shiny_number || '-'}</span>
+                <span>${shiny.caught_on}</span>
+              </div>
             </div>
             <div class="shiny-card-back">
-              <span><strong>#${shiny.dex}</strong></span>
+              <strong>${shiny.name} (#${shiny.dex})</strong>
               <span><em>Location:</em> ${shiny.location}</span>
-              <span><em>Caught on:</em> ${shiny.caught_on}</span>
+              <span><em>Encounter:</em> ${shiny.encounter || 'Unknown'}</span>
+              <span><em>Region:</em> ${shiny.region || 'Unknown'}</span>
+              <span><em>Phase:</em> ${shiny.phase || 0}</span>
               <span><em>Trainer:</em> ${shiny.trainer}</span>
-              <p><em>Click For More Info</em></p>
+              <p><em>Click for more info</em></p>
             </div>
           </div>
         `;
+
         card.onclick = () => showModal(shiny);
         grid.appendChild(card);
       });
@@ -31,27 +39,68 @@ document.addEventListener('DOMContentLoaded', () => {
 function showModal(shiny) {
   const modal = document.createElement('div');
   modal.className = 'shiny-modal';
+
   modal.innerHTML = `
     <div class="shiny-modal-content">
-      <button class="shiny-modal-close" onclick="this.closest('.shiny-modal').remove()">✕</button>
-      <h2>${shiny.name} <span style="font-size:0.6em;">#${shiny.dex}</span></h2>
-      <div style="display:flex; gap:1rem; align-items:center; justify-content:center; margin-bottom:1rem;">
+      <button class="shiny-modal-close" aria-label="Close modal" onclick="this.closest('.shiny-modal').remove()">✕</button>
+      <h2>
+        ${shiny.name} OT <span>#${shiny.dex}</span> 
+        ${shiny.alpha ? `<span class="badge alpha">Alpha</span>` : ''}
+        <span class="badge shiny-type">${shiny.shiny_type || 'Shiny'}</span>
+      </h2>
+      <div class="sprites-row">
         <div>
-          <div style="font-size:0.85em;">Normal</div>
-          <img src="${shiny.sprite_normal}" alt="${shiny.name} normal sprite">
+          <div class="sprite-label">Normal</div>
+          <img src="${shiny.sprite_normal}" alt="${shiny.name} normal sprite" />
         </div>
         <div>
-          <div style="font-size:0.85em;">Shiny</div>
-          <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite">
+          <div class="sprite-label">Shiny</div>
+          <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
         </div>
       </div>
-      <p><strong>Caught on:</strong> ${shiny.caught_on}</p>
-      <p><strong>Location:</strong> ${shiny.location}</p>
-      <p><strong>Trainer:</strong> ${shiny.trainer}</p>
-      <p><strong>Notes:</strong> ${shiny.notes}</p>
+      <div class="modal-tabs">
+        <button class="tab active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="risk">Risk</button>
+        <button class="tab" data-tab="extra">Extra</button>
+      </div>
+      <div class="tab-content active" id="overview">
+        <p><strong>Caught on:</strong> ${shiny.caught_on}</p>
+        <p><strong>Location:</strong> ${shiny.region} / ${shiny.location}</p>
+        <p><strong>Encounter:</strong> ${shiny.encounter}</p>
+        <p><strong>Phase #:</strong> ${shiny.phase}</p>
+        <p><strong>Trainer:</strong> ${shiny.trainer}</p>
+        <p><strong>Game:</strong> ${shiny.game}</p>
+        <p><strong>Ball Used:</strong> ${shiny.ball_used || 'Unknown'}</p>
+      </div>
+      <div class="tab-content" id="risk">
+        <p><strong>Dangerous Move:</strong> ${shiny.dangerous_move || 'None'}</p>
+        <p><strong>Dangerous Ability:</strong> ${shiny.dangerous_ability || 'None'}</p>
+      </div>
+      <div class="tab-content" id="extra">
+        <p><strong>Total Shinies:</strong> ${shiny.total_shinies || 0}</p>
+        <p><strong>Shiny Number:</strong> ${shiny.shiny_number || 0}</p>
+        <p><strong>Notes:</strong> ${shiny.notes || 'None'}</p>
+        <p><strong>Types:</strong> ${shiny.pokemon_types ? shiny.pokemon_types.join(', ') : 'Unknown'}</p>
+      </div>
     </div>
   `;
+
   document.body.appendChild(modal);
+
+  // Tab switching
+  const tabs = modal.querySelectorAll('.tab');
+  const contents = modal.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      modal.querySelector(`#${tab.dataset.tab}`).classList.add('active');
+    });
+  });
+
+  // Close on escape
   document.addEventListener('keydown', escClose);
 }
 
