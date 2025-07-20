@@ -8,18 +8,18 @@
 }
 
 .shiny-card {
-  background: #111;
+  background: #17191a;
   color: #eee;
-  border-radius: 12px;
+  border-radius: 0px;
   overflow: hidden;
   cursor: pointer;
   perspective: 1000px;
   transition: transform 0.3s ease;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  box-shadow: 0 0 10px var(--md-accent-fg-color);
 }
 
 .shiny-card:hover {
-  transform: scale(1.03);
+  transform: scale(1.08);
 }
 
 .shiny-card-inner {
@@ -47,7 +47,7 @@
 }
 
 .shiny-card-front {
-  background: #1a1a1a;
+  background: #17191a;
 }
 
 .shiny-card-front img {
@@ -57,9 +57,10 @@
 
 .shiny-card-back {
   transform: rotateY(180deg);
-  background: #222;
+  background: #17191a;
+  border: var(--md-accent-fg-color) solid 1px;
   padding: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.6rem;
 }
 
 .shiny-modal {
@@ -71,17 +72,19 @@
   justify-content: center;
   z-index: 9999;
   padding: 2rem;
+  border: var(--md-accent-fg-color) solid 4px;
 }
 
 .shiny-modal-content {
-  background: #111;
+  background: #17191a;
   border-radius: 1rem;
   max-width: 600px;
   width: 100%;
   padding: 2rem;
   color: #eee;
   position: relative;
-  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  border: var(--md-accent-fg-color) solid 2px;
+  box-shadow: 0 0 30px var(--md-accent-fg-color);
 }
 
 .shiny-modal-content h2 {
