@@ -1,4 +1,4 @@
-fetch('/data/shinies.json')
+fetch('/assets/data/shinies.json')
   .then(res => res.json())
   .then(data => {
     const grid = document.getElementById('shiny-grid');
@@ -20,7 +20,10 @@ fetch('/data/shinies.json')
       `;
       card.onclick = () => showModal(shiny);
       grid.appendChild(card);
-    });
+    })
+.catch(err => console.error('Fetch error:', err));
+    ;
+    
   });
 
 function showModal(shiny) {
