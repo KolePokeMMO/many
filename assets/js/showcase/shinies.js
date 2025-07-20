@@ -1,4 +1,4 @@
-fetch('/assets/data/shinies.json')
+fetch('/many/assets/data/shinies.json')
   .then(res => res.json())
   .then(data => {
     const grid = document.getElementById('shiny-grid');
@@ -8,10 +8,11 @@ fetch('/assets/data/shinies.json')
       card.innerHTML = `
         <div class="shiny-card-inner">
           <div class="shiny-card-front">
-            <img src="${shiny.sprite_shiny}" alt="${shiny.name} sprite">
+            <img src="${shiny.sprite_normal}" alt="${shiny.name} sprite">
             <strong>${shiny.name}</strong>
           </div>
           <div class="shiny-card-back">
+            <img src="${shiny.sprite_shiny}" alt="${shiny.name} sprite">
             <span>#${shiny.dex}</span>
             <span>${shiny.location}</span>
             <span>${shiny.caught_on}</span>
