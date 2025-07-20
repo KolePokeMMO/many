@@ -7,8 +7,8 @@ theme:
     text: Inter
     code: Fira Mono
   custom_dir: overrides
-  logo: assets/images/logo.png
-  favicon: assets/images/favicon.png
+  logo: assets/img/logo.png
+  favicon: assets/img/favicon.png
   palette:
     scheme: slate
   features:
@@ -25,24 +25,29 @@ plugins:
   - search
 
 extra:
-
   year: !ENV [YEAR, "2025"]
  
 extra_css:
-  - assets/extra.css
-  - main.css
-  - guides/honey-tree.css
-  - components/poke-tooltips.css
+  - assets/css/universal.css
+  - assets/css/guides/honey-tree.css
+  - assets/css/showcase/showcase.css
+  - assets/css/comp/poke-tooltips.css
+  - assets/css/comp/showcase.css
 
 extra_javascript:
-  - assets/pokemon.js
-  - assets/extra.js
-  - assets/word-split.js
+  - assets/js/pokemon.js
+  - assets/js/extra.js
+  - assets/js/word-split.js
+  - assets/js/showcase/shinies.js
 
 
 nav:
   - Home: index.md
   - Guides:
-      - Getting Started: getting-started.md
-      - Honey Trees: honey-trees.md
-  - Showcase: showcase.md
+      - Overview: guides/index.md
+      - Honey Trees: guides/honey-trees.md
+  - Showcase:
+      - Overview: showcase/index.md
+      - Latest Shinies: showcase/latest.md
+      - Caught Tracker: showcase/caught.md
+  

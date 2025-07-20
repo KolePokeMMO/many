@@ -1,3 +1,11 @@
+---
+title: Kelly's Honey Tree Guide
+description: Honey Tree Walkthrough for shiny hunting.
+status: new
+
+
+---
+
 <section class="info-section">
 <div class="grid-2 status-grid">
 
@@ -13,6 +21,7 @@
 
 </div>
 </section>
+
 <section class="honey-intro">
   <h1>INTRODUCTION</h1>
 
@@ -115,10 +124,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/canalave-city-1.png" alt="Canalave City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/canalave-city-1.png" alt="Canalave City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-218-1.png" alt="Route 218 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-218-1.png" alt="Route 218 Honey Tree">
     </div>
   </div>
 </section>
@@ -136,10 +145,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/floaroma-town-1.png" alt="Floaroma Town">
+      <img src="/many/assets/img/guides/honey-trees/floaroma-town-1.png" alt="Floaroma Town">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/floaroma-meadow-1.png" alt="Floaroma Meadow">
+      <img src="/many/assets/img/guides/honey-trees/floaroma-meadow-1.png" alt="Floaroma Meadow">
     </div>
   </div>
 </section>
@@ -157,13 +166,13 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/floaroma-town-2.png" alt="Floaroma Town">
+      <img src="/many/assets/img/guides/honey-trees/floaroma-town-2.png" alt="Floaroma Town">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-1.png" alt="Route 218 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-205-1.png" alt="Route 218 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/valley-windworks-1.png" alt="Valley Windworks Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/valley-windworks-1.png" alt="Valley Windworks Honey Tree">
     </div>
   </div>
 </section>
@@ -180,10 +189,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/valley-windworks-1.png" alt="Canalave City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/valley-windworks-1.png" alt="Canalave City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-2.png" alt="Route 218 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-205-2.png" alt="Route 218 Honey Tree">
     </div>
   </div>
 </section>
@@ -201,10 +210,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-2.png" alt="Canalave City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-205-2.png" alt="Canalave City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/fuego-ironworks-1.png" alt="Route 218 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/fuego-ironworks-1.png" alt="Route 218 Honey Tree">
     </div>
   </div>
 </section>
@@ -224,13 +233,13 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/fuego-ironworks-1.png" alt="Fuego Ironworks Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/fuego-ironworks-1.png" alt="Fuego Ironworks Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-3.png" alt="Route 205 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-205-3.png" alt="Route 205 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/eterna-forest-1.png" alt="Eterna Forest Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/eterna-forest-1.png" alt="Eterna Forest Honey Tree">
     </div>
   </div>
 </section>
@@ -247,10 +256,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/eterna-city-1.png" alt="Eterna City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/eterna-city-1.png" alt="Eterna City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-205-4.png" alt="Route 205 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-205-4.png" alt="Route 205 Honey Tree">
     </div>
   </div>
 </section>
@@ -269,10 +278,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/oreburgh-city-1.png" alt="Oreburgh City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/oreburgh-city-1.png" alt="Oreburgh City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-207-1.png" alt="Route 207 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-207-1.png" alt="Route 207 Honey Tree">
     </div>
   </div>
 </section>
@@ -291,10 +300,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-207-1.png" alt="Route 207 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-207-1.png" alt="Route 207 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-206-1.png" alt="Route 206 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-206-1.png" alt="Route 206 Honey Tree">
     </div>
   </div>
 </section>
@@ -313,10 +322,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/hearthome-city-1.png" alt="Hearthome City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/hearthome-city-1.png" alt="Hearthome City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-208-1.png" alt="Route 208 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-208-1.png" alt="Route 208 Honey Tree">
     </div>
   </div>
 </section>
@@ -335,13 +344,13 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-208-1.png" alt="Route 208 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-208-1.png" alt="Route 208 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/hearthome-city-2.png" alt="Hearthome City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/hearthome-city-2.png" alt="Hearthome City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-212-1.png" alt="Route 212 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-212-1.png" alt="Route 212 Honey Tree">
     </div>
   </div>
 </section>
@@ -359,13 +368,13 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-212-1.png" alt="Route 212 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-212-1.png" alt="Route 212 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/hearthome-city-3.png" alt="Hearthome City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/hearthome-city-3.png" alt="Hearthome City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-209-1.png" alt="Route 209 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-209-1.png" alt="Route 209 Honey Tree">
     </div>
   </div>
 </section>
@@ -384,13 +393,13 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-209-1.png" alt="Route 209 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-209-1.png" alt="Route 209 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/solaceon-town-1.png" alt="Solaceon Town Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/solaceon-town-1.png" alt="Solaceon Town Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-210-1.png" alt="Route 210 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-210-1.png" alt="Route 210 Honey Tree">
     </div>
   </div>
 </section>
@@ -410,10 +419,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-210-1.png" alt="Route 210 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-210-1.png" alt="Route 210 Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-215-1.png" alt="Route 215 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-215-1.png" alt="Route 215 Honey Tree">
     </div>
   </div>
 </section>
@@ -434,10 +443,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/celestic-town-1.png" alt="Celestic Town Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/celestic-town-1.png" alt="Celestic Town Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-211-1.png" alt="Route 211 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-211-1.png" alt="Route 211 Honey Tree">
     </div>
   </div>
 </section>
@@ -463,10 +472,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/celestic-town-2.png" alt="Celestic Town Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/celestic-town-2.png" alt="Celestic Town Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-210-2.png" alt="Route 210 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-210-2.png" alt="Route 210 Honey Tree">
     </div>
   </div>
 </section>
@@ -486,10 +495,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/pastoria-city-1.png" alt="Pastoria City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/pastoria-city-1.png" alt="Pastoria City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-212-2.png" alt="Route 212 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-212-2.png" alt="Route 212 Honey Tree">
     </div>
   </div>
 </section>
@@ -509,10 +518,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/pastoria-city-2.png" alt="Pastoria City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/pastoria-city-2.png" alt="Pastoria City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-213-1.png" alt="Route 213 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-213-1.png" alt="Route 213 Honey Tree">
     </div>
   </div>
 </section>
@@ -531,10 +540,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/veilstone-city-1.png" alt="Veilstone City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/veilstone-city-1.png" alt="Veilstone City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-214-1.png" alt="Route 214 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-214-1.png" alt="Route 214 Honey Tree">
     </div>
   </div>
 </section>
@@ -554,10 +563,10 @@
       </ul>
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/sunyshore-city-1.png" alt="Sunyshore City Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/sunyshore-city-1.png" alt="Sunyshore City Honey Tree">
     </div>
     <div class="honey-tree-image">
-      <img src="../assets/images/guides/route-222-1.png" alt="Route 222 Honey Tree">
+      <img src="/many/assets/img/guides/honey-trees/route-222-1.png" alt="Route 222 Honey Tree">
     </div>
   </div>
 </section>
