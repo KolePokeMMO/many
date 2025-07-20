@@ -2,18 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://shinylegion.github.io/many/</loc>
-         <lastmod>2025-07-19</lastmod>
+         <lastmod>2025-07-20</lastmod>
     </url>
     <url>
-         <loc>https://shinylegion.github.io/many/getting-started/</loc>
-         <lastmod>2025-07-19</lastmod>
+         <loc>https://shinylegion.github.io/many/guides/</loc>
+         <lastmod>2025-07-20</lastmod>
     </url>
     <url>
-         <loc>https://shinylegion.github.io/many/honey-trees/</loc>
-         <lastmod>2025-07-19</lastmod>
+         <loc>https://shinylegion.github.io/many/guides/honey-trees/</loc>
+         <lastmod>2025-07-20</lastmod>
     </url>
     <url>
          <loc>https://shinylegion.github.io/many/showcase/</loc>
-         <lastmod>2025-07-19</lastmod>
+         <lastmod>2025-07-20</lastmod>
+    </url>
+    <url>
+         <loc>https://shinylegion.github.io/many/showcase/caught/</loc>
+         <lastmod>2025-07-20</lastmod>
+    </url>
+    <url>
+         <loc>https://shinylegion.github.io/many/showcase/latest/</loc>
+         <lastmod>2025-07-20</lastmod>
     </url>
 </urlset>

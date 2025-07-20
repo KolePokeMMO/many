@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Zubat",
+    "dex": 41,
+    "caught_on": "2025-07-18",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/zubat.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/zubat.gif",
+    "location": "Mt. Moon",
+    "trainer": "Kole",
+    "notes": "Full odds in the dark!"
+  },
+  {
+    "name": "Pikachu",
+    "dex": 25,
+    "caught_on": "2025-06-30",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/pikachu.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/pikachu.gif",
+    "location": "Viridian Forest",
+    "trainer": "Kole",
+    "notes": "Sparked my heart!"
+  },
+  {
+    "name": "Eevee",
+    "dex": 133,
+    "caught_on": "2025-07-01",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/eevee.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/eevee.gif",
+    "location": "Route 4",
+    "trainer": "Kole",
+    "notes": "Ready to evolve into love."
+  },
+  {
+    "name": "Charmander",
+    "dex": 4,
+    "caught_on": "2025-07-12",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/charmander.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/charmander.gif",
+    "location": "Pallet Town",
+    "trainer": "Kole",
+    "notes": "Hot and bright."
+  },
+  {
+    "name": "Bulbasaur",
+    "dex": 1,
+    "caught_on": "2025-07-10",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/bulbasaur.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/bulbasaur.gif",
+    "location": "Pallet Town",
+    "trainer": "Kole",
+    "notes": "Green and glowing."
+  },
+  {
+    "name": "Squirtle",
+    "dex": 7,
+    "caught_on": "2025-07-15",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/squirtle.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/squirtle.gif",
+    "location": "Cerulean City",
+    "trainer": "Kole",
+    "notes": "Cool and calm."
+  },
+  {
+    "name": "Jigglypuff",
+    "dex": 39,
+    "caught_on": "2025-07-05",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/jigglypuff.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/jigglypuff.gif",
+    "location": "Route 3",
+    "trainer": "Kole",
+    "notes": "Sings me to sleep."
+  },
+  {
+    "name": "Meowth",
+    "dex": 52,
+    "caught_on": "2025-07-08",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/meowth.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/meowth.gif",
+    "location": "Team Rocket Hideout",
+    "trainer": "Kole",
+    "notes": "Sneaky and shiny."
+  },
+  {
+    "name": "Psyduck",
+    "dex": 54,
+    "caught_on": "2025-07-03",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/psyduck.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/psyduck.gif",
+    "location": "Lake of Rage",
+    "trainer": "Kole",
+    "notes": "Quacking with style."
+  },
+  {
+    "name": "Magikarp",
+    "dex": 129,
+    "caught_on": "2025-07-11",
+    "sprite_normal": "https://play.pokemonshowdown.com/sprites/gen5ani/magikarp.gif",
+    "sprite_shiny": "https://play.pokemonshowdown.com/sprites/gen5ani-shiny/magikarp.gif",
+    "location": "Old Rod",
+    "trainer": "Kole",
+    "notes": "Flopping towards greatness."
+  }
+]
