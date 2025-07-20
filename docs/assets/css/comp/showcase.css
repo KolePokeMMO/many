@@ -72,16 +72,18 @@
   justify-content: center;
   z-index: 9999;
   padding: 2rem;
+  border: var(--md-accent-fg-color) solid 4px;
 }
 
 .shiny-modal-content {
-  background: #111;
+  background: #17191a;
   border-radius: 1rem;
   max-width: 600px;
   width: 100%;
   padding: 2rem;
   color: #eee;
   position: relative;
+  border: var(--md-accent-fg-color) solid 2px;
   box-shadow: 0 0 30px rgba(0,0,0,0.8);
 }
 
