@@ -28,15 +28,18 @@ body, input, button, textarea, select {
 
 /* Reduce height of the navigation tabs */
 .md-tabs {
-  height: 2.0rem; /* default is ~3.2rem, adjust to your liking */
+  height: 2.1rem; /* default is ~3.2rem, adjust to your liking */
 }
-
+.md-tabs {
+  overflow-x: auto; /* keep horizontal scroll */
+  overflow-y: hidden; /* hide vertical scroll */
+}
 .md-tabs__list {
   height: 100%;
 }
 
 .md-tabs__item {
-  padding-top: 0.3rem;
+  padding-top: 0.2rem;
   padding-bottom: 0.3rem;
   font-size: 0.85rem;
 }
@@ -53,8 +56,6 @@ body, input, button, textarea, select {
   transition: transform .4s cubic-bezier(.1,.7,.1,1),opacity .25s;
     transition-delay: 0s, 0s;
 }
-
-
 
 
 /* Animation */
