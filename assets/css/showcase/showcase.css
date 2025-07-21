@@ -228,41 +228,177 @@
 
 .shiny-controls {
   position: sticky;
-  top: 0;
+  top: 138px;
+  height: 70px;;
   z-index: 999;
-  background: #121212;
-  border-bottom: 1px solid #333;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  background: var(--md-primary-fg-color);
+  border-top: 4px solid var(--md-primary-fg-color);
+  padding: 0.4rem 1rem 1rem 1rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .shiny-controls .filter-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
+  gap: 0.4rem 1rem;
+  justify-content: left;
   align-items: center;
 }
 
-.shiny-controls input[type="text"],
-.shiny-controls select,
-.shiny-controls button {
-  background: #17191a;
-  color: #eee;
-  border: 1px solid #333;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.85rem;
-  border-radius: 4px;
+/* Modern Input/Select */
+.shiny-controls input[type="search"],
+.shiny-controls select {
+  background: #1d1f20;
+  color: #e4e4e4;
+  border: 1px solid #2e2e2e;
+  border-radius: 0px;
+  padding: 0.4rem 1.5rem 0.4rem 0.8rem;
+
+  font-size: 0.7rem;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
-.shiny-controls button {
+.shiny-controls input[type="search"] {
+  width: 330px;
+}
+
+.shiny-controls input[type="search"]::placeholder {
+  color: #999;
+}
+
+.shiny-controls input[type="search"]:focus,
+.shiny-controls select:focus {
+  outline: none;
+  border-color: var(--md-accent-fg-color);
+  background-color: #222;
+  box-shadow: 0 0 5px var(--md-accent-fg-color);
+}
+
+/* Custom Checkbox */
+.shiny-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #d34141;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  background: #1d1f20;
+  border: 1px solid #2e2e2e;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.shiny-controls label:hover {
+  background: #222;
+  border-color: var(--md-accent-fg-color);
+}
+
+.shiny-controls input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  background: #121212;
+  display: inline-block;
+  position: relative;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.shiny-controls input[type="checkbox"]:checked {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
+.shiny-controls input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 4px;
+  height: 8px;
+  border: solid #17191a;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.shiny-controls input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+/* ========== Icons and Polished Inputs ========== */
+
+/* Position icon inside input */
+.shiny-controls .search {
+  padding-left: 2.2rem;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23999' viewBox='0 0 24 24' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 20l-5.2-5.2a7 7 0 1 0-1.4 1.4L20 21l1-1zM4 10a6 6 0 1 1 12 0 6 6 0 0 1-12 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.8rem center;
+  background-size: 1rem;
+}
+
+/* Custom dropdown arrow */
+.shiny-controls select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23999' viewBox='0 0 24 24' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.2rem;
+}
+
+/* Optional: better cursor */
+.shiny-controls input[type="search"],
+.shiny-controls select {
   cursor: pointer;
 }
 
-.shiny-controls .alpha-toggle {
-  font-size: 0.85rem;
-  color: #aaa;
+/* Animate filter bar entrance */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.shiny-controls {
+  animation: fadeDown 0.4s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Pagination */
 
