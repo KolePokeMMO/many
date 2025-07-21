@@ -11,7 +11,7 @@ function initShinyShowcase() {
 
   const filters = controls.querySelectorAll('select, input');
   let shinyData = [];
-  const state = { search: '', region: '', shiny_type: '', encounter: '', alpha: false, page: 1, perPage: 20 };
+  const state = { search: '', region: '', shiny_type: '', encounter: '', alpha: false, page: 1, perPage: 18 };
 
   filters.forEach(f => {
     f.addEventListener('input', () => {
