@@ -49,7 +49,7 @@ function initShinyShowcase() {
       <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
     </div>
       <div class="card-front-info">
-        <strong>${shiny.trainer} OT #${shiny.shiny_number}</strong>
+        <strong>${shiny.trainer} - OT #${shiny.shiny_number}</strong>
         <span class="badge shiny-type">${shiny.shiny_type || 'Shiny'}</span>
       </div>
       <div class="card-back-info">
