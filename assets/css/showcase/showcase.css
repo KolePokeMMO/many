@@ -1,4 +1,6 @@
-/* === SHINY SHOWCASE STYLES === */
+/* ========================================================================
+     SHINY SHOWCASE STYLES
+======================================================================== */
 
 .shiny-grid {
   display: grid;
@@ -8,59 +10,69 @@
 }
 
 .shiny-card {
-  background: #17191a;
+  background: linear-gradient(145deg, #1b1d1f, #121314);
   color: #eee;
-  border-radius: 0;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  perspective: 1000px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 2px rgba(0,0,0,0.6);
-}
-
-.shiny-card:hover {
-  transform: scale(1);
-}
-
-.shiny-card-inner {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.shiny-card:hover .shiny-card-inner {
-  transform: rotateY(180deg);
-}
-
-.shiny-card-front,
-.shiny-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  aspect-ratio: 3 / 4;
 }
 
-.shiny-card-front {
-  background: #17191a;
+.shiny-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
-.shiny-card-front img {
+.shiny-card-inner,
+.shiny-card-front,
+.shiny-card-back {
+  all: unset;
+}
+
+.shiny-card img {
   max-height: 120px;
   margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.shiny-card-back {
-  transform: rotateY(180deg);
-  background: #17191a;
-  border: var(--md-accent-fg-color) solid 1px;
-  padding: 1rem;
-  font-size: 0.6rem;
+.shiny-card:hover img {
+  transform: scale(1.05);
+}
+
+.card-front-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  color: #ccc;
+  gap: 0.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.card-back-info {
+  background: rgba(23, 25, 26, 0.85);
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 0.65rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  line-height: 1.4;
+  text-align: center;
+  border-radius: 0 0 8px 8px;
+}
+
+.card-back-info p {
+  margin: 0.2rem 0;
 }
 
 /* Modal Overlay and Content */
@@ -116,18 +128,6 @@
 
 .shiny-modal-close:hover {
   color: #fff;
-}
-
-/* Front card minimal info container */
-
-.card-front-info {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.7rem;
-  color: #ccc;
-  gap: 0.2rem;
-  margin-top: 0.3rem;
-  text-align: center;
 }
 
 /* Badges for modal */
@@ -224,7 +224,11 @@
   }
 }
 
-/* Shiny Controls */
+
+
+/* ========================================================================
+   SHINY CONTROLS STYLES
+======================================================================== */
 
 .shiny-controls {
   position: sticky;
@@ -328,13 +332,6 @@
   opacity: 1;
 }
 
-
-
-
-
-
-
-
 /* ========== Icons and Polished Inputs ========== */
 
 /* Position icon inside input */
@@ -432,21 +429,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Pagination */
 
 #pagination {
@@ -471,3 +453,6 @@
   background: var(--md-accent-fg-color);
   color: #17191a;
 }
+
+
+

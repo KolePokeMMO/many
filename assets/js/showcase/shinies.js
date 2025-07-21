@@ -28,54 +28,51 @@ function initShinyShowcase() {
       renderCards();
     });
 
-  function renderCards() {
-    const filtered = shinyData.filter(s =>
-      (!state.region || s.region === state.region) &&
-      (!state.shiny_type || s.shiny_type === state.shiny_type) &&
-      (!state.encounter || s.encounter === state.encounter) &&
-      (!state.alpha || s.alpha) &&
-      (!state.search || [s.name,s.trainer,s.location].some(v => (v||'').toLowerCase().includes(state.search.toLowerCase())))
-    );
+function renderCards() {
+  const filtered = shinyData.filter(s =>
+    (!state.region || s.region === state.region) &&
+    (!state.shiny_type || s.shiny_type === state.shiny_type) &&
+    (!state.encounter || s.encounter === state.encounter) &&
+    (!state.alpha || s.alpha) &&
+    (!state.search || [s.name,s.trainer,s.location].some(v => (v||'').toLowerCase().includes(state.search.toLowerCase())))
+  );
 
-    const start = (state.page-1)*state.perPage;
-    const pageData = filtered.slice(start, start + state.perPage);
+  const start = (state.page - 1) * state.perPage;
+  const pageData = filtered.slice(start, start + state.perPage);
 
-    grid.innerHTML = '';
-    pageData.forEach(shiny => {
-      const card = document.createElement('div');
-      card.className = 'shiny-card';
-      card.innerHTML = `
-        <div class="shiny-card-inner">
-          <div class="shiny-card-front">
-            <img src="${shiny.sprite_shiny}" />
-            <div class="card-front-info">
-              <strong>${shiny.trainer}</strong>
-              <span>#${shiny.shiny_number}</span>
-              <span>${shiny.caught_on}</span>
-            </div>
-          </div>
-          <div class="shiny-card-back">
-            <strong>${shiny.name} (#${shiny.dex})</strong>
-            <p>${shiny.location} | ${shiny.encounter}</p>
-            <p>${shiny.region} | Phase ${shiny.phase}</p>
-            <p>Trainer: ${shiny.trainer}</p>
-            <p><em>Click for more info</em></p>
-          </div>
-        </div>`;
-      card.onclick = () => showModal(shiny);
-      grid.appendChild(card);
-    });
+  grid.innerHTML = '';
+  pageData.forEach(shiny => {
+    const card = document.createElement('div');
+    card.className = 'shiny-card';
+    card.innerHTML = `
+      <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
+      <div class="card-front-info">
+        <strong>${shiny.trainer}</strong>
+        <span>#${shiny.shiny_number}</span>
+        <span>${shiny.caught_on}</span>
+      </div>
+      <div class="card-back-info">
+        <p><strong>${shiny.name}</strong> (#${shiny.dex})</p>
+        <p>${shiny.location} | ${shiny.encounter}</p>
+        <p>${shiny.region} | Phase ${shiny.phase}</p>
+        <p><em>Click for more info</em></p>
+      </div>
+    `;
+    card.onclick = () => showModal(shiny);
+    grid.appendChild(card);
+  });
 
-    pagination.innerHTML = '';
-    const totalPages = Math.ceil(filtered.length / state.perPage);
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement('button');
-      btn.className = i === state.page ? 'active' : '';
-      btn.textContent = i;
-      btn.onclick = () => { state.page = i; renderCards(); };
-      pagination.appendChild(btn);
-    }
+  pagination.innerHTML = '';
+  const totalPages = Math.ceil(filtered.length / state.perPage);
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.className = i === state.page ? 'active' : '';
+    btn.textContent = i;
+    btn.onclick = () => { state.page = i; renderCards(); };
+    pagination.appendChild(btn);
   }
+}
+
 }
 
 document.addEventListener('DOMContentLoaded', initShinyShowcase);
