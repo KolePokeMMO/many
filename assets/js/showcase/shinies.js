@@ -42,7 +42,7 @@ function initShinyShowcase() {
 
     grid.innerHTML = '';
     pageData.forEach(shiny => {
-    const isYomy = shiny.trainer === "Yomy";
+    const isYomy = shiny.trainer === "Kelly";
     const yomyClass = isYomy ? 'yomy-sparkle' : '';
 
     const card = document.createElement('div');
