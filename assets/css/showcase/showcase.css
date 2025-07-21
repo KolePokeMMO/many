@@ -240,7 +240,7 @@
 
 @media (max-width: 450px) {
   .shiny-controls {
-  top: 0px;
+  top: 0px !important;
   }
 }
 
