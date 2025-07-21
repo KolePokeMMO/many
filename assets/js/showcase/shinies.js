@@ -42,14 +42,17 @@ function initShinyShowcase() {
 
     grid.innerHTML = '';
     pageData.forEach(shiny => {
-      const card = document.createElement('div');
+    const isYomy = shiny.trainer === "Yomy";
+    const yomyClass = isYomy ? 'yomy-sparkle' : '';
+
+    const card = document.createElement('div');
       card.className = 'shiny-card';
       card.innerHTML = `
     <div class="sprite-box">
       <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
     </div>
       <div class="card-front-info">
-        <strong>${shiny.trainer} - OT #${shiny.shiny_number}</strong>
+        <strong class="${yomyClass}">${shiny.trainer} - OT #${shiny.shiny_number}</strong>
         <span class="badge shiny-type">${shiny.shiny_type || 'Shiny'}</span>
       </div>
       <div class="card-back-info">
@@ -73,6 +76,34 @@ function initShinyShowcase() {
       pagination.appendChild(btn);
     }
   }
+
+function createSparkle(element) {
+  const spark = document.createElement('span');
+  spark.className = 'spark';
+
+  const angle = Math.random() * Math.PI; // Top half circle
+  const distance = 30 + Math.random() * 30;
+  const x = Math.cos(angle) * distance;
+  const y = -Math.abs(Math.sin(angle) * distance);
+
+  const side = Math.random() < 0.5 ? 'left' : 'right';
+  spark.style.setProperty('--x', `${x}px`);
+  spark.style.setProperty('--y', `${y}px`);
+  spark.style.setProperty('--top', `-6px`);
+  spark.style.setProperty('--left', side === 'left' ? '5%' : '95%');
+
+  element.appendChild(spark);
+  setTimeout(() => spark.remove(), 1000);
+}
+
+
+// Trigger sparkles on Yomy cards every 500ms
+setInterval(() => {
+  document.querySelectorAll('.yomy-sparkle').forEach(el => {
+    createSparkle(el);
+  });
+}, 100);
+
 
 }
 

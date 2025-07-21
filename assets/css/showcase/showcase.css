@@ -93,6 +93,66 @@
   image-rendering: pixelated;
 }
 
+
+
+
+/* Sparkler Fireworks Animation */
+.yomy-sparkle {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  background: linear-gradient(120deg, #fff7c2, #ffd6f8, #b2ffff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sparkleFlow 4s linear infinite, glowPulse 2s ease-in-out infinite alternate;
+  overflow: visible;
+  text-shadow: 0 0 4px rgba(255, 255, 200, 0.4), 0 0 10px rgba(255, 255, 150, 0.3);
+}
+
+.yomy-sparkle .spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffe066);
+  animation: spark-burst 1s ease-out forwards;
+  pointer-events: none;
+  opacity: 0.9;
+  top: var(--top);
+  left: var(--left);
+}
+
+@keyframes sparkleFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 4px #fff8a0, 0 0 8px #ffe066;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff8a0, 0 0 20px #ffd700;
+  }
+}
+
+@keyframes spark-burst {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+
+
+
+
 /* Modal Overlay and Content */
 
 .shiny-modal {
