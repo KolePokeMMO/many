@@ -238,6 +238,12 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 450px) {
+  .shiny-controls {
+  top: 0px;
+  }
+}
+
 .shiny-controls .filter-group {
   display: flex;
   flex-wrap: wrap;
