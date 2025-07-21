@@ -595,76 +595,39 @@
       
         
 <div class="footer-animated-bg">
-<div class="shiny-stars"></div>
-<footer class="custom-footer md-footer">
-  <div class="footer-grid">
-
-    <!-- Logo and Tagline -->
-    <div>
-      <img src="../assets/img/logo.png" alt="Shiny Legion Logo">
-      <p>Elite force of shiny hunters.</p>
+  <div class="shiny-stars"></div>
+  <footer class="custom-footer text-white pt-4 pb-4">
+    <div class="container d-flex justify-content-end align-items-center">
+      <div class="text-end">
+        <p class="mb-1">© Shiny Legion [MANY]</p>
+        <div class="visitors">
+          <img src="https://visitor-badge.laobi.icu/badge?page_id=shinylegion.github.io.many" alt="visitor badge" />
+        </div>
+      </div>
     </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href=".." class="md-footer-link">Home</a></li>
-        <li><a href="../getting-started/" class="md-footer-link">Guides</a></li>
-        <li><a href="../showcase/" class="md-footer-link">Showcase</a></li>
-      </ul>
-    </div>
-
-    <!-- Team Staff --> 
-    <div>
-      <h4>Team Staff</h4>
-      <ul>
-        <li>Kelly - Team Leader</li>
-        <li>Kole - Team Executioner</li>
-        <li>Torake - Team Officer</li>
-      </ul>
-    </div>
-
-    <!-- Copyright -->
-    <div>
-      <h4>Meta</h4>
-      <p>© Shiny Legion [MANY] </p>
-    <div class="visitors">
-      <img src="https://visitor-badge.laobi.icu/badge?page_id=shinylegion.github.io.many" alt="visitor badge"/>
-    </div>
-    </div>
-
-  </div>
-</footer>
+  </footer>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const sparkleContainer = document.querySelector(".shiny-stars");
-
   const sparkleCount = 25;
 
   for (let i = 0; i < sparkleCount; i++) {
     const star = document.createElement("div");
     star.className = "shiny-star";
 
-    // Random position
     star.style.top = `${Math.random() * 100}%`;
     star.style.left = `${Math.random() * 100}%`;
 
-    // Random size scale between 0.6 and 1.5
     const scale = (Math.random() * 0.9 + 0.6).toFixed(2);
     star.style.setProperty('--star-scale', scale);
-
-    // Optional: random animation delay for better spread
     star.style.animationDelay = `${Math.random() * 4}s`;
 
     sparkleContainer.appendChild(star);
   }
 });
 </script>
-
-
 
       
     </div>

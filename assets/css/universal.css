@@ -26,6 +26,37 @@ body, input, button, textarea, select {
   animation: pulse 2s infinite ease-in-out;
 }
 
+/* Reduce height of the navigation tabs */
+.md-tabs {
+  height: 2.0rem; /* default is ~3.2rem, adjust to your liking */
+}
+
+.md-tabs__list {
+  height: 100%;
+}
+
+.md-tabs__item {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.md-tabs__link {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  font-size: .7rem;
+  margin-top: .45rem;
+  opacity: .7;
+  outline-color: var(--md-accent-fg-color);
+  outline-offset: .2rem;
+  transition: transform .4s cubic-bezier(.1,.7,.1,1),opacity .25s;
+    transition-delay: 0s, 0s;
+}
+
+
+
+
 /* Animation */
 .md-header__title .many {
   background: linear-gradient(270deg, 
@@ -98,10 +129,10 @@ body, input, button, textarea, select {
 
 .md-header__title {
   font-family: "Piedra", serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
-  font-size: clamp(1.4rem, 5vw, 2.8rem);
-  line-height: clamp(1.8rem, 6vw, 4.0rem);
+  font-size: clamp(1.4rem, 5vw, 1.6rem);
+  line-height: clamp(1.8rem, 6vw, 4.4rem);
   color: #72c4cc;
 }
 
@@ -119,7 +150,7 @@ body, input, button, textarea, select {
   background-color: #17191a;
   width: 200px;
   margin-right: 30px;
-  border-radius: 20px;
+  border-radius: 0px;
 }
 
 .md-sidebar__scrollwrap {
@@ -170,14 +201,14 @@ body.page-honey-trees .md-main {
    File: extra.css
 ──────────────────────────────────────────────── */
 .md-header__button.md-logo {
-  width: 110px;
+  width: 80px;
   height: auto;
 }
 
 .md-header__button.md-logo img {
-  max-height: 110px;
+  max-height: 80px;
   width: auto;
-  height: 110px !important;
+  height: 80px !important;
   max-height: none !important;
   max-width: none !important;
   padding: 0 !important;
@@ -309,12 +340,13 @@ body.page-honey-trees .md-main {
 
 .md-footer {
   background-color: #17191a;
+  
 }
 
 /* Custom Footer Styles */
 .custom-footer {
   padding: 2rem 1rem;
-
+  font-size: 10px;
   color: #dfdfdf;
   border-top: 2px solid var(--md-accent-fg-color);
 }
@@ -323,9 +355,10 @@ body.page-honey-trees .md-main {
 .custom-footer .footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  gap: 0.5rem;
   align-items: start;
   text-align: left;
+  
 }
 
 /* Footer Logo */
@@ -361,6 +394,11 @@ body.page-honey-trees .md-main {
   text-decoration: underline;
 }
 
+.custom-footer h4, .custom-footer p, .custom-footer li, .custom-footer a {
+  font-size: 0.5rem;
+  font-weight: bold;
+}
+
 /* ────────────────────────────────────────────────
    Shiny Sparkle Background for Footer
 ──────────────────────────────────────────────── */
@@ -369,6 +407,7 @@ body.page-honey-trees .md-main {
   position: relative;
   background-color: #17191a; /* base footer bg */
   overflow: hidden;
+  height: 100px;;
 }
 
 /* Container for sparkles */
@@ -430,6 +469,17 @@ body.page-honey-trees .md-main {
     opacity: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /* ────────────────────────────────────────────────
    Admin Section Styles
