@@ -178,6 +178,7 @@ body, input, button, textarea, select {
   overflow: hidden;
   box-sizing: border-box;
   flex-shrink: 0;
+  min-height: 623px;
 }
 
 /* Internal scroll area */
