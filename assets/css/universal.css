@@ -5,9 +5,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
 
 :root {
+  --main-bg-color: #131519;
+  --main-fg-color: #1e2127;
+  --main-fg-border-color: #292e35;
+
+  --main-accent-color: #4051b5;
+  --main-accent-color-light: #5488e8;
+  --main-accent-border-color: #5488e8;
+
+  --accent-cyan: #00bcd4;
+  --accent-indigo: #3f51b5;
+  --accent-teal: #009688;
+  --accent-yellow: #ffeb3b;
+  --accent-orange: #ff7300;
+  --accent-red: #f44336;
+  --accent-pink: #e91e63;
+  --accent-lime: #cddc39;
+  --accent-amber: #e84636;
+
   --md-text-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --md-code-font: 'Fira Mono', monospace;
 }
+
+
+
+
 
 /* In assets/extra.css */
 body, input, button, textarea, select {
@@ -113,7 +135,7 @@ body, input, button, textarea, select {
 }
 
 .md-main {
-  background-color: #0e1011; 
+  background-color: var(--main-bg-color); 
 }
 
 .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
@@ -123,7 +145,7 @@ body, input, button, textarea, select {
 }
  
 .md-header {
-  background-color: #17191a;
+  background-color: var(--main-bg-color);
   border-bottom: 2px solid var(--md-accent-fg-color);
   box-shadow: none; /* remove the old shadow */
 }
@@ -148,7 +170,7 @@ body, input, button, textarea, select {
 
 .md-sidebar, .md-sidebar--primary,
 .md-sidebar__scrollwrap {
-  background-color: #17191a;
+  background-color: var(--main-bg-color);
   width: 200px;
   margin-right: 30px;
   border-radius: 0px;
@@ -340,7 +362,7 @@ body.page-honey-trees .md-main {
 ──────────────────────────────────────────────── */
 
 .md-footer {
-  background-color: #17191a;
+  background-color: var(--main-bg-color);
   
 }
 
@@ -406,7 +428,7 @@ body.page-honey-trees .md-main {
 
 .footer-animated-bg {
   position: relative;
-  background-color: #17191a; /* base footer bg */
+  background-color: var(--main-bg-color); /* base footer bg */
   overflow: hidden;
   height: 100px;;
 }
@@ -488,7 +510,7 @@ body.page-honey-trees .md-main {
 
 #admin-panel {
   padding: 2rem;
-  background: #17191a;
+  background: var(--main-bg-color);
   border-radius: 8px;
   color: white;
 }
@@ -508,7 +530,7 @@ body.page-honey-trees .md-main {
 
 #shiny-table input {
   width: 100%;
-  background: #17191a;
+  background: var(--main-bg-color);
   color: white;
   border: none;
   padding: 0.3rem;

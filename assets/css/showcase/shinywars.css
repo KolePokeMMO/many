@@ -1,31 +1,18 @@
-:root {
-  --bg: #17191a;
-  --card-bg: #17191a;
-  --accent: #4dd0e1;
-  --text: #eee;
-  --muted: #999;
-  --border: #313131;
-  --radius: 0px;
-  --shadow: 0 0px 0px rgba(0, 0, 0, 0.4);
-}
 
-body.page-shinywars {
-  background: var(--bg);
-  color: var(--text);
-  padding: 0.8rem;
-}
+
 
 section.shinywars {
-  background: var(--card-bg);
-  border-radius: var(--radius);
+  background: var(--main-fg-color);
+  border-radius: 0.5rem;
   padding: 1.0rem;
   padding-top: 0px;
   margin-bottom: 2rem;
+  border: 1px solid var(--main-fg-border-color);
 }
 
 section.shinywars h2,
 section.shinywars h3 {
-  color: var(--accent);
+  color: var(--main-accent-color-light);
   margin-bottom: 1rem;
   font-size: 1.1rem;
   line-height: 1.1;
@@ -41,7 +28,7 @@ section.shinywars ul {
 
 section.shinywars li {
   padding: 0.3rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--main-fg-border-color);
 }
 
 .filters {
@@ -55,13 +42,13 @@ section.shinywars li {
 .filters select {
   background: var(--bg);
   color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0.5rem;
   padding: 0.5rem;
 }
 
 .filters input::placeholder {
-  color: var(--muted);
+  color: #666;
 }
 
 @media (max-width: 600px) {
@@ -78,8 +65,8 @@ section.shinywars li {
 
 /* 🔧 Apply consistent styling to all columns inside .shinywars-panes */
 .shinywars-panes > * {
-  background: var(--card-bg);
-  border-radius: var(--radius);
+  background: #ff0000;
+  border-radius: 0.5rem;
   padding: 1.0rem;
   padding-top: 0px;
   margin-bottom: 2rem;
@@ -96,18 +83,18 @@ section.shinywars li {
 
 .shinywars-panes > * li {
   padding: 0.3rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--main-fg-border-color);
 }
 
 .shinywars-panes > * h2,
 .shinywars-panes > * h3 {
-  color: var(--accent);
+  color: var(--main-accent-color-light);
   margin-bottom: 1rem;
 }
 
 
 li strong {
-  color: var(--accent);
+  color: var(--main-accent-color-light);
   margin-right: 0.5rem;
   display: inline-block;
   min-width: 2.5rem;
