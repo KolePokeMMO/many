@@ -1,10 +1,10 @@
 :root {
-  --bg: #121212;
-  --card-bg: #1e1e1e;
+  --bg: #17191a;
+  --card-bg: #17191a;
   --accent: #4dd0e1;
   --text: #eee;
   --muted: #999;
-  --border: #2a2a2a;
+  --border: #111;
   --radius: 12px;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
@@ -20,6 +20,7 @@ section.shinywars {
   background: var(--card-bg);
   border-radius: var(--radius);
   padding: 1.5rem;
+  padding-top: 0px;
   margin-bottom: 2rem;
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
@@ -66,4 +67,15 @@ section.shinywars li {
   .filters {
     flex-direction: column;
   }
+}
+
+.shinywars-panes {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.shinywars-panes .shinywars {
+  flex: 1 1 300px;
+  min-width: 280px;
 }

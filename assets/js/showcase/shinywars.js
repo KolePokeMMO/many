@@ -2,12 +2,38 @@ const el = document.getElementById("team-1789");
 if (!el) {
   console.warn("No element found with ID team-1789");
 } else {
-  // Fetch your team data
+  // Create filter container
+  const filterContainer = document.createElement("div");
+  filterContainer.className = "filters";
+
+  const teamFilterInput = document.createElement("input");
+  teamFilterInput.type = "text";
+  teamFilterInput.placeholder = "Search teammate...";
+  filterContainer.appendChild(teamFilterInput);
+
+  const allTeamsFilter = document.createElement("input");
+  allTeamsFilter.type = "text";
+  allTeamsFilter.placeholder = "Search team...";
+  filterContainer.appendChild(allTeamsFilter);
+
+  // Add filters above everything
+  el.parentNode.insertBefore(filterContainer, el);
+
+  // Container to hold both sections side-by-side
+  const tablesWrapper = document.createElement("div");
+  tablesWrapper.className = "shinywars-panes";
+  el.replaceWith(tablesWrapper);
+
+  // Create and append your team section
+  const yourTeamSection = document.createElement("section");
+  yourTeamSection.className = "shinywars";
+  tablesWrapper.appendChild(yourTeamSection);
+
+  // Fetch your team
   fetch("https://api.pokemmo.com/api/community-events/1786918700091789313/teams/1789472954291675136")
     .then(res => res.json())
     .then(data => {
-      // Display your team and members
-      el.innerHTML = `
+      yourTeamSection.innerHTML = `
         <h2>${data.name} – ${data.score.toLocaleString()}</h2>
         <ul>
           ${data.members
@@ -16,15 +42,24 @@ if (!el) {
             .join('')}
         </ul>
       `;
+
+      teamFilterInput.addEventListener("input", () => {
+        const search = teamFilterInput.value.toLowerCase();
+        yourTeamSection.querySelectorAll("li").forEach(li => {
+          li.style.display = li.textContent.toLowerCase().includes(search) ? "block" : "none";
+        });
+      });
     });
 
-  // Fetch all teams from event
+  // Create and append all teams section
+  const allTeamsSection = document.createElement("section");
+  allTeamsSection.className = "shinywars";
+  allTeamsSection.id = "all-teams";
+  tablesWrapper.appendChild(allTeamsSection);
+
   fetch("https://api.pokemmo.com/api/community-events/1786918700091789313")
     .then(res => res.json())
     .then(eventData => {
-      const allTeamsSection = document.createElement("div");
-      allTeamsSection.id = "all-teams";
-
       allTeamsSection.innerHTML = `
         <h3>All Teams – Total Scores</h3>
         <ul>
@@ -35,41 +70,11 @@ if (!el) {
         </ul>
       `;
 
-      // Insert after your team section
-      el.parentNode.insertBefore(allTeamsSection, el.nextSibling);
+      allTeamsFilter.addEventListener("input", () => {
+        const search = allTeamsFilter.value.toLowerCase();
+        allTeamsSection.querySelectorAll("li").forEach(li => {
+          li.style.display = li.textContent.toLowerCase().includes(search) ? "block" : "none";
+        });
+      });
     });
 }
-
-// Filter: Your team
-const teamFilterInput = document.createElement("input");
-teamFilterInput.type = "text";
-teamFilterInput.placeholder = "Search teammate...";
-teamFilterInput.classList.add("team-filter");
-
-const yourTeamSection = document.getElementById("team-1789");
-yourTeamSection.parentNode.insertBefore(teamFilterInput, yourTeamSection);
-
-teamFilterInput.addEventListener("input", () => {
-  const search = teamFilterInput.value.toLowerCase();
-  const lis = yourTeamSection.querySelectorAll("li");
-  lis.forEach(li => {
-    li.style.display = li.textContent.toLowerCase().includes(search) ? "block" : "none";
-  });
-});
-
-// Filter: All teams
-const allTeamsFilter = document.createElement("input");
-allTeamsFilter.type = "text";
-allTeamsFilter.placeholder = "Search team...";
-allTeamsFilter.classList.add("team-filter");
-
-const allTeamsDiv = document.getElementById("all-teams");
-allTeamsDiv.parentNode.insertBefore(allTeamsFilter, allTeamsDiv);
-
-allTeamsFilter.addEventListener("input", () => {
-  const search = allTeamsFilter.value.toLowerCase();
-  const lis = allTeamsDiv.querySelectorAll("li");
-  lis.forEach(li => {
-    li.style.display = li.textContent.toLowerCase().includes(search) ? "block" : "none";
-  });
-});
