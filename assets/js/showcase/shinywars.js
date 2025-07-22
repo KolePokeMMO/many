@@ -61,7 +61,7 @@ if (!el) {
     .then(res => res.json())
     .then(eventData => {
       allTeamsSection.innerHTML = `
-        <h3>All Teams – Total Scores</h3>
+        <h2>All Teams – Total Scores</h2>
         <ul>
           ${eventData.teams
             .sort((a, b) => b.score - a.score)

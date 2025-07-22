@@ -4,42 +4,43 @@
   --accent: #4dd0e1;
   --text: #eee;
   --muted: #999;
-  --border: #111;
-  --radius: 12px;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --border: #313131;
+  --radius: 0px;
+  --shadow: 0 0px 0px rgba(0, 0, 0, 0.4);
 }
 
 body.page-shinywars {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', sans-serif;
-  padding: 2rem;
+  padding: 0.8rem;
 }
 
 section.shinywars {
   background: var(--card-bg);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.0rem;
   padding-top: 0px;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
 }
 
 section.shinywars h2,
 section.shinywars h3 {
   color: var(--accent);
   margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  margin: 1.0em 0 .64em;
 }
 
 section.shinywars ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: .7rem;
 }
 
 section.shinywars li {
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -75,7 +76,31 @@ section.shinywars li {
   flex-wrap: wrap;
 }
 
-.shinywars-panes .shinywars {
+/* 🔧 Apply consistent styling to all columns inside .shinywars-panes */
+.shinywars-panes > * {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.0rem;
+  padding-top: 0px;
+  margin-bottom: 2rem;
   flex: 1 1 300px;
   min-width: 280px;
+  font-size: .7rem;
+}
+
+.shinywars-panes > * ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shinywars-panes > * li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.shinywars-panes > * h2,
+.shinywars-panes > * h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
 }
