@@ -38,7 +38,7 @@ if (!el) {
         <ul>
           ${data.members
             .sort((a, b) => b.score - a.score)
-            .map(m => `<li>${m.name} – ${m.score.toLocaleString()}</li>`)
+            .map((m, i) => `<li><strong>#${i + 1}</strong> – ${m.name} – ${m.score.toLocaleString()}</li>`)
             .join('')}
         </ul>
       `;
@@ -65,7 +65,7 @@ if (!el) {
         <ul>
           ${eventData.teams
             .sort((a, b) => b.score - a.score)
-            .map(team => `<li>${team.name} – ${team.score.toLocaleString()}</li>`)
+            .map((team, i) => `<li><strong>#${i + 1}</strong> – ${team.name} – ${team.score.toLocaleString()}</li>`)
             .join('')}
         </ul>
       `;

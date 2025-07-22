@@ -104,3 +104,11 @@ section.shinywars li {
   color: var(--accent);
   margin-bottom: 1rem;
 }
+
+
+li strong {
+  color: var(--accent);
+  margin-right: 0.5rem;
+  display: inline-block;
+  min-width: 2.5rem;
+}
