@@ -168,17 +168,39 @@ body, input, button, textarea, select {
    File: extra.css
 ──────────────────────────────────────────────── */
 
-.md-sidebar, .md-sidebar--primary,
-.md-sidebar__scrollwrap {
-  background-color: var(--main-bg-color);
+/* Clean styling for sidebar */
+.md-sidebar--primary {
+  background-color: var(--main-fg-color);
   width: 200px;
   margin-right: 30px;
-  border-radius: 0px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--main-fg-border-color);
+  overflow: hidden;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
+/* Internal scroll area */
 .md-sidebar__scrollwrap {
-  margin: 0 0rem;
+  margin: 0;
+  padding: 0;
+  min-height: 643px;
 }
+
+/* Prevent layout jump */
+.md-sidebar__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Optional nav padding/margins if you want consistency */
+.md-nav__item {
+  margin-left: 10px;
+}
+
+
+
 
 .md-nav__item {
   margin-left: 10px;
@@ -188,6 +210,13 @@ body, input, button, textarea, select {
   min-height: 643px; /* or a safe default you like */
   transition: height 0.3s ease; /* smooth height adjustment */
 }
+
+
+
+
+
+
+
 
 /* ────────────────────────────────────────────────
    Universal Layout + Container Adjustments
