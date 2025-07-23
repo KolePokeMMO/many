@@ -1,63 +1,193 @@
-document.addEventListener('DOMContentLoaded', () => {
+let shinyShowcaseInitialized = false;
+
+function initShinyShowcase() {
+  if (shinyShowcaseInitialized) return;
+  shinyShowcaseInitialized = true;
 
   const grid = document.getElementById('shiny-grid');
-  if (!grid) return; // don't continue if grid not on this page
+  const controls = document.getElementById('shiny-controls');
+  const pagination = document.getElementById('pagination');
+  if (!grid || !controls || !pagination) return;
+
+  const filters = controls.querySelectorAll('select, input');
+  let shinyData = [];
+  const state = { search: '', region: '', shiny_type: '', encounter: '', alpha: false, page: 1, perPage: 18 };
+
+  filters.forEach(f => {
+    f.addEventListener('input', () => {
+      state[f.name] = f.type === 'checkbox' ? f.checked : f.value;
+      state.page = 1;
+      renderCards();
+    });
+  });
 
   fetch('/many/assets/data/shinies.json')
-    .then(res => res.json())
+    .then(r => r.json())
     .then(data => {
-      const grid = document.getElementById('shiny-grid');
-      data.forEach(shiny => {
-        const card = document.createElement('pokemon-card');
-        card.className = 'shiny-v';
-        card.setAttribute('pokemon', shiny.name.toLowerCase());
-        card.setAttribute('shiny', 'true');
+      shinyData = data.sort((a, b) => new Date(b.caught_on) - new Date(a.caught_on));
+      renderCards();
+    });
 
-        // You can add more data attributes if needed
-        card.innerHTML = `
-          <img slot="art" src="${shiny.sprite_shiny}" alt="${shiny.name}" />
-          <span slot="title">${shiny.name}</span>
-          <span slot="type">Unknown</span>
-        `;
+  function renderCards() {
+    const filtered = shinyData.filter(s =>
+      (!state.region || s.region === state.region) &&
+      (!state.shiny_type || s.shiny_type === state.shiny_type) &&
+      (!state.encounter || s.encounter === state.encounter) &&
+      (!state.alpha || s.alpha) &&
+      (!state.search || [s.name, s.trainer, s.location].some(v => (v || '').toLowerCase().includes(state.search.toLowerCase())))
+    );
 
-        card.addEventListener('click', () => showModal(shiny));
-        grid.appendChild(card);
-      });
-    })
-    .catch(err => console.error('Fetch error:', err));
-});
+    const start = (state.page - 1) * state.perPage;
+    const pageData = filtered.slice(start, start + state.perPage);
+
+    grid.innerHTML = '';
+    pageData.forEach(shiny => {
+    const isYomy = shiny.trainer === "Kelly";
+    const yomyClass = isYomy ? 'yomy-sparkle' : '';
+
+    const card = document.createElement('div');
+      card.className = 'shiny-card';
+      card.innerHTML = `
+    <div class="sprite-box">
+      <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
+    </div>
+      <div class="card-front-info">
+        <strong class="${yomyClass}">${shiny.trainer} - OT #${shiny.shiny_number}</strong>
+        <span class="badge shiny-type">${shiny.shiny_type || 'Shiny'}</span>
+      </div>
+      <div class="card-back-info">
+        <p><strong>${shiny.name}</strong> (#${shiny.dex})</p>
+        <p>${shiny.location} | ${shiny.encounter}</p>
+        <p>${shiny.region} | Phase ${shiny.phase}</p>
+        <p><em>Click for more info</em></p>
+      </div>
+    `;
+      card.onclick = () => showModal(shiny);
+      grid.appendChild(card);
+    });
+
+    pagination.innerHTML = '';
+    const totalPages = Math.ceil(filtered.length / state.perPage);
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.className = i === state.page ? 'active' : '';
+      btn.textContent = i;
+      btn.onclick = () => { state.page = i; renderCards(); };
+      pagination.appendChild(btn);
+    }
+  }
+
+function createSparkle(element) {
+  const spark = document.createElement('span');
+  spark.className = 'spark';
+
+  const angle = Math.random() * Math.PI; // Top half circle
+  const distance = 30 + Math.random() * 30;
+  const x = Math.cos(angle) * distance;
+  const y = -Math.abs(Math.sin(angle) * distance);
+
+  const side = Math.random() < 0.5 ? 'left' : 'right';
+  spark.style.setProperty('--x', `${x}px`);
+  spark.style.setProperty('--y', `${y}px`);
+  spark.style.setProperty('--top', `-6px`);
+  spark.style.setProperty('--left', side === 'left' ? '5%' : '95%');
+
+  element.appendChild(spark);
+  setTimeout(() => spark.remove(), 1000);
+}
 
 
+// Trigger sparkles on Yomy cards every 500ms
+setInterval(() => {
+  document.querySelectorAll('.yomy-sparkle').forEach(el => {
+    createSparkle(el);
+  });
+}, 100);
+
+
+}
+
+document.addEventListener('DOMContentLoaded', initShinyShowcase);
+
+// Modal with requestAnimationFrame fix
+// Modal and Escape close logic unchanged
 function showModal(shiny) {
-    const modal = document.createElement('div');
-    modal.className = 'shiny-modal';
-    modal.innerHTML = `
+  document.querySelector('.shiny-modal')?.remove();
+  document.removeEventListener('keydown', escClose);
+
+  const modal = document.createElement('div');
+  modal.className = 'shiny-modal';
+
+  modal.innerHTML = `
     <div class="shiny-modal-content">
-      <button class="shiny-modal-close" onclick="this.closest('.shiny-modal').remove()">✕</button>
-      <h2>${shiny.name} <span style="font-size:0.6em;">#${shiny.dex}</span></h2>
-      <div style="display:flex; gap:1rem; align-items:center; justify-content:center; margin-bottom:1rem;">
+      <button class="shiny-modal-close" aria-label="Close modal">✕</button>
+      <h2>
+        ${shiny.name} OT <span>#${shiny.dex}</span> 
+        ${shiny.alpha ? `<span class="badge alpha">Alpha</span>` : ''}
+        <span class="badge shiny-type">${shiny.shiny_type || 'Shiny'}</span>
+      </h2>
+      <div class="sprites-row">
         <div>
-          <div style="font-size:0.85em;">Normal</div>
-          <img src="${shiny.sprite_normal}" alt="${shiny.name} normal sprite">
+          <div class="sprite-label">Normal</div>
+          <img src="${shiny.sprite_normal}" alt="${shiny.name} normal sprite" />
         </div>
         <div>
-          <div style="font-size:0.85em;">Shiny</div>
-          <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite">
+          <div class="sprite-label">Shiny</div>
+          <img src="${shiny.sprite_shiny}" alt="${shiny.name} shiny sprite" />
         </div>
       </div>
-      <p><strong>Caught on:</strong> ${shiny.caught_on}</p>
-      <p><strong>Location:</strong> ${shiny.location}</p>
-      <p><strong>Trainer:</strong> ${shiny.trainer}</p>
-      <p><strong>Notes:</strong> ${shiny.notes}</p>
+      <div class="modal-tabs">
+        <button class="tab active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="risk">Risk</button>
+        <button class="tab" data-tab="extra">Extra</button>
+      </div>
+      <div class="tab-content active" id="overview">
+        <p><strong>Caught on:</strong> ${shiny.caught_on}</p>
+        <p><strong>Location:</strong> ${shiny.region} / ${shiny.location}</p>
+        <p><strong>Encounter:</strong> ${shiny.encounter}</p>
+        <p><strong>Phase #:</strong> ${shiny.phase}</p>
+        <p><strong>Trainer:</strong> ${shiny.trainer}</p>
+        <p><strong>Game:</strong> ${shiny.game}</p>
+        <p><strong>Ball Used:</strong> ${shiny.ball_used || 'Unknown'}</p>
+      </div>
+      <div class="tab-content" id="risk">
+        <p><strong>Dangerous Move:</strong> ${shiny.dangerous_move || 'None'}</p>
+        <p><strong>Dangerous Ability:</strong> ${shiny.dangerous_ability || 'None'}</p>
+      </div>
+      <div class="tab-content" id="extra">
+        <p><strong>Total Shinies:</strong> ${shiny.total_shinies || 0}</p>
+        <p><strong>Shiny Number:</strong> ${shiny.shiny_number || 0}</p>
+        <p><strong>Notes:</strong> ${shiny.notes || 'None'}</p>
+        <p><strong>Types:</strong> ${shiny.pokemon_types ? shiny.pokemon_types.join(', ') : 'Unknown'}</p>
+      </div>
     </div>
   `;
-    document.body.appendChild(modal);
-    document.addEventListener('keydown', escClose);
+
+  document.body.appendChild(modal);
+
+  const tabs = modal.querySelectorAll('.tab');
+  const contents = modal.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      modal.querySelector(`#${tab.dataset.tab}`).classList.add('active');
+    });
+  });
+
+  modal.querySelector('.shiny-modal-close').addEventListener('click', () => {
+    modal.remove();
+    document.removeEventListener('keydown', escClose);
+  });
+
+  document.addEventListener('keydown', escClose);
 }
 
 function escClose(e) {
-    if (e.key === "Escape") {
-        document.querySelector('.shiny-modal')?.remove();
-        document.removeEventListener('keydown', escClose);
-    }
+  if (e.key === "Escape") {
+    document.querySelector('.shiny-modal')?.remove();
+    document.removeEventListener('keydown', escClose);
+  }
 }

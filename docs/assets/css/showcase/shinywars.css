@@ -1,0 +1,101 @@
+
+
+
+section.shinywars {
+  background: var(--main-fg-color);
+  border-radius: 0.5rem;
+  padding: 1.0rem;
+  padding-top: 0px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--main-fg-border-color);
+}
+
+section.shinywars h2,
+section.shinywars h3 {
+  color: var(--main-accent-color-light);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  margin: 1.0em 0 .64em;
+}
+
+section.shinywars ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: .7rem;
+}
+
+section.shinywars li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--main-fg-border-color);
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.filters input::placeholder {
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+  }
+}
+
+.shinywars-panes {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* 🔧 Apply consistent styling to all columns inside .shinywars-panes */
+.shinywars-panes > * {
+  background: #ff0000;
+  border-radius: 0.5rem;
+  padding: 1.0rem;
+  padding-top: 0px;
+  margin-bottom: 2rem;
+  flex: 1 1 300px;
+  min-width: 280px;
+  font-size: .7rem;
+}
+
+.shinywars-panes > * ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shinywars-panes > * li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--main-fg-border-color);
+}
+
+.shinywars-panes > * h2,
+.shinywars-panes > * h3 {
+  color: var(--main-accent-color-light);
+  margin-bottom: 1rem;
+}
+
+
+li strong {
+  color: var(--main-accent-color-light);
+  margin-right: 0.5rem;
+  display: inline-block;
+  min-width: 2.5rem;
+}
