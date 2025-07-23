@@ -2,8 +2,12 @@
 
 {% block title %}Home{% endblock %}
 
-{% block content %}
+{% block extrahead %}
+  {{ super() }}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
 
+{% block content %}
 {{ super() }}
 
 <section class="hero">
