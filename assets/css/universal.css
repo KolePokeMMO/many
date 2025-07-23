@@ -72,8 +72,8 @@ body.page-honey-trees .md-main {
   background: #111;
   border: 2px solid var(--main-accent-border-color);
   border-radius: 1rem;
-  padding: 0 2rem 2rem 2rem;
-  color: gold;
+  padding: 2rem;
+  color: var(--main-accent-color);
   max-width: 900px;
 }
  
