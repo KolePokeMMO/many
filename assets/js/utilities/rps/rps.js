@@ -87,41 +87,47 @@ function showGameUI(room) {
 
   // Listen for opponent's move and update UI live
   const roomRef = ref(db, `rps/rooms/${room}/players`);
-  onValue(roomRef, snapshot => {
-    const players = snapshot.val();
-    if (!players || Object.keys(players).length < 2) {
-      document.getElementById("rps-status").textContent = "Waiting for second player...";
-      document.getElementById("opp").textContent = "-";
-      document.getElementById("result").textContent = "-";
-      return;
-    }
+onValue(roomRef, snapshot => {
+  const players = snapshot.val();
 
-    // Get player keys & moves
-    const playerKeys = Object.keys(players);
-    const p1Key = playerKeys[0];
-    const p2Key = playerKeys[1];
-    const p1 = players[p1Key];
-    const p2 = players[p2Key];
+  console.log("Players data from Firebase:", players);
+  console.log("Current player ID:", playerId);
 
-    // Show opponent choice
-    const opponentKey = playerKeys.find(k => k !== playerId);
-    if (!opponentKey) return;
+  if (!players || Object.keys(players).length < 2) {
+    document.getElementById("rps-status").textContent = "Waiting for second player...";
+    document.getElementById("opp").textContent = "-";
+    document.getElementById("result").textContent = "-";
+    return;
+  }
 
-    document.getElementById("opp").textContent = players[opponentKey]?.choice || "-";
+  const playerKeys = Object.keys(players);
+  console.log("Player keys:", playerKeys);
 
-    // Show your choice (in case page reload)
-    document.getElementById("you").textContent = players[playerId]?.choice || "-";
+  const opponentKey = playerKeys.find(k => k !== playerId);
+  if (!opponentKey) {
+    document.getElementById("rps-status").textContent = "Waiting for opponent to join...";
+    document.getElementById("opp").textContent = "-";
+    document.getElementById("result").textContent = "-";
+    return;
+  }
 
-    // Calculate and show result only if both choices exist
-    if (p1.choice && p2.choice) {
-      const result = getWinner(p1.choice, p2.choice, playerId === p1Key);
-      document.getElementById("result").textContent = result;
-      document.getElementById("rps-status").textContent = `Player 1 chose ${p1.choice}, Player 2 chose ${p2.choice}`;
-    } else {
-      document.getElementById("result").textContent = "-";
-      document.getElementById("rps-status").textContent = "Waiting for both players to choose...";
-    }
-  });
+  // Set choices safely
+  const yourChoice = players[playerId]?.choice || "-";
+  const opponentChoice = players[opponentKey]?.choice || "-";
+
+  document.getElementById("you").textContent = yourChoice;
+  document.getElementById("opp").textContent = opponentChoice;
+
+  if (yourChoice !== "-" && opponentChoice !== "-") {
+    const result = getWinner(yourChoice, opponentChoice, playerId === playerKeys[0]);
+    document.getElementById("result").textContent = result;
+    document.getElementById("rps-status").textContent = `Player 1 chose ${players[playerKeys[0]].choice}, Player 2 chose ${players[playerKeys[1]].choice}`;
+  } else {
+    document.getElementById("result").textContent = "-";
+    document.getElementById("rps-status").textContent = "Waiting for both players to choose...";
+  }
+});
+
 }
 
 // Determine winner, taking into account if current player is player 1 or 2
