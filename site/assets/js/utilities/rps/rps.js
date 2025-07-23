@@ -1,6 +1,15 @@
 // rps.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  set,
+  onValue,
+  push,
+  get,
+  remove // <-- ADD THIS
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 
 // Firebase config
 const firebaseConfig = {
@@ -113,20 +122,33 @@ onValue(roomRef, snapshot => {
   }
 
   // Set choices safely
-  const yourChoice = players[playerId]?.choice || "-";
-  const opponentChoice = players[opponentKey]?.choice || "-";
+const yourChoice = players[playerId]?.choice || "-";
+const opponentChoice = players[opponentKey]?.choice || "-";
 
-  document.getElementById("you").textContent = yourChoice;
-  document.getElementById("opp").textContent = opponentChoice;
+document.getElementById("you").textContent = yourChoice;
+document.getElementById("opp").textContent = opponentChoice;
 
-  if (yourChoice !== "-" && opponentChoice !== "-") {
-    const result = getWinner(yourChoice, opponentChoice, playerId === playerKeys[0]);
-    document.getElementById("result").textContent = result;
-    document.getElementById("rps-status").textContent = `Player 1 chose ${players[playerKeys[0]].choice}, Player 2 chose ${players[playerKeys[1]].choice}`;
-  } else {
-    document.getElementById("result").textContent = "-";
-    document.getElementById("rps-status").textContent = "Waiting for both players to choose...";
-  }
+if (yourChoice === "-" && opponentChoice === "-") {
+  document.getElementById("result").textContent = "-";
+  document.getElementById("rps-status").textContent = "Waiting for both players to choose...";
+} else if (yourChoice === "-") {
+  document.getElementById("result").textContent = "-";
+  document.getElementById("rps-status").textContent = "Waiting for you to choose...";
+} else if (opponentChoice === "-") {
+  document.getElementById("result").textContent = "-";
+  document.getElementById("rps-status").textContent = "Waiting for opponent to choose...";
+} else {
+  const result = getWinner(yourChoice, opponentChoice, playerId === playerKeys[0]);
+  document.getElementById("result").textContent = result;
+  document.getElementById("rps-status").textContent = `Player 1 chose ${players[playerKeys[0]].choice}, Player 2 chose ${players[playerKeys[1]].choice}`;
+
+  // Auto-reset game state after 5 seconds
+  setTimeout(() => {
+    remove(ref(db, `rps/rooms/${room}/players`));
+  }, 5000);
+}
+
+
 });
 
 }
