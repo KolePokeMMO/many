@@ -165,7 +165,7 @@
   justify-content: center;
   z-index: 9999;
   padding: 2rem;
-  border: var(--md-accent-fg-color) solid 4px;
+  border: var(--main-accent-color) solid 4px;
 }
 
 .shiny-modal-content {
@@ -176,7 +176,7 @@
   padding: 2rem;
   color: #eee;
   position: relative;
-  border: var(--md-accent-fg-color) solid 2px;
+  border: var(--main-accent-color) solid 2px;
   box-shadow: 0 0 5px rgba(0,0,0,0.8);
   max-height: 80vh;
   overflow-y: auto;
@@ -216,7 +216,7 @@
   font-size: 0.6rem;
   padding: 0.10rem 0.3rem;
   border-radius: 0px;
-  background: var(--md-accent-fg-color);
+  background: var(--main-accent-color);
   color: #17191a;
   margin-left: 0.5rem;
   font-weight: 400;
@@ -271,13 +271,13 @@
 
 .modal-tabs .tab:hover,
 .shiny-modal-tabs .tab:hover {
-  background: var(--md-accent-fg-color);
+  background: var(--main-accent-color);
   color: #17191a;
 }
 
 .modal-tabs .tab.active,
 .shiny-modal-tabs .tab.active {
-  background: var(--md-accent-fg-color);
+  background: var(--main-accent-color);
   color: #17191a;
 }
 
@@ -311,11 +311,11 @@
 
 .shiny-controls {
   position: sticky;
-  top: 108px;
-  height: 57px;
+  top: 126px;
+  height: 52px;
   z-index: 999;
-  background: var(--md-primary-fg-color);
-  border-top: 4px solid var(--md-primary-fg-color);
+  background: var(--main-accent-color);
+  border-top: 2px solid var(--main-accent-color-light);
   padding: 0.1rem 1rem 1rem 1rem;
   backdrop-filter: blur(4px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);

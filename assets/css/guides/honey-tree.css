@@ -84,11 +84,11 @@
 }
  
 .honey-intro h1 {
-  color: var(--md-accent-fg-color);
+  color: var(--main-accent-color);
   font-size: 1.2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--md-accent-fg-color);
+  border-bottom: 1px solid var(--main-accent-color);
   padding-bottom: 0.5rem;
   font-weight: bold;
 }
@@ -184,7 +184,7 @@
 /* Left column stays fixed size */
 .honey-tree-name {
   font-weight: bold;
-  color: var(--md-typeset-a-color, #ffcb05);
+  color: var(--main-accent-color);
   /* Prevent shrinking */
   overflow-wrap: break-word;
 }
@@ -214,7 +214,7 @@
   margin: 0 0 0.3rem;
   font-size: 0.9rem;
   font-weight: bold;
-  color: var(--md-accent-fg-color);
+  color: var(--main-accent-color);
 }
 
 /* Italic location under heading */

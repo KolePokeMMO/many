@@ -124,7 +124,7 @@ body.page-honey-trees .md-main {
 .stat-card {
   background: var(--main-fg-color);
   border: 1px solid var(--main-fg-border-color);
-  border-left: 5px solid var(--main-accent-color);
+  border-left: 5px solid var(--main-accent-color-light);
   border-radius: 0.5rem;
   padding: 1.5rem;
 }
