@@ -41,6 +41,7 @@ extra_javascript:
   - assets/js/word-split.js
   - assets/js/showcase/shinies.js
   - assets/js/showcase/shinywars.js
+  - assets/js/utlities/rps/rps.js
 
 nav:
   - Home: index.md
