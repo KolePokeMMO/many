@@ -51,4 +51,8 @@ nav:
       - Overview: showcase/index.md
       - Shiny Wars: showcase/shinywars.md
       - Caught Tracker: showcase/caught.md
+  - Utilities:
+      - Shiny Calculator: utilities/shiny-calculator.md
+      - Shiny Odds: utilities/shiny-odds.md
+      - Rock, Paper, Scissors: utilities/rps.md
   
