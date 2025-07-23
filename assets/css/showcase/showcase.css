@@ -529,7 +529,7 @@
 
 #pagination button.active,
 #pagination button:hover {
-  background: var(--md-accent-fg-color);
+  background: var(--main-accent-color);
   color: #17191a;
 }
 
