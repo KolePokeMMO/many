@@ -84,11 +84,11 @@
 }
  
 .honey-intro h1 {
-  color: var(--md-accent-fg-color);
+  color: var(--main-accent-color);
   font-size: 1.2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--md-accent-fg-color);
+  border-bottom: 1px solid var(--main-accent-color);
   padding-bottom: 0.5rem;
   font-weight: bold;
 }
@@ -100,9 +100,23 @@
 }
 
 .honey-intro .column {
-  flex: 1 1 300px;
-  min-width: 260px;
+  flex: 1 1 25%;
+  min-width: 250px;
 }
+
+/* First column wider */
+.honey-intro .column:first-child {
+  flex: 1 1 40%;
+}
+
+/* Add thin divider lines to 2nd and 3rd columns */
+.honey-intro .column:nth-child(2),
+.honey-intro .column:nth-child(3) {
+  border-left: 1px solid var(--main-fg-border-color);
+  padding-left: 1.5rem;
+  margin-left: -1rem; /* pull back slightly to balance the gap visually */
+}
+
 
 .honey-intro h2, .honey-intro h3 {
   color: #fefefe;
@@ -143,10 +157,12 @@
 .honey-tree-section {
   margin: 2rem 0;
   padding: 1rem;
-  background-color: #17191a;
+  background-color: var(--main-fg-color);
   border: 1px solid #000000;
   font-family: 'Inter', sans-serif;
   font-size: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--main-fg-border-color);
 }
  
 /* Use grid with fixed left column */
@@ -168,7 +184,7 @@
 /* Left column stays fixed size */
 .honey-tree-name {
   font-weight: bold;
-  color: var(--md-typeset-a-color, #ffcb05);
+  color: var(--main-accent-color);
   /* Prevent shrinking */
   overflow-wrap: break-word;
 }
@@ -198,7 +214,7 @@
   margin: 0 0 0.3rem;
   font-size: 0.9rem;
   font-weight: bold;
-  color: var(--md-accent-fg-color);
+  color: var(--main-accent-color);
 }
 
 /* Italic location under heading */

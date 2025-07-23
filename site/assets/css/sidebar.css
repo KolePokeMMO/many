@@ -1,0 +1,37 @@
+/* ────────────────────────────────────────────────
+   Sidebar Styles
+   File: sidebar.css
+──────────────────────────────────────────────── */
+
+/* Layout – Sidebar container */
+.md-sidebar--primary {
+	background-color: var(--main-fg-color);
+	border: 1px solid var(--main-fg-border-color);
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	margin-right: 30px;
+	min-height: 623px;
+	overflow: hidden;
+	width: 200px;
+}
+
+/* Layout – Scrollable area */
+.md-sidebar__scrollwrap {
+	min-height: 643px; /* duplicated block merged */
+	margin: 0;
+	padding: 0;
+	transition: height 0.3s ease; /* smooth height adjustment */
+}
+
+/* Layout – Inner flex wrapper */
+.md-sidebar__inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+/* Spacing – Navigation list items */
+.md-nav__item {
+	margin-left: 10px;
+}

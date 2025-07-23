@@ -1,0 +1,75 @@
+/* ────────────────────────────────────────────────
+   Navigation styles
+   File: navigation.css
+──────────────────────────────────────────────── */
+
+/* ─── Tabs Container ───────────────────────────── */
+.md-tabs {
+	background: linear-gradient(90deg, #ce9719, #e9c152, #ce9719);
+	border-bottom: 2px solid var(--main-accent-color-light);
+	height: 2.2rem;
+	overflow-x: auto; /* keep horizontal scroll */
+	overflow-y: hidden; /* hide vertical scroll */
+}
+
+/* ─── Tabs List ────────────────────────────────── */
+.md-tabs__list {
+	background-color: var(--main-accent-color);
+	border: 0px;
+	height: 100%;
+}
+
+/* ─── Tab Items ────────────────────────────────── */
+.md-tabs__item {
+	font-size: 0.85rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.3rem;
+}
+
+/* ─── Tab Links ────────────────────────────────── */
+.md-tabs__link {
+	backface-visibility: hidden;
+	display: flex;
+	font-size: 0.7rem;
+	margin-top: 0.45rem;
+	opacity: 0.9;
+	outline-color: var(--main-bg-color);
+	outline-offset: 0rem;
+	transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1), opacity 0.25s;
+	transition-delay: 0s, 0s;
+	-webkit-backface-visibility: hidden;
+}
+
+.md-tabs__item .md-tabs__link {
+	color: #000000;
+	opacity: 0.7;
+}
+
+/* ─── Active Tab Link ──────────────────────────── */
+.md-tabs__item--active .md-tabs__link {
+	color: #000000;
+	font-weight: 800;
+	opacity: 1;
+}
+
+/* ─── Navigation Link (Lifted Style) ───────────── */
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+	background: none;
+	box-shadow: none;
+	font-size: 0.8rem;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+	transform: translateZ(0); /* improves clarity on GPU layers */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Navigation Link Hover ───────────────────── */
+.md-nav--lifted .md-nav__link:hover {
+	color: var(--main-accent-color); /* soft gold or your luxe hover colour */
+}
+
+/* ─── Active Navigation Link ───────────────────── */
+.md-nav--lifted .md-nav__item--active > .md-nav__link {
+	color: var(--main-accent-color-light); /* bright gold for active */
+}

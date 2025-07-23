@@ -1,144 +1,76 @@
 /* ────────────────────────────────────────────────
-   Custom font and colour adjustments
-   File: extra.css
+   Universal Site Styles
+   File: universal.css
 ──────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
 
+/* ───── Imports ───── */
+@import url('header.css');
+@import url('footer.css');
+@import url('navigation.css');
+@import url('sidebar.css');
+@import url('hero.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Piedra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel&family=Cormorant+Garamond&family=Great+Vibes&family=Lora&family=Merriweather&family=Playfair+Display&family=Quicksand&display=swap');
+
+
+/* ───── Root Theme Variables ───── */
 :root {
-  --md-text-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --accent-amber: #e84636;
+  --accent-cyan: #00bcd4;
+  --accent-indigo: #3f51b5;
+  --accent-lime: #cddc39;
+  --accent-orange: #ff7300;
+  --accent-pink: #e91e63;
+  --accent-red: #f44336;
+  --accent-teal: #009688;
+  --accent-yellow: #ffeb3b;
+
+  --main-accent-border-color: #e9c152;
+  --main-accent-color: #ce9719;
+  --main-accent-color-light: #e9c152;
+  --main-bg-color: #151515;
+  --main-fg-border-color: #272727;
+  --main-fg-color: #1a1a1a;
+
   --md-code-font: 'Fira Mono', monospace;
+  --md-text-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* In assets/extra.css */
-body, input, button, textarea, select {
+
+/* ────────────────────────────────────────────────
+   Base Styling Overrides
+──────────────────────────────────────────────── */
+body,
+input,
+button,
+textarea,
+select {
   font-family: 'Inter', system-ui, sans-serif !important;
 }
 
-/* Header Logo Colour/Animate effect */
-.md-header__title .shiny-legion {
-  color: #72c4cc; /* teal */
-  font-weight: 600;
+body.page-honey-trees,
+body.page-honey-trees .md-container,
+body.page-honey-trees .md-main {
+  background-attachment: fixed;
+  background-image: url('../assets/images/backgrounds/honey-bg.png');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: auto;
 }
 
-.md-header__title .many {
-  color: #bb43cc; /* purple */
-  font-weight: 700;
-  animation: pulse 2s infinite ease-in-out;
-}
-
-/* Animation */
-.md-header__title .many {
-  background: linear-gradient(270deg, 
-    #bb43cc, 
-    #00ffff, 
-    #ff99ff, 
-    #bb43cc
-  );
-  background-size: 600% 600%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  
-  animation: gradientFade 8s ease-in-out infinite;
-}
-
-@keyframes gradientFade {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
- 
 
 /* ────────────────────────────────────────────────
-   Universal Styles
-   File: extra.css
+   Layout and Global Containers
 ──────────────────────────────────────────────── */
 
-.mdx-hero {
-  position: relative;
-  overflow: hidden;
-  height: 50vh;
-}
-.mdx-hero-image img {
-  width: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-.mdx-hero-content {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  color: white;
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background-color: var(--main-bg-color);
+  border-radius: .1rem .1rem 0 0;
+  box-shadow: 0 0 .6rem #00000012;
+  color: var(--md-default-fg-color);
 }
 
-.md-main {
-  background-color: #0e1011; 
-}
-
-.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
-    background: none;
-    box-shadow: none;
-
-}
- 
-.md-header {
-  background-color: #17191a;
-  border-bottom: 2px solid var(--md-accent-fg-color);
-  box-shadow: none; /* remove the old shadow */
-}
-
-.md-header__title {
-  font-family: "Piedra", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: clamp(1.4rem, 5vw, 2.8rem);
-  line-height: clamp(1.8rem, 6vw, 4.0rem);
-  color: #72c4cc;
-}
-
-.custom-footer .visitors img {
-  height: 20px;;
-}
-
-/* ────────────────────────────────────────────────
-   Sidebar Adjustments
-   File: extra.css
-──────────────────────────────────────────────── */
-
-.md-sidebar, .md-sidebar--primary,
-.md-sidebar__scrollwrap {
-  background-color: #17191a;
-  width: 200px;
-  margin-right: 30px;
-  border-radius: 20px;
-}
-
-.md-sidebar__scrollwrap {
-  margin: 0 0rem;
-}
-
-.md-nav__item {
-  margin-left: 10px;
-}
- 
-.md-sidebar__scrollwrap {
-  min-height: 643px; /* or a safe default you like */
-  transition: height 0.3s ease; /* smooth height adjustment */
-}
-
-/* ────────────────────────────────────────────────
-   Universal Layout + Container Adjustments
-   File: extra.css
-──────────────────────────────────────────────── */
 .md-grid {
   margin-left: auto;
   margin-right: auto;
@@ -151,145 +83,67 @@ body, input, button, textarea, select {
   }
 }
 
-
-
-
-
-body.page-honey-trees,
-body.page-honey-trees .md-container,
-body.page-honey-trees .md-main {
-  background-image: url('../assets/images/backgrounds/honey-bg.png');
-  background-repeat: repeat;
-  background-size: auto;
-  background-position: top center;
-  background-attachment: fixed;
+.md-main {
+  background-color: var(--main-bg-color);
 }
+
 
 /* ────────────────────────────────────────────────
-   Header Logo Resizing
-   File: extra.css
+   Typography and Headers
 ──────────────────────────────────────────────── */
-.md-header__button.md-logo {
-  width: 110px;
-  height: auto;
+.md-typeset h1 {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 3s linear infinite;
+  background: linear-gradient(120deg, #ed9501, #ebb80a, #ed9501);
+  background-clip: text;
+  background-size: 200% auto;
+  color: transparent;
 }
 
-.md-header__button.md-logo img {
-  max-height: 110px;
-  width: auto;
-  height: 110px !important;
-  max-height: none !important;
-  max-width: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  object-fit: contain;
-}
 
-@media screen and (min-width: 768px) {
-  .md-header__button.md-logo {
-    width: 110px;
+/* ───── Animated Gradients ───── */
+@keyframes text-shine {
+  0% {
+    background-position: 0% 50%;
   }
 
-  .md-header__button.md-logo img {
-    max-height: 64px;
+  100% {
+    background-position: 200% 50%;
   }
 }
 
-/* ────────────────────────────────────────────────
-   Hero Section Styles
-   File: extra.css
-──────────────────────────────────────────────── */
-.md-hero {
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-}
-
-.hero {
-  padding: 6rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #1a1a1a, #121212);
-  color: white;
-}
-
-.hero__content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero__content p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
 
 /* ────────────────────────────────────────────────
-   Footer Links and Small Footer Text
-   File: extra.css
-──────────────────────────────────────────────── */
-.md-footer-link {
-  color: var(--md-accent-fg-color);
-  text-decoration: none;
-}
-
-.md-footer-link:hover {
-  text-decoration: underline;
-}
-
-.custom-footer {
-  font-size: 0.7rem;
-}
-
-.custom-footer h4,
-.custom-footer p,
-.custom-footer li,
-.custom-footer a {
-  font-size: 0.7rem;
-  font-weight: bold;
-}
-
-/* ────────────────────────────────────────────────
-   Homepage Stat Card Layout
-   File: extra.css
+   Stat Card Layout
 ──────────────────────────────────────────────── */
 .team-stats {
   margin: 3rem 0;
+  font-size: 0.7rem;
 }
 
 .team-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
   align-items: stretch;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .stat-card {
-  background: var(--md-default-bg-color);
-  border-left: 5px solid var(--md-accent-fg-color);
-  padding: 1.5rem;
+  background: var(--main-fg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-left: 5px solid var(--main-accent-color-light);
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
 }
 
 .stat-card h3 {
   margin-top: 0;
 }
 
-.stat-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--md-accent-fg-color);
-  margin: 0.5rem 0;
-}
-
-.stat-note {
-  margin: 0;
-  color: var(--md-typeset-color);
-}
-
 .stat-image {
-  width: 100px;
   margin: 0.5rem 0;
+  width: 100px;
 }
 
 .stat-list {
@@ -297,136 +151,46 @@ body.page-honey-trees .md-main {
   padding-left: 1.2rem;
 }
 
+.stat-note {
+  color: var(--md-typeset-color);
+  margin: 0;
+}
 
-
-
+.stat-value {
+  color: var(--md-accent-fg-color);
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
 
 
 /* ────────────────────────────────────────────────
-   Footer Layout
-   File: extra.css
+   Admin Panel Styles
 ──────────────────────────────────────────────── */
-
-.md-footer {
-  background-color: #17191a;
+#admin-panel {
+  background: var(--main-bg-color);
+  border-radius: 8px;
+  color: white;
+  padding: 2rem;
 }
 
-/* Custom Footer Styles */
-.custom-footer {
-  padding: 2rem 1rem;
-
-  color: #dfdfdf;
-  border-top: 2px solid var(--md-accent-fg-color);
+#shiny-table {
+  border-collapse: collapse;
+  margin-top: 1rem;
+  width: 100%;
 }
 
-/* Grid Layout for Footer Content */
-.custom-footer .footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  align-items: start;
+#shiny-table th,
+#shiny-table td {
+  border: 1px solid #292c2e;
+  padding: 0.5rem;
   text-align: left;
 }
 
-/* Footer Logo */
-.custom-footer img {
-  height: 85px;
-  margin-bottom: 0.5rem;
-}
-
-/* Footer Paragraphs */
-.custom-footer p {
-  margin: 0;
-}
-
-/* Section Headings */
-.custom-footer h4 {
-  margin-bottom: 0.5rem;
-}
-
-/* Footer Link Lists */
-.custom-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Optional: Link Styling */
-.custom-footer a.md-footer-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.custom-footer a.md-footer-link:hover {
-  text-decoration: underline;
-}
-
-/* ────────────────────────────────────────────────
-   Shiny Sparkle Background for Footer
-──────────────────────────────────────────────── */
-
-.footer-animated-bg {
-  position: relative;
-  background-color: #17191a; /* base footer bg */
-  overflow: hidden;
-}
-
-/* Container for sparkles */
-.shiny-stars {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* A single sparkle */
-.shiny-star {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  font-size: calc(16px * var(--star-scale, 1));
-  transform: rotate(45deg) scale(var(--star-scale, 1));
-  opacity: 0;
-  animation: sparkleSpin 4s infinite ease-in-out;
-}
-
-.shiny-star::before {
-  content: "✩";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  opacity: 10%;
-  transform: translate(-50%, -50%);
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 5px rgb(255, 208, 0);
-}
-
-/* Optional: remove ::after if you want a single ✩ */
-.shiny-star::after {
-  content: "";
-}
-
-/* Sparkle animation */
-@keyframes sparkleSpin {
-  0% {
-    transform: rotate(0deg) scale(var(--star-scale, 1));
-    opacity: 0;
-  }
-  25% {
-    transform: rotate(90deg) scale(calc(var(--star-scale, 1) * 1.1));
-    opacity: 0.9;
-  }
-  50% {
-    transform: rotate(180deg) scale(calc(var(--star-scale, 1) * 0.8));
-    opacity: 0.4;
-  }
-  75% {
-    transform: rotate(270deg) scale(calc(var(--star-scale, 1) * 1.2));
-    opacity: 0.8;
-  }
-  100% {
-    transform: rotate(360deg) scale(var(--star-scale, 1));
-    opacity: 0;
-  }
+#shiny-table input {
+  background: var(--main-bg-color);
+  border: none;
+  color: white;
+  padding: 0.3rem;
+  width: 100%;
 }

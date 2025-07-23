@@ -1,66 +1,160 @@
-/* === SHINY SHOWCASE STYLES === */
+/* ========================================================================
+     SHINY SHOWCASE STYLES
+======================================================================== */
 
 .shiny-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   padding: 1rem 0;
+  justify-content: center;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .shiny-card {
-  background: #111;
+  background: linear-gradient(145deg, #1b1d1f, #121314);
   color: #eee;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  perspective: 1000px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
-}
-
-.shiny-card:hover {
-  transform: scale(1.03);
-}
-
-.shiny-card-inner {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.shiny-card:hover .shiny-card-inner {
-  transform: rotateY(180deg);
-}
-
-.shiny-card-front,
-.shiny-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  aspect-ratio: 3 / 4;
+  max-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.shiny-card:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.shiny-card-inner,
+.shiny-card-front,
+.shiny-card-back {
+  all: unset;
+}
+
+.shiny-card img {
+  height: 70px;
+  width: auto;
+  margin-bottom: 0.5rem;
+  image-rendering: pixelated;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.shiny-card:hover img {
+  transform: scale(1.05);
+}
+
+.card-front-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.65rem;
+  color: #ccc;
+  gap: 0.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.card-back-info {
+  background: rgba(23, 25, 26, 0.85);
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 0.55rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  line-height: 1.4;
+  text-align: center;
+  border-radius: 0 0 8px 8px;
+}
+
+.card-back-info p {
+  margin: 0.2rem 0;
+}
+
+.sprite-box {
+  height: 70px;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
-
-.shiny-card-front {
-  background: #1a1a1a;
+.sprite-box img {
+  max-height: 100%;
+  width: auto;
+  image-rendering: pixelated;
 }
 
-.shiny-card-front img {
-  max-height: 90px;
-  margin-bottom: 0.5rem;
+/* Sparkler Fireworks Animation */
+.yomy-sparkle {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  background: linear-gradient(120deg, #fff7c2, #ffd6f8, #b2ffff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sparkleFlow 4s linear infinite, glowPulse 2s ease-in-out infinite alternate;
+  overflow: visible;
+  text-shadow: 0 0 4px rgba(255, 255, 200, 0.4), 0 0 10px rgba(255, 255, 150, 0.3);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 200, 0.3)) drop-shadow(0 0 12px rgba(255, 255, 150, 0.2));
+  box-shadow: 0 0 20px rgba(255, 255, 160, 0.2), 0 0 40px rgba(255, 255, 180, 0.1);
 }
 
-.shiny-card-back {
-  transform: rotateY(180deg);
-  background: #222;
-  padding: 1rem;
-  font-size: 0.9rem;
+.yomy-sparkle .spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffe066);
+  animation: spark-burst 1s ease-out forwards;
+  pointer-events: none;
+  opacity: 0.9;
+  top: var(--top);
+  left: var(--left);
 }
+
+@keyframes sparkleFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 4px #fff8a0, 0 0 8px #ffe066;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff8a0, 0 0 20px #ffd700;
+  }
+}
+
+@keyframes spark-burst {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.3) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+
+
+
+
+/* Modal Overlay and Content */
 
 .shiny-modal {
   position: fixed;
@@ -71,17 +165,22 @@
   justify-content: center;
   z-index: 9999;
   padding: 2rem;
+  border: var(--main-accent-color) solid 4px;
 }
 
 .shiny-modal-content {
-  background: #111;
-  border-radius: 1rem;
-  max-width: 600px;
+  background: #17191a;
+  border-radius: 0;
+  max-width: 400px;
   width: 100%;
   padding: 2rem;
   color: #eee;
   position: relative;
-  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  border: var(--main-accent-color) solid 2px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.8);
+  max-height: 80vh;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .shiny-modal-content h2 {
@@ -109,3 +208,337 @@
 .shiny-modal-close:hover {
   color: #fff;
 }
+
+/* Badges for modal */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  padding: 0.10rem 0.3rem;
+  border-radius: 0px;
+  background: var(--main-accent-color);
+  color: #17191a;
+  margin-left: 0.5rem;
+  font-weight: 400;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.badge.alpha {
+  background: #ff5f5f;
+  color: white;
+  box-shadow: 0 0 8px #ff5f5f;
+}
+
+/* Modal sprites row */
+
+.sprites-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sprite-label {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 0.25rem;
+}
+
+/* Tabs container */
+
+.modal-tabs,
+.shiny-modal-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.modal-tabs .tab,
+.shiny-modal-tabs .tab {
+  background: #222425;
+  border: none;
+  color: #bbb;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 1.2rem;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+
+.modal-tabs .tab:hover,
+.shiny-modal-tabs .tab:hover {
+  background: var(--main-accent-color);
+  color: #17191a;
+}
+
+.modal-tabs .tab.active,
+.shiny-modal-tabs .tab.active {
+  background: var(--main-accent-color);
+  color: #17191a;
+}
+
+/* Tab content */
+
+.tab-content {
+  display: none;
+  font-size: 0.85rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 450px) {
+  .sprites-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+/* ========================================================================
+   SHINY CONTROLS STYLES
+======================================================================== */
+
+.shiny-controls {
+  position: sticky;
+  top: 126px;
+  height: 52px;
+  z-index: 999;
+  background: var(--main-accent-color);
+  border-top: 2px solid var(--main-accent-color-light);
+  padding: 0.1rem 1rem 1rem 1rem;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.shiny-controls .filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  justify-content: left;
+  align-items: center;
+}
+
+/* Modern Input/Select */
+.shiny-controls input[type="search"],
+.shiny-controls select {
+  background: #1d1f20;
+  color: #e4e4e4;
+  border: 1px solid #2e2e2e;
+  border-radius: 0px;
+  padding: 0.4rem 1.5rem 0.4rem 0.8rem;
+  font-size: 0.6rem;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.shiny-controls input[type="search"]::placeholder {
+  color: #999;
+}
+
+.shiny-controls input[type="search"]:focus,
+.shiny-controls select:focus {
+  outline: none;
+  border-color: var(--md-accent-fg-color);
+  background-color: #222;
+  box-shadow: 0 0 5px var(--md-accent-fg-color);
+}
+
+/* Custom Checkbox */
+.shiny-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #d34141;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  background: #1d1f20;
+  border: 1px solid #2e2e2e;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.shiny-controls label:hover {
+  background: #222;
+  border-color: var(--md-accent-fg-color);
+}
+
+.shiny-controls input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  background: #121212;
+  display: inline-block;
+  position: relative;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.shiny-controls input[type="checkbox"]:checked {
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
+.shiny-controls input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 4px;
+  height: 8px;
+  border: solid #17191a;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.shiny-controls input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+/* ========== Icons and Polished Inputs ========== */
+
+/* Position icon inside input */
+.shiny-controls .search {
+  padding-left: 2.2rem;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23999' viewBox='0 0 24 24' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 20l-5.2-5.2a7 7 0 1 0-1.4 1.4L20 21l1-1zM4 10a6 6 0 1 1 12 0 6 6 0 0 1-12 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.8rem center;
+  background-size: 1rem;
+}
+
+/* Custom dropdown arrow */
+.shiny-controls select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23999' viewBox='0 0 24 24' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.2rem;
+}
+
+/* Optional: better cursor */
+.shiny-controls input[type="search"],
+.shiny-controls select {
+  cursor: pointer;
+}
+
+/* Animate filter bar entrance */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shiny-controls {
+  animation: fadeDown 0.4s ease-in-out;
+}
+
+/* Responsive: Controls Bar for Smaller Screens */
+
+@media (max-width: 768px) {
+  .shiny-controls {
+    height: auto;
+    padding: 0.8rem 1rem 1.2rem;
+  }
+
+  .shiny-controls .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .shiny-controls input[type="search"] {
+  max-width: 100%;
+  width: 330px;
+    padding-left: 2.2rem;
+  }
+
+  .shiny-controls select {
+    width: 100%;
+  }
+
+  .shiny-controls label {
+    justify-content: flex-start;
+    width: 100%;
+      flex-wrap: nowrap;
+  white-space: nowrap;
+  }
+
+  #pagination {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .shiny-modal-content {
+    padding: 1rem;
+    max-height: 90vh;
+  }
+
+  .sprites-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .shiny-controls {
+    top: 100px;
+  }
+}
+
+
+/* Pagination */
+
+#pagination {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+#pagination button {
+  background: #1d1f20;
+  border: 1px solid #2e2e2e;
+  color: #aaa;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.65rem;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+#pagination button.active,
+#pagination button:hover {
+  background: var(--main-accent-color);
+  color: #17191a;
+}
+
+
+
+.md-typeset h1 {
+  color: var(--md-accent-fg-color);
+  font-size: 1.7em;
+  line-height: 1.2;
+  margin: 0 0 1.25em;
+}
+

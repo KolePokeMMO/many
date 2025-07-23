@@ -24,6 +24,9 @@ status: new
 
 <section class="honey-intro">
   <h1>INTRODUCTION</h1>
+</section>
+
+<section class="honey-intro honey-tree-section">
 
   <div class="columns">
     <!-- Left Column -->
