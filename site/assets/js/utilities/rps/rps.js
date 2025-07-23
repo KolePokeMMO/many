@@ -7,10 +7,11 @@ import {
   onValue,
   push,
   update,
-  remove
+  remove,
+  get,
+  onDisconnect,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBVbb67rvWjdY279rAo8BEyPTNKZVGqfIY",
   authDomain: "sl-rps.firebaseapp.com",
@@ -24,34 +25,67 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// Helper to get room name from URL (?room=xxx)
 function getRoomName() {
   const params = new URLSearchParams(window.location.search);
   return params.get("room");
 }
 
-// UI Setup
 const appDiv = document.getElementById("rps-app");
 
-// Show room creation form
 function createRoomForm() {
   appDiv.innerHTML = `
     <div class="rps-create-room">
+      <input type="text" id="player-name-input" placeholder="Enter your name" />
       <input type="text" id="room-name-input" placeholder="Enter a room name" />
-      <button id="join-room-btn">Create Room</button>
+      <button id="join-room-btn">Create / Join Room</button>
     </div>
   `;
 
   document.getElementById("join-room-btn").addEventListener("click", () => {
-    const name = document.getElementById("room-name-input").value.trim();
-    if (name) {
-      window.location.href = `/many/utilities/rps/?room=${encodeURIComponent(name)}`;
+    const name = document.getElementById("player-name-input").value.trim();
+    const room = document.getElementById("room-name-input").value.trim();
+    if (name && room) {
+      localStorage.setItem(`rps-player-name-${room}`, name);
+      window.location.href = `/many/utilities/rps/?room=${encodeURIComponent(room)}`;
+    } else {
+      alert("Please enter both your name and room name.");
     }
   });
 }
 
-// Show the game UI for a given room
-function showGameUI(room) {
+function determineWinnerPlayerId(p1, p2, playerKeys) {
+  if (p1 === p2) return null; // Draw when choices equal
+  if (
+    (p1 === "rock" && p2 === "scissors") ||
+    (p1 === "paper" && p2 === "rock") ||
+    (p1 === "scissors" && p2 === "paper")
+  )
+    return playerKeys[0];
+  return playerKeys[1];
+}
+
+async function showGameUI(room) {
+  const playerKey = `rps-player-id-${room}`;
+  const nameKey = `rps-player-name-${room}`;
+  let playerId = localStorage.getItem(playerKey);
+  let playerName = localStorage.getItem(nameKey);
+
+  if (!playerId) {
+    playerId = crypto.randomUUID();
+    localStorage.setItem(playerKey, playerId);
+  }
+
+  // Prompt for player name if missing
+  while (!playerName || playerName.trim() === "") {
+    playerName = prompt("Hey baby, what's your name? 😘");
+    if (!playerName || playerName.trim() === "") {
+      alert("You gotta enter a name to play, baby!");
+    } else {
+      playerName = playerName.trim();
+      localStorage.setItem(nameKey, playerName);
+    }
+  }
+
   appDiv.innerHTML = `
     <div class="rps-game" style="display:flex; gap:20px;">
       <div style="flex:1;">
@@ -70,197 +104,172 @@ function showGameUI(room) {
       </div>
       <div style="width: 250px;">
         <h3>Game History</h3>
-        <ul id="history-list" style="list-style: none; padding-left: 0; max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: #f9f9f9;"></ul>
+        <ul id="history-list" style="list-style: none; padding-left: 0; max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: #1a1a1a; color: #ffd700;"></ul>
       </div>
     </div>
   `;
 
-  // Copy room link button
-  document.getElementById("copy-link").addEventListener("click", () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      alert("Room link copied to clipboard!");
-    });
-  });
+  const playerRef = ref(db, `rps/rooms/${room}/players/${playerId}`);
+  set(playerRef, { choice: null, timestamp: Date.now(), name: playerName });
+  onDisconnect(playerRef).remove();
 
-  // Manage player ID in localStorage
-  const playerId = localStorage.getItem("rps-player-id") || crypto.randomUUID();
-  localStorage.setItem("rps-player-id", playerId);
-
-  // Track if round is active
   let roundActive = true;
+  let lastClick = 0;
+  let bothChosen = false;
 
-  // Player choice buttons
-  document.querySelectorAll(".rps-buttons button").forEach(btn => {
+  document.querySelectorAll(".rps-buttons button").forEach((btn) => {
     btn.addEventListener("click", () => {
-      if (!roundActive) return; // prevent choosing after round ended
+      const now = Date.now();
+      if (!roundActive || now - lastClick < 500) return;
+      lastClick = now;
       const choice = btn.dataset.choice;
-      set(ref(db, `rps/rooms/${room}/players/${playerId}`), {
-        choice: choice,
-        timestamp: Date.now()
-      });
-      document.getElementById('you').textContent = choice;
-      document.getElementById('result').textContent = "-";
-      document.getElementById('opp').textContent = "-";
-      document.getElementById('rps-status').textContent = "Waiting for opponent...";
+      set(playerRef, { choice, timestamp: now, name: playerName });
+      document.getElementById("you").textContent = choice;
+      document.getElementById("result").textContent = "-";
+      document.getElementById("opp").textContent = "-";
+      bothChosen = false;
+      document.getElementById("rps-status").textContent = "Waiting for opponent...";
     });
   });
 
-  // Restart button clears choices for both players
   document.getElementById("restart-btn").addEventListener("click", () => {
     remove(ref(db, `rps/rooms/${room}/players`));
     update(ref(db, `rps/rooms/${room}`), { currentRound: null });
     roundActive = true;
-    document.getElementById('you').textContent = "-";
-    document.getElementById('opp').textContent = "-";
-    document.getElementById('result').textContent = "-";
-    document.getElementById('rps-status').textContent = "Game restarted. Choose your move!";
+    bothChosen = false;
+    document.getElementById("you").textContent = "-";
+    document.getElementById("opp").textContent = "-";
+    document.getElementById("result").textContent = "-";
+    document.getElementById("rps-status").textContent = "Game restarted. Choose your move!";
   });
 
-  // Listen for players moves and game state
+  document.getElementById("copy-link").addEventListener("click", () => {
+    const fullLink = window.location.href;
+    navigator.clipboard
+      .writeText(fullLink)
+      .then(() => {
+        alert("Room link copied!");
+      })
+      .catch(() => {
+        alert("Failed to copy link. Please copy manually.");
+      });
+  });
+
   const playersRef = ref(db, `rps/rooms/${room}/players`);
   const currentRoundRef = ref(db, `rps/rooms/${room}/currentRound`);
   const historyRef = ref(db, `rps/rooms/${room}/history`);
 
-  // Listen to players' choices and game state
-  onValue(playersRef, snapshot => {
+  onValue(playersRef, (snapshot) => {
     const players = snapshot.val() || {};
-    const playerKeys = Object.keys(players);
+    const keys = Object.keys(players);
 
-    if (playerKeys.length < 2) {
+    if (keys.length < 2) {
       roundActive = true;
+      bothChosen = false;
       document.getElementById("rps-status").textContent = "Waiting for second player...";
+      document.getElementById("you").textContent = players[playerId]?.choice || "-";
       document.getElementById("opp").textContent = "-";
-      document.getElementById("result").textContent = "-";
       return;
     }
 
-    const opponentKey = playerKeys.find(k => k !== playerId);
-    if (!opponentKey) {
-      document.getElementById("rps-status").textContent = "Waiting for opponent to join...";
-      document.getElementById("opp").textContent = "-";
-      document.getElementById("result").textContent = "-";
-      return;
-    }
+    const yourChoice = players[playerId]?.choice || null;
+    const opponentKey = keys.find((k) => k !== playerId);
+    const opponentChoice = players[opponentKey]?.choice || null;
 
-    const yourChoice = players[playerId]?.choice || "-";
-    const opponentChoice = players[opponentKey]?.choice || "-";
-
-    document.getElementById("you").textContent = yourChoice;
-    document.getElementById("opp").textContent = opponentChoice;
-
-    if (yourChoice === "-" && opponentChoice === "-") {
-      document.getElementById("result").textContent = "-";
-      document.getElementById("rps-status").textContent = "Waiting for both players to choose...";
-    } else if (yourChoice === "-") {
-      document.getElementById("result").textContent = "-";
-      document.getElementById("rps-status").textContent = "Waiting for you to choose...";
-    } else if (opponentChoice === "-") {
-      document.getElementById("result").textContent = "-";
-      document.getElementById("rps-status").textContent = "Waiting for opponent to choose...";
+    if (yourChoice && opponentChoice) {
+      bothChosen = true;
+      document.getElementById("you").textContent = yourChoice;
+      document.getElementById("opp").textContent = opponentChoice;
     } else {
-      // Both players have chosen, but wait for currentRound status to update result
-      // We'll handle displaying result in currentRound listener below
+      bothChosen = false;
+      document.getElementById("you").textContent = yourChoice || "-";
+      document.getElementById("opp").textContent = "-";
     }
-  });
 
-  // Listen for current round result and update UI accordingly
-  onValue(currentRoundRef, snapshot => {
-    const currentRound = snapshot.val();
-
-    if (!currentRound || currentRound.status !== "finished") {
-      // Round not finished yet
+    if (!yourChoice) {
+      document.getElementById("rps-status").textContent = "Waiting for you to choose...";
+      return;
+    }
+    if (!opponentChoice) {
+      document.getElementById("rps-status").textContent = "Waiting for opponent to choose...";
       return;
     }
 
-    roundActive = false;
+    get(currentRoundRef).then((snap) => {
+      if (snap.exists() && snap.val().status === "finished") return;
 
-    const winnerId = currentRound.winnerId;
-    let resultText;
-    if (winnerId === null) resultText = "Draw!";
-    else if (winnerId === playerId) resultText = "You win!";
-    else resultText = "You lose!";
-
-    document.getElementById("result").textContent = resultText;
-    document.getElementById("rps-status").textContent = 
-      `Player 1 chose ${currentRound.player1Choice}, Player 2 chose ${currentRound.player2Choice}`;
-  });
-
-  // Listen for both players to choose and update currentRound & history accordingly
-  onValue(playersRef, snapshot => {
-    const players = snapshot.val() || {};
-    const playerKeys = Object.keys(players);
-
-    if (playerKeys.length < 2) return;
-
-    const currentRoundSnapshot = get(currentRoundRef).then(currentRound => {
-      if (currentRound.exists() && currentRound.val().status === "finished") return; // already finished
-
-      const p1Choice = players[playerKeys[0]]?.choice;
-      const p2Choice = players[playerKeys[1]]?.choice;
-
-      if (!p1Choice || !p2Choice) return; // wait for both choices
-
-      // Determine winner playerId or null for draw
-      const winnerId = determineWinnerPlayerId(p1Choice, p2Choice, playerKeys);
-
-      // Update currentRound
+      const winnerId = determineWinnerPlayerId(
+        players[keys[0]].choice,
+        players[keys[1]].choice,
+        keys
+      );
       update(currentRoundRef, {
         status: "finished",
         winnerId,
-        player1Choice: p1Choice,
-        player2Choice: p2Choice
+        player1Choice: players[keys[0]].choice,
+        player2Choice: players[keys[1]].choice,
+        player1Name: players[keys[0]].name,
+        player2Name: players[keys[1]].name,
       });
-
-      // Push round to history
-      push(ref(db, `rps/rooms/${room}/history`), {
-        player1Id: playerKeys[0],
-        player2Id: playerKeys[1],
-        player1Choice: p1Choice,
-        player2Choice: p2Choice,
+      push(historyRef, {
+        player1Id: keys[0],
+        player2Id: keys[1],
+        player1Choice: players[keys[0]].choice,
+        player2Choice: players[keys[1]].choice,
+        player1Name: players[keys[0]].name,
+        player2Name: players[keys[1]].name,
         winnerId,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
     });
   });
 
-  // Listen and display game history, personalized
-  onValue(ref(db, `rps/rooms/${room}/history`), snapshot => {
+  onValue(currentRoundRef, (snapshot) => {
+    const round = snapshot.val();
+    if (!round || round.status !== "finished") return;
+    roundActive = false;
+
+    const resultText =
+      round.winnerId === null
+        ? "Draw!"
+        : round.winnerId === playerId
+        ? "You win!"
+        : "You lose!";
+
+    document.getElementById("result").textContent = resultText;
+
+    if (bothChosen) {
+      document.getElementById("rps-status").textContent = `${round.player1Choice} by ${
+        round.player1Name || "Player 1"
+      }, ${round.player2Choice} by ${round.player2Name || "Player 2"}`;
+    } else {
+      document.getElementById("rps-status").textContent = "Waiting for both to choose...";
+    }
+  });
+
+  onValue(historyRef, (snapshot) => {
     const history = snapshot.val();
     const historyList = document.getElementById("history-list");
     historyList.innerHTML = "";
     if (!history) return;
 
-    const entries = Object.entries(history)
-      .sort((a, b) => b[1].timestamp - a[1].timestamp);
+    const entries = Object.entries(history).sort(
+      (a, b) => b[1].timestamp - a[1].timestamp
+    );
 
     for (const [key, entry] of entries) {
       const li = document.createElement("li");
-
       let outcome;
       if (entry.winnerId === null) outcome = "Draw";
-      else if (entry.winnerId === playerId) outcome = "You win";
-      else outcome = "You lose";
+      else outcome = `${entry.player1Name === entry.winnerName ? entry.player1Name : entry.player2Name} won`;
 
-      li.textContent = `P1: ${entry.player1Choice}, P2: ${entry.player2Choice} → ${outcome}`;
+      li.textContent = `${entry.player1Name}: ${entry.player1Choice}, ${entry.player2Name}: ${entry.player2Choice} → ${outcome}`;
       li.style.marginBottom = "6px";
       historyList.appendChild(li);
     }
   });
-
 }
 
-// Determine winner by returning the winning player's ID, or null for draw
-function determineWinnerPlayerId(p1, p2, playerKeys) {
-  if (p1 === p2) return null;
-  if (
-    (p1 === "rock" && p2 === "scissors") ||
-    (p1 === "paper" && p2 === "rock") ||
-    (p1 === "scissors" && p2 === "paper")
-  ) return playerKeys[0];
-  return playerKeys[1];
-}
-
-// Main entry point
 const roomName = getRoomName();
 if (!roomName || roomName.toLowerCase() === "rps") {
   createRoomForm();
