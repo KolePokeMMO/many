@@ -1,7 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+// rps.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, set, onValue, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-// 🔧 Firebase config
+// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyBVbb67rvWjdY279rAo8BEyPTNKZVGqfIY",
     authDomain: "sl-rps.firebaseapp.com",
@@ -14,102 +15,92 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// 📦 Grab the DOM mount point
-const container = document.getElementById("rps-app");
+// Helper to get room name from URL
+function getRoomName() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("room");
+}
 
-// 🧠 Get room ID from the URL
-const urlParams = new URLSearchParams(window.location.search);
-let gameId = urlParams.get("room");
+// UI Setup
+const appDiv = document.getElementById("rps-app");
 
-// 🌱 If no room yet, ask for one
-if (!gameId) {
-  container.innerHTML = `
-    <div class="room-setup">
-      <h2>Create a Room</h2>
-      <input id="room-input" placeholder="Enter room name..." />
-      <button id="start-room">Start</button>
+function createRoomForm() {
+  appDiv.innerHTML = `
+    <div class="rps-create-room">
+      <input type="text" id="room-name-input" placeholder="Enter a room name" />
+      <button id="join-room-btn">Create Room</button>
     </div>
   `;
 
-  document.getElementById("start-room").onclick = () => {
-    const input = document.getElementById("room-input").value.trim();
-    if (!input) return alert("Please enter a room name.");
-    const newUrl = `${location.pathname}?room=${encodeURIComponent(input)}`;
-    window.location.href = newUrl;
-  };
-  return;
+  document.getElementById("join-room-btn").addEventListener("click", () => {
+    const name = document.getElementById("room-name-input").value.trim();
+    if (name) {
+      window.location.href = `/many/utilities/rps/?room=${encodeURIComponent(name)}`;
+    }
+  });
 }
 
-// 🎲 Assign or load player ID
-let playerId = localStorage.getItem("rps-player-id");
-if (!playerId) {
-  playerId = Math.random().toString(36).slice(2);
-  localStorage.setItem("rps-player-id", playerId);
+function showGameUI(room) {
+  appDiv.innerHTML = `
+    <h2>Room: ${room}</h2>
+    <button id="copy-link">Copy Room Name</button>
+    <div class="rps-choices">
+      <button data-choice="rock">🪨 Rock</button>
+      <button data-choice="paper">📄 Paper</button>
+      <button data-choice="scissors">✂️ Scissors</button>
+    </div>
+    <div id="rps-status"></div>
+  `;
+
+  document.getElementById("copy-link").addEventListener("click", () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert("Room name copied to clipboard!");
+    });
+  });
+
+  document.querySelectorAll(".rps-choices button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const choice = btn.dataset.choice;
+      const playerId = localStorage.getItem("rps-player-id") || crypto.randomUUID();
+      localStorage.setItem("rps-player-id", playerId);
+
+      set(ref(db, `rps/rooms/${room}/players/${playerId}`), {
+        choice: choice,
+        timestamp: Date.now()
+      });
+    });
+  });
+
+  const statusDiv = document.getElementById("rps-status");
+  const roomRef = ref(db, `rps/rooms/${room}/players`);
+  onValue(roomRef, snapshot => {
+    const players = snapshot.val();
+    if (players && Object.keys(players).length === 2) {
+      const [p1, p2] = Object.values(players);
+      const result = getWinner(p1.choice, p2.choice);
+      statusDiv.textContent = `P1: ${p1.choice}, P2: ${p2.choice} → ${result}`;
+    } else {
+      statusDiv.textContent = "Waiting for second player...";
+    }
+  });
 }
 
-// 🧱 Game UI
-container.innerHTML = `
-  <div class="rps-game">
-    <h2>Rock, Paper, Scissors</h2>
-    <div id="room-info">
-      Room: <code>${gameId}</code>
-      <button id="copy-link">Copy Room Link</button>
-    </div>
-    <div id="status">Waiting for move...</div>
-    <div class="rps-buttons">
-      <button onclick="choose('rock')">🪨 Rock</button>
-      <button onclick="choose('paper')">📄 Paper</button>
-      <button onclick="choose('scissors')">✂️ Scissors</button>
-    </div>
-    <p>You chose: <span id="you">-</span></p>
-    <p>Opponent chose: <span id="opp">-</span></p>
-    <p>Result: <strong id="result">-</strong></p>
-  </div>
-`;
-
-// 🔗 Copy button logic
-document.getElementById("copy-link").onclick = () => {
-  const url = `${location.origin}${location.pathname}?room=${gameId}`;
-  navigator.clipboard.writeText(url).then(() => {
-    alert("Room link copied to clipboard!");
-  });
-};
-
-// 🌊 Global choose handler
-window.choose = (move) => {
-  document.getElementById('you').textContent = move;
-  set(ref(db, `games/${gameId}/${playerId}`), {
-    move,
-    time: Date.now()
-  });
-};
-
-// 👀 Listen for moves
-onValue(ref(db, `games/${gameId}`), (snapshot) => {
-  const data = snapshot.val();
-  if (!data) return;
-
-  const players = Object.keys(data);
-  if (players.length < 2) return;
-
-  const [p1, p2] = players;
-  const m1 = data[p1], m2 = data[p2];
-
-  if (m1 && m2) {
-    const yourMove = data[playerId]?.move;
-    const opponentId = players.find(p => p !== playerId);
-    const theirMove = data[opponentId]?.move;
-
-    document.getElementById("opp").textContent = theirMove || "-";
-    document.getElementById("result").textContent = getResult(m1.move, m2.move, playerId === p1);
+function getWinner(p1, p2) {
+  if (p1 === p2) return "Draw!";
+  if (
+    (p1 === "rock" && p2 === "scissors") ||
+    (p1 === "paper" && p2 === "rock") ||
+    (p1 === "scissors" && p2 === "paper")
+  ) {
+    return "Player 1 wins!";
   }
-});
+  return "Player 2 wins!";
+}
 
-// 🧠 Game logic
-function getResult(m1, m2, isPlayer1) {
-  if (m1 === m2) return "Draw";
-  const win = (m1 === "rock" && m2 === "scissors") ||
-              (m1 === "scissors" && m2 === "paper") ||
-              (m1 === "paper" && m2 === "rock");
-  return (isPlayer1 === win) ? "You win!" : "You lose!";
+// Main
+const roomName = getRoomName();
+if (!roomName || roomName === "rps") {
+  createRoomForm();
+} else {
+  showGameUI(roomName);
 }
