@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 # Rock, Paper, Scissors
 
 <div id="rps-app"></div>
