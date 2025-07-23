@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (ellipsis && ellipsis.textContent.includes("Shiny Legion [MANY]")) {
     ellipsis.innerHTML = `
-      <span class="shiny-legion">Shiny Legion </span>
+
       <span class="many">[MANY]</span>
     `;
   }

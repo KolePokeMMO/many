@@ -1,0 +1,167 @@
+/* ────────────────────────────────────────────────
+   Footer Links and Small Footer Text
+   File: footer.css
+──────────────────────────────────────────────── */
+
+.md-footer-link {
+	color: var(--md-accent-fg-color);
+	text-decoration: none;
+}
+
+.md-footer-link:hover {
+	text-decoration: underline;
+}
+
+.custom-footer {
+	border-top: 2px solid var(--main-accent-border-color);
+	color: #dfdfdf;
+	font-size: 10px;
+	padding: 2rem 1rem;
+}
+
+.custom-footer h4,
+.custom-footer p,
+.custom-footer li,
+.custom-footer a {
+	font-size: 0.7rem; /* ↓ Overwritten below ↓ */
+	font-weight: bold;
+}
+
+.custom-footer .visitors img {
+	height: 20px;
+}
+
+/* ────────────────────────────────────────────────
+   Footer Layout
+   File: extra.css
+──────────────────────────────────────────────── */
+
+.md-footer {
+	background-color: var(--main-bg-color);
+}
+
+/* Grid Layout for Footer Content */
+.custom-footer .footer-grid {
+	align-items: start;
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	text-align: left;
+}
+
+/* Footer Logo */
+.custom-footer img {
+	height: 85px;
+	margin-bottom: 0.5rem;
+	object-fit: contain;
+}
+
+/* Footer Paragraphs */
+.custom-footer p {
+	margin: 0;
+}
+
+/* Section Headings */
+.custom-footer h4 {
+	margin-bottom: 0.5rem;
+}
+
+/* Footer Link Lists */
+.custom-footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Footer Links */
+.custom-footer a.md-footer-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.custom-footer a.md-footer-link:hover {
+	text-decoration: underline;
+}
+
+/* ↓ Final font size override — this overwrites earlier font-size above ↑ */
+.custom-footer h4,
+.custom-footer p,
+.custom-footer li,
+.custom-footer a {
+	font-size: 0.5rem;
+	font-weight: bold;
+}
+
+/* ────────────────────────────────────────────────
+   Shiny Sparkle Background for Footer
+──────────────────────────────────────────────── */
+
+.footer-animated-bg {
+	background-color: var(--main-bg-color); /* base footer bg */
+	height: 100px;
+	overflow: hidden;
+	position: relative;
+}
+
+/* Container for sparkles */
+.shiny-stars {
+	height: 100%;
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+}
+
+/* A single sparkle */
+.shiny-star {
+	animation: sparkleSpin 4s infinite ease-in-out;
+	font-size: calc(16px * var(--star-scale, 1));
+	height: 16px;
+	opacity: 0;
+	position: absolute;
+	transform: rotate(45deg) scale(var(--star-scale, 1));
+	width: 16px;
+}
+
+/* ✩ character */
+.shiny-star::before {
+	color: rgb(255, 255, 255);
+	content: "✩";
+	left: 50%;
+	opacity: 10%;
+	position: absolute;
+	text-shadow: 0 0 5px rgb(255, 208, 0);
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Optional: remove if not needed */
+.shiny-star::after {
+	content: "";
+}
+
+/* Sparkle animation */
+@keyframes sparkleSpin {
+	0% {
+		opacity: 0;
+		transform: rotate(0deg) scale(var(--star-scale, 1));
+	}
+	25% {
+		opacity: 0.9;
+		transform: rotate(90deg) scale(calc(var(--star-scale, 1) * 1.1));
+	}
+	50% {
+		opacity: 0.4;
+		transform: rotate(180deg) scale(calc(var(--star-scale, 1) * 0.8));
+	}
+	75% {
+		opacity: 0.8;
+		transform: rotate(270deg) scale(calc(var(--star-scale, 1) * 1.2));
+	}
+	100% {
+		opacity: 0;
+		transform: rotate(360deg) scale(var(--star-scale, 1));
+	}
+}

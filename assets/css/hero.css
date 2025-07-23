@@ -1,0 +1,127 @@
+/* ────────────────────────────────────────────────
+   Hero Section Styles
+   File: hero.css
+──────────────────────────────────────────────── */
+
+/* Layout – Main hero container */
+.mdx-hero {
+	height: 50vh;
+	overflow: hidden;
+	position: relative;
+}
+
+/* Layout – Image inside hero */
+.mdx-hero-image img {
+	filter: brightness(0.7);
+	object-fit: cover;
+	width: 100%;
+}
+
+/* Layout – Hero text content overlay */
+.mdx-hero-content {
+	color: white;
+	left: 10%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/* Layout – Background and parallax effect */
+.md-hero {
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Layout – Full hero block with gradient and centre text */
+.hero {
+	background: url('/many/assets/img/backgrounds/hero-bg-2.jpg') no-repeat center center;
+	opacity: 1.0;
+	background-size: cover;
+	color: white;
+	padding: 6rem 2rem;
+	text-align: center;
+	position: relative; /* Required for absolute positioning inside */
+    overflow: visible;  /* Allows overlay image to stick out */
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography – Main headline */
+.hero__content h1 {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+/* Typography – Subheadline / description */
+.hero__content p {
+	font-size: 1.25rem;
+	margin-bottom: 2rem;
+}
+
+.hero__overlay-img {
+  position: absolute;
+  top: -60px;
+  right: -30px;
+  width: 25vw; /* responsive width instead of fixed px */
+  max-width: 420px; /* prevent it from getting too large */
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  transition: width 0.3s ease, top 0.3s ease, right 0.3s ease;
+}
+
+/* Shrink and reposition on smaller screens */
+@media (max-width: 1024px) {
+  .hero__overlay-img {
+    width: 25vw;
+    top: -40px;
+    right: -20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__overlay-img {
+    width: 35vw;
+    top: -20px;
+    right: -10px;
+	opacity: 0.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__overlay-img {
+    width: 45vw;
+    top: 0;
+    right: 0;
+	opacity: 0.3;
+  }
+}
+
+
+
+
+.md-typeset .md-button {
+  border-color: var(--main-accent-color-light);
+  color: #fff;
+}
+.md-typeset .md-button:hover {
+  background-color: none;
+  border-color: var(--main-accent-color-light);
+  color: #fff;
+}
+.md-typeset .md-button:focus, .md-typeset .md-button:hover {
+  background-color: var(--main-accent-color-light);
+  color: #111;
+}
+.md-typeset .md-button--primary {
+  background-color: var(--main-accent-color);
+  border-color: var(--main-accent-border-color);
+  color: #111;
+}
+.md-typeset .md-button--primary:hover {
+  background-color: var(--main-accent-border-color);
+  border-color: var(--main-accent-color-light);
+  color: #111;
+}
+  
