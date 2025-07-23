@@ -75,11 +75,10 @@ async function showGameUI(room) {
     localStorage.setItem(playerKey, playerId);
   }
 
-  // Prompt for player name if missing
   while (!playerName || playerName.trim() === "") {
-    playerName = prompt("Hey baby, what's your name? 😘");
+    playerName = prompt("Enter your name to join the game:");
     if (!playerName || playerName.trim() === "") {
-      alert("You gotta enter a name to play, baby!");
+      alert("Please enter a valid name.");
     } else {
       playerName = playerName.trim();
       localStorage.setItem(nameKey, playerName);
@@ -231,7 +230,7 @@ async function showGameUI(room) {
 
     const resultText =
       round.winnerId === null
-        ? "Draw!"
+        ? "It's a tie!"
         : round.winnerId === playerId
         ? "You win!"
         : "You lose!";
@@ -239,9 +238,7 @@ async function showGameUI(room) {
     document.getElementById("result").textContent = resultText;
 
     if (bothChosen) {
-      document.getElementById("rps-status").textContent = `${round.player1Choice} by ${
-        round.player1Name || "Player 1"
-      }, ${round.player2Choice} by ${round.player2Name || "Player 2"}`;
+      document.getElementById("rps-status").textContent = `${round.player1Name}: ${round.player1Choice}, ${round.player2Name}: ${round.player2Choice}`;
     } else {
       document.getElementById("rps-status").textContent = "Waiting for both to choose...";
     }
@@ -260,8 +257,8 @@ async function showGameUI(room) {
     for (const [key, entry] of entries) {
       const li = document.createElement("li");
       let outcome;
-      if (entry.winnerId === null) outcome = "Draw";
-      else outcome = `${entry.player1Name === entry.winnerName ? entry.player1Name : entry.player2Name} won`;
+      if (entry.winnerId === null) outcome = "It's a tie!";
+      else outcome = `${entry.winnerId === entry.player1Id ? entry.player1Name : entry.player2Name} won`;
 
       li.textContent = `${entry.player1Name}: ${entry.player1Choice}, ${entry.player2Name}: ${entry.player2Choice} → ${outcome}`;
       li.style.marginBottom = "6px";
