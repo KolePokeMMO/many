@@ -6,6 +6,7 @@ import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBVbb67rvWjdY279rAo8BEyPTNKZVGqfIY",
   authDomain: "sl-rps.firebaseapp.com",
+  databaseURL: "https://sl-rps-default-rtdb.firebaseio.com",
   projectId: "sl-rps",
   storageBucket: "sl-rps.firebasestorage.app",
   messagingSenderId: "670763987872",
