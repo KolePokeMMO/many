@@ -2,7 +2,7 @@
 
 // Load planner data
 async function loadPlannerData() {
-  const res = await fetch("/assets/data/shunt-planner.json");
+  const res = await fetch("/many/assets/data/shunt-planner.json");
   return res.json();
 }
 
