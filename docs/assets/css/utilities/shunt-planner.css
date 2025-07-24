@@ -1,5 +1,6 @@
-/* shunt-planner.css */
-
+/* ====================================================
+   Variables & Global Styles
+==================================================== */
 :root {
   --bg-dark: #121212;
   --bg-panel: #1e1e1e;
@@ -9,90 +10,184 @@
 }
 
 body.shunt-mode {
-  background-color: var(--bg-dark);
+  background-color: var(--main-bg-color);
   color: var(--text-light);
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 2rem;
+  font-size: 0.6rem;
 }
 
+
+/* ====================================================
+   Layout Container
+==================================================== */
 .shunt-container {
-  max-width: 1000px;
-  margin: auto;
-  background: var(--bg-panel);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.shunt-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.shunt-header h1 {
-  font-size: 2rem;
-  color: var(--accent);
-}
-
-.shunt-form {
-  display: flex;
-  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--main-bg-color);
+  padding: 0rem;
+  border-radius: 0px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Left - Middle - Right */
   gap: 1rem;
-  margin-bottom: 2rem;
-  justify-content: center;
+  height: calc(100vh - 4rem);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.shunt-form input,
-.shunt-form select {
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  background: #2a2a2a;
+
+/* ====================================================
+   Left Column: Filters
+==================================================== */
+.shunt-filters {
+  background: var(--main-fg-color);
+  border-radius: 0px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.shunt-filters label,
+.shunt-filters select,
+.shunt-filters input {
+  width: 100%;
   color: var(--text-light);
+  font-size: 0.6rem;
+  font-weight: 400;
+}
+
+.shunt-filters select,
+.shunt-filters input {
+  background: #212121;
+  border: 1px solid #252525;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
   outline: none;
 }
 
-.shunt-results-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  font-size: 0.95rem;
+
+/* ====================================================
+   Middle Column: Search Results
+==================================================== */
+.shunt-results {
+  background: var(--main-fg-color);
+  border-radius: 0px;
+  padding: 1rem;
+  overflow-y: auto;
+  color: var(--text-light);
+  font-size: 0.6rem;
 }
 
-.shunt-results-table th,
-.shunt-results-table td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
+.shunt-results h4 {
+  color: var(--main-accent-color);
+  margin-top: 0;
 }
 
-.shunt-results-table th {
-  background: #2a2a2a;
-  color: var(--accent);
+.shunt-results ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.shunt-results-table tr:hover {
-  background-color: #242424;
+.shunt-results ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--main-fg-border-color);
 }
 
-.shunt-footer-note {
-  text-align: center;
-  font-size: 0.85rem;
-  margin-top: 2rem;
-  color: #888;
+.shunt-entry li strong{
+ 
+  color: var(--main-accent-color-light);
+  margin-right: 0.5rem;
+  display: inline-block;
+  min-width: 2.5rem;
 }
 
-@media (max-width: 600px) {
-  .shunt-form {
+
+
+/* ====================================================
+   Right Column: Controls Panel
+==================================================== */
+.shunt-controls {
+  background: var(--main-fg-color);
+  border-radius: 0px;
+  padding: 1rem;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  color: var(--main-accent-color);
+  font-size: 0.7rem;
+  margin-top: 0px;
+}
+
+
+/* ====================================================
+   Pinned Target Display
+==================================================== */
+#pinned-target {
+  font-style: italic;
+  padding: 0.5rem;
+  background: #212121;
+  border: 1px solid #252525;
+  border-radius: 6px;
+  min-height: 40px;
+}
+
+
+/* ====================================================
+   Notes Area
+==================================================== */
+#notes {
+  background: #212121;
+  border: 1px solid #252525;
+  border-radius: 6px;
+  color: var(--text-light);
+  resize: vertical;
+  padding: 0.5rem;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+}
+
+
+/* ====================================================
+   Action Buttons (Save/Clear Notes)
+==================================================== */
+#save-notes-btn,
+#clear-notes-btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--main-accent-color);
+  color: #121212;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#save-notes-btn:hover,
+#clear-notes-btn:hover {
+  background: var(--main-accent-color-light);
+}
+
+
+/* ====================================================
+   Responsive Adjustments
+==================================================== */
+@media (max-width: 900px) {
+  .shunt-container {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    height: auto;
   }
 
-  .shunt-results-table th,
-  .shunt-results-table td {
-    font-size: 0.9rem;
-    padding: 0.6rem;
+  .shunt-filters,
+  .shunt-results,
+  .shunt-controls {
+    height: auto;
+    max-height: none;
   }
 }
