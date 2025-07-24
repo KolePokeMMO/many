@@ -116,16 +116,31 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // When target changes, update pinned target
-  document.getElementById("target-select").addEventListener("change", (e) => {
-    const val = e.target.value;
-    if (val) {
-      pinnedTargetEl.textContent = val;
-      localStorage.setItem("shuntPinnedTarget", val);
-    } else {
-      pinnedTargetEl.textContent = "None selected";
-      localStorage.removeItem("shuntPinnedTarget");
-    }
-  });
+document.getElementById("target-select").addEventListener("change", (e) => {
+  const val = e.target.value;
+  const pinnedTargetEl = document.getElementById("pinned-target");
+  const normalImg = document.getElementById("sprite-normal");
+  const shinyImg = document.getElementById("sprite-shiny");
+
+  if (val) {
+    pinnedTargetEl.textContent = val;
+    localStorage.setItem("shuntPinnedTarget", val);
+
+    const formatted = val.toLowerCase().replace(/ /g, '-');
+    normalImg.src = `https://projectpokemon.org/images/normal-sprite/${formatted}.gif`;
+    shinyImg.src = `https://projectpokemon.org/images/shiny-sprite/${formatted}.gif`;
+    normalImg.alt = `${val} Normal Sprite`;
+    shinyImg.alt = `${val} Shiny Sprite`;
+  } else {
+    pinnedTargetEl.textContent = "None selected";
+    localStorage.removeItem("shuntPinnedTarget");
+    normalImg.src = "";
+    shinyImg.src = "";
+    normalImg.alt = "";
+    shinyImg.alt = "";
+  }
+});
+
 
   // Save notes button
   saveBtn.addEventListener("click", () => {

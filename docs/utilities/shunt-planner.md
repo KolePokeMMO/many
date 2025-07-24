@@ -1,9 +1,5 @@
 ---
 title: Shunt Planner
-hide:
-
-
-
 ---
 
 # 🗺️ Shiny Hunt Route Planner
@@ -39,12 +35,27 @@ hide:
     <!-- Filtered data will appear here -->
   </div>
 
-  <div class="shunt-controls">
-    <h4>📌 Pinned Target</h4>
-    <div id="pinned-target">None selected</div>
+<div class="shunt-controls">
+
+  <h4>📌 Pinned Target</h4>
+  <div id="pinned-target">None selected</div>
+
+  <div class="shunt-sprites">
+    <h4>✨ Sprites</h4>
+    <div class="sprite-pair">
+      <div>
+        <div class="sprite-label">Normal</div>
+        <img id="sprite-normal" src="" alt="Normal Sprite" />
+      </div>
+      <div>
+        <div class="sprite-label">Shiny</div>
+        <img id="sprite-shiny" src="" alt="Shiny Sprite" />
+      </div>
+    </div>
+  </div>
 
     <h4>📝 Notes</h4>
-    <textarea id="notes" rows="20" placeholder="Your personal notes here..."></textarea>
+    <textarea id="notes" rows="20" placeholder="Shunt Notes ..."></textarea>
 
     <button id="save-notes-btn">Save Notes</button>
     <button id="clear-notes-btn">Clear Notes</button>
