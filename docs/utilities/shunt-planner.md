@@ -1,9 +1,9 @@
 ---
 title: Shunt Planner
 hide:
-  - toc
-  - navigation
-  - path
+
+
+
 ---
 
 # 🗺️ Shiny Hunt Route Planner
