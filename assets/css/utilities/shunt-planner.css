@@ -191,3 +191,29 @@ body.shunt-mode {
     max-height: none;
   }
 }
+
+.shunt-sprites {
+  text-align: left;
+}
+
+.sprite-pair {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.sprite-label {
+  font-size: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.sprite-pair img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  border-radius: 4px;
+image-rendering: crisp-edges;
+image-rendering: pixelated;
+}
