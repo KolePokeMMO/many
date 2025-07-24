@@ -81,3 +81,61 @@ document.addEventListener("DOMContentLoaded", async () => {
   populateTargetOptions(data);
   setupFilters(data);
 });
+
+
+
+
+
+
+
+// Add this at the bottom of your existing DOMContentLoaded event listener:
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const data = await loadPlannerData();
+  populateTargetOptions(data);
+  setupFilters(data);
+
+  const pinnedTargetEl = document.getElementById("pinned-target");
+  const notesEl = document.getElementById("notes");
+  const saveBtn = document.getElementById("save-notes-btn");
+  const clearBtn = document.getElementById("clear-notes-btn");
+
+  // Load pinned target from cookie/localStorage
+  const pinnedTarget = localStorage.getItem("shuntPinnedTarget");
+  if (pinnedTarget) {
+    pinnedTargetEl.textContent = pinnedTarget;
+    // Auto-select in dropdown if present
+    const targetSelect = document.getElementById("target-select");
+    targetSelect.value = pinnedTarget;
+  }
+
+  // Load notes from localStorage
+  const savedNotes = localStorage.getItem("shuntNotes");
+  if (savedNotes) {
+    notesEl.value = savedNotes;
+  }
+
+  // When target changes, update pinned target
+  document.getElementById("target-select").addEventListener("change", (e) => {
+    const val = e.target.value;
+    if (val) {
+      pinnedTargetEl.textContent = val;
+      localStorage.setItem("shuntPinnedTarget", val);
+    } else {
+      pinnedTargetEl.textContent = "None selected";
+      localStorage.removeItem("shuntPinnedTarget");
+    }
+  });
+
+  // Save notes button
+  saveBtn.addEventListener("click", () => {
+    localStorage.setItem("shuntNotes", notesEl.value);
+    alert("Notes saved! 💖");
+  });
+
+  // Clear notes button
+  clearBtn.addEventListener("click", () => {
+    notesEl.value = "";
+    localStorage.removeItem("shuntNotes");
+  });
+});
