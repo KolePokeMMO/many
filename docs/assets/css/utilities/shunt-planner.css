@@ -1,0 +1,98 @@
+/* shunt-planner.css */
+
+:root {
+  --bg-dark: #121212;
+  --bg-panel: #1e1e1e;
+  --text-light: #e0e0e0;
+  --accent: #58a6ff;
+  --border: #2c2c2c;
+}
+
+body.shunt-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+.shunt-container {
+  max-width: 1000px;
+  margin: auto;
+  background: var(--bg-panel);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.shunt-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.shunt-header h1 {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.shunt-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.shunt-form input,
+.shunt-form select {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #2a2a2a;
+  color: var(--text-light);
+  outline: none;
+}
+
+.shunt-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.shunt-results-table th,
+.shunt-results-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.shunt-results-table th {
+  background: #2a2a2a;
+  color: var(--accent);
+}
+
+.shunt-results-table tr:hover {
+  background-color: #242424;
+}
+
+.shunt-footer-note {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 2rem;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .shunt-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shunt-results-table th,
+  .shunt-results-table td {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}

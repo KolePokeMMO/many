@@ -103,7 +103,7 @@ async function showGameUI(room) {
       </div>
       <div style="width: 250px;">
         <h3>Game History</h3>
-        <ul id="history-list" style="list-style: none; padding-left: 0; max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: #1a1a1a; color: #ffd700;"></ul>
+        <ul id="history-list"></ul>
       </div>
     </div>
   `;
