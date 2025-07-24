@@ -33,6 +33,7 @@ extra_css:
   - assets/css/showcase/showcase.css
   - assets/css/comp/poke-tooltips.css
   - assets/css/showcase/shinywars.css
+  - assets/css/utilities/shunt-planner.css
 
 
 extra_javascript:
@@ -41,7 +42,8 @@ extra_javascript:
   - assets/js/word-split.js
   - assets/js/showcase/shinies.js
   - assets/js/showcase/shinywars.js
-  - assets/js/utlities/rps/rps.js
+  - assets/js/utilities/rps/rps.js
+  - assets/js/utilities/sp/shunt-planner.js
 
 nav:
   - Home: index.md
@@ -53,6 +55,7 @@ nav:
       - Shiny Wars: showcase/shinywars.md
       - Caught Tracker: showcase/caught.md
   - Utilities:
+      - Shunt Planner: utilities/shunt-planner.md
       - Shiny Calculator: utilities/shiny-calculator.md
       - Shiny Odds: utilities/shiny-odds.md
       - Rock, Paper, Scissors: utilities/rps.md

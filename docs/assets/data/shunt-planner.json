@@ -1,0 +1,112 @@
+[
+  {
+    "pokemon": "Pikachu",
+    "region": "Kanto",
+    "route": "Viridian Forest",
+    "method": "sweet-scent",
+    "repel_level": null,
+    "sweet_scent": true,
+    "alpha": false,
+    "notes": "Sweet Scent is effective; watch out for dense grass patches.",
+    "slot_percent": 15
+  },
+  {
+    "pokemon": "Dratini",
+    "region": "johto",
+    "route": "Dragon's Den",
+    "method": "repel-trick",
+    "repel_level": 40,
+    "sweet_scent": false,
+    "alpha": true,
+    "notes": "Use Repel Level 40 for best chance; Alpha Dratini can appear.",
+    "slot_percent": 5
+  },
+  {
+    "pokemon": "Gible",
+    "region": "sinnoh",
+    "route": "Wayward Cave",
+    "method": "alpha",
+    "repel_level": null,
+    "sweet_scent": false,
+    "alpha": true,
+    "notes": "Alpha swarm is your best bet here.",
+    "slot_percent": 10
+  },
+  {
+    "pokemon": "Beldum",
+    "region": "hoenn",
+    "route": "Meteo Cave",
+    "method": "sweet-scent",
+    "repel_level": null,
+    "sweet_scent": true,
+    "alpha": false,
+    "notes": "Sweet Scent to trigger encounter; low spawn rate so patience is key.",
+    "slot_percent": 3
+  },
+  {
+    "pokemon": "Tyrunt",
+    "region": "unova",
+    "route": "Ancient Ruins",
+    "method": "repel-trick",
+    "repel_level": 30,
+    "sweet_scent": false,
+    "alpha": true,
+    "notes": "Repel Level 30 recommended; higher shiny rate in caves.",
+    "slot_percent": 7
+  },
+  {
+    "pokemon": "Magikarp",
+    "region": "kanto",
+    "route": "Lake of Rage",
+    "method": "any",
+    "repel_level": null,
+    "sweet_scent": false,
+    "alpha": false,
+    "notes": "Regular fishing spots; shiny Magikarp can appear often.",
+    "slot_percent": 20
+  },
+  {
+    "pokemon": "Munchlax",
+    "region": "johto",
+    "route": "Route 45",
+    "method": "repel-trick",
+    "repel_level": 35,
+    "sweet_scent": false,
+    "alpha": false,
+    "notes": "Use Repel Level 35 and look for feeding spots.",
+    "slot_percent": 8
+  },
+  {
+    "pokemon": "Togepi",
+    "region": "johto",
+    "route": "Ilex Forest",
+    "method": "sweet-scent",
+    "repel_level": null,
+    "sweet_scent": true,
+    "alpha": false,
+    "notes": "Sweet Scent works well here; Togepi has small spawn slots.",
+    "slot_percent": 5
+  },
+  {
+    "pokemon": "Riolu",
+    "region": "sinnoh",
+    "route": "Wayward Cave",
+    "method": "alpha",
+    "repel_level": null,
+    "sweet_scent": false,
+    "alpha": true,
+    "notes": "Alpha Riolu swarm appears near the cave entrance.",
+    "slot_percent": 9
+  },
+  {
+    "pokemon": "Gyarados",
+    "region": "hoenn",
+    "route": "Marine Cave",
+    "method": "any",
+    "repel_level": null,
+    "sweet_scent": false,
+    "alpha": false,
+    "notes": "Shiny Gyarados can be found in the cave water pools.",
+    "slot_percent": 4
+  }
+]
