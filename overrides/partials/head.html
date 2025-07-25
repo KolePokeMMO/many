@@ -2,11 +2,16 @@
 <script>
   const theme = localStorage.getItem('selectedTheme') || 'shiny';
   document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.classList.add('theme-loading');
 
   const link = document.createElement('link');
   link.id = 'dynamic-theme-css';
   link.rel = 'stylesheet';
   link.href = `/many/assets/css/themes/${theme}.css`;
+
+  link.onload = () => {
+    document.documentElement.classList.remove('theme-loading');
+  };
 
   const firstStyle = [...document.head.children].find(el =>
     el.tagName === 'STYLE' || el.tagName === 'LINK'
@@ -20,16 +25,11 @@
   document.documentElement.setAttribute('data-theme-loaded', 'true');
 </script>
 
-
-
 <!-- Critical style fixes for load flicker -->
 <style>
-  /* Prevent light background flash */
   html, body {
     background-color: #151515 !important;
   }
-
-
 
   /* Flicker-free themed logo switching */
   [data-md-component="logo"] img {
@@ -44,4 +44,8 @@
     content: url("/many/assets/img/logo-purple.png");
   }
 
+  /* Hides content until theme CSS is ready */
+  .theme-loading body {
+    visibility: hidden;
+  }
 </style>
