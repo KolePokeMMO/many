@@ -1,17 +1,13 @@
-{% raw %}
+<!-- Set theme early to prevent flash -->
 <script>
-  // Set the theme *before* anything else
   const theme = localStorage.getItem('selectedTheme') || 'shiny';
   document.documentElement.setAttribute('data-theme', theme);
-  swapLogo();
 
-  // Inject theme stylesheet immediately
   const link = document.createElement('link');
   link.id = 'dynamic-theme-css';
   link.rel = 'stylesheet';
   link.href = `/many/assets/css/themes/${theme}.css`;
 
-  // Insert before any other <link> or <style> tags
   const firstStyle = [...document.head.children].find(el =>
     el.tagName === 'STYLE' || el.tagName === 'LINK'
   );
@@ -20,10 +16,23 @@
   } else {
     document.head.appendChild(link);
   }
+
+  document.documentElement.setAttribute('data-theme-loaded', 'true');
 </script>
 
+<!-- Preload logos -->
+<link rel="preload" as="image" href="/many/assets/img/sl-logo.jpg">
+<link rel="preload" as="image" href="/many/assets/img/logo-fire.png">
+<link rel="preload" as="image" href="/many/assets/img/logo-purple.png">
+
+<!-- Force preload using hidden image tags -->
+<img src="/many/assets/img/sl-logo.jpg" style="display:none;" width="1" height="1" alt="Preload shiny logo">
+<img src="/many/assets/img/logo-fire.png" style="display:none;" width="1" height="1" alt="Preload fire logo">
+<img src="/many/assets/img/logo-purple.png" style="display:none;" width="1" height="1" alt="Preload purple logo">
+
+<!-- Critical style fixes for load flicker -->
 <style>
-  /* Fallback background for initial paint */
+  /* Prevent light background flash */
   html, body {
     background-color: #151515 !important;
   }
@@ -32,9 +41,21 @@
     --md-default-bg-color: #151515 !important;
   }
 
-  /* Disable transition flickers temporarily */
+  /* Disable transitions during load */
   * {
     transition: none !important;
   }
+
+  /* Flicker-free themed logo switching */
+  [data-md-component="logo"] img {
+    content: url("/many/assets/img/sl-logo.jpg");
+  }
+
+  html[data-theme="fire"] [data-md-component="logo"] img {
+    content: url("/many/assets/img/logo-fire.png");
+  }
+
+  html[data-theme="purple"] [data-md-component="logo"] img {
+    content: url("/many/assets/img/logo-purple.png");
+  }
 </style>
-{% endraw %}

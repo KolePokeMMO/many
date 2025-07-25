@@ -95,7 +95,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="MANY" class="md-header__button md-logo" aria-label="MANY" data-md-component="logo">
       
-  <img src="../../assets/img/sl-logo.jpg" alt="logo">
+  <img src="../../assets/img/transparent.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -289,7 +289,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="MANY" class="md-nav__button md-logo" aria-label="MANY" data-md-component="logo">
       
-  <img src="../../assets/img/sl-logo.jpg" alt="logo">
+  <img src="../../assets/img/transparent.png" alt="logo">
 
     </a>
     MANY
@@ -775,47 +775,49 @@
 </div>
 
 <script>
-(function () {
-  const logoSelector = '.md-logo img';
+  function swapLogo() {
+    const logo = document.querySelector('.md-logo img');
+    const theme = document.documentElement.getAttribute('data-theme');
+    console.log('[Logo Swap] Theme:', theme, '| Logo found:', !!logo);
 
-  const updateLogo = () => {
-    const logo = document.querySelector(logoSelector);
-    const theme = document.documentElement.getAttribute('data-theme') || 'default';
-    if (!logo) return;
+    if (!logo) {
+      // Retry if logo not loaded yet
+      setTimeout(swapLogo, 100);
+      return;
+    }
 
-    let newSrc = '/many/assets/img/sl-logo.jpg'; // Default fallback
+    let newSrc = '/many/assets/img/sl-logo.jpg'; // Default fallback logo
 
     switch (theme) {
-      case 'shiny':
-        newSrc = '/many/assets/img/sl-logo.jpg';
-        break;
       case 'fire':
         newSrc = '/many/assets/img/logo-fire.png';
         break;
+      case 'shiny':
+        newSrc = '/many/assets/img/sl-logo.jpg';
+        break;
       case 'purple':
-        newSrc = '/many/assets/img/logo-water.png';
+        newSrc = '/many/assets/img/logo-purple.png';
         break;
     }
-  };
 
-  // Watch for DOM changes in case logo is injected later
-  const observer = new MutationObserver(() => {
-    if (document.querySelector(logoSelector)) {
-      updateLogo();
-      observer.disconnect(); // Stop once we successfully updated
+    // Prevent flicker by only changing if needed
+    if (!logo.src.endsWith(newSrc)) {
+      console.log('[Logo Swap] Setting logo.src to:', newSrc);
+      logo.src = newSrc;
     }
+  }
+
+  // Run once DOM is ready
+  document.addEventListener("DOMContentLoaded", swapLogo);
+
+  // Listen for changes to `data-theme`
+  const observer = new MutationObserver(swapLogo);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
   });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-
-  // Also react to theme changes (if you're dynamically changing data-theme)
-  const themeObserver = new MutationObserver(updateLogo);
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-  // Fallback: try to update after short delay
-  setTimeout(updateLogo, 200);
-})();
 </script>
+
 
 
 
