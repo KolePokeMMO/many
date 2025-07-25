@@ -1,5 +1,7 @@
 // shunt-planner.js
-
+document.addEventListener("DOMContentLoaded", async () => {
+  await initPlanner();
+});
 // Load planner data
 async function loadPlannerData() {
   const res = await fetch("/many/assets/data/shunt-planner.json");
@@ -144,5 +146,3 @@ async function initPlanner() {
     localStorage.removeItem("shuntNotes");
   });
 }
-
-document.addEventListener("DOMContentLoaded", initPlanner);

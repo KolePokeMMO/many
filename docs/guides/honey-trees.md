@@ -1,5 +1,5 @@
 ---
-title: Kelly's Honey Tree Guide
+title: Honey Tree Guide
 description: Honey Tree Walkthrough for shiny hunting.
 status: new
 
