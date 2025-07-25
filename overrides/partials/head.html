@@ -1,13 +1,9 @@
 {% raw %}
-<style>
-  :root {
-    --main-accent-color: #00ff9d; /* or whatever your default theme is */
-  }
-</style>
 <script>
   // Set the theme *before* anything else
-  const theme = localStorage.getItem('selectedTheme') || 'gold';
+  const theme = localStorage.getItem('selectedTheme') || 'shiny';
   document.documentElement.setAttribute('data-theme', theme);
+  swapLogo();
 
   // Inject theme stylesheet immediately
   const link = document.createElement('link');

@@ -70,7 +70,7 @@
 
 /* Logo container */
 .md-header__button.md-logo {
-	width: 80px;
+	width: auto;
 	height: auto;
 }
 
@@ -82,13 +82,13 @@
 
 /* Logo image */
 .md-header__button.md-logo img {
-	height: 100px !important;
+	width: 300px !important;
+	height: auto !important;
 	margin: 0 !important;
-	max-height: none !important;
-	max-width: none !important;
+	min-height: 100px;
 	object-fit: contain;
 	padding: 0 !important;
-	width: auto;
+	
 }
 
 @media screen and (min-width: 768px) {
@@ -161,16 +161,4 @@
   height: 30px;
   fill: var(--icon-color, #ccc); /* default */
   transition: fill 0.3s ease;
-}
-
-button[data-theme="dark"] .theme-icon {
-  fill: #777; /* or var(--theme-dark-icon) */
-}
-
-button[data-theme="pastel"] .theme-icon {
-  fill: #ffd5ec;
-}
-
-button[data-theme="red-haze"] .theme-icon {
-  fill: #ff5e5e;
 }

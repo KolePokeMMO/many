@@ -815,6 +815,51 @@
 </div>
 
 <script>
+(function () {
+  const logoSelector = '.md-logo img';
+
+  const updateLogo = () => {
+    const logo = document.querySelector(logoSelector);
+    const theme = document.documentElement.getAttribute('data-theme') || 'default';
+    if (!logo) return;
+
+    let newSrc = '/many/assets/img/sl-logo.jpg'; // Default fallback
+
+    switch (theme) {
+      case 'shiny':
+        newSrc = '/many/assets/img/sl-logo.jpg';
+        break;
+      case 'fire':
+        newSrc = '/many/assets/img/logo-fire.png';
+        break;
+      case 'purple':
+        newSrc = '/many/assets/img/logo-water.png';
+        break;
+    }
+  };
+
+  // Watch for DOM changes in case logo is injected later
+  const observer = new MutationObserver(() => {
+    if (document.querySelector(logoSelector)) {
+      updateLogo();
+      observer.disconnect(); // Stop once we successfully updated
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Also react to theme changes (if you're dynamically changing data-theme)
+  const themeObserver = new MutationObserver(updateLogo);
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  // Fallback: try to update after short delay
+  setTimeout(updateLogo, 200);
+})();
+</script>
+
+
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const sparkleContainer = document.querySelector(".shiny-stars");
   const sparkleCount = 25;

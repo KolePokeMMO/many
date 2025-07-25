@@ -61,5 +61,5 @@ title: Shunt Planner
 
 </div>
 
-<script src="/assets/js/utilities/sp/shunt-planner.js"></script>
-<link rel="stylesheet" href="/assets/css/utilities/shunt-planner.css">
+<script src="/many/assets/js/utilities/sp/shunt-planner.js"></script>
+<link rel="stylesheet" href="/many/assets/css/utilities/shunt-planner.css">
