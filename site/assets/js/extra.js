@@ -4,11 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
-
-
-
-
 const themeLinkId = 'dynamic-theme-css';
 
 function setTheme(theme) {
@@ -29,7 +24,7 @@ function setTheme(theme) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+  const savedTheme = localStorage.getItem('selectedTheme') || 'shiny';
   setTheme(savedTheme);
 
   // Highlight the selected icon
