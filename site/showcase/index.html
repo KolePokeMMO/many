@@ -818,13 +818,7 @@
   function swapLogo() {
     const logo = document.querySelector('.md-logo img');
     const theme = document.documentElement.getAttribute('data-theme');
-    console.log('[Logo Swap] Theme:', theme, '| Logo found:', !!logo);
 
-    if (!logo) {
-      // Retry if logo not loaded yet
-      setTimeout(swapLogo, 100);
-      return;
-    }
 
     let newSrc = '/many/assets/img/sl-logo.jpg'; // Default fallback logo
 

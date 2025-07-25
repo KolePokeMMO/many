@@ -48,8 +48,17 @@
   }
 
 
-html[data-theme="shiny"] .md-tabs, html[data-theme="fire"] .md-tabs, html[data-theme="water"] .md-tabs {
-    background-color: var(--main-accent-color) !important;
+  /* Set primary tab colour early to prevent flash */
+  html[data-theme="shiny"] {
+    --md-primary-fg-color: #e9c152;
+  }
+
+  html[data-theme="fire"] {
+    --md-primary-fg-color: #1af7ff;
+  }
+
+  html[data-theme="water"] {
+    --md-primary-fg-color: #9b59b6;
   }
   
 
