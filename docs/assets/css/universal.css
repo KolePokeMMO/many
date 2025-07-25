@@ -15,6 +15,25 @@
 
 
 /* ───── Root Theme Variables ───── */
+
+:root[data-theme="gold"] {
+  --main-accent-color: #ce9719;
+  --main-accent-color-light: #e9c152;
+  --main-accent-border-color: #e9c152;
+}
+
+:root[data-theme="red"] {
+  --main-accent-border-color: #e94b2f;
+  --main-accent-color: #e05f48;
+  --main-accent-color-light: #e94b2f;
+}
+
+:root[data-theme="purple"] {
+  --main-accent-border-color: #e9c152;
+  --main-accent-color: #ce9719;
+  --main-accent-color-light: #e9c152;
+}
+
 :root {
   --md-default-bg-color: #151515;
 
@@ -28,9 +47,6 @@
   --accent-teal: #009688;
   --accent-yellow: #ffeb3b;
 
-  --main-accent-border-color: #e9c152;
-  --main-accent-color: #ce9719;
-  --main-accent-color-light: #e9c152;
   --main-bg-color: #151515;
   --main-fg-border-color: #272727;
   --main-fg-color: #1a1a1a;
