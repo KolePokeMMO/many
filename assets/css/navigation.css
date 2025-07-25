@@ -5,7 +5,7 @@
 
 /* ─── Tabs Container ───────────────────────────── */
 .md-tabs {
-	background: linear-gradient(90deg, #ce9719, #e9c152, #ce9719);
+	background: var(--main-accent-color);
 	border-bottom: 2px solid var(--main-accent-color-light);
 	height: 2.2rem;
 	overflow-x: auto; /* keep horizontal scroll */
