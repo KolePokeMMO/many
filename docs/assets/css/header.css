@@ -96,3 +96,81 @@
 		max-height: 64px;
 	}
 }
+
+
+/* ────────────────────────────────────────────────
+   Extra Header Div
+──────────────────────────────────────────────── */
+.extra-header-div {
+  position: absolute;
+  top: 0.3rem;
+  right: 3.5rem; /* just to the left of the search icon */
+  z-index: 10;
+}
+
+.extra-header-div .my-button {
+  background: #222;
+  border: 1px solid #444;
+  color: #eee;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .extra-header-div {
+    display: none; /* or reposition if needed */
+  }
+}
+
+
+/* ────────────────────────────────────────────────
+   Header Theme Buttons
+──────────────────────────────────────────────── */
+.md-header__button.md-search.theme-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 1rem;
+}
+
+.theme-buttons button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.theme-buttons button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+}
+
+.theme-buttons button.active img {
+  border-color: var(--main-accent-color, #ce9719);
+  transform: scale(1.05);
+}
+
+.theme-icon {
+  width: 30px;
+  height: 30px;
+  fill: var(--icon-color, #ccc); /* default */
+  transition: fill 0.3s ease;
+}
+
+button[data-theme="dark"] .theme-icon {
+  fill: #777; /* or var(--theme-dark-icon) */
+}
+
+button[data-theme="pastel"] .theme-icon {
+  fill: #ffd5ec;
+}
+
+button[data-theme="red-haze"] .theme-icon {
+  fill: #ff5e5e;
+}
