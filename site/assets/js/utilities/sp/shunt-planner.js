@@ -75,22 +75,8 @@ function setupFilters(data) {
   update(); // Initial render
 }
 
-// Init on DOM ready
-document.addEventListener("DOMContentLoaded", async () => {
-  const data = await loadPlannerData();
-  populateTargetOptions(data);
-  setupFilters(data);
-});
-
-
-
-
-
-
-
-// Add this at the bottom of your existing DOMContentLoaded event listener:
-
-document.addEventListener("DOMContentLoaded", async () => {
+// DOM Ready logic
+async function initPlanner() {
   const data = await loadPlannerData();
   populateTargetOptions(data);
   setupFilters(data);
@@ -100,57 +86,63 @@ document.addEventListener("DOMContentLoaded", async () => {
   const saveBtn = document.getElementById("save-notes-btn");
   const clearBtn = document.getElementById("clear-notes-btn");
 
-  // Load pinned target from cookie/localStorage
+  const targetSelect = document.getElementById("target-select");
+  const normalImg = document.getElementById("sprite-normal");
+  const shinyImg = document.getElementById("sprite-shiny");
+
+  // Load pinned target
   const pinnedTarget = localStorage.getItem("shuntPinnedTarget");
   if (pinnedTarget) {
     pinnedTargetEl.textContent = pinnedTarget;
-    // Auto-select in dropdown if present
-    const targetSelect = document.getElementById("target-select");
     targetSelect.value = pinnedTarget;
+
+    const formatted = pinnedTarget.toLowerCase().replace(/ /g, '-');
+    normalImg.src = `https://projectpokemon.org/images/normal-sprite/${formatted}.gif`;
+    shinyImg.src = `https://projectpokemon.org/images/shiny-sprite/${formatted}.gif`;
+    normalImg.alt = `${pinnedTarget} Normal Sprite`;
+    shinyImg.alt = `${pinnedTarget} Shiny Sprite`;
   }
 
-  // Load notes from localStorage
+  // Load saved notes
   const savedNotes = localStorage.getItem("shuntNotes");
   if (savedNotes) {
     notesEl.value = savedNotes;
   }
 
-  // When target changes, update pinned target
-document.getElementById("target-select").addEventListener("change", (e) => {
-  const val = e.target.value;
-  const pinnedTargetEl = document.getElementById("pinned-target");
-  const normalImg = document.getElementById("sprite-normal");
-  const shinyImg = document.getElementById("sprite-shiny");
+  // Target change listener
+  targetSelect.addEventListener("change", (e) => {
+    const val = e.target.value;
 
-  if (val) {
-    pinnedTargetEl.textContent = val;
-    localStorage.setItem("shuntPinnedTarget", val);
+    if (val) {
+      pinnedTargetEl.textContent = val;
+      localStorage.setItem("shuntPinnedTarget", val);
 
-    const formatted = val.toLowerCase().replace(/ /g, '-');
-    normalImg.src = `https://projectpokemon.org/images/normal-sprite/${formatted}.gif`;
-    shinyImg.src = `https://projectpokemon.org/images/shiny-sprite/${formatted}.gif`;
-    normalImg.alt = `${val} Normal Sprite`;
-    shinyImg.alt = `${val} Shiny Sprite`;
-  } else {
-    pinnedTargetEl.textContent = "None selected";
-    localStorage.removeItem("shuntPinnedTarget");
-    normalImg.src = "";
-    shinyImg.src = "";
-    normalImg.alt = "";
-    shinyImg.alt = "";
-  }
-});
-
-
-  // Save notes button
-  saveBtn.addEventListener("click", () => {
-    localStorage.setItem("shuntNotes", notesEl.value);
-    alert("Notes saved! 💖");
+      const formatted = val.toLowerCase().replace(/ /g, '-');
+      normalImg.src = `https://projectpokemon.org/images/normal-sprite/${formatted}.gif`;
+      shinyImg.src = `https://projectpokemon.org/images/shiny-sprite/${formatted}.gif`;
+      normalImg.alt = `${val} Normal Sprite`;
+      shinyImg.alt = `${val} Shiny Sprite`;
+    } else {
+      pinnedTargetEl.textContent = "None selected";
+      localStorage.removeItem("shuntPinnedTarget");
+      normalImg.src = "";
+      shinyImg.src = "";
+      normalImg.alt = "";
+      shinyImg.alt = "";
+    }
   });
 
-  // Clear notes button
+  // Save notes
+  saveBtn.addEventListener("click", () => {
+    localStorage.setItem("shuntNotes", notesEl.value);
+    alert("Notes saved.");
+  });
+
+  // Clear notes
   clearBtn.addEventListener("click", () => {
     notesEl.value = "";
     localStorage.removeItem("shuntNotes");
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", initPlanner);
