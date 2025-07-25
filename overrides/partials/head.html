@@ -29,7 +29,36 @@
     background-color: #151515 !important;
   }
 
+  /* Prevent flash by force-styling the nav bar */
+  body .md-tabs,
+  body .md-tabs__list {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-bottom: 2px solid #3c3c3c !important;
+  }
 
+  body .md-tabs__link {
+    color: #cccccc !important;
+  }
+
+  body .md-tabs__item--active .md-tabs__link {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+  }
+
+  /* Prevent layout jumps */
+  .md-header,
+  .md-tabs {
+    min-height: 2.2rem;
+  }
+
+  * {
+    transition: none !important;
+  }
+
+  html:not([data-theme-loaded]) body {
+    visibility: hidden;
+  }
 
   /* Flicker-free themed logo switching */
   [data-md-component="logo"] img {
