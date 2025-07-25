@@ -58,4 +58,12 @@
   html[data-theme="purple"] [data-md-component="logo"] img {
     content: url("/many/assets/img/logo-purple.png");
   }
+
+  <!-- Force early decoding and prioritisation of theme logos -->
+<div style="visibility: hidden; position: absolute; width: 0; height: 0;">
+  <img decoding="async" fetchpriority="high" src="/many/assets/img/sl-logo.jpg" alt="Preload shiny logo">
+  <img decoding="async" fetchpriority="high" src="/many/assets/img/logo-fire.png" alt="Preload fire logo">
+  <img decoding="async" fetchpriority="high" src="/many/assets/img/logo-purple.png" alt="Preload purple logo">
+</div>
+
 </style>

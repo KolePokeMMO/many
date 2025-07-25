@@ -3,6 +3,9 @@ site_url: https://shinylegion.github.io/many
 
 theme:
   name: material
+  palette:
+      primary: custom
+      accent: custom
   font:
     text: Inter
     code: Fira Mono
