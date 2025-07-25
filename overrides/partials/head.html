@@ -1,61 +1,30 @@
-<!-- Critical style fixes for load flicker -->
-<style>
-  /* Prevent light background flash */
-  html, body {
-    background-color: #151515 !important;
-  }
-
-  /* Prevent flash by force-styling the nav bar */
-  body .md-tabs,
-  body .md-tabs__list {
-    background-color: #2a2a2a !important;
-    color: #ffffff !important;
-    border-bottom: 2px solid #3c3c3c !important;
-  }
-
-  body .md-tabs__link {
-    color: #cccccc !important;
-  }
-
-  body .md-tabs__item--active .md-tabs__link {
-    color: #ffffff !important;
-    font-weight: 800 !important;
-  }
-
-  /* Prevent layout jumps */
-  .md-header,
-  .md-tabs {
-    min-height: 2.2rem;
-  }
-
-  * {
-    transition: none !important;
-  }
-
-  html:not([data-theme-loaded]) body {
-    visibility: hidden;
-  }
-
-  /* Flicker-free themed logo switching */
-  [data-md-component="logo"] img {
-    content: url("/many/assets/img/sl-logo.jpg");
-  }
-
-  html[data-theme="fire"] [data-md-component="logo"] img {
-    content: url("/many/assets/img/logo-fire.png");
-  }
-
-  html[data-theme="purple"] [data-md-component="logo"] img {
-    content: url("/many/assets/img/logo-purple.png");
-  }
-
-</style>
-
 <!-- Set theme early to prevent flash -->
 <script>
   const theme = localStorage.getItem('selectedTheme') || 'shiny';
   document.documentElement.setAttribute('data-theme', theme);
 
+  const styles = {
+    shiny: `
+      :root {
+        --main-accent-color: #ce9719;
+        --main-accent-color-light: #e9c152;
+        --main-accent-border-color: #e9c152;
+      }
+    `,
+    fire: `
+      :root {
+        --main-accent-border-color: #f05b2a;
+        --main-accent-color: #f0521b;
+        --main-accent-color-light: #f05b2a;
+      }
+    `,
+    water: `
+      :root {
+        --main-accent-border-color: #27a1e7;
+        --main-accent-color: #198cce;
+        --main-accent-color-light: #27a1e7;
+    `
+  };
   const link = document.createElement('link');
   link.id = 'dynamic-theme-css';
   link.rel = 'stylesheet';
@@ -75,4 +44,29 @@
 
 
 
+<!-- Critical style fixes for load flicker -->
+<style>
+  /* Prevent light background flash */
+  html, body {
+    background-color: #151515 !important;
+  }
 
+  /* Disable transitions during load */
+  * {
+    transition: none !important;
+  }
+
+  /* Flicker-free themed logo switching */
+  [data-md-component="logo"] img {
+    content: url("/many/assets/img/sl-logo.jpg");
+  }
+
+  html[data-theme="fire"] [data-md-component="logo"] img {
+    content: url("/many/assets/img/logo-fire.png");
+  }
+
+  html[data-theme="purple"] [data-md-component="logo"] img {
+    content: url("/many/assets/img/logo-purple.png");
+  }
+
+</style>
