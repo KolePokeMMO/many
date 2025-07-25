@@ -1,4 +1,3 @@
-// rps.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getDatabase,
@@ -54,13 +53,12 @@ function createRoomForm() {
 }
 
 function determineWinnerPlayerId(p1, p2, playerKeys) {
-  if (p1 === p2) return null; // Draw when choices equal
+  if (p1 === p2) return null;
   if (
     (p1 === "rock" && p2 === "scissors") ||
     (p1 === "paper" && p2 === "rock") ||
     (p1 === "scissors" && p2 === "paper")
-  )
-    return playerKeys[0];
+  ) return playerKeys[0];
   return playerKeys[1];
 }
 
