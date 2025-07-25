@@ -28,9 +28,6 @@ extra:
   year: !ENV [YEAR, "2025"]
  
 extra_css:
-  - assets/css/themes/red.css
-  - assets/css/themes/gold.css
-
   - assets/css/universal.css
   - assets/css/guides/honey-tree.css
   - assets/css/showcase/showcase.css
