@@ -13,7 +13,7 @@
 /* Typography – Header title */
 .md-header__title {
 	align-items: center;
-	color: gold; /* or match your actual #hex */
+
 	display: flex;
 	font-family: 'Quicksand', cursive;
 	font-size: clamp(1.2rem, 14vw, 1.2rem);
