@@ -1,30 +1,8 @@
 <!-- Set theme early to prevent flash -->
 <script>
-  const theme = localStorage.getItem('theme') || 'shiny';
+  const theme = localStorage.getItem('selectedTheme') || 'shiny';
   document.documentElement.setAttribute('data-theme', theme);
 
-  const styles = {
-    shiny: `
-      :root {
-        --main-accent-color: #ce9719;
-        --main-accent-color-light: #e9c152;
-        --main-accent-border-color: #e9c152;
-      }
-    `,
-    fire: `
-      :root {
-        --main-accent-border-color: #f05b2a;
-        --main-accent-color: #f0521b;
-        --main-accent-color-light: #f05b2a;
-      }
-    `,
-    water: `
-      :root {
-        --main-accent-border-color: #27a1e7;
-        --main-accent-color: #198cce;
-        --main-accent-color-light: #27a1e7;
-    `
-  };
   const link = document.createElement('link');
   link.id = 'dynamic-theme-css';
   link.rel = 'stylesheet';
@@ -51,10 +29,7 @@
     background-color: #151515 !important;
   }
 
-  /* Disable transitions during load */
-  * {
-    transition: none !important;
-  }
+
 
   /* Flicker-free themed logo switching */
   [data-md-component="logo"] img {
