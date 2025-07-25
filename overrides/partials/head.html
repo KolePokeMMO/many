@@ -1,51 +1,44 @@
 {% raw %}
-<!-- Prevent theme flash -->
 <style>
+  :root {
+    --main-accent-color: #00ff9d; /* or whatever your default theme is */
+  }
+</style>
+<script>
+  // Set the theme *before* anything else
+  const theme = localStorage.getItem('selectedTheme') || 'gold';
+  document.documentElement.setAttribute('data-theme', theme);
+
+  // Inject theme stylesheet immediately
+  const link = document.createElement('link');
+  link.id = 'dynamic-theme-css';
+  link.rel = 'stylesheet';
+  link.href = `/many/assets/css/themes/${theme}.css`;
+
+  // Insert before any other <link> or <style> tags
+  const firstStyle = [...document.head.children].find(el =>
+    el.tagName === 'STYLE' || el.tagName === 'LINK'
+  );
+  if (firstStyle) {
+    document.head.insertBefore(link, firstStyle);
+  } else {
+    document.head.appendChild(link);
+  }
+</script>
+
+<style>
+  /* Fallback background for initial paint */
   html, body {
     background-color: #151515 !important;
   }
 
-    :root {
+  :root {
     --md-default-bg-color: #151515 !important;
-    }
-
-  html[data-theme="gold"],
-  html[data-theme="red"],
-  html[data-theme="purple"] {
-    background-color: #151515 !important;
   }
 
-  /* Also target .md-main and .md-header for flash prevention */
-  html[data-theme="gold"] .md-main,
-  html[data-theme="gold"] .md-header,
-  html[data-theme="red"] .md-main,
-  html[data-theme="red"] .md-header,
-  html[data-theme="purple"] .md-main,
-  html[data-theme="purple"] .md-header {
-    background-color: #151515 !important;
+  /* Disable transition flickers temporarily */
+  * {
+    transition: none !important;
   }
 </style>
-
-<!-- Set theme instantly -->
-<script>
-  // Immediately set the theme attribute to avoid flash
-  document.documentElement.setAttribute(
-    'data-theme',
-    localStorage.getItem('selectedTheme') || 'gold'
-  );
-</script>
-
-<!-- Load dynamic theme CSS -->
-<script>
-  try {
-    const theme = localStorage.getItem('selectedTheme') || 'gold';
-    const link = document.createElement('link');
-    link.id = 'dynamic-theme-css';
-    link.rel = 'stylesheet';
-    link.href = `/many/assets/css/themes/${theme}.css`;
-    document.head.appendChild(link);
-  } catch (e) {
-    console.error("Theme load error:", e);
-  }
-</script>
 {% endraw %}
