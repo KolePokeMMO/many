@@ -1,7 +1,78 @@
-<!-- Set theme early to prevent flash -->
+<!-- Early theme setup to prevent flash -->
 <script>
-  const theme = localStorage.getItem('selectedTheme') || 'shiny';
-  document.documentElement.setAttribute('data-theme', theme);
+  const storedTheme = localStorage.getItem('selectedTheme') || 'shiny';
+  document.documentElement.setAttribute('data-theme', storedTheme);
+</script>
+
+<!-- Preload theme stylesheet -->
+<link
+  rel="preload"
+  as="style"
+  href="/many/assets/css/themes/shiny.css"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript>
+  <link rel="stylesheet" href="/many/assets/css/themes/shiny.css">
+</noscript>
+
+<!-- Fallback root variables -->
+<style>
+  :root {
+    --main-accent-color: #2a2a2a;
+    --main-accent-color-light: #3c3c3c;
+    --main-bg-color: #151515;
+    --md-default-bg-color: #151515;
+  }
+
+  /* Hide unthemed content until theme is loaded */
+  html:not([data-theme-loaded]) body {
+    visibility: hidden;
+  }
+
+  /* Prevent white flash */
+  html, body {
+    background-color: #151515 !important;
+  }
+
+  /* Disable transitions during initial load */
+  * {
+    transition: none !important;
+  }
+
+  /* Minimal fallback styles for navbar/tabs before theme CSS arrives */
+  .md-tabs,
+  .md-tabs__list {
+    background-color: #2a2a2a;
+    color: #fff;
+  }
+
+  .md-tabs__item .md-tabs__link {
+    color: #ccc;
+    font-size: 0.75rem;
+  }
+
+  .md-tabs__item--active .md-tabs__link {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  /* Fallback logo for themed logos */
+  [data-md-component="logo"] img {
+    content: url("/many/assets/img/sl-logo.jpg");
+  }
+
+  html[data-theme="fire"] [data-md-component="logo"] img {
+    content: url("/many/assets/img/logo-fire.png");
+  }
+
+  html[data-theme="purple"] [data-md-component="logo"] img {
+    content: url("/many/assets/img/logo-purple.png");
+  }
+</style>
+
+<!-- Dynamically inject the correct theme stylesheet -->
+<script>
+  const theme = document.documentElement.getAttribute('data-theme');
 
   const link = document.createElement('link');
   link.id = 'dynamic-theme-css';
@@ -17,39 +88,6 @@
     document.head.appendChild(link);
   }
 
+  // Mark theme as loaded (so body is shown)
   document.documentElement.setAttribute('data-theme-loaded', 'true');
 </script>
-
-
-
-<!-- Critical style fixes for load flicker -->
-<style>
-  /* Prevent light background flash */
-  html, body {
-    background-color: #151515 !important;
-  }
-
-  :root {
-    --md-default-bg-color: #151515 !important;
-  }
-
-
-  /* Disable transitions during load */
-  * {
-    transition: none !important;
-  }
-
-  /* Flicker-free themed logo switching */
-  [data-md-component="logo"] img {
-    content: url("/many/assets/img/sl-logo.jpg");
-  }
-
-  html[data-theme="fire"] [data-md-component="logo"] img {
-    content: url("/many/assets/img/logo-fire.png");
-  }
-
-  html[data-theme="purple"] [data-md-component="logo"] img {
-    content: url("/many/assets/img/logo-purple.png");
-  }
-
-</style>
