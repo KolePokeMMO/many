@@ -26,17 +26,24 @@
   --accent-teal: #009688;
   --accent-yellow: #ffeb3b;
 
-  --main-accent-border-color: #e9c152;
-  --main-accent-color: #ce9719;
-  --main-accent-color-light: #e9c152;
-  --main-bg-color: #151515;
-  --main-fg-border-color: #272727;
-  --main-fg-color: #1a1a1a;
+
 
   --md-code-font: 'Fira Mono', monospace;
   --md-text-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Prevent white flash between pages */
+html[data-theme="gold"] {
+  background-color: #151515;
+}
+
+html[data-theme="red"] {
+  background-color: #151515;
+}
+
+html[data-theme="purple"] {
+  background-color: #151515;
+}
 
 /* ────────────────────────────────────────────────
    Base Styling Overrides

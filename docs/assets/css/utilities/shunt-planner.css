@@ -217,3 +217,55 @@ body.shunt-mode {
 image-rendering: crisp-edges;
 image-rendering: pixelated;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.gold-reflect-border {
+  border: 1cqipx solid transparent;
+  border-radius: 1px;
+  background-image: 
+    linear-gradient(#1e1e1e, #1e1e1e), /* Background fill */
+    linear-gradient(45deg, #FFD700, #FFA500, #FFEF8B, #FFD700); /* Gold gradient border */
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.gold-reflect-border:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 255, 200, 0.2);
+}
+
+.gold-reflect-border {
+  position: relative;
+  overflow: hidden;
+  /* include all styles from above here */
+}
+
+.gold-reflect-border::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 100%);
+  transform: rotate(25deg);
+  animation: shine 2.5s infinite ease-in-out;
+}
+
+@keyframes shine {
+  0%   { transform: translateX(-100%) rotate(25deg); }
+  60%  { transform: translateX(100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
