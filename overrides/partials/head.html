@@ -30,6 +30,12 @@
 <img src="/many/assets/img/logo-fire.png" style="display:none;" width="1" height="1" alt="Preload fire logo">
 <img src="/many/assets/img/logo-purple.png" style="display:none;" width="1" height="1" alt="Preload purple logo">
 
+<div style="visibility: hidden; position: absolute; width: 0; height: 0;">
+  <img decoding="async" fetchpriority="high" src="/many/assets/img/sl-logo.jpg" alt="Preload shiny logo">
+  <img decoding="async" fetchpriority="high" src="/many/assets/img/logo-fire.png" alt="Preload fire logo">
+  <img decoding="async" fetchpriority="high" src="/many/assets/img/logo-purple.png" alt="Preload purple logo">
+</div>
+
 <!-- Critical style fixes for load flicker -->
 <style>
   /* Prevent light background flash */
@@ -40,6 +46,14 @@
   :root {
     --md-default-bg-color: #151515 !important;
   }
+
+
+html[data-theme="shiny"] .md-tabs, html[data-theme="fire"] .md-tabs, html[data-theme="water"] .md-tabs {
+    background-color: var(--main-accent-color) !important;
+  }
+  
+
+
 
   /* Disable transitions during load */
   * {
@@ -58,12 +72,5 @@
   html[data-theme="purple"] [data-md-component="logo"] img {
     content: url("/many/assets/img/logo-purple.png");
   }
-
-  <!-- Force early decoding and prioritisation of theme logos -->
-<div style="visibility: hidden; position: absolute; width: 0; height: 0;">
-  <img decoding="async" fetchpriority="high" src="/many/assets/img/sl-logo.jpg" alt="Preload shiny logo">
-  <img decoding="async" fetchpriority="high" src="/many/assets/img/logo-fire.png" alt="Preload fire logo">
-  <img decoding="async" fetchpriority="high" src="/many/assets/img/logo-purple.png" alt="Preload purple logo">
-</div>
 
 </style>
