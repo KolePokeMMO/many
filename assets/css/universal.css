@@ -16,22 +16,23 @@
 
 /* ───── Root Theme Variables ───── */
 
-:root[data-theme="gold"] {
+:root[data-theme="shiny"] {
   --main-accent-color: #ce9719;
   --main-accent-color-light: #e9c152;
   --main-accent-border-color: #e9c152;
 }
 
-:root[data-theme="red"] {
-  --main-accent-border-color: #e94b2f;
-  --main-accent-color: #e05f48;
-  --main-accent-color-light: #e94b2f;
+:root[data-theme="fire"] {
+  --main-accent-border-color: #f05b2a;
+  --main-accent-color: #f0521b;
+  --main-accent-color-light: #f05b2a;
+  
 }
 
-:root[data-theme="purple"] {
-  --main-accent-border-color: #e9c152;
-  --main-accent-color: #ce9719;
-  --main-accent-color-light: #e9c152;
+:root[data-theme="water"] {
+  --main-accent-border-color: #27a1e7;
+  --main-accent-color: #198cce;
+  --main-accent-color-light: #27a1e7;
 }
 
 :root {
@@ -55,22 +56,14 @@
   --md-text-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+[data-theme="red"] .md-header__button .md-logo img {
+  content: url("/many/assets/img/logo-fire.png") !important;
+}
+
 html, body {
   background-color: #151515 !important;
 }
 
-/* Prevent white flash between pages */
-html[data-theme="gold"] {
-  background-color: #151515;
-}
-
-html[data-theme="red"] {
-  background-color: #151515;
-}
-
-html[data-theme="purple"] {
-  background-color: #151515;
-}
 
 /* ────────────────────────────────────────────────
    Base Styling Overrides
