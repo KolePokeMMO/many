@@ -1,0 +1,9 @@
+ /* ───── Root Theme Variables ───── */
+:root { 
+  --main-accent-border-color: #e94b2f;
+  --main-accent-color: #e05f48;
+  --main-accent-color-light: #e94b2f;
+  --main-bg-color: #151515;
+  --main-fg-border-color: #272727;
+  --main-fg-color: #1a1a1a;
+}
