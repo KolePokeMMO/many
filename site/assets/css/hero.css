@@ -68,11 +68,16 @@
   width: 25vw; /* responsive width instead of fixed px */
   max-width: 420px; /* prevent it from getting too large */
   height: auto;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   transition: width 0.3s ease, top 0.3s ease, right 0.3s ease;
   background: transparent !important;
 }
+
+.hero__overlay-img svg {
+  overflow: visible;
+};
+
 
 /* Shrink and reposition on smaller screens */
 @media (max-width: 1024px) {
@@ -88,16 +93,17 @@
     width: 35vw;
     top: -20px;
     right: -10px;
-	opacity: 0.3;
+	  opacity: 0.3;
   }
 }
 
 @media (max-width: 480px) {
   .hero__overlay-img {
-    width: 45vw;
+    width: 65vw;
     top: 0;
     right: 0;
-	opacity: 0.3;
+	  opacity: 0.3;
+    height: max-content;
   }
 }
 

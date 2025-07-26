@@ -20,11 +20,7 @@ theme:
     - navigation.top
     - navigation.breadcrumbs
 
-    - search.highlight
-    - search.share
-
-plugins:
-  - search
+plugins: []
 
 extra:
   year: !ENV [YEAR, "2025"]
@@ -36,7 +32,6 @@ extra_css:
   - assets/css/comp/poke-tooltips.css
   - assets/css/showcase/shinywars.css
   - assets/css/utilities/shunt-planner.css
-
 
 extra_javascript:
   - assets/js/theme-loader.js

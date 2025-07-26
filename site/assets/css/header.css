@@ -120,8 +120,16 @@
 
 @media screen and (max-width: 768px) {
   .extra-header-div {
-    display: none; /* or reposition if needed */
+    right: 0;
   }
+}
+
+/* Hide the search bar only on small screens */
+@media screen and (max-width: 768px) {
+  .md-header__search, #__search {
+    display: none !important;
+  }
+  
 }
 
 
