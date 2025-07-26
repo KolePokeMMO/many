@@ -455,7 +455,12 @@ html:not(.theme-loading) body {
     white-space: nowrap;
   }
 
+  /* Fix for hero buttons on mobile, add space */
+  .md-typeset .md-button--primary {
+  margin-bottom: 10px;
 }
+}
+
 
 
 
