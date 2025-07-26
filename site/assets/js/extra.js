@@ -32,3 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Inject SVG logo inline for theme-aware colouring
+fetch('/many/assets/img/logo-lux.svg')
+  .then(response => response.text())
+  .then(svg => {
+    const container = document.getElementById('lux-logo');
+    container.innerHTML = svg;
+
+    // Optional: add a class to the SVG for styling
+    const svgEl = container.querySelector('svg');
+    if (svgEl) {
+      svgEl.classList.add('injected-logo');
+      svgEl.setAttribute('role', 'img');
+      svgEl.setAttribute('aria-label', 'Team Mascot');
+    }
+  })
+  .catch(err => {
+    console.error('Failed to load SVG:', err);
+  });
