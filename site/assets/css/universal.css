@@ -17,9 +17,9 @@
 /* ───── Root Theme Variables ───── */
 
 :root[data-theme="shiny"] {
+  --main-accent-border-color: #e9c152;
   --main-accent-color: #ce9719;
   --main-accent-color-light: #e9c152;
-  --main-accent-border-color: #e9c152;
 }
 
 :root[data-theme="fire"] {
@@ -33,6 +33,18 @@
   --main-accent-border-color: #27a1e7;
   --main-accent-color: #198cce;
   --main-accent-color-light: #27a1e7;
+}
+
+:root[data-theme="grass"] {
+  --main-accent-border-color: #27e737;
+  --main-accent-color: #19ce28;
+  --main-accent-color-light: #27e737;
+}
+
+:root[data-theme="dark"] {
+  --main-accent-border-color: #8a7e9b;
+  --main-accent-color: #796e89;
+  --main-accent-color-light: #8a7e9b;
 }
 
 :root  > * {
@@ -89,10 +101,14 @@ body.page-honey-trees .md-main {
   background-size: auto;
 }
 
-
 /* Prevent theme flash on load */
 html.theme-loading body {
   display: none;
+}
+.md-logo img {
+  font-size: 0;       /* Hide alt text fallback */
+  color: transparent; /* Just in case */
+  background-color: transparent;
 }
 
 /* Optional: fade-in effect */
