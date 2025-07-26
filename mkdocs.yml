@@ -54,30 +54,39 @@ nav:
   - Guides:
       - Overview: guides/index.md
       - Honey Trees: guides/honey-trees.md
+  - Events:
+      - Team Shunts: events/team-shunts.md
+      - Team Events: events/team-events.md
+      - Team Bounties: events/team-bounties.md
+      - PokeMMO Events: events/poke-mmo-events.md
   - Showcase:
-      - Overview: showcase/index.md
-      - ✨ Shiny Wars: showcase/shinywars.md
-      - Caught Tracker: showcase/caught.md
+      - Shiny Showcase: showcase/showcase.md
+      - Shiny Dex: showcase/shiny-dex.md
+      - Shiny Wars: showcase/shiny-wars.md
   - Utilities:
       - ✨ Shunt Planner: utilities/shunt-planner.md
       - Trackers:
-        - 🗺️ Pheno Tracker: utilities/pheno-tracker.md
-        - 🗺️ Safari Tracker: utilities/safari-tracker.md
-        - 🗺️ Legendary Tracker: utilities/legendary-tracker.md
+        - Pheno Tracker: utilities/trackers/pheno-tracker.md
+        - Safari Tracker: utilities/trackers/safari-tracker.md
+        - Legendary Tracker: utilities/trackers/legendary-tracker.md
+        - Feebas Tracker: utilities/trackers/feebas-tracker.md
+      - Training:
+        - EV Training: utilities/training/ev-training.md
+        - Exp Training: utilities/training/exp-training.md
       - Games:
-        - 🎮 Rock, Paper, Scissors: utilities/rps.md
-        - 🎮 Hangman: utilities/hangman.md
+        - Rock, Paper, Scissors: utilities/games/rps.md
+        - Hangman: utilities/games/hangman.md
   - Database:
       - Bag: 
-        - Items: utilities/items.md
-        - Medicine: utilities/medicine.md
-        - Battle Items: utilities/battle-items.md
-        - Key Items: utilities/key-items.md
-        - Pokeballs: utilities/pokeballs.md
-        - TMs & HMs: utilities/tms-hms.md
-        - Berries: utilities/berries.md
-        - Cosmetics: utilities/cosmetics.md
-      - Pokemon: utilities/pokemon.md
-      - Types: utilities/types.md
-  
+        - Items: utilities/bag/items.md
+        - Medicine: utilities/bag/medicine.md
+        - Battle Items: utilities/bag/battle-items.md
+        - Key Items: utilities/bag/key-items.md
+        - Pokeballs: utilities/bag/pokeballs.md
+        - TMs & HMs: utilities/bag/tms-hms.md
+        - Berries: utilities/bag/berries.md
+        - Cosmetics: utilities/bag/cosmetics.md
+      - Pokemon: 
+        - Dex: utilities/pokemon/dex.md
+
   
