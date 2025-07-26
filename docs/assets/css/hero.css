@@ -41,10 +41,25 @@
   opacity: 1.0;
 	background-size: cover;
 	color: white;
+  margin: 4rem 0;
 	padding: 6rem 2rem;
 	text-align: center;
 	position: relative; /* Required for absolute positioning inside */
-    overflow: visible;  /* Allows overlay image to stick out */
+  overflow: visible;  /* Allows overlay image to stick out */
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero2 {
+	background: url('/many/assets/img/backgrounds/hero-2-bg.png') repeat center center;
+	background-color: var(--main-accent-color);
+  opacity: 1.0;
+	background-size: cover;
+	color: white;
+  margin: 4rem 0;
+	padding: 6rem 2rem;
+	text-align: center;
+	position: relative; /* Required for absolute positioning inside */
+  overflow: visible;  /* Allows overlay image to stick out */
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -73,6 +88,23 @@
   transition: width 0.3s ease, top 0.3s ease, right 0.3s ease;
   background: transparent !important;
 }
+
+.spiritomb-img {
+  position: absolute;
+  color: var(--main-accent-color);
+  top: 40px;
+  rleft: 30px;
+  width: 25vw; /* responsive width instead of fixed px */
+  width: 600px; /* prevent it from getting too large */
+  max-width: 600px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  transition: width 0.3s ease, top 0.3s ease, right 0.3s ease;
+  background: transparent !important;
+}
+
+
 
 .hero__overlay-img svg {
   overflow: visible;
