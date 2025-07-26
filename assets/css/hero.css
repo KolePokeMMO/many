@@ -36,8 +36,9 @@
 
 /* Layout – Full hero block with gradient and centre text */
 .hero {
-	background: url('/many/assets/img/backgrounds/hero-bg-2.jpg') no-repeat center center;
-	opacity: 1.0;
+	background: url('/many/assets/img/backgrounds/hero-bg.png') no-repeat center center;
+	background-color: var(--main-accent-color);
+  opacity: 1.0;
 	background-size: cover;
 	color: white;
 	padding: 6rem 2rem;
