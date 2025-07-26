@@ -40,6 +40,7 @@ extra_css:
 
 
 extra_javascript:
+  - assets/js/theme-loader.js
   - assets/js/pokemon.js
   - assets/js/extra.js
   - assets/js/word-split.js
