@@ -87,6 +87,21 @@ body.page-honey-trees .md-main {
 }
 
 
+/* Prevent theme flash on load */
+html.theme-loading body {
+  display: none;
+}
+
+/* Optional: fade-in effect */
+html.theme-loading body {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+html:not(.theme-loading) body {
+  opacity: 1;
+}
+
+
 /* ────────────────────────────────────────────────
    Layout and Global Containers
 ──────────────────────────────────────────────── */
