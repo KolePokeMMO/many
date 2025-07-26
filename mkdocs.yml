@@ -19,8 +19,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.breadcrumbs
-    - content.code.annotate
-    - content.tabs.link
+
     - search.highlight
     - search.share
 
@@ -41,8 +40,8 @@ extra_css:
 
 extra_javascript:
   - assets/js/theme-loader.js
-  - assets/js/pokemon.js
   - assets/js/extra.js
+  - assets/js/pokemon.js
   - assets/js/word-split.js
   - assets/js/showcase/shinies.js
   - assets/js/showcase/shinywars.js
