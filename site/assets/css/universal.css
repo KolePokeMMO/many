@@ -457,11 +457,6 @@ html:not(.theme-loading) body {
 
 }
 
-@media screen and (max-width: 768px) {
-  /* Fix for hero buttons on mobile, add space */
-  .md-typeset .md-button--primary {
-    margin-bottom: 10px !important;
-  }
-}
+
 
 
