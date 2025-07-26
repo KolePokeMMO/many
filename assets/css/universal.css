@@ -420,3 +420,42 @@ html:not(.theme-loading) body {
   }
 }
 
+
+@media screen and (max-width: 76.2344em) {
+  .md-nav--primary .md-nav__title .md-logo {
+    background-color: var(--main-bg-color);
+    display: block;
+    left: .2rem;
+    margin: .2rem;
+    padding: .4rem;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+  }
+  .md-nav--primary .md-nav__title ~ .md-nav__list {
+    background-color: var(--main-bg-color);
+    box-shadow: 0 .05rem 0 var(--md-default-fg-color--lightest) inset;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    touch-action: pan-y;
+  }
+  .md-nav--primary .md-nav__title[for="__drawer"] {
+    background-color: var(--main-bg-color);
+    color: var(--main-accent-color);
+    font-weight: 700;
+  }
+  .md-nav--primary .md-nav__title {
+    background-color: var(--main-bg-color);
+    color: var(--main-accent-color);
+    cursor: pointer;
+    height: 5.6rem;
+    line-height: 2.4rem;
+    padding: 3rem .8rem .2rem;
+    position: relative;
+    white-space: nowrap;
+  }
+
+}
+
+
+

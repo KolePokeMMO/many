@@ -170,3 +170,41 @@
   fill: var(--icon-color, #ccc); /* default */
   transition: fill 0.3s ease;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Base logo image adjustments */
+.md-header__button.md-logo img {
+  width: 180px;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Tighter logo on smaller screens */
+@media screen and (max-width: 768px) {
+  .md-header__button.md-logo img {
+    width: 140px;
+    max-height: 48px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-header__button.md-logo {
+    display: block !important;
+  }
+}
