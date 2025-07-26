@@ -73,3 +73,8 @@
 .md-nav--lifted .md-nav__item--active > .md-nav__link {
 	color: var(--main-accent-color-light); /* bright gold for active */
 }
+
+/* ─── Navigation Link Hover ───────────────────── */
+.md-nav--lifted .md-nav__link:focus {
+	color: var(--main-accent-color); /* soft gold or your luxe hover colour */
+}

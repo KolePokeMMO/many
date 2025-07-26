@@ -48,6 +48,23 @@ fetch('/many/assets/img/logo-lux.svg')
       svgEl.setAttribute('aria-label', 'Team Mascot');
     }
   })
+
+fetch('/many/assets/img/spiritomb.svg')
+  .then(response => response.text())
+  .then(svg => {
+    const container = document.getElementById('spiritomb');
+    container.innerHTML = svg;
+
+    // Optional: add a class to the SVG for styling
+    const svgEl = container.querySelector('svg');
+    if (svgEl) {
+      svgEl.classList.add('injected-spiritomb');
+      svgEl.setAttribute('role', 'img');
+      svgEl.setAttribute('aria-label', 'Team Mascot');
+    }
+  })
+
+
   .catch(err => {
     console.error('Failed to load SVG:', err);
   });
