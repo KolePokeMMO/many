@@ -34,11 +34,11 @@
 	animation: shinyFlash 14s ease-in-out infinite;
 	background: linear-gradient(
 		120deg,
-		#ed9501 10%,
-		#ebb80a 25%,
+		var(--main-accent-color) 10%,
+		var(--main-accent-color-light) 25%,
 		#ffffff 50%,
-		#ebb80a 75%,
-		#ed9501 90%
+		var(--main-accent-color-light) 75%,
+		var(--main-accent-color) 90%
 	);
 	background-clip: text;
 	background-size: 250% 250%;

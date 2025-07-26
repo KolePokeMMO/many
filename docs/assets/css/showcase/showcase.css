@@ -533,12 +533,3 @@
   color: #17191a;
 }
 
-
-
-.md-typeset h1 {
-  color: var(--md-accent-fg-color);
-  font-size: 1.7em;
-  line-height: 1.2;
-  margin: 0 0 1.25em;
-}
-
