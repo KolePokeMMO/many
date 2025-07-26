@@ -4,24 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-const themeLinkId = 'dynamic-theme-css';
-
 function setTheme(theme) {
-  // Update the data-theme attribute immediately
+  // Just set the data-theme attribute, no CSS files loaded
   document.documentElement.setAttribute('data-theme', theme);
-
-  const existing = document.getElementById(themeLinkId);
-  if (existing) existing.remove();
-
-  const link = document.createElement('link');
-  link.id = themeLinkId;
-  link.rel = 'stylesheet';
-  link.href = `/many/assets/css/themes/${theme}.css`;
-  document.head.appendChild(link);
-
   localStorage.setItem('selectedTheme', theme);
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('selectedTheme') || 'shiny';
@@ -30,9 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Highlight the selected icon
   document.querySelectorAll('.theme-buttons button').forEach(btn => {
     if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+    else btn.classList.remove('active');
   });
 
-  // Bind buttons
+  // Bind buttons to switch theme by setting data-theme
   document.querySelectorAll('.theme-buttons button').forEach(btn => {
     btn.addEventListener('click', () => {
       const theme = btn.dataset.theme;
