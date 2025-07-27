@@ -15,7 +15,7 @@ fetch("/many/assets/data/living-dex.json")
       if (p.trainers && p.trainers.length) cell.classList.add("owned");
 
       const img = document.createElement("img");
-      img.src = `https://img.pokemondb.net/sprites/home/normal/${p.name.toLowerCase()}.png`;
+      img.src = `https://img.pokemondb.net/sprites/home/shiny/${p.name.toLowerCase()}.png`;
       img.alt = p.name;
       cell.appendChild(img);
 
