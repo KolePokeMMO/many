@@ -3,17 +3,38 @@ function initPhenoTracker() {
   const template = document.getElementById('pheno-card-template');
   const filterCheckbox = document.getElementById('filter-missing');
 
-  if (!grid || !template) return; // Fail silently if on wrong page
+  if (!grid || !template) return;
 
   fetch('/many/assets/data/pheno-data.json')
     .then(res => res.json())
     .then(phenoData => {
+      // Load saved caught state from localStorage
+      const saved = localStorage.getItem('pheno-data');
+      if (saved) {
+        try {
+          const savedMap = Object.fromEntries(
+            JSON.parse(saved).map(p => [p.dex, p.caught])
+          );
+          phenoData.forEach(p => {
+            p.caught = savedMap[p.dex] ?? false;
+          });
+        } catch (e) {
+          console.warn('Failed to parse saved pheno-data:', e);
+        }
+      }
+
       function render() {
         grid.innerHTML = '';
+        let renderedCount = 0;
+
         phenoData.forEach(p => {
-          if (filterCheckbox.checked && p.caught) return;
+          if (filterCheckbox.checked && p.caught) {
+            console.log(`Skipping ${p.name} - already caught`);
+            return;
+          }
 
           const card = template.content.cloneNode(true);
+
           card.querySelector('.pheno-name').textContent = p.name;
           card.querySelector('.pheno-sprite').src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.dex}.png`;
           card.querySelector('.pheno-types').textContent = `Type: ${p.types.join(', ')}`;
@@ -25,19 +46,14 @@ function initPhenoTracker() {
           toggle.addEventListener('change', () => {
             p.caught = toggle.checked;
             localStorage.setItem('pheno-data', JSON.stringify(phenoData));
-            render();
+            render(); // Re-render to apply filtering and update UI
           });
 
           grid.appendChild(card);
+          renderedCount++;
         });
-      }
 
-      const saved = localStorage.getItem('pheno-data');
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved);
-          parsed.forEach((p, i) => phenoData[i].caught = p.caught ?? false);
-        } catch {}
+        console.log(`Rendered ${renderedCount} phenos (filter: ${filterCheckbox.checked ? 'missing only' : 'all'})`);
       }
 
       filterCheckbox.addEventListener('change', render);
