@@ -142,11 +142,11 @@
   gap: 0.3rem;
   padding: 0.5rem 1rem;
   margin: 1rem 0;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--main-accent-color);
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.1);
-  font-size: 1rem;
+  border-radius: 0px;
+  background: var(--main-fg-color);
+  border: 1px solid var(--main-fg-border-color);
+  
+  font-size: .7rem;
   font-weight: bold;
   color: var(--main-accent-color);
   width: fit-content;
@@ -159,5 +159,110 @@
 }
 
 .shiny-counter .count-total {
-  color: var(--subtle-text-color, #888);
+  color: #bbbbbb;
+  font-weight: normal;
+}
+
+/* Toggle Button Container */
+.view-toggle {
+  display: flex;
+  gap: .3rem;
+  margin: 1rem 0;
+  justify-content: center;
+}
+
+.view-btn {
+  background: var(--main-fg-color);
+  border: 1px solid var(--main-fg-border-color);
+  color: var(--main-accent-color);
+  padding: 0.5rem 1rem;
+  font-size: .7rem;
+  border-radius: 0px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s, color 0.3s;
+  font-family: 'Enter', sans-serif;
+}
+
+.view-btn:hover {
+  border-color: var(--main-accent-color);
+  
+}
+
+.view-btn.active {
+ 
+  
+  border-color: var(--main-accent-color);
+}
+
+/* List View Table */
+.shinydex-list {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  overflow-x: auto;
+}
+
+.shinydex-list table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--main-accent-color);
+  font-family: 'Enter', sans-serif;
+}
+
+.shinydex-list th,
+.shinydex-list td {
+  border: 1px solid #444;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  background: var(--main-bg-color);
+  transition: background 0.3s ease;
+}
+
+.shinydex-list th {
+  background: #111;
+  font-weight: bold;
+}
+
+.shinydex-list tr:hover {
+  background: rgba(0, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.shinydex-list tr.owned {
+  border-left: 4px solid var(--main-accent-color);
+}
+
+.shinydex-list td img.list-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  filter: grayscale(0%);
+  transition: transform 0.3s ease;
+}
+
+.shinydex-list tr:not(.owned) td img.list-img {
+  filter: grayscale(100%);
+}
+
+.shinydex-list tr:not(.owned):hover td img.list-img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+.counter-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.shiny-counter {
+  margin: 0; /* Remove separate margins to line up nicely */
+}
+
+.view-toggle {
+  margin: 0; /* Remove margin since it’s in flex container */
 }
