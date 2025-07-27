@@ -88,3 +88,49 @@
   cursor: pointer;
   olor: var(--main-accent-color);
 }
+
+#modal-owners {
+  max-height: 160px; /* adjust as needed to fit ~5 names */
+  overflow-y: auto;
+  margin-top: 1rem;
+  padding-right: 8px;
+}
+
+#modal-owners {
+  list-style: none;
+  padding-left: 0;
+}
+
+#modal-owners li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 6px;
+}
+
+#modal-owners li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--main-accent-color);
+  -webkit-mask: url('/many/assets/img/icons/pokeball-icon.svg') no-repeat center;
+  mask: url('/many/assets/img/icons/pokeball-icon.svg') no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  transition: transform 0.4s ease;
+}
+
+#modal-owners li:hover::before {
+  animation: spinPokeball 1s linear infinite;
+}
+
+@keyframes spinPokeball {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
