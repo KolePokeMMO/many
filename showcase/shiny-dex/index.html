@@ -60,6 +60,8 @@
     
       <link rel="stylesheet" href="../../assets/css/utilities/shunt-planner.css">
     
+      <link rel="stylesheet" href="../../assets/css/showcase/living-dex.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -82,6 +84,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#team-shiny-living-dex" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -696,6 +703,8 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
+      
+        
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
@@ -1545,6 +1554,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1560,9 +1571,22 @@
 
 
 
-  <h1>Shiny Dex</h1>
+<h1 id="team-shiny-living-dex">Team Shiny Living Dex</h1>
+<section class="shiny-dex">
 
+<div class="shinydex-grid" id="shiny-grid"></div>
 
+<!-- Modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h2 id="modal-name"></h2>
+    <img id="modal-img" />
+    <ul id="modal-owners"></ul>
+  </div>
+</div>
+
+</section>
 
 
 
@@ -1702,6 +1726,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <script src="../../assets/js/utilities/rps/rps.js"></script>
       
         <script src="../../assets/js/utilities/sp/shunt-planner.js"></script>
+      
+        <script src="../../assets/js/showcase/living-dex.js"></script>
       
     
   </body>

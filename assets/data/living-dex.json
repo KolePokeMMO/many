@@ -1,0 +1,259 @@
+[
+  {
+    "name": "Bulbasaur",
+    "dex": 1,
+    "trainers": []
+  },
+  {
+    "name": "Ivysaur",
+    "dex": 2,
+    "trainers": []
+  },
+  {
+    "name": "Venusaur",
+    "dex": 3,
+    "trainers": []
+  },
+  {
+    "name": "Charmander",
+    "dex": 4,
+    "trainers": [
+      { "name": "Kole", "date": "2024-11-08" }
+    ]
+  },
+  {
+    "name": "Charmeleon",
+    "dex": 5,
+    "trainers": []
+  },
+  {
+    "name": "Charizard",
+    "dex": 6,
+    "trainers": [
+      { "name": "Kole", "date": "2025-02-14" },
+      { "name": "Rhea", "date": "2025-06-01" }
+    ]
+  },
+  {
+    "name": "Squirtle",
+    "dex": 7,
+    "trainers": []
+  },
+  {
+    "name": "Wartortle",
+    "dex": 8,
+    "trainers": []
+  },
+  {
+    "name": "Blastoise",
+    "dex": 9,
+    "trainers": []
+  },
+  {
+    "name": "Caterpie",
+    "dex": 10,
+    "trainers": []
+  },
+  {
+    "name": "Metapod",
+    "dex": 11,
+    "trainers": []
+  },
+  {
+    "name": "Butterfree",
+    "dex": 12,
+    "trainers": []
+  },
+  {
+    "name": "Weedle",
+    "dex": 13,
+    "trainers": []
+  },
+  {
+    "name": "Kakuna",
+    "dex": 14,
+    "trainers": []
+  },
+  {
+    "name": "Beedrill",
+    "dex": 15,
+    "trainers": []
+  },
+  {
+    "name": "Pidgey",
+    "dex": 16,
+    "trainers": []
+  },
+  {
+    "name": "Pidgeotto",
+    "dex": 17,
+    "trainers": []
+  },
+  {
+    "name": "Pidgeot",
+    "dex": 18,
+    "trainers": []
+  },
+  {
+    "name": "Rattata",
+    "dex": 19,
+    "trainers": []
+  },
+  {
+    "name": "Raticate",
+    "dex": 20,
+    "trainers": []
+  },
+  {
+    "name": "Spearow",
+    "dex": 21,
+    "trainers": []
+  },
+  {
+    "name": "Fearow",
+    "dex": 22,
+    "trainers": []
+  },
+  {
+    "name": "Ekans",
+    "dex": 23,
+    "trainers": []
+  },
+  {
+    "name": "Arbok",
+    "dex": 24,
+    "trainers": []
+  },
+  {
+    "name": "Pikachu",
+    "dex": 25,
+    "trainers": [
+      { "name": "Juno", "date": "2023-12-25" }
+    ]
+  },
+  {
+    "name": "Raichu",
+    "dex": 26,
+    "trainers": []
+  },
+  {
+    "name": "Sandshrew",
+    "dex": 27,
+    "trainers": []
+  },
+  {
+    "name": "Sandslash",
+    "dex": 28,
+    "trainers": []
+  },
+  {
+    "name": "Nidoran♀",
+    "dex": 29,
+    "trainers": []
+  },
+  {
+    "name": "Nidorina",
+    "dex": 30,
+    "trainers": []
+  },
+  {
+    "name": "Nidoqueen",
+    "dex": 31,
+    "trainers": []
+  },
+  {
+    "name": "Nidoran♂",
+    "dex": 32,
+    "trainers": []
+  },
+  {
+    "name": "Nidorino",
+    "dex": 33,
+    "trainers": []
+  },
+  {
+    "name": "Nidoking",
+    "dex": 34,
+    "trainers": []
+  },
+  {
+    "name": "Clefairy",
+    "dex": 35,
+    "trainers": []
+  },
+  {
+    "name": "Clefable",
+    "dex": 36,
+    "trainers": []
+  },
+  {
+    "name": "Vulpix",
+    "dex": 37,
+    "trainers": []
+  },
+  {
+    "name": "Ninetales",
+    "dex": 38,
+    "trainers": []
+  },
+  {
+    "name": "Jigglypuff",
+    "dex": 39,
+    "trainers": []
+  },
+  {
+    "name": "Wigglytuff",
+    "dex": 40,
+    "trainers": []
+  },
+  {
+    "name": "Zubat",
+    "dex": 41,
+    "trainers": []
+  },
+  {
+    "name": "Golbat",
+    "dex": 42,
+    "trainers": []
+  },
+  {
+    "name": "Oddish",
+    "dex": 43,
+    "trainers": []
+  },
+  {
+    "name": "Gloom",
+    "dex": 44,
+    "trainers": []
+  },
+  {
+    "name": "Vileplume",
+    "dex": 45,
+    "trainers": []
+  },
+  {
+    "name": "Paras",
+    "dex": 46,
+    "trainers": []
+  },
+  {
+    "name": "Parasect",
+    "dex": 47,
+    "trainers": []
+  },
+  {
+    "name": "Venonat",
+    "dex": 48,
+    "trainers": []
+  },
+  {
+    "name": "Venomoth",
+    "dex": 49,
+    "trainers": []
+  },
+  {
+    "name": "Diglett",
+    "dex": 50,
+    "trainers": []
+  }
+]
