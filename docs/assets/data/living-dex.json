@@ -97,7 +97,9 @@
   {
     "name": "Raticate",
     "dex": 20,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "05-31-2017" }
+    ]
   },
   {
     "name": "Spearow",
@@ -207,7 +209,9 @@
   {
     "name": "Golbat",
     "dex": 42,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "08-26-2017" }
+    ]
   },
   {
     "name": "Oddish",
@@ -222,7 +226,9 @@
   {
     "name": "Vileplume",
     "dex": 45,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "03-20-2017" }
+    ]
   },
   {
     "name": "Paras",
@@ -322,7 +328,9 @@
   {
     "name": "Alakazam",
     "dex": 65,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "10-21-2017" }
+    ]
   },
   {
     "name": "Machop",
@@ -362,7 +370,9 @@
   {
     "name": "Tentacruel",
     "dex": 73,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "07-29-2023" }
+    ]
   },
   {
     "name": "Geodude",
@@ -397,7 +407,9 @@
   {
     "name": "Slowbro",
     "dex": 80,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "03-27-2020" }
+    ]
   },
   {
     "name": "Magnemite",
@@ -437,7 +449,9 @@
   {
     "name": "Grimer",
     "dex": 88,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "08-10-2017" }
+    ]
   },
   {
     "name": "Muk",
@@ -457,12 +471,16 @@
   {
     "name": "Gastly",
     "dex": 92,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "11-13-2017" }
+    ]
   },
   {
     "name": "Haunter",
     "dex": 93,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "07-02-2023" }
+    ]
   },
   {
     "name": "Gengar",
@@ -642,12 +660,16 @@
   {
     "name": "Magikarp",
     "dex": 129,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "05-21-2023" }
+    ]
   },
   {
     "name": "Gyarados",
     "dex": 130,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "05-21-2023" }
+    ]
   },
   {
     "name": "Lapras",
@@ -1012,7 +1034,9 @@
   {
     "name": "Girafarig",
     "dex": 203,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "08-20-2023" }
+    ]
   },
   {
     "name": "Pineco",
@@ -1905,7 +1929,9 @@
   {
     "name": "Lunatone",
     "dex": 337,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "03-30-2017" }
+    ]
   },
   {
     "name": "Solrock",
@@ -1930,12 +1956,16 @@
   {
     "name": "Banette",
     "dex": 342,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "12-26-2019" }
+    ]
   },
   {
     "name": "Duskull",
     "dex": 343,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "06-08-2023" }
+    ]
   },
   {
     "name": "Dusclops",
@@ -1980,7 +2010,9 @@
   {
     "name": "Sealeo",
     "dex": 352,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "12-26-2023" }
+    ]
   },
   {
     "name": "Walrein",
@@ -2210,7 +2242,9 @@
   {
     "name": "Shieldon",
     "dex": 398,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "01-01-2021" }
+    ]
   },
   {
     "name": "Bastiodon",
@@ -2255,7 +2289,9 @@
   {
     "name": "Floatzel",
     "dex": 407,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "06-12-2020" }
+    ]
   },
   {
     "name": "Cherubi",
@@ -2353,7 +2389,7 @@
     "trainers": []
   },
   {
-    "name": "Mime-Jr.",
+    "name": "Mime-Jr",
     "dex": 427,
     "trainers": []
   },
@@ -2460,7 +2496,9 @@
   {
     "name": "Abomasnow",
     "dex": 448,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "12-25-2023" }
+    ]
   },
   {
     "name": "Weavile",
@@ -2610,7 +2648,9 @@
   {
     "name": "Froslass",
     "dex": 478,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "12-25-2023" }
+    ]
   },
   {
     "name": "Rotom",
@@ -2987,7 +3027,9 @@
   {
     "name": "Krookodile",
     "dex": 553,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "06-08-2023" }
+    ]
   },
   {
     "name": "Darumaka",
@@ -3017,7 +3059,9 @@
   {
     "name": "Scraggy",
     "dex": 559,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "07-10-2023" }
+    ]
   },
   {
     "name": "Scrafty",
@@ -3182,7 +3226,9 @@
   {
     "name": "Frillish",
     "dex": 592,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "02-05-2020" }
+    ]
   },
   {
     "name": "Jellicent",
@@ -3267,7 +3313,9 @@
   {
     "name": "Chandelure",
     "dex": 609,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "04-14-2023" }
+    ]
   },
   {
     "name": "Axew",
@@ -3282,7 +3330,9 @@
   {
     "name": "Haxorus",
     "dex": 612,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "07-12-2023" }
+    ]
   },
   {
     "name": "Cubchoo",
