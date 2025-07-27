@@ -32,6 +32,19 @@ fetch("/many/assets/data/living-dex.json")
     });
   });
 
+// Close modal when clicking the "X"
+document.querySelector('.modal-close').addEventListener('click', () => {
+  document.getElementById('modal').classList.add('hidden');
+});
+
+// Close modal when clicking outside the modal-content
+document.getElementById('modal').addEventListener('click', (e) => {
+  const modalContent = document.querySelector('.modal-content');
+  if (!modalContent.contains(e.target)) {
+    document.getElementById('modal').classList.add('hidden');
+  }
+});
+
 // Modal close behavior
 modalClose.addEventListener("click", () => modal.classList.add("hidden"));
 window.addEventListener("keydown", e => {
