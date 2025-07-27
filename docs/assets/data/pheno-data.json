@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Alomomola",
+    "dex": 594,
+    "types": ["Water"],
+    "method": "Rippling Water",
+    "locations": [
+      "Undella Bay", "Undella Town", "Route 13", "Route 14", "Route 18",
+      "Humilau City", "Seaside Cave", "Route 21", "Giant Chasm (B1F)"
+    ],
+    "caught": false
+  },
+  {
+    "name": "Audino",
+    "dex": 531,
+    "types": ["Normal"],
+    "method": "Rustling Grass",
+    "locations": [
+      "Pinwheel Forest", "Lostlorn Forest", "Route 6", "Route 12",
+      "Route 5", "Route 16", "Route 11", "Route 9", "Route 7"
+    ],
+    "caught": false
+  },
+  {
+    "name": "Emolga",
+    "dex": 587,
+    "types": ["Electric", "Flying"],
+    "method": "Rustling Grass",
+    "locations": [
+      "Pinwheel Forest", "Lostlorn Forest", "Route 5", "Route 6",
+      "Route 7", "Route 12", "Village Bridge"
+    ],
+    "caught": false
+  },
+  {
+    "name": "Drilbur",
+    "dex": 529,
+    "types": ["Ground"],
+    "method": "Dust Cloud",
+    "locations": [
+      "Wellspring Cave", "Chargestone Cave", "Twist Mountain",
+      "Mistralton Cave", "Relic Passage"
+    ],
+    "caught": false
+  },
+  {
+    "name": "Excadrill",
+    "dex": 530,
+    "types": ["Ground", "Steel"],
+    "method": "Dust Cloud (Rare)",
+    "locations": [
+      "Twist Mountain", "Victory Road", "Relic Passage"
+    ],
+    "caught": false
+  },
+  {
+    "name": "Ducklett",
+    "dex": 580,
+    "types": ["Water", "Flying"],
+    "method": "Bridge Shadow",
+    "locations": [
+      "Driftveil Drawbridge", "Tubeline Bridge", "Marvelous Bridge"
+    ],
+    "caught": false
+  },
+  {
+    "name": "Swanna",
+    "dex": 581,
+    "types": ["Water", "Flying"],
+    "method": "Bridge Shadow (Rare)",
+    "locations": [
+      "Driftveil Drawbridge", "Tubeline Bridge", "Marvelous Bridge"
+    ],
+    "caught": false
+  }
+]

@@ -34,11 +34,13 @@ extra:
 extra_css:
   - assets/css/universal.css
   - assets/css/guides/honey-tree.css
-  - assets/css/showcase/showcase.css
   - assets/css/comp/poke-tooltips.css
+  - assets/css/showcase/showcase.css
   - assets/css/showcase/shinywars.css
-  - assets/css/utilities/shunt-planner.css
   - assets/css/showcase/living-dex.css
+  - assets/css/utilities/shunt-planner.css
+  - assets/css/utilities/pheno-tracker.css
+
 
 
 extra_javascript:
@@ -48,9 +50,11 @@ extra_javascript:
   - assets/js/word-split.js
   - assets/js/showcase/shinies.js
   - assets/js/showcase/shinywars.js
+  - assets/js/showcase/living-dex.js
   - assets/js/utilities/rps/rps.js
   - assets/js/utilities/sp/shunt-planner.js
-  - assets/js/showcase/living-dex.js
+  - assets/js/utilities/pt/pheno-tracker.js
+
 
 nav:
   - Home: index.md
