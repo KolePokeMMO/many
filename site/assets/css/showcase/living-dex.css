@@ -134,3 +134,30 @@
     transform: rotate(360deg);
   }
 }
+
+.shiny-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--main-accent-color);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.1);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--main-accent-color);
+  width: fit-content;
+  margin-left: auto; /* align right */
+}
+
+.shiny-counter .count-owned {
+  color: var(--main-accent-color);
+  transition: color 0.3s ease;
+}
+
+.shiny-counter .count-total {
+  color: var(--subtle-text-color, #888);
+}
