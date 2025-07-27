@@ -17,9 +17,7 @@
   {
     "name": "Charmander",
     "dex": 4,
-    "trainers": [
-      { "name": "Kole", "date": "2024-11-08" }
-    ]
+    "trainers": []
   },
   {
     "name": "Charmeleon",
@@ -29,18 +27,7 @@
   {
     "name": "Charizard",
     "dex": 6,
-    "trainers": [
-      { "name": "Kole", "date": "2025-02-14" },
-      { "name": "Kelly", "date": "2025-06-01" },
-      { "name": "Kole", "date": "2025-02-14" },
-      { "name": "Kelly", "date": "2025-06-01" },
-      { "name": "Kole", "date": "2025-02-14" },
-      { "name": "Kelly", "date": "2025-06-01" },
-      { "name": "Kole", "date": "2025-02-14" },
-      { "name": "Kelly", "date": "2025-06-01" },
-      { "name": "Kole", "date": "2025-02-14" },
-      { "name": "Kelly", "date": "2025-06-01" }
-    ]
+    "trainers": []
   },
   {
     "name": "Squirtle",
@@ -135,9 +122,7 @@
   {
     "name": "Pikachu",
     "dex": 25,
-    "trainers": [
-      { "name": "Juno", "date": "2023-12-25" }
-    ]
+    "trainers": []
   },
   {
     "name": "Raichu",
@@ -155,7 +140,7 @@
     "trainers": []
   },
   {
-    "name": "Nidoran♀",
+    "name": "Nidoran-f",
     "dex": 29,
     "trainers": []
   },
@@ -170,7 +155,7 @@
     "trainers": []
   },
   {
-    "name": "Nidoran♂",
+    "name": "Nidoran-m",
     "dex": 32,
     "trainers": []
   },
@@ -262,6 +247,3126 @@
   {
     "name": "Diglett",
     "dex": 50,
+    "trainers": []
+  },
+  {
+    "name": "Dugtrio",
+    "dex": 51,
+    "trainers": []
+  },
+  {
+    "name": "Meowth",
+    "dex": 52,
+    "trainers": []
+  },
+  {
+    "name": "Persian",
+    "dex": 53,
+    "trainers": []
+  },
+  {
+    "name": "Psyduck",
+    "dex": 54,
+    "trainers": []
+  },
+  {
+    "name": "Golduck",
+    "dex": 55,
+    "trainers": []
+  },
+  {
+    "name": "Mankey",
+    "dex": 56,
+    "trainers": []
+  },
+  {
+    "name": "Primeape",
+    "dex": 57,
+    "trainers": []
+  },
+  {
+    "name": "Growlithe",
+    "dex": 58,
+    "trainers": []
+  },
+  {
+    "name": "Arcanine",
+    "dex": 59,
+    "trainers": []
+  },
+  {
+    "name": "Poliwag",
+    "dex": 60,
+    "trainers": []
+  },
+  {
+    "name": "Poliwhirl",
+    "dex": 61,
+    "trainers": []
+  },
+  {
+    "name": "Poliwrath",
+    "dex": 62,
+    "trainers": []
+  },
+  {
+    "name": "Abra",
+    "dex": 63,
+    "trainers": []
+  },
+  {
+    "name": "Kadabra",
+    "dex": 64,
+    "trainers": []
+  },
+  {
+    "name": "Alakazam",
+    "dex": 65,
+    "trainers": []
+  },
+  {
+    "name": "Machop",
+    "dex": 66,
+    "trainers": []
+  },
+  {
+    "name": "Machoke",
+    "dex": 67,
+    "trainers": []
+  },
+  {
+    "name": "Machamp",
+    "dex": 68,
+    "trainers": []
+  },
+  {
+    "name": "Bellsprout",
+    "dex": 69,
+    "trainers": []
+  },
+  {
+    "name": "Weepinbell",
+    "dex": 70,
+    "trainers": []
+  },
+  {
+    "name": "Victreebel",
+    "dex": 71,
+    "trainers": []
+  },
+  {
+    "name": "Tentacool",
+    "dex": 72,
+    "trainers": []
+  },
+  {
+    "name": "Tentacruel",
+    "dex": 73,
+    "trainers": []
+  },
+  {
+    "name": "Geodude",
+    "dex": 74,
+    "trainers": []
+  },
+  {
+    "name": "Graveler",
+    "dex": 75,
+    "trainers": []
+  },
+  {
+    "name": "Golem",
+    "dex": 76,
+    "trainers": []
+  },
+  {
+    "name": "Ponyta",
+    "dex": 77,
+    "trainers": []
+  },
+  {
+    "name": "Rapidash",
+    "dex": 78,
+    "trainers": []
+  },
+  {
+    "name": "Slowpoke",
+    "dex": 79,
+    "trainers": []
+  },
+  {
+    "name": "Slowbro",
+    "dex": 80,
+    "trainers": []
+  },
+  {
+    "name": "Magnemite",
+    "dex": 81,
+    "trainers": []
+  },
+  {
+    "name": "Magneton",
+    "dex": 82,
+    "trainers": []
+  },
+  {
+    "name": "Farfetchd",
+    "dex": 83,
+    "trainers": []
+  },
+  {
+    "name": "Doduo",
+    "dex": 84,
+    "trainers": []
+  },
+  {
+    "name": "Dodrio",
+    "dex": 85,
+    "trainers": []
+  },
+  {
+    "name": "Seel",
+    "dex": 86,
+    "trainers": []
+  },
+  {
+    "name": "Dewgong",
+    "dex": 87,
+    "trainers": []
+  },
+  {
+    "name": "Grimer",
+    "dex": 88,
+    "trainers": []
+  },
+  {
+    "name": "Muk",
+    "dex": 89,
+    "trainers": []
+  },
+  {
+    "name": "Shellder",
+    "dex": 90,
+    "trainers": []
+  },
+  {
+    "name": "Cloyster",
+    "dex": 91,
+    "trainers": []
+  },
+  {
+    "name": "Gastly",
+    "dex": 92,
+    "trainers": []
+  },
+  {
+    "name": "Haunter",
+    "dex": 93,
+    "trainers": []
+  },
+  {
+    "name": "Gengar",
+    "dex": 94,
+    "trainers": []
+  },
+  {
+    "name": "Onix",
+    "dex": 95,
+    "trainers": []
+  },
+  {
+    "name": "Drowzee",
+    "dex": 96,
+    "trainers": []
+  },
+  {
+    "name": "Hypno",
+    "dex": 97,
+    "trainers": []
+  },
+  {
+    "name": "Krabby",
+    "dex": 98,
+    "trainers": []
+  },
+  {
+    "name": "Kingler",
+    "dex": 99,
+    "trainers": []
+  },
+  {
+    "name": "Voltorb",
+    "dex": 100,
+    "trainers": []
+  },
+  {
+    "name": "Electrode",
+    "dex": 101,
+    "trainers": []
+  },
+  {
+    "name": "Exeggcute",
+    "dex": 102,
+    "trainers": []
+  },
+  {
+    "name": "Exeggutor",
+    "dex": 103,
+    "trainers": []
+  },
+  {
+    "name": "Cubone",
+    "dex": 104,
+    "trainers": []
+  },
+  {
+    "name": "Marowak",
+    "dex": 105,
+    "trainers": []
+  },
+  {
+    "name": "Hitmonlee",
+    "dex": 106,
+    "trainers": []
+  },
+  {
+    "name": "Hitmonchan",
+    "dex": 107,
+    "trainers": []
+  },
+  {
+    "name": "Lickitung",
+    "dex": 108,
+    "trainers": []
+  },
+  {
+    "name": "Koffing",
+    "dex": 109,
+    "trainers": []
+  },
+  {
+    "name": "Weezing",
+    "dex": 110,
+    "trainers": []
+  },
+  {
+    "name": "Rhyhorn",
+    "dex": 111,
+    "trainers": []
+  },
+  {
+    "name": "Rhydon",
+    "dex": 112,
+    "trainers": []
+  },
+  {
+    "name": "Chansey",
+    "dex": 113,
+    "trainers": []
+  },
+  {
+    "name": "Tangela",
+    "dex": 114,
+    "trainers": []
+  },
+  {
+    "name": "Kangaskhan",
+    "dex": 115,
+    "trainers": []
+  },
+  {
+    "name": "Horsea",
+    "dex": 116,
+    "trainers": []
+  },
+  {
+    "name": "Seadra",
+    "dex": 117,
+    "trainers": []
+  },
+  {
+    "name": "Goldeen",
+    "dex": 118,
+    "trainers": []
+  },
+  {
+    "name": "Seaking",
+    "dex": 119,
+    "trainers": []
+  },
+  {
+    "name": "Staryu",
+    "dex": 120,
+    "trainers": []
+  },
+  {
+    "name": "Starmie",
+    "dex": 121,
+    "trainers": []
+  },
+  {
+    "name": "Mr-Mime",
+    "dex": 122,
+    "trainers": []
+  },
+  {
+    "name": "Scyther",
+    "dex": 123,
+    "trainers": []
+  },
+  {
+    "name": "Jynx",
+    "dex": 124,
+    "trainers": []
+  },
+  {
+    "name": "Electabuzz",
+    "dex": 125,
+    "trainers": []
+  },
+  {
+    "name": "Magmar",
+    "dex": 126,
+    "trainers": []
+  },
+  {
+    "name": "Pinsir",
+    "dex": 127,
+    "trainers": []
+  },
+  {
+    "name": "Tauros",
+    "dex": 128,
+    "trainers": []
+  },
+  {
+    "name": "Magikarp",
+    "dex": 129,
+    "trainers": []
+  },
+  {
+    "name": "Gyarados",
+    "dex": 130,
+    "trainers": []
+  },
+  {
+    "name": "Lapras",
+    "dex": 131,
+    "trainers": []
+  },
+  {
+    "name": "Ditto",
+    "dex": 132,
+    "trainers": []
+  },
+  {
+    "name": "Eevee",
+    "dex": 133,
+    "trainers": []
+  },
+  {
+    "name": "Vaporeon",
+    "dex": 134,
+    "trainers": []
+  },
+  {
+    "name": "Jolteon",
+    "dex": 135,
+    "trainers": []
+  },
+  {
+    "name": "Flareon",
+    "dex": 136,
+    "trainers": []
+  },
+  {
+    "name": "Porygon",
+    "dex": 137,
+    "trainers": []
+  },
+  {
+    "name": "Omanyte",
+    "dex": 138,
+    "trainers": []
+  },
+  {
+    "name": "Omastar",
+    "dex": 139,
+    "trainers": []
+  },
+  {
+    "name": "Kabuto",
+    "dex": 140,
+    "trainers": []
+  },
+  {
+    "name": "Kabutops",
+    "dex": 141,
+    "trainers": []
+  },
+  {
+    "name": "Aerodactyl",
+    "dex": 142,
+    "trainers": []
+  },
+  {
+    "name": "Snorlax",
+    "dex": 143,
+    "trainers": []
+  },
+  {
+    "name": "Articuno",
+    "dex": 144,
+    "trainers": []
+  },
+  {
+    "name": "Zapdos",
+    "dex": 145,
+    "trainers": []
+  },
+  {
+    "name": "Moltres",
+    "dex": 146,
+    "trainers": []
+  },
+  {
+    "name": "Dratini",
+    "dex": 147,
+    "trainers": []
+  },
+  {
+    "name": "Dragonair",
+    "dex": 148,
+    "trainers": []
+  },
+  {
+    "name": "Dragonite",
+    "dex": 149,
+    "trainers": []
+  },
+  {
+    "name": "Mewtwo",
+    "dex": 150,
+    "trainers": []
+  },
+  {
+    "name": "Mew",
+    "dex": 151,
+    "trainers": []
+  },
+  {
+    "name": "Chikorita",
+    "dex": 152,
+    "trainers": []
+  },
+  {
+    "name": "Bayleef",
+    "dex": 153,
+    "trainers": []
+  },
+  {
+    "name": "Meganium",
+    "dex": 154,
+    "trainers": []
+  },
+  {
+    "name": "Cyndaquil",
+    "dex": 155,
+    "trainers": []
+  },
+  {
+    "name": "Quilava",
+    "dex": 156,
+    "trainers": []
+  },
+  {
+    "name": "Typhlosion",
+    "dex": 157,
+    "trainers": []
+  },
+  {
+    "name": "Totodile",
+    "dex": 158,
+    "trainers": []
+  },
+  {
+    "name": "Croconaw",
+    "dex": 159,
+    "trainers": []
+  },
+  {
+    "name": "Feraligatr",
+    "dex": 160,
+    "trainers": []
+  },
+  {
+    "name": "Sentret",
+    "dex": 161,
+    "trainers": []
+  },
+  {
+    "name": "Furret",
+    "dex": 162,
+    "trainers": []
+  },
+  {
+    "name": "Hoothoot",
+    "dex": 163,
+    "trainers": []
+  },
+  {
+    "name": "Noctowl",
+    "dex": 164,
+    "trainers": []
+  },
+  {
+    "name": "Ledyba",
+    "dex": 165,
+    "trainers": []
+  },
+  {
+    "name": "Ledian",
+    "dex": 166,
+    "trainers": []
+  },
+  {
+    "name": "Spinarak",
+    "dex": 167,
+    "trainers": []
+  },
+  {
+    "name": "Ariados",
+    "dex": 168,
+    "trainers": []
+  },
+  {
+    "name": "Crobat",
+    "dex": 169,
+    "trainers": []
+  },
+  {
+    "name": "Chinchou",
+    "dex": 170,
+    "trainers": []
+  },
+  {
+    "name": "Lanturn",
+    "dex": 171,
+    "trainers": []
+  },
+  {
+    "name": "Pichu",
+    "dex": 172,
+    "trainers": []
+  },
+  {
+    "name": "Cleffa",
+    "dex": 173,
+    "trainers": []
+  },
+  {
+    "name": "Igglybuff",
+    "dex": 174,
+    "trainers": []
+  },
+  {
+    "name": "Togepi",
+    "dex": 175,
+    "trainers": []
+  },
+  {
+    "name": "Togetic",
+    "dex": 176,
+    "trainers": []
+  },
+  {
+    "name": "Natu",
+    "dex": 177,
+    "trainers": []
+  },
+  {
+    "name": "Xatu",
+    "dex": 178,
+    "trainers": []
+  },
+  {
+    "name": "Mareep",
+    "dex": 179,
+    "trainers": []
+  },
+  {
+    "name": "Flaaffy",
+    "dex": 180,
+    "trainers": []
+  },
+  {
+    "name": "Ampharos",
+    "dex": 181,
+    "trainers": []
+  },
+  {
+    "name": "Bellossom",
+    "dex": 182,
+    "trainers": []
+  },
+  {
+    "name": "Marill",
+    "dex": 183,
+    "trainers": []
+  },
+  {
+    "name": "Azumarill",
+    "dex": 184,
+    "trainers": []
+  },
+  {
+    "name": "Sudowoodo",
+    "dex": 185,
+    "trainers": []
+  },
+  {
+    "name": "Politoed",
+    "dex": 186,
+    "trainers": []
+  },
+  {
+    "name": "Hoppip",
+    "dex": 187,
+    "trainers": []
+  },
+  {
+    "name": "Skiploom",
+    "dex": 188,
+    "trainers": []
+  },
+  {
+    "name": "Jumpluff",
+    "dex": 189,
+    "trainers": []
+  },
+  {
+    "name": "Aipom",
+    "dex": 190,
+    "trainers": []
+  },
+  {
+    "name": "Sunkern",
+    "dex": 191,
+    "trainers": []
+  },
+  {
+    "name": "Sunflora",
+    "dex": 192,
+    "trainers": []
+  },
+  {
+    "name": "Yanma",
+    "dex": 193,
+    "trainers": []
+  },
+  {
+    "name": "Wooper",
+    "dex": 194,
+    "trainers": []
+  },
+  {
+    "name": "Quagsire",
+    "dex": 195,
+    "trainers": []
+  },
+  {
+    "name": "Espeon",
+    "dex": 196,
+    "trainers": []
+  },
+  {
+    "name": "Umbreon",
+    "dex": 197,
+    "trainers": []
+  },
+  {
+    "name": "Murkrow",
+    "dex": 198,
+    "trainers": []
+  },
+  {
+    "name": "Slowking",
+    "dex": 199,
+    "trainers": []
+  },
+  {
+    "name": "Misdreavus",
+    "dex": 200,
+    "trainers": []
+  },
+  {
+    "name": "Unown",
+    "dex": 201,
+    "trainers": []
+  },
+  {
+    "name": "Wobbuffet",
+    "dex": 202,
+    "trainers": []
+  },
+  {
+    "name": "Girafarig",
+    "dex": 203,
+    "trainers": []
+  },
+  {
+    "name": "Pineco",
+    "dex": 204,
+    "trainers": []
+  },
+  {
+    "name": "Forretress",
+    "dex": 205,
+    "trainers": []
+  },
+  {
+    "name": "Dunsparce",
+    "dex": 206,
+    "trainers": []
+  },
+  {
+    "name": "Gligar",
+    "dex": 207,
+    "trainers": []
+  },
+  {
+    "name": "Steelix",
+    "dex": 208,
+    "trainers": []
+  },
+  {
+    "name": "Snubbull",
+    "dex": 209,
+    "trainers": []
+  },
+  {
+    "name": "Granbull",
+    "dex": 210,
+    "trainers": []
+  },
+  {
+    "name": "Qwilfish",
+    "dex": 211,
+    "trainers": []
+  },
+  {
+    "name": "Scizor",
+    "dex": 212,
+    "trainers": []
+  },
+  {
+    "name": "Shuckle",
+    "dex": 213,
+    "trainers": []
+  },
+  {
+    "name": "Heracross",
+    "dex": 214,
+    "trainers": []
+  },
+  {
+    "name": "Sneasel",
+    "dex": 215,
+    "trainers": []
+  },
+  {
+    "name": "Teddiursa",
+    "dex": 216,
+    "trainers": []
+  },
+  {
+    "name": "Ursaring",
+    "dex": 217,
+    "trainers": []
+  },
+  {
+    "name": "Slugma",
+    "dex": 218,
+    "trainers": []
+  },
+  {
+    "name": "Magcargo",
+    "dex": 219,
+    "trainers": []
+  },
+  {
+    "name": "Swinub",
+    "dex": 220,
+    "trainers": []
+  },
+  {
+    "name": "Piloswine",
+    "dex": 221,
+    "trainers": []
+  },
+  {
+    "name": "Corsola",
+    "dex": 222,
+    "trainers": []
+  },
+  {
+    "name": "Remoraid",
+    "dex": 223,
+    "trainers": []
+  },
+  {
+    "name": "Octillery",
+    "dex": 224,
+    "trainers": []
+  },
+  {
+    "name": "Delibird",
+    "dex": 225,
+    "trainers": []
+  },
+  {
+    "name": "Mantine",
+    "dex": 226,
+    "trainers": []
+  },
+  {
+    "name": "Skarmory",
+    "dex": 227,
+    "trainers": []
+  },
+  {
+    "name": "Houndour",
+    "dex": 228,
+    "trainers": []
+  },
+  {
+    "name": "Houndoom",
+    "dex": 229,
+    "trainers": []
+  },
+  {
+    "name": "Kingdra",
+    "dex": 230,
+    "trainers": []
+  },
+  {
+    "name": "Phanpy",
+    "dex": 231,
+    "trainers": []
+  },
+  {
+    "name": "Donphan",
+    "dex": 232,
+    "trainers": []
+  },
+  {
+    "name": "Porygon2",
+    "dex": 233,
+    "trainers": []
+  },
+  {
+    "name": "Stantler",
+    "dex": 234,
+    "trainers": []
+  },
+  {
+    "name": "Smeargle",
+    "dex": 235,
+    "trainers": []
+  },
+  {
+    "name": "Tyrogue",
+    "dex": 236,
+    "trainers": []
+  },
+  {
+    "name": "Hitmontop",
+    "dex": 237,
+    "trainers": []
+  },
+  {
+    "name": "Smoochum",
+    "dex": 238,
+    "trainers": []
+  },
+  {
+    "name": "Elekid",
+    "dex": 239,
+    "trainers": []
+  },
+  {
+    "name": "Magby",
+    "dex": 240,
+    "trainers": []
+  },
+  {
+    "name": "Miltank",
+    "dex": 241,
+    "trainers": []
+  },
+  {
+    "name": "Blissey",
+    "dex": 242,
+    "trainers": []
+  },
+  {
+    "name": "Raikou",
+    "dex": 243,
+    "trainers": []
+  },
+  {
+    "name": "Entei",
+    "dex": 244,
+    "trainers": []
+  },
+  {
+    "name": "Suicune",
+    "dex": 245,
+    "trainers": []
+  },
+  {
+    "name": "Larvitar",
+    "dex": 246,
+    "trainers": []
+  },
+  {
+    "name": "Pupitar",
+    "dex": 247,
+    "trainers": []
+  },
+  {
+    "name": "Tyranitar",
+    "dex": 248,
+    "trainers": []
+  },
+  {
+    "name": "Lugia",
+    "dex": 249,
+    "trainers": []
+  },
+  {
+    "name": "Ho-Oh",
+    "dex": 250,
+    "trainers": []
+  },
+  {
+    "name": "Celebi",
+    "dex": 251,
+    "trainers": []
+  },
+  {
+    "name": "Treecko",
+    "dex": 252,
+    "trainers": []
+  },
+  {
+    "name": "Grovyle",
+    "dex": 253,
+    "trainers": []
+  },
+  {
+    "name": "Sceptile",
+    "dex": 254,
+    "trainers": []
+  },
+  {
+    "name": "Torchic",
+    "dex": 255,
+    "trainers": []
+  },
+  {
+    "name": "Combusken",
+    "dex": 256,
+    "trainers": []
+  },
+  {
+    "name": "Blaziken",
+    "dex": 257,
+    "trainers": []
+  },
+  {
+    "name": "Mudkip",
+    "dex": 258,
+    "trainers": []
+  },
+  {
+    "name": "Marshtomp",
+    "dex": 259,
+    "trainers": []
+  },
+  {
+    "name": "Swampert",
+    "dex": 260,
+    "trainers": []
+  },
+  {
+    "name": "Poochyena",
+    "dex": 261,
+    "trainers": []
+  },
+  {
+    "name": "Mightyena",
+    "dex": 262,
+    "trainers": []
+  },
+  {
+    "name": "Zigzagoon",
+    "dex": 263,
+    "trainers": []
+  },
+  {
+    "name": "Linoone",
+    "dex": 264,
+    "trainers": []
+  },
+  {
+    "name": "Wurmple",
+    "dex": 265,
+    "trainers": []
+  },
+  {
+    "name": "Silcoon",
+    "dex": 266,
+    "trainers": []
+  },
+  {
+    "name": "Beautifly",
+    "dex": 267,
+    "trainers": []
+  },
+  {
+    "name": "Cascoon",
+    "dex": 268,
+    "trainers": []
+  },
+  {
+    "name": "Dustox",
+    "dex": 269,
+    "trainers": []
+  },
+  {
+    "name": "Lotad",
+    "dex": 270,
+    "trainers": []
+  },
+  {
+    "name": "Lombre",
+    "dex": 271,
+    "trainers": []
+  },
+  {
+    "name": "Ludicolo",
+    "dex": 272,
+    "trainers": []
+  },
+  {
+    "name": "Seedot",
+    "dex": 273,
+    "trainers": []
+  },
+  {
+    "name": "Nuzleaf",
+    "dex": 274,
+    "trainers": []
+  },
+  {
+    "name": "Shiftry",
+    "dex": 275,
+    "trainers": []
+  },
+  {
+    "name": "Taillow",
+    "dex": 276,
+    "trainers": []
+  },
+  {
+    "name": "Swellow",
+    "dex": 277,
+    "trainers": []
+  },
+  {
+    "name": "Wingull",
+    "dex": 278,
+    "trainers": []
+  },
+  {
+    "name": "Pelipper",
+    "dex": 279,
+    "trainers": []
+  },
+  {
+    "name": "Ralts",
+    "dex": 280,
+    "trainers": []
+  },
+  {
+    "name": "Kirlia",
+    "dex": 281,
+    "trainers": []
+  },
+  {
+    "name": "Gardevoir",
+    "dex": 282,
+    "trainers": []
+  },
+  {
+    "name": "Surskit",
+    "dex": 283,
+    "trainers": []
+  },
+  {
+    "name": "Masquerain",
+    "dex": 284,
+    "trainers": []
+  },
+  {
+    "name": "Shroomish",
+    "dex": 285,
+    "trainers": []
+  },
+  {
+    "name": "Breloom",
+    "dex": 286,
+    "trainers": []
+  },
+  {
+    "name": "Slakoth",
+    "dex": 287,
+    "trainers": []
+  },
+  {
+    "name": "Vigoroth",
+    "dex": 288,
+    "trainers": []
+  },
+  {
+    "name": "Slaking",
+    "dex": 289,
+    "trainers": []
+  },
+  {
+    "name": "Nincada",
+    "dex": 290,
+    "trainers": []
+  },
+  {
+    "name": "Ninjask",
+    "dex": 291,
+    "trainers": []
+  },
+  {
+    "name": "Shedinja",
+    "dex": 292,
+    "trainers": []
+  },
+  {
+    "name": "Lugia",
+    "dex": 249,
+    "trainers": []
+  },
+  {
+    "name": "Ho-Oh",
+    "dex": 250,
+    "trainers": []
+  },
+  {
+    "name": "Celebi",
+    "dex": 251,
+    "trainers": []
+  },
+  {
+    "name": "Treecko",
+    "dex": 252,
+    "trainers": []
+  },
+  {
+    "name": "Grovyle",
+    "dex": 253,
+    "trainers": []
+  },
+  {
+    "name": "Sceptile",
+    "dex": 254,
+    "trainers": []
+  },
+  {
+    "name": "Torchic",
+    "dex": 255,
+    "trainers": []
+  },
+  {
+    "name": "Combusken",
+    "dex": 256,
+    "trainers": []
+  },
+  {
+    "name": "Blaziken",
+    "dex": 257,
+    "trainers": []
+  },
+  {
+    "name": "Mudkip",
+    "dex": 258,
+    "trainers": []
+  },
+  {
+    "name": "Marshtomp",
+    "dex": 259,
+    "trainers": []
+  },
+  {
+    "name": "Swampert",
+    "dex": 260,
+    "trainers": []
+  },
+  {
+    "name": "Poochyena",
+    "dex": 261,
+    "trainers": []
+  },
+  {
+    "name": "Mightyena",
+    "dex": 262,
+    "trainers": []
+  },
+  {
+    "name": "Zigzagoon",
+    "dex": 263,
+    "trainers": []
+  },
+  {
+    "name": "Linoone",
+    "dex": 264,
+    "trainers": []
+  },
+  {
+    "name": "Wurmple",
+    "dex": 265,
+    "trainers": []
+  },
+  {
+    "name": "Silcoon",
+    "dex": 266,
+    "trainers": []
+  },
+  {
+    "name": "Beautifly",
+    "dex": 267,
+    "trainers": []
+  },
+  {
+    "name": "Cascoon",
+    "dex": 268,
+    "trainers": []
+  },
+  {
+    "name": "Dustox",
+    "dex": 269,
+    "trainers": []
+  },
+  {
+    "name": "Lotad",
+    "dex": 270,
+    "trainers": []
+  },
+  {
+    "name": "Lombre",
+    "dex": 271,
+    "trainers": []
+  },
+  {
+    "name": "Ludicolo",
+    "dex": 272,
+    "trainers": []
+  },
+  {
+    "name": "Seedot",
+    "dex": 273,
+    "trainers": []
+  },
+  {
+    "name": "Nuzleaf",
+    "dex": 274,
+    "trainers": []
+  },
+  {
+    "name": "Shiftry",
+    "dex": 275,
+    "trainers": []
+  },
+  {
+    "name": "Taillow",
+    "dex": 276,
+    "trainers": []
+  },
+  {
+    "name": "Swellow",
+    "dex": 277,
+    "trainers": []
+  },
+  {
+    "name": "Wingull",
+    "dex": 278,
+    "trainers": []
+  },
+  {
+    "name": "Pelipper",
+    "dex": 279,
+    "trainers": []
+  },
+  {
+    "name": "Ralts",
+    "dex": 280,
+    "trainers": []
+  },
+  {
+    "name": "Kirlia",
+    "dex": 281,
+    "trainers": []
+  },
+  {
+    "name": "Gardevoir",
+    "dex": 282,
+    "trainers": []
+  },
+  {
+    "name": "Surskit",
+    "dex": 283,
+    "trainers": []
+  },
+  {
+    "name": "Masquerain",
+    "dex": 284,
+    "trainers": []
+  },
+  {
+    "name": "Shroomish",
+    "dex": 285,
+    "trainers": []
+  },
+  {
+    "name": "Breloom",
+    "dex": 286,
+    "trainers": []
+  },
+  {
+    "name": "Slakoth",
+    "dex": 287,
+    "trainers": []
+  },
+  {
+    "name": "Vigoroth",
+    "dex": 288,
+    "trainers": []
+  },
+  {
+    "name": "Slaking",
+    "dex": 289,
+    "trainers": []
+  },
+  {
+    "name": "Nincada",
+    "dex": 290,
+    "trainers": []
+  },
+  {
+    "name": "Ninjask",
+    "dex": 291,
+    "trainers": []
+  },
+  {
+    "name": "Shedinja",
+    "dex": 292,
+    "trainers": []
+  },
+  {
+    "name": "Whismur",
+    "dex": 293,
+    "trainers": []
+  },
+  {
+    "name": "Loudred",
+    "dex": 294,
+    "trainers": []
+  },
+  {
+    "name": "Exploud",
+    "dex": 295,
+    "trainers": []
+  },
+  {
+    "name": "Makuhita",
+    "dex": 296,
+    "trainers": []
+  },
+  {
+    "name": "Hariyama",
+    "dex": 297,
+    "trainers": []
+  },
+  {
+    "name": "Azurill",
+    "dex": 298,
+    "trainers": []
+  },
+  {
+    "name": "Nosepass",
+    "dex": 299,
+    "trainers": []
+  },
+  {
+    "name": "Skitty",
+    "dex": 300,
+    "trainers": []
+  },
+  {
+    "name": "Delcatty",
+    "dex": 301,
+    "trainers": []
+  },
+  {
+    "name": "Sableye",
+    "dex": 302,
+    "trainers": []
+  },
+  {
+    "name": "Mawile",
+    "dex": 303,
+    "trainers": []
+  },
+  {
+    "name": "Aron",
+    "dex": 304,
+    "trainers": []
+  },
+  {
+    "name": "Lairon",
+    "dex": 305,
+    "trainers": []
+  },
+  {
+    "name": "Aggron",
+    "dex": 306,
+    "trainers": []
+  },
+  {
+    "name": "Meditite",
+    "dex": 307,
+    "trainers": []
+  },
+  {
+    "name": "Medicham",
+    "dex": 308,
+    "trainers": []
+  },
+  {
+    "name": "Electrike",
+    "dex": 309,
+    "trainers": []
+  },
+  {
+    "name": "Manectric",
+    "dex": 310,
+    "trainers": []
+  },
+  {
+    "name": "Plusle",
+    "dex": 311,
+    "trainers": []
+  },
+  {
+    "name": "Minun",
+    "dex": 312,
+    "trainers": []
+  },
+  {
+    "name": "Volbeat",
+    "dex": 313,
+    "trainers": []
+  },
+  {
+    "name": "Illumise",
+    "dex": 314,
+    "trainers": []
+  },
+  {
+    "name": "Roselia",
+    "dex": 315,
+    "trainers": []
+  },
+  {
+    "name": "Gulpin",
+    "dex": 316,
+    "trainers": []
+  },
+  {
+    "name": "Swalot",
+    "dex": 317,
+    "trainers": []
+  },
+  {
+    "name": "Carvanha",
+    "dex": 318,
+    "trainers": []
+  },
+  {
+    "name": "Sharpedo",
+    "dex": 319,
+    "trainers": []
+  },
+  {
+    "name": "Wailmer",
+    "dex": 320,
+    "trainers": []
+  },
+  {
+    "name": "Wailord",
+    "dex": 321,
+    "trainers": []
+  },
+  {
+    "name": "Numel",
+    "dex": 322,
+    "trainers": []
+  },
+  {
+    "name": "Camerupt",
+    "dex": 323,
+    "trainers": []
+  },
+  {
+    "name": "Torkoal",
+    "dex": 324,
+    "trainers": []
+  },
+  {
+    "name": "Spoink",
+    "dex": 325,
+    "trainers": []
+  },
+  {
+    "name": "Grumpig",
+    "dex": 326,
+    "trainers": []
+  },
+  {
+    "name": "Spinda",
+    "dex": 327,
+    "trainers": []
+  },
+  {
+    "name": "Trapinch",
+    "dex": 328,
+    "trainers": []
+  },
+  {
+    "name": "Vibrava",
+    "dex": 329,
+    "trainers": []
+  },
+  {
+    "name": "Flygon",
+    "dex": 330,
+    "trainers": []
+  },
+  {
+    "name": "Cacnea",
+    "dex": 331,
+    "trainers": []
+  },
+  {
+    "name": "Cacturne",
+    "dex": 332,
+    "trainers": []
+  },
+  {
+    "name": "Swablu",
+    "dex": 333,
+    "trainers": []
+  },
+  {
+    "name": "Altaria",
+    "dex": 334,
+    "trainers": []
+  },
+  {
+    "name": "Zangoose",
+    "dex": 335,
+    "trainers": []
+  },
+  {
+    "name": "Seviper",
+    "dex": 336,
+    "trainers": []
+  },
+  {
+    "name": "Lunatone",
+    "dex": 337,
+    "trainers": []
+  },
+  {
+    "name": "Solrock",
+    "dex": 338,
+    "trainers": []
+  },
+  {
+    "name": "Castform",
+    "dex": 339,
+    "trainers": []
+  },
+  {
+    "name": "Kecleon",
+    "dex": 340,
+    "trainers": []
+  },
+  {
+    "name": "Shuppet",
+    "dex": 341,
+    "trainers": []
+  },
+  {
+    "name": "Banette",
+    "dex": 342,
+    "trainers": []
+  },
+  {
+    "name": "Duskull",
+    "dex": 343,
+    "trainers": []
+  },
+  {
+    "name": "Dusclops",
+    "dex": 344,
+    "trainers": []
+  },
+  {
+    "name": "Tropius",
+    "dex": 345,
+    "trainers": []
+  },
+  {
+    "name": "Chimecho",
+    "dex": 346,
+    "trainers": []
+  },
+  {
+    "name": "Absol",
+    "dex": 347,
+    "trainers": []
+  },
+  {
+    "name": "Wynaut",
+    "dex": 348,
+    "trainers": []
+  },
+  {
+    "name": "Snorunt",
+    "dex": 349,
+    "trainers": []
+  },
+  {
+    "name": "Glalie",
+    "dex": 350,
+    "trainers": []
+  },
+  {
+    "name": "Spheal",
+    "dex": 351,
+    "trainers": []
+  },
+  {
+    "name": "Sealeo",
+    "dex": 352,
+    "trainers": []
+  },
+  {
+    "name": "Walrein",
+    "dex": 353,
+    "trainers": []
+  },
+  {
+    "name": "Clamperl",
+    "dex": 354,
+    "trainers": []
+  },
+  {
+    "name": "Huntail",
+    "dex": 355,
+    "trainers": []
+  },
+  {
+    "name": "Gorebyss",
+    "dex": 356,
+    "trainers": []
+  },
+  {
+    "name": "Relicanth",
+    "dex": 357,
+    "trainers": []
+  },
+  {
+    "name": "Luvdisc",
+    "dex": 358,
+    "trainers": []
+  },
+  {
+    "name": "Bagon",
+    "dex": 359,
+    "trainers": []
+  },
+  {
+    "name": "Shelgon",
+    "dex": 360,
+    "trainers": []
+  },
+  {
+    "name": "Salamence",
+    "dex": 361,
+    "trainers": []
+  },
+  {
+    "name": "Beldum",
+    "dex": 362,
+    "trainers": []
+  },
+  {
+    "name": "Metang",
+    "dex": 363,
+    "trainers": []
+  },
+  {
+    "name": "Metagross",
+    "dex": 364,
+    "trainers": []
+  },
+  {
+    "name": "Regirock",
+    "dex": 365,
+    "trainers": []
+  },
+  {
+    "name": "Regice",
+    "dex": 366,
+    "trainers": []
+  },
+  {
+    "name": "Registeel",
+    "dex": 367,
+    "trainers": []
+  },
+  {
+    "name": "Latias",
+    "dex": 368,
+    "trainers": []
+  },
+  {
+    "name": "Latios",
+    "dex": 369,
+    "trainers": []
+  },
+  {
+    "name": "Kyogre",
+    "dex": 370,
+    "trainers": []
+  },
+  {
+    "name": "Groudon",
+    "dex": 371,
+    "trainers": []
+  },
+  {
+    "name": "Rayquaza",
+    "dex": 372,
+    "trainers": []
+  },
+  {
+    "name": "Jirachi",
+    "dex": 373,
+    "trainers": []
+  },
+  {
+    "name": "Deoxys",
+    "dex": 374,
+    "trainers": []
+  },
+  {
+    "name": "Turtwig",
+    "dex": 375,
+    "trainers": []
+  },
+  {
+    "name": "Grotle",
+    "dex": 376,
+    "trainers": []
+  },
+  {
+    "name": "Torterra",
+    "dex": 377,
+    "trainers": []
+  },
+  {
+    "name": "Chimchar",
+    "dex": 378,
+    "trainers": []
+  },
+  {
+    "name": "Monferno",
+    "dex": 379,
+    "trainers": []
+  },
+  {
+    "name": "Infernape",
+    "dex": 380,
+    "trainers": []
+  },
+  {
+    "name": "Piplup",
+    "dex": 381,
+    "trainers": []
+  },
+  {
+    "name": "Prinplup",
+    "dex": 382,
+    "trainers": []
+  },
+  {
+    "name": "Empoleon",
+    "dex": 383,
+    "trainers": []
+  },
+  {
+    "name": "Starly",
+    "dex": 384,
+    "trainers": []
+  },
+  {
+    "name": "Staravia",
+    "dex": 385,
+    "trainers": []
+  },
+  {
+    "name": "Staraptor",
+    "dex": 386,
+    "trainers": []
+  },
+  {
+    "name": "Bidoof",
+    "dex": 387,
+    "trainers": []
+  },
+  {
+    "name": "Bibarel",
+    "dex": 388,
+    "trainers": []
+  },
+  {
+    "name": "Kricketot",
+    "dex": 389,
+    "trainers": []
+  },
+  {
+    "name": "Kricketune",
+    "dex": 390,
+    "trainers": []
+  },
+  {
+    "name": "Shinx",
+    "dex": 391,
+    "trainers": []
+  },
+  {
+    "name": "Luxio",
+    "dex": 392,
+    "trainers": []
+  },
+  {
+    "name": "Luxray",
+    "dex": 393,
+    "trainers": []
+  },
+  {
+    "name": "Budew",
+    "dex": 394,
+    "trainers": []
+  },
+  {
+    "name": "Roserade",
+    "dex": 395,
+    "trainers": []
+  },
+  {
+    "name": "Cranidos",
+    "dex": 396,
+    "trainers": []
+  },
+  {
+    "name": "Rampardos",
+    "dex": 397,
+    "trainers": []
+  },
+  {
+    "name": "Shieldon",
+    "dex": 398,
+    "trainers": []
+  },
+  {
+    "name": "Bastiodon",
+    "dex": 399,
+    "trainers": []
+  },
+  {
+    "name": "Burmy",
+    "dex": 400,
+    "trainers": []
+  },
+  {
+    "name": "Wormadam",
+    "dex": 401,
+    "trainers": []
+  },
+  {
+    "name": "Mothim",
+    "dex": 402,
+    "trainers": []
+  },
+  {
+    "name": "Combee",
+    "dex": 403,
+    "trainers": []
+  },
+  {
+    "name": "Vespiquen",
+    "dex": 404,
+    "trainers": []
+  },
+  {
+    "name": "Pachirisu",
+    "dex": 405,
+    "trainers": []
+  },
+  {
+    "name": "Buizel",
+    "dex": 406,
+    "trainers": []
+  },
+  {
+    "name": "Floatzel",
+    "dex": 407,
+    "trainers": []
+  },
+  {
+    "name": "Cherubi",
+    "dex": 408,
+    "trainers": []
+  },
+  {
+    "name": "Cherrim",
+    "dex": 409,
+    "trainers": []
+  },
+  {
+    "name": "Shellos",
+    "dex": 410,
+    "trainers": []
+  },
+  {
+    "name": "Gastrodon",
+    "dex": 411,
+    "trainers": []
+  },
+  {
+    "name": "Ambipom",
+    "dex": 412,
+    "trainers": []
+  },
+  {
+    "name": "Drifloon",
+    "dex": 413,
+    "trainers": []
+  },
+  {
+    "name": "Drifblim",
+    "dex": 414,
+    "trainers": []
+  },
+  {
+    "name": "Buneary",
+    "dex": 415,
+    "trainers": []
+  },
+  {
+    "name": "Lopunny",
+    "dex": 416,
+    "trainers": []
+  },
+  {
+    "name": "Mismagius",
+    "dex": 417,
+    "trainers": []
+  },
+  {
+    "name": "Honchkrow",
+    "dex": 418,
+    "trainers": []
+  },
+  {
+    "name": "Glameow",
+    "dex": 419,
+    "trainers": []
+  },
+  {
+    "name": "Purugly",
+    "dex": 420,
+    "trainers": []
+  },
+  {
+    "name": "Chingling",
+    "dex": 421,
+    "trainers": []
+  },
+  {
+    "name": "Stunky",
+    "dex": 422,
+    "trainers": []
+  },
+  {
+    "name": "Skuntank",
+    "dex": 423,
+    "trainers": []
+  },
+  {
+    "name": "Bronzor",
+    "dex": 424,
+    "trainers": []
+  },
+  {
+    "name": "Bronzong",
+    "dex": 425,
+    "trainers": []
+  },
+  {
+    "name": "Bonsly",
+    "dex": 426,
+    "trainers": []
+  },
+  {
+    "name": "Mime-Jr.",
+    "dex": 427,
+    "trainers": []
+  },
+  {
+    "name": "Happiny",
+    "dex": 428,
+    "trainers": []
+  },
+  {
+    "name": "Chatot",
+    "dex": 429,
+    "trainers": []
+  },
+  {
+    "name": "Spiritomb",
+    "dex": 430,
+    "trainers": []
+  },
+  {
+    "name": "Gible",
+    "dex": 431,
+    "trainers": []
+  },
+  {
+    "name": "Gabite",
+    "dex": 432,
+    "trainers": []
+  },
+  {
+    "name": "Garchomp",
+    "dex": 433,
+    "trainers": []
+  },
+  {
+    "name": "Munchlax",
+    "dex": 434,
+    "trainers": []
+  },
+  {
+    "name": "Riolu",
+    "dex": 435,
+    "trainers": []
+  },
+  {
+    "name": "Lucario",
+    "dex": 436,
+    "trainers": []
+  },
+  {
+    "name": "Hippopotas",
+    "dex": 437,
+    "trainers": []
+  },
+  {
+    "name": "Hippowdon",
+    "dex": 438,
+    "trainers": []
+  },
+  {
+    "name": "Skorupi",
+    "dex": 439,
+    "trainers": []
+  },
+  {
+    "name": "Drapion",
+    "dex": 440,
+    "trainers": []
+  },
+  {
+    "name": "Croagunk",
+    "dex": 441,
+    "trainers": []
+  },
+  {
+    "name": "Toxicroak",
+    "dex": 442,
+    "trainers": []
+  },
+  {
+    "name": "Carnivine",
+    "dex": 443,
+    "trainers": []
+  },
+  {
+    "name": "Finneon",
+    "dex": 444,
+    "trainers": []
+  },
+  {
+    "name": "Lumineon",
+    "dex": 445,
+    "trainers": []
+  },
+  {
+    "name": "Mantyke",
+    "dex": 446,
+    "trainers": []
+  },
+  {
+    "name": "Snover",
+    "dex": 447,
+    "trainers": []
+  },
+  {
+    "name": "Abomasnow",
+    "dex": 448,
+    "trainers": []
+  },
+  {
+    "name": "Weavile",
+    "dex": 449,
+    "trainers": []
+  },
+  {
+    "name": "Magnezone",
+    "dex": 450,
+    "trainers": []
+  },
+  {
+    "name": "Lickilicky",
+    "dex": 451,
+    "trainers": []
+  },
+  {
+    "name": "Rhyperior",
+    "dex": 452,
+    "trainers": []
+  },
+  {
+    "name": "Tangrowth",
+    "dex": 453,
+    "trainers": []
+  },
+  {
+    "name": "Electivire",
+    "dex": 454,
+    "trainers": []
+  },
+  {
+    "name": "Carnivine",
+    "dex": 455,
+    "trainers": []
+  },
+  {
+    "name": "Finneon",
+    "dex": 456,
+    "trainers": []
+  },
+  {
+    "name": "Lumineon",
+    "dex": 457,
+    "trainers": []
+  },
+  {
+    "name": "Mantyke",
+    "dex": 458,
+    "trainers": []
+  },
+  {
+    "name": "Snover",
+    "dex": 459,
+    "trainers": []
+  },
+  {
+    "name": "Abomasnow",
+    "dex": 460,
+    "trainers": []
+  },
+  {
+    "name": "Weavile",
+    "dex": 461,
+    "trainers": []
+  },
+  {
+    "name": "Magnezone",
+    "dex": 462,
+    "trainers": []
+  },
+  {
+    "name": "Lickilicky",
+    "dex": 463,
+    "trainers": []
+  },
+  {
+    "name": "Rhyperior",
+    "dex": 464,
+    "trainers": []
+  },
+  {
+    "name": "Tangrowth",
+    "dex": 465,
+    "trainers": []
+  },
+  {
+    "name": "Electivire",
+    "dex": 466,
+    "trainers": []
+  },
+  {
+    "name": "Magmortar",
+    "dex": 467,
+    "trainers": []
+  },
+  {
+    "name": "Togekiss",
+    "dex": 468,
+    "trainers": []
+  },
+  {
+    "name": "Yanmega",
+    "dex": 469,
+    "trainers": []
+  },
+  {
+    "name": "Leafeon",
+    "dex": 470,
+    "trainers": []
+  },
+  {
+    "name": "Glaceon",
+    "dex": 471,
+    "trainers": []
+  },
+  {
+    "name": "Gliscor",
+    "dex": 472,
+    "trainers": []
+  },
+  {
+    "name": "Mamoswine",
+    "dex": 473,
+    "trainers": []
+  },
+  {
+    "name": "Porygon-Z",
+    "dex": 474,
+    "trainers": []
+  },
+  {
+    "name": "Gallade",
+    "dex": 475,
+    "trainers": []
+  },
+  {
+    "name": "Probopass",
+    "dex": 476,
+    "trainers": []
+  },
+  {
+    "name": "Dusknoir",
+    "dex": 477,
+    "trainers": []
+  },
+  {
+    "name": "Froslass",
+    "dex": 478,
+    "trainers": []
+  },
+  {
+    "name": "Rotom",
+    "dex": 479,
+    "trainers": []
+  },
+  {
+    "name": "Uxie",
+    "dex": 480,
+    "trainers": []
+  },
+  {
+    "name": "Mesprit",
+    "dex": 481,
+    "trainers": []
+  },
+  {
+    "name": "Azelf",
+    "dex": 482,
+    "trainers": []
+  },
+  {
+    "name": "Dialga",
+    "dex": 483,
+    "trainers": []
+  },
+  {
+    "name": "Palkia",
+    "dex": 484,
+    "trainers": []
+  },
+  {
+    "name": "Heatran",
+    "dex": 485,
+    "trainers": []
+  },
+  {
+    "name": "Regigigas",
+    "dex": 486,
+    "trainers": []
+  },
+  {
+    "name": "Giratina",
+    "dex": 487,
+    "trainers": []
+  },
+  {
+    "name": "Cresselia",
+    "dex": 488,
+    "trainers": []
+  },
+  {
+    "name": "Phione",
+    "dex": 489,
+    "trainers": []
+  },
+  {
+    "name": "Manaphy",
+    "dex": 490,
+    "trainers": []
+  },
+  {
+    "name": "Darkrai",
+    "dex": 491,
+    "trainers": []
+  },
+  {
+    "name": "Shaymin",
+    "dex": 492,
+    "trainers": []
+  },
+  {
+    "name": "Arceus",
+    "dex": 493,
+    "trainers": []
+  },
+  {
+    "name": "Victini",
+    "dex": 494,
+    "trainers": []
+  },
+  {
+    "name": "Snivy",
+    "dex": 495,
+    "trainers": []
+  },
+  {
+    "name": "Servine",
+    "dex": 496,
+    "trainers": []
+  },
+  {
+    "name": "Serperior",
+    "dex": 497,
+    "trainers": []
+  },
+  {
+    "name": "Tepig",
+    "dex": 498,
+    "trainers": []
+  },
+  {
+    "name": "Pignite",
+    "dex": 499,
+    "trainers": []
+  },
+  {
+    "name": "Emboar",
+    "dex": 500,
+    "trainers": []
+  },
+  {
+    "name": "Oshawott",
+    "dex": 501,
+    "trainers": []
+  },
+  {
+    "name": "Dewott",
+    "dex": 502,
+    "trainers": []
+  },
+  {
+    "name": "Samurott",
+    "dex": 503,
+    "trainers": []
+  },
+  {
+    "name": "Patrat",
+    "dex": 504,
+    "trainers": []
+  },
+  {
+    "name": "Watchog",
+    "dex": 505,
+    "trainers": []
+  },
+  {
+    "name": "Lillipup",
+    "dex": 506,
+    "trainers": []
+  },
+  {
+    "name": "Herdier",
+    "dex": 507,
+    "trainers": []
+  },
+  {
+    "name": "Stoutland",
+    "dex": 508,
+    "trainers": []
+  },
+  {
+    "name": "Purrloin",
+    "dex": 509,
+    "trainers": []
+  },
+  {
+    "name": "Liepard",
+    "dex": 510,
+    "trainers": []
+  },
+  {
+    "name": "Pansage",
+    "dex": 511,
+    "trainers": []
+  },
+  {
+    "name": "Simisage",
+    "dex": 512,
+    "trainers": []
+  },
+  {
+    "name": "Pansear",
+    "dex": 513,
+    "trainers": []
+  },
+  {
+    "name": "Simisear",
+    "dex": 514,
+    "trainers": []
+  },
+  {
+    "name": "Panpour",
+    "dex": 515,
+    "trainers": []
+  },
+  {
+    "name": "Simipour",
+    "dex": 516,
+    "trainers": []
+  },
+  {
+    "name": "Munna",
+    "dex": 517,
+    "trainers": []
+  },
+  {
+    "name": "Musharna",
+    "dex": 518,
+    "trainers": []
+  },
+  {
+    "name": "Pidove",
+    "dex": 519,
+    "trainers": []
+  },
+  {
+    "name": "Tranquill",
+    "dex": 520,
+    "trainers": []
+  },
+  {
+    "name": "Unfezant",
+    "dex": 521,
+    "trainers": []
+  },
+  {
+    "name": "Blitzle",
+    "dex": 522,
+    "trainers": []
+  },
+  {
+    "name": "Zebstrika",
+    "dex": 523,
+    "trainers": []
+  },
+  {
+    "name": "Roggenrola",
+    "dex": 524,
+    "trainers": []
+  },
+  {
+    "name": "Boldore",
+    "dex": 525,
+    "trainers": []
+  },
+  {
+    "name": "Gigalith",
+    "dex": 526,
+    "trainers": []
+  },
+  {
+    "name": "Woobat",
+    "dex": 527,
+    "trainers": []
+  },
+  {
+    "name": "Swoobat",
+    "dex": 528,
+    "trainers": []
+  },
+  {
+    "name": "Drilbur",
+    "dex": 529,
+    "trainers": []
+  },
+  {
+    "name": "Excadrill",
+    "dex": 530,
+    "trainers": []
+  },
+  {
+    "name": "Audino",
+    "dex": 531,
+    "trainers": []
+  },
+  {
+    "name": "Timburr",
+    "dex": 532,
+    "trainers": []
+  },
+  {
+    "name": "Gurdurr",
+    "dex": 533,
+    "trainers": []
+  },
+  {
+    "name": "Conkeldurr",
+    "dex": 534,
+    "trainers": []
+  },
+  {
+    "name": "Tympole",
+    "dex": 535,
+    "trainers": []
+  },
+  {
+    "name": "Palpitoad",
+    "dex": 536,
+    "trainers": []
+  },
+  {
+    "name": "Seismitoad",
+    "dex": 537,
+    "trainers": []
+  },
+  {
+    "name": "Throh",
+    "dex": 538,
+    "trainers": []
+  },
+  {
+    "name": "Sawk",
+    "dex": 539,
+    "trainers": []
+  },
+  {
+    "name": "Sewaddle",
+    "dex": 540,
+    "trainers": []
+  },
+  {
+    "name": "Swadloon",
+    "dex": 541,
+    "trainers": []
+  },
+  {
+    "name": "Leavanny",
+    "dex": 542,
+    "trainers": []
+  },
+  {
+    "name": "Venipede",
+    "dex": 543,
+    "trainers": []
+  },
+  {
+    "name": "Whirlipede",
+    "dex": 544,
+    "trainers": []
+  },
+  {
+    "name": "Scolipede",
+    "dex": 545,
+    "trainers": []
+  },
+  {
+    "name": "Cottonee",
+    "dex": 546,
+    "trainers": []
+  },
+  {
+    "name": "Whimsicott",
+    "dex": 547,
+    "trainers": []
+  },
+  {
+    "name": "Petilil",
+    "dex": 548,
+    "trainers": []
+  },
+  {
+    "name": "Lilligant",
+    "dex": 549,
+    "trainers": []
+  },
+  {
+    "name": "Basculin",
+    "dex": 550,
+    "trainers": []
+  },
+  {
+    "name": "Sandile",
+    "dex": 551,
+    "trainers": []
+  },
+  {
+    "name": "Krokorok",
+    "dex": 552,
+    "trainers": []
+  },
+  {
+    "name": "Krookodile",
+    "dex": 553,
+    "trainers": []
+  },
+  {
+    "name": "Darumaka",
+    "dex": 554,
+    "trainers": []
+  },
+  {
+    "name": "Darmanitan",
+    "dex": 555,
+    "trainers": []
+  },
+  {
+    "name": "Maractus",
+    "dex": 556,
+    "trainers": []
+  },
+  {
+    "name": "Dwebble",
+    "dex": 557,
+    "trainers": []
+  },
+  {
+    "name": "Crustle",
+    "dex": 558,
+    "trainers": []
+  },
+  {
+    "name": "Scraggy",
+    "dex": 559,
+    "trainers": []
+  },
+  {
+    "name": "Scrafty",
+    "dex": 560,
+    "trainers": []
+  },
+  {
+    "name": "Sigilyph",
+    "dex": 561,
+    "trainers": []
+  },
+  {
+    "name": "Yamask",
+    "dex": 562,
+    "trainers": []
+  },
+  {
+    "name": "Cofagrigus",
+    "dex": 563,
+    "trainers": []
+  },
+  {
+    "name": "Tirtouga",
+    "dex": 564,
+    "trainers": []
+  },
+  {
+    "name": "Carracosta",
+    "dex": 565,
+    "trainers": []
+  },
+  {
+    "name": "Archen",
+    "dex": 566,
+    "trainers": []
+  },
+  {
+    "name": "Archeops",
+    "dex": 567,
+    "trainers": []
+  },
+  {
+    "name": "Trubbish",
+    "dex": 568,
+    "trainers": []
+  },
+  {
+    "name": "Garbodor",
+    "dex": 569,
+    "trainers": []
+  },
+  {
+    "name": "Zorua",
+    "dex": 570,
+    "trainers": []
+  },
+  {
+    "name": "Zoroark",
+    "dex": 571,
+    "trainers": []
+  },
+  {
+    "name": "Minccino",
+    "dex": 572,
+    "trainers": []
+  },
+  {
+    "name": "Cinccino",
+    "dex": 573,
+    "trainers": []
+  },
+  {
+    "name": "Gothita",
+    "dex": 574,
+    "trainers": []
+  },
+  {
+    "name": "Gothorita",
+    "dex": 575,
+    "trainers": []
+  },
+  {
+    "name": "Gothitelle",
+    "dex": 576,
+    "trainers": []
+  },
+  {
+    "name": "Solosis",
+    "dex": 577,
+    "trainers": []
+  },
+  {
+    "name": "Duosion",
+    "dex": 578,
+    "trainers": []
+  },
+  {
+    "name": "Reuniclus",
+    "dex": 579,
+    "trainers": []
+  },
+  {
+    "name": "Ducklett",
+    "dex": 580,
+    "trainers": []
+  },
+  {
+    "name": "Swanna",
+    "dex": 581,
+    "trainers": []
+  },
+  {
+    "name": "Vanillite",
+    "dex": 582,
+    "trainers": []
+  },
+  {
+    "name": "Vanillish",
+    "dex": 583,
+    "trainers": []
+  },
+  {
+    "name": "Vanilluxe",
+    "dex": 584,
+    "trainers": []
+  },
+  {
+    "name": "Deerling",
+    "dex": 585,
+    "trainers": []
+  },
+  {
+    "name": "Sawsbuck",
+    "dex": 586,
+    "trainers": []
+  },
+  {
+    "name": "Emolga",
+    "dex": 587,
+    "trainers": []
+  },
+  {
+    "name": "Karrablast",
+    "dex": 588,
+    "trainers": []
+  },
+  {
+    "name": "Escavalier",
+    "dex": 589,
+    "trainers": []
+  },
+  {
+    "name": "Foongus",
+    "dex": 590,
+    "trainers": []
+  },
+  {
+    "name": "Amoonguss",
+    "dex": 591,
+    "trainers": []
+  },
+  {
+    "name": "Frillish",
+    "dex": 592,
+    "trainers": []
+  },
+  {
+    "name": "Jellicent",
+    "dex": 593,
+    "trainers": []
+  },
+  {
+    "name": "Alomomola",
+    "dex": 594,
+    "trainers": []
+  },
+  {
+    "name": "Joltik",
+    "dex": 595,
+    "trainers": []
+  },
+  {
+    "name": "Galvantula",
+    "dex": 596,
+    "trainers": []
+  },
+  {
+    "name": "Ferroseed",
+    "dex": 597,
+    "trainers": []
+  },
+  {
+    "name": "Ferrothorn",
+    "dex": 598,
+    "trainers": []
+  },
+  {
+    "name": "Klink",
+    "dex": 599,
+    "trainers": []
+  },
+  {
+    "name": "Klang",
+    "dex": 600,
+    "trainers": []
+  },
+  {
+    "name": "Klinklang",
+    "dex": 601,
+    "trainers": []
+  },
+  {
+    "name": "Tynamo",
+    "dex": 602,
+    "trainers": []
+  },
+  {
+    "name": "Eelektrik",
+    "dex": 603,
+    "trainers": []
+  },
+  {
+    "name": "Eelektross",
+    "dex": 604,
+    "trainers": []
+  },
+  {
+    "name": "Elgyem",
+    "dex": 605,
+    "trainers": []
+  },
+  {
+    "name": "Beheeyem",
+    "dex": 606,
+    "trainers": []
+  },
+  {
+    "name": "Litwick",
+    "dex": 607,
+    "trainers": []
+  },
+  {
+    "name": "Lampent",
+    "dex": 608,
+    "trainers": []
+  },
+  {
+    "name": "Chandelure",
+    "dex": 609,
+    "trainers": []
+  },
+  {
+    "name": "Axew",
+    "dex": 610,
+    "trainers": []
+  },
+  {
+    "name": "Fraxure",
+    "dex": 611,
+    "trainers": []
+  },
+  {
+    "name": "Haxorus",
+    "dex": 612,
+    "trainers": []
+  },
+  {
+    "name": "Cubchoo",
+    "dex": 613,
+    "trainers": []
+  },
+  {
+    "name": "Beartic",
+    "dex": 614,
+    "trainers": []
+  },
+  {
+    "name": "Cryogonal",
+    "dex": 615,
+    "trainers": []
+  },
+  {
+    "name": "Shelmet",
+    "dex": 616,
+    "trainers": []
+  },
+  {
+    "name": "Accelgor",
+    "dex": 617,
+    "trainers": []
+  },
+  {
+    "name": "Stunfisk",
+    "dex": 618,
+    "trainers": []
+  },
+  {
+    "name": "Mienfoo",
+    "dex": 619,
+    "trainers": []
+  },
+  {
+    "name": "Mienshao",
+    "dex": 620,
+    "trainers": []
+  },
+  {
+    "name": "Druddigon",
+    "dex": 621,
+    "trainers": []
+  },
+  {
+    "name": "Golett",
+    "dex": 622,
+    "trainers": []
+  },
+  {
+    "name": "Golurk",
+    "dex": 623,
+    "trainers": []
+  },
+  {
+    "name": "Pawniard",
+    "dex": 624,
+    "trainers": []
+  },
+  {
+    "name": "Bisharp",
+    "dex": 625,
+    "trainers": []
+  },
+  {
+    "name": "Bouffalant",
+    "dex": 626,
+    "trainers": []
+  },
+  {
+    "name": "Rufflet",
+    "dex": 627,
+    "trainers": []
+  },
+  {
+    "name": "Braviary",
+    "dex": 628,
+    "trainers": []
+  },
+  {
+    "name": "Vullaby",
+    "dex": 629,
+    "trainers": []
+  },
+  {
+    "name": "Mandibuzz",
+    "dex": 630,
     "trainers": []
   }
 ]
