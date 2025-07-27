@@ -2,6 +2,10 @@
 
 <section class="shiny-dex">
 
+<div id="shiny-counter" class="shiny-counter">
+  <span class="count-owned">0</span> / <span class="count-total">630</span>
+</div>
+
 <div class="shinydex-grid" id="shiny-grid"></div>
 
 <!-- Modal -->

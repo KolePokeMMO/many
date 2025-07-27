@@ -1487,226 +1487,6 @@
     "trainers": []
   },
   {
-    "name": "Lugia",
-    "dex": 249,
-    "trainers": []
-  },
-  {
-    "name": "Ho-Oh",
-    "dex": 250,
-    "trainers": []
-  },
-  {
-    "name": "Celebi",
-    "dex": 251,
-    "trainers": []
-  },
-  {
-    "name": "Treecko",
-    "dex": 252,
-    "trainers": []
-  },
-  {
-    "name": "Grovyle",
-    "dex": 253,
-    "trainers": []
-  },
-  {
-    "name": "Sceptile",
-    "dex": 254,
-    "trainers": []
-  },
-  {
-    "name": "Torchic",
-    "dex": 255,
-    "trainers": []
-  },
-  {
-    "name": "Combusken",
-    "dex": 256,
-    "trainers": []
-  },
-  {
-    "name": "Blaziken",
-    "dex": 257,
-    "trainers": []
-  },
-  {
-    "name": "Mudkip",
-    "dex": 258,
-    "trainers": []
-  },
-  {
-    "name": "Marshtomp",
-    "dex": 259,
-    "trainers": []
-  },
-  {
-    "name": "Swampert",
-    "dex": 260,
-    "trainers": []
-  },
-  {
-    "name": "Poochyena",
-    "dex": 261,
-    "trainers": []
-  },
-  {
-    "name": "Mightyena",
-    "dex": 262,
-    "trainers": []
-  },
-  {
-    "name": "Zigzagoon",
-    "dex": 263,
-    "trainers": []
-  },
-  {
-    "name": "Linoone",
-    "dex": 264,
-    "trainers": []
-  },
-  {
-    "name": "Wurmple",
-    "dex": 265,
-    "trainers": []
-  },
-  {
-    "name": "Silcoon",
-    "dex": 266,
-    "trainers": []
-  },
-  {
-    "name": "Beautifly",
-    "dex": 267,
-    "trainers": []
-  },
-  {
-    "name": "Cascoon",
-    "dex": 268,
-    "trainers": []
-  },
-  {
-    "name": "Dustox",
-    "dex": 269,
-    "trainers": []
-  },
-  {
-    "name": "Lotad",
-    "dex": 270,
-    "trainers": []
-  },
-  {
-    "name": "Lombre",
-    "dex": 271,
-    "trainers": []
-  },
-  {
-    "name": "Ludicolo",
-    "dex": 272,
-    "trainers": []
-  },
-  {
-    "name": "Seedot",
-    "dex": 273,
-    "trainers": []
-  },
-  {
-    "name": "Nuzleaf",
-    "dex": 274,
-    "trainers": []
-  },
-  {
-    "name": "Shiftry",
-    "dex": 275,
-    "trainers": []
-  },
-  {
-    "name": "Taillow",
-    "dex": 276,
-    "trainers": []
-  },
-  {
-    "name": "Swellow",
-    "dex": 277,
-    "trainers": []
-  },
-  {
-    "name": "Wingull",
-    "dex": 278,
-    "trainers": []
-  },
-  {
-    "name": "Pelipper",
-    "dex": 279,
-    "trainers": []
-  },
-  {
-    "name": "Ralts",
-    "dex": 280,
-    "trainers": []
-  },
-  {
-    "name": "Kirlia",
-    "dex": 281,
-    "trainers": []
-  },
-  {
-    "name": "Gardevoir",
-    "dex": 282,
-    "trainers": []
-  },
-  {
-    "name": "Surskit",
-    "dex": 283,
-    "trainers": []
-  },
-  {
-    "name": "Masquerain",
-    "dex": 284,
-    "trainers": []
-  },
-  {
-    "name": "Shroomish",
-    "dex": 285,
-    "trainers": []
-  },
-  {
-    "name": "Breloom",
-    "dex": 286,
-    "trainers": []
-  },
-  {
-    "name": "Slakoth",
-    "dex": 287,
-    "trainers": []
-  },
-  {
-    "name": "Vigoroth",
-    "dex": 288,
-    "trainers": []
-  },
-  {
-    "name": "Slaking",
-    "dex": 289,
-    "trainers": []
-  },
-  {
-    "name": "Nincada",
-    "dex": 290,
-    "trainers": []
-  },
-  {
-    "name": "Ninjask",
-    "dex": 291,
-    "trainers": []
-  },
-  {
-    "name": "Shedinja",
-    "dex": 292,
-    "trainers": []
-  },
-  {
     "name": "Whismur",
     "dex": 293,
     "trainers": []
@@ -3422,6 +3202,51 @@
   {
     "name": "Mandibuzz",
     "dex": 630,
+    "trainers": []
+  },
+  {
+    "name": "Heatmor",
+    "dex": 631,
+    "trainers": []
+  },
+  {
+    "name": "Durant",
+    "dex": 632,
+    "trainers": []
+  },
+  {
+    "name": "Deino",
+    "dex": 633,
+    "trainers": []
+  },
+  {
+    "name": "Zweilous",
+    "dex": 634,
+    "trainers": []
+  },
+  {
+    "name": "Hydreigon",
+    "dex": 635,
+    "trainers": []
+  },
+  {
+    "name": "Larvesta",
+    "dex": 636,
+    "trainers": []
+  },
+  {
+    "name": "Volcarona",
+    "dex": 637,
+    "trainers": []
+  },
+  {
+    "name": "Reshiram",
+    "dex": 643,
+    "trainers": []
+  },
+  {
+    "name": "Zekrom",
+    "dex": 644,
     "trainers": []
   }
 ]

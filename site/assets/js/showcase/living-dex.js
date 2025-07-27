@@ -5,14 +5,19 @@ const modalImg = document.getElementById("modal-img");
 const modalOwners = document.getElementById("modal-owners");
 const modalClose = document.querySelector(".modal-close");
 
-// Use fetch instead of static import
 fetch("/many/assets/data/living-dex.json")
   .then(response => response.json())
   .then(data => {
+    let ownedCount = 0;
+
     data.forEach(p => {
       const cell = document.createElement("div");
       cell.className = "shiny-cell";
-      if (p.trainers && p.trainers.length) cell.classList.add("owned");
+
+      if (p.trainers && p.trainers.length) {
+        cell.classList.add("owned");
+        ownedCount++;
+      }
 
       const img = document.createElement("img");
       img.src = `https://img.pokemondb.net/sprites/home/shiny/${p.name.toLowerCase()}.png`;
@@ -30,7 +35,12 @@ fetch("/many/assets/data/living-dex.json")
 
       grid.appendChild(cell);
     });
+
+    // Update counter
+    document.querySelector(".count-owned").textContent = ownedCount;
+    document.querySelector(".count-total").textContent = data.length;
   });
+
 
 // Close modal when clicking the "X"
 document.querySelector('.modal-close').addEventListener('click', () => {
