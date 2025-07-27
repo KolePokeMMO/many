@@ -1172,7 +1172,10 @@
   {
     "name": "Smeargle",
     "dex": 235,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "05-09-2023" },
+        { "name": "Kelly", "date": "06-19-2023" }
+    ]
   },
   {
     "name": "Tyrogue",
@@ -2672,7 +2675,9 @@
   {
     "name": "Darkrai",
     "dex": 491,
-    "trainers": []
+    "trainers": [
+        { "name": "Kole", "date": "08-21-2016" }
+    ]
   },
   {
     "name": "Shaymin",
