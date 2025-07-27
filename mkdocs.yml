@@ -38,6 +38,8 @@ extra_css:
   - assets/css/comp/poke-tooltips.css
   - assets/css/showcase/shinywars.css
   - assets/css/utilities/shunt-planner.css
+  - assets/css/showcase/living-dex.css
+
 
 extra_javascript:
   - assets/js/theme-loader.js
@@ -48,6 +50,7 @@ extra_javascript:
   - assets/js/showcase/shinywars.js
   - assets/js/utilities/rps/rps.js
   - assets/js/utilities/sp/shunt-planner.js
+  - assets/js/showcase/living-dex.js
 
 nav:
   - Home: index.md

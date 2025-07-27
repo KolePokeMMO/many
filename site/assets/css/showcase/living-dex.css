@@ -1,0 +1,90 @@
+/* Dark, modern, sleek grid layout */
+.shiny-dex {
+  background-color: var(--main-bg-color);
+  border-radius: 0;
+  padding: 0rem;
+  color: #f0f0f0;
+  font-family: 'Enter', sans-serif;
+}
+
+.shinydex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 0px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.shiny-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  border-radius: 0px;
+  overflow: hidden;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  border: 1px solid #444; /* Soft grid lines */
+  box-sizing: border-box; /* Ensures border doesn't affect layout */
+  background: var(--main-bg-color); /* Subtle background to help define borders */
+}
+
+.shiny-cell.owned {
+ border: 1px solid var(--main-accent-border-color); /* Soft grid lines */
+}
+
+.shiny-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.shiny-cell.owned img {
+  filter: grayscale(0%);
+}
+
+
+
+.shiny-cell:hover img:not(.owned) {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  position: relative;
+  background: #151515;
+  padding: 2rem;
+  border-radius: 0px;
+  max-width: 400px;
+  text-align: center;
+  color: var(--main-accent-color);
+  border: 2px solid var(--main-accent-border-color)
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  olor: var(--main-accent-color);
+}
