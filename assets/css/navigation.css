@@ -61,7 +61,7 @@
 	text-rendering: optimizeLegibility;
 	transform: translateZ(0); /* improves clarity on GPU layers */
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+
 }
 
 /* ─── Navigation Link Hover ───────────────────── */
