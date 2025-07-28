@@ -86,7 +86,7 @@
   right: 0.75rem;
   font-size: 1.5rem;
   cursor: pointer;
-  olor: var(--main-accent-color);
+  color: var(--main-accent-color);
 }
 
 #modal-owners {

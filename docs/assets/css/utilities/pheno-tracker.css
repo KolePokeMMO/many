@@ -55,3 +55,104 @@
   font-size: 0.7rem;
   color: #ccc;
 }
+
+.pheno-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pheno-reset {
+  background-color: var(--main-accent-color-light);
+  color: black;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.pheno-reset:hover {
+  background-color: var(--main-accent-color);
+}
+
+.pheno-progress-wrap {
+  margin-bottom: 1.5rem;
+}
+
+#pheno-counter {
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+  color: #ccc;
+}
+
+.pheno-progress-bar {
+  height: 8px;
+  background-color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#pheno-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--main-accent-color-light);
+  transition: width 0.3s ease-in-out;
+}
+
+.pheno-mechanics-guide {
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  background: var(--main-bg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.pheno-mechanics-guide summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset details {
+  background-color: var(--main-fg-color);
+  border: .075rem solid var(--main-accent-color);
+  border-radius: 0;
+  box-shadow: var(--main-bg-color);
+  color: var(--md-admonition-fg-color);
+  display: flow-root;
+  font-size: .64rem;
+  margin: 1.5625em 0;
+  padding: 0 .6rem;
+  padding-top: 0px;
+  page-break-inside: avoid;
+  transition: box-shadow 125ms;
+}
+
+.md-typeset summary::before {
+  background-color: var(--main-accent-color);
+  content: "";
+  height: 1rem;
+  -webkit-mask-image: var(--md-admonition-icon--note);
+  mask-image: var(--md-admonition-icon--note);
+}
+
+.md-typeset details summary {
+  background-color: var(--main-fg-border-color);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+}
+
+.md-typeset details:focus,
+.md-typeset details[open],
+.md-typeset details summary:focus,
+.md-typeset details summary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0px var(--main-fg-color); /* subtle border glow */
+
+  border-radius: 0px; /* optional, if you’re rounding other parts */
+}

@@ -93,7 +93,7 @@
   position: absolute;
   color: var(--main-accent-color);
   top: 40px;
-  rleft: 30px;
+  left: 30px;
   width: 25vw; /* responsive width instead of fixed px */
   width: 600px; /* prevent it from getting too large */
   max-width: 600px;
@@ -108,7 +108,7 @@
 
 .hero__overlay-img svg {
   overflow: visible;
-};
+}
 
 
 /* Shrink and reposition on smaller screens */
@@ -147,7 +147,7 @@
   color: #fff;
 }
 .md-typeset .md-button:hover {
-  background-color: none;
+  background-color: transparent;
   border-color: var(--main-accent-color-light);
   color: #fff;
 }

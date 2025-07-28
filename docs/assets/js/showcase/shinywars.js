@@ -1,7 +1,5 @@
 const el = document.getElementById("team-1789");
-if (!el) {
-  console.warn("No element found with ID team-1789");
-} else {
+
   // Create filter container
   const filterContainer = document.createElement("div");
   filterContainer.className = "filters";
@@ -77,4 +75,4 @@ if (!el) {
         });
       });
     });
-}
+
