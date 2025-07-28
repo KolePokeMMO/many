@@ -7,21 +7,75 @@
 >
 > This page helps you learn where to find each Pheno, what triggers their appearance, and allows you to track your progress by checking off the ones you’ve caught. Your progress is saved locally in your browser.
 
+---
+
 <details class="pheno-mechanics-guide">
   <summary>How Phenomenon Pokémon Work - [Open]</summary>
-  <ul>
-    <li><strong>Triggers:</strong> Phenomenon Pokémon spawn in special encounter areas (like rustling grass, dust clouds, rippling water, or bridge shadows) after walking for some time.</li>
-    <li><strong>Repels:</strong> Do not prevent Pheno encounters, so you can safely use the Repel Trick!</li>
-    <li><strong>Sweet Scent:</strong> Does <em>not</em> trigger Phenomenon battles.</li>
-    <li><strong>Bridge Shadows:</strong> Appear only on specific bridges and are usually rarer and harder to encounter.</li>
-    <li><strong>Persistence:</strong> Phenomenon Pokémon only appear for a limited time before despawning.</li>
+
+  <h3>Mechanics</h3>
+
+  <ul class="pheno-info">
+    <li>Each Pokémon found via phenomena has a <strong>30% chance</strong>to have <strong>one IV at 30 or above</strong>.</li>
+    <li>There are always <strong>at least 2 phenomena</strong>active across Unova at any given time.</li>
+    <li>Phenomena last roughly <strong>15–20 minutes</strong>before vanishing.</li>
+    <li>They <strong>do not appear in swarm reports</strong>or through televisions like other special encounters.</li>
+  </ul>
+
+  <hr />
+
+  <h3>Types of Phenomena</h3>
+
+  <table class="pheno-table">
+    <thead>
+      <tr>
+        <th>Icon</th><th>Type</th><th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://static.wikia.nocookie.net/pokemmo/images/a/ae/Enc_Rustling_Grass.png" style="width: 20px;" /></td>
+        <td><strong>Rustling Grass</strong></td>
+        <td>Found in grassy areas. Often contain rare wild Pokémon.</td>
+      </tr>
+      <tr>
+        <td><img src="https://static.wikia.nocookie.net/pokemmo/images/e/e3/Enc_Rippling_Water.png" style="width: 20px;" /></td>
+        <td><strong>Dust Cloud</strong></td>
+        <td>Common in caves, may contain Drilbur or items.</td>
+      </tr>
+      <tr>
+        <td><img src="https://static.wikia.nocookie.net/pokemmo/images/0/05/Enc_Dust_Cloud.png" style="width: 20px;" /></td>
+        <td><strong>Rippling Water</strong></td>
+        <td>Appears on fishing or surfing spots.</td>
+      </tr>
+      <tr>
+        <td><img src="https://static.wikia.nocookie.net/pokemmo/images/2/26/Enc_Shadow.png" style="width: 20px;" /></td>
+        <td><strong>Shadow</strong></td>
+        <td>Flying Pokémon shadows on bridges.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h3>Audio & Visual Cues</h3>
+
+  <ul class="pheno-info">
+    <li><strong>Sound intensity</strong>increases as you get closer to the phenomenon.</li>
+    <li>Sounds <strong>never stop</strong>until the phenomenon expires—so follow your ears!</li>
+    <li>The <strong>visual effect</strong>helps identify the type and location.</li>
   </ul>
 </details>
+
 
 ---
 
 <div class="pheno-toolbar">
-  <label><input type="checkbox" id="filter-missing" /> Show only missing</label>
+<label class="custom-checkbox">
+  <input type="checkbox" id="filter-missing">
+  <span class="checkmark"></span>
+  Show only missing
+</label>
+  
   <button id="reset-pheno" class="pheno-reset">Reset All</button>
 </div>
 
