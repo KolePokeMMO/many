@@ -33,7 +33,7 @@
 }
 
 .pheno-sprite {
-  max-width: 100px;
+  max-width: 10px;
   max-height: 100px;
 }
 
@@ -156,3 +156,104 @@
 
   border-radius: 0px; /* optional, if you’re rounding other parts */
 }
+
+/* Container label */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  color: var(--text-color, #eee);
+}
+
+/* Hide native checkbox */
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Create custom box */
+.custom-checkbox .checkmark {
+  height: 18px;
+  width: 18px;
+  border: 2px solid var(--main-accent-color);
+  background-color: transparent;
+  border-radius: 3px;
+  margin-right: 8px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+/* Tick (pseudo element) */
+.custom-checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--main-accent-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* When checked */
+.custom-checkbox input:checked + .checkmark {
+  background-color: var(--main-fg-color);
+  
+}
+
+/* Show tick when checked */
+.custom-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+.pheno-table {
+  border-collapse: collapse; /* collapse borders */
+  border: 1px solid var(--main-fg-border-color); /* full outer border */
+  width: 100%;
+  font-size: 0.64rem;
+  background-color: var(--main-bg-color);
+}
+
+.pheno-table th,
+.pheno-table td {
+  border-bottom: 1px solid var(--main-fg-border-color); /* horizontal line only */
+  padding: 0.9375em 1.25em;
+  text-align: left;
+  background-color: var(--main-bg-color);
+}
+
+.pheno-table th:last-child,
+.pheno-table td:last-child {
+  border-right: none; /* no vertical border at far right */
+}
+
+.pheno-table th,
+.pheno-table td:first-child {
+  border-left: none; /* no vertical border at left */
+}
+
+ul.pheno-info li {
+  list-style-type: none;
+  color: var(--text-normal);
+  margin-left: 0 !important;
+  padding-left: 0.2em;
+}
+
+ul.pheno-info {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.pheno-info li::before {
+  content: "• ";
+  color: var(--main-accent-color);
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
