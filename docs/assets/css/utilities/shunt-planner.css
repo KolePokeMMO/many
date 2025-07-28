@@ -230,7 +230,7 @@ image-rendering: pixelated;
 
 
 .gold-reflect-border {
-  border: 1cqipx solid transparent;
+  border: 1px solid transparent;
   border-radius: 1px;
   background-image: 
     linear-gradient(#1e1e1e, #1e1e1e), /* Background fill */
