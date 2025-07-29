@@ -40,6 +40,7 @@ extra_css:
   - assets/css/showcase/living-dex.css
   - assets/css/utilities/shunt-planner.css
   - assets/css/utilities/pheno-tracker.css
+  - assets/css/utilities/safari-tracker.css
 
 
 
@@ -54,6 +55,7 @@ extra_javascript:
   - assets/js/utilities/rps/rps.js
   - assets/js/utilities/sp/shunt-planner.js
   - assets/js/utilities/pt/pheno-tracker.js
+  - assets/js/utilities/pt/safari-tracker.js
 
 
 nav:

@@ -1,3 +1,15 @@
+(function redirectUnlessLocalhost() {
+  const allowedHosts = ['127.0.0.1:8000', 'localhost:8000'];
+
+  // Don't redirect the locked page itself or if served locally
+  const isLocal = allowedHosts.includes(location.host);
+  const isLockedPage = location.pathname.includes('/locked.html');
+
+  if (!isLocal && !isLockedPage) {
+    location.href = '/locked.html';
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname.endsWith("/honey-trees/")) {
     document.body.classList.add("page-honey-trees");

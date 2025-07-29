@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Heracross",
+    "dex": 214,
+    "types": ["Bug", "Fighting"],
+    "zone": "Plains",
+    "rotation": "Forest",
+    "method": "Grass",
+    "available": true,
+    "notes": "Forest theme rotation only.",
+    "caught": false
+  },
+  {
+    "name": "Tauros",
+    "dex": 128,
+    "types": ["Normal"],
+    "zone": "Peak",
+    "rotation": "Wasteland",
+    "method": "Grass",
+    "available": true,
+    "notes": "Rare encounter during Wasteland rotation.",
+    "caught": false
+  },
+  {
+    "name": "Electrike",
+    "dex": 309,
+    "types": ["Electric"],
+    "zone": "Wetland",
+    "rotation": "Swamp",
+    "method": "Grass",
+    "available": false,
+    "notes": "Spawns only during Swamp rotation.",
+    "caught": false
+  },
+  {
+    "name": "Miltank",
+    "dex": 241,
+    "types": ["Normal"],
+    "zone": "Savanna",
+    "rotation": "Meadow",
+    "method": "Grass",
+    "available": true,
+    "notes": "Found frequently during Meadow rotation.",
+    "caught": false
+  },
+  {
+    "name": "Girafarig",
+    "dex": 203,
+    "types": ["Normal", "Psychic"],
+    "zone": "Forest",
+    "rotation": "Forest",
+    "method": "Grass",
+    "available": false,
+    "notes": "Morning only during Forest rotation.",
+    "caught": false
+  },
+  {
+    "name": "Lickitung",
+    "dex": 108,
+    "types": ["Normal"],
+    "zone": "Marshland",
+    "rotation": "Swamp",
+    "method": "Grass",
+    "available": true,
+    "notes": "Appears midday and evening.",
+    "caught": false
+  },
+  {
+    "name": "Yanma",
+    "dex": 193,
+    "types": ["Bug", "Flying"],
+    "zone": "Forest",
+    "rotation": "Forest",
+    "method": "Grass",
+    "available": true,
+    "notes": "Easy to find in tall grass.",
+    "caught": false
+  },
+  {
+    "name": "Natu",
+    "dex": 177,
+    "types": ["Psychic", "Flying"],
+    "zone": "Savanna",
+    "rotation": "Wasteland",
+    "method": "Grass",
+    "available": false,
+    "notes": "Only found during Wasteland rotation.",
+    "caught": false
+  },
+  {
+    "name": "Gligar",
+    "dex": 207,
+    "types": ["Ground", "Flying"],
+    "zone": "Peak",
+    "rotation": "Wasteland",
+    "method": "Grass",
+    "available": true,
+    "notes": "Appears both day and night.",
+    "caught": false
+  },
+  {
+    "name": "Stantler",
+    "dex": 234,
+    "types": ["Normal"],
+    "zone": "Plains",
+    "rotation": "Forest",
+    "method": "Grass",
+    "available": false,
+    "notes": "Uncommon, prefers morning.",
+    "caught": false
+  }
+]
