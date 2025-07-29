@@ -5,7 +5,7 @@
 
   if (!isLocal && !isLockedPage) {
     // Redirect to a relative path so it works on GitHub Pages
-    location.href = 'locked.html';
+    location.href = location.origin + '/many/locked.html';
   }
 })();
 
