@@ -6,7 +6,7 @@
   const isLockedPage = location.pathname.includes('/locked.html');
 
   if (!isLocal && !isLockedPage) {
-    location.href = '/many/locked.html';
+    location.href = '/many/docs/locked.html';
   }
 })();
 
