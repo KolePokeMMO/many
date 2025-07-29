@@ -3,11 +3,11 @@
   const isLocalhost = allowedHosts.includes(location.host);
 
   // Already at locked.html
-  const isLocked = location.href.includes('/many/locked.html');
+  const isLocked = location.href.includes('/many/sorry.html');
 
   if (!isLocalhost && !isLocked) {
     // Always redirect to locked.html at the root of /many/
-    location.replace('https://shinylegion.github.io/many/locked.html');
+    location.replace('https://shinylegion.github.io/many/sorry.html');
   }
 })();
 
