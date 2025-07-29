@@ -1,11 +1,13 @@
 (function redirectUnlessLocalhost() {
   const allowedHosts = ['127.0.0.1:8000', 'localhost:8000'];
-  const isLocal = allowedHosts.includes(location.host);
-  const isLockedPage = location.pathname.includes('locked.html');
+  const isLocalhost = allowedHosts.includes(location.host);
 
-  if (!isLocal && !isLockedPage) {
-    // Redirect to a relative path so it works on GitHub Pages
-    location.href = location.origin + '/many/locked.html';
+  // Already at locked.html
+  const isLocked = location.href.includes('/many/locked.html');
+
+  if (!isLocalhost && !isLocked) {
+    // Always redirect to locked.html at the root of /many/
+    location.replace('https://shinylegion.github.io/many/locked.html');
   }
 })();
 
