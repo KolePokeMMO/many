@@ -1,0 +1,278 @@
+.safari-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Or center if you want centered rows */
+  gap: 0rem;
+  margin-top: 1.5rem;
+}
+
+
+.safari-card {
+  width: 260px; /* This ensures predictable layout */
+  background-color: var(--main-fg-color);
+  border-radius: 0px;
+  border: 1px solid var(--main-fg-border-color);
+  padding: 0.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  margin: .5rem;
+  transition: transform 0.2s;
+}
+
+.safari-card:hover {
+  
+}
+
+.safari-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.safari-sprite {
+  max-width: 10px;
+  max-height: 100px;
+}
+
+.safari-name {
+  font-size: 0.9rem !important;
+  margin: 0 0 0 0.5rem;
+  flex-grow: 1;
+}
+
+.caught-toggle {
+  margin-left: auto;
+  transform: scale(1.2);
+}
+
+.safari-types,
+.safari-method,
+.safari-locations {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #ccc;
+}
+
+.safari-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.safari-reset {
+  background-color: var(--main-accent-color-light);
+  color: black;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.safari-reset:hover {
+  background-color: var(--main-accent-color);
+}
+
+.safari-progress-wrap {
+  margin-bottom: 1.5rem;
+}
+
+#pheno-counter {
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+  color: #ccc;
+}
+
+.safari-progress-bar {
+  height: 8px;
+  background-color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#pheno-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--main-accent-color-light);
+  transition: width 0.3s ease-in-out;
+}
+
+.safari-mechanics-guide {
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  background: var(--main-bg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.safari-mechanics-guide summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset details {
+  background-color: var(--main-fg-color);
+  border: .075rem solid var(--main-accent-color);
+  border-radius: 0;
+  box-shadow: var(--main-bg-color);
+  color: var(--md-admonition-fg-color);
+  display: flow-root;
+  font-size: .64rem;
+  margin: 1.5625em 0;
+  padding: 0 .6rem;
+  padding-top: 0px;
+  page-break-inside: avoid;
+  transition: box-shadow 125ms;
+}
+
+.md-typeset summary::before {
+  background-color: var(--main-accent-color);
+  content: "";
+  height: 1rem;
+  -webkit-mask-image: var(--md-admonition-icon--note);
+  mask-image: var(--md-admonition-icon--note);
+}
+
+.md-typeset details summary {
+  background-color: var(--main-fg-border-color);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+}
+
+.md-typeset details:focus,
+.md-typeset details[open],
+.md-typeset details summary:focus,
+.md-typeset details summary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0px var(--main-fg-color); /* subtle border glow */
+
+  border-radius: 0px; /* optional, if you’re rounding other parts */
+}
+
+/* Container label */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  color: var(--text-color, #eee);
+}
+
+/* Hide native checkbox */
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Create custom box */
+.custom-checkbox .checkmark {
+  height: 18px;
+  width: 18px;
+  border: 2px solid var(--main-accent-color);
+  background-color: transparent;
+  border-radius: 3px;
+  margin-right: 8px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+/* Tick (pseudo element) */
+.custom-checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--main-accent-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* When checked */
+.custom-checkbox input:checked + .checkmark {
+  background-color: var(--main-fg-color);
+  
+}
+
+/* Show tick when checked */
+.custom-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+.safari-table {
+  border-collapse: collapse; /* collapse borders */
+  border: 1px solid var(--main-fg-border-color); /* full outer border */
+  width: 100%;
+  font-size: 0.64rem;
+  background-color: var(--main-bg-color);
+}
+
+.safari-table th,
+.safari-table td {
+  border-bottom: 1px solid var(--main-fg-border-color); /* horizontal line only */
+  padding: 0.9375em 1.25em;
+  text-align: left;
+  background-color: var(--main-bg-color);
+}
+
+.safari-table th:last-child,
+.safari-table td:last-child {
+  border-right: none; /* no vertical border at far right */
+}
+
+.safari-table th,
+.safari-table td:first-child {
+  border-left: none; /* no vertical border at left */
+}
+
+ul.safari-info li {
+  list-style-type: none;
+  color: var(--text-normal);
+  margin-left: 0 !important;
+  padding-left: 0.2em;
+}
+
+ul.safari-info {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.safari-info li::before {
+  content: "• ";
+  color: var(--main-accent-color);
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
+#rotation-timer {
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem 0;
+  color: var(--main-accent-color-light);
+}
+
+.safari-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.7rem;
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--main-fg-border-color);
+}
+
+.safari-table th,
+.safari-table td {
+  padding: 0.6rem;
+  border: 1px solid var(--main-fg-border-color);
+}
