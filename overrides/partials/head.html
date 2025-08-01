@@ -1,3 +1,8 @@
+{% block extrahead %}
+  <base href="{{ base_url | default('/') }}">
+  {{ super() }}
+{% endblock %}
+
 <!-- Set theme early to prevent flash -->
 <script>
   const theme = localStorage.getItem('selectedTheme') || 'shiny';

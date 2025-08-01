@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const hrs = Math.floor(msLeft / (1000 * 60 * 60));
       const mins = Math.floor((msLeft % (1000 * 60 * 60)) / (1000 * 60));
       const secs = Math.floor((msLeft % (1000 * 60)) / 1000);
-      timerDisplay.innerHTML = `<strong>Next rotation:</strong> ${hrs.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")} (UTC)`;
+      timerDisplay.innerHTML = `<strong>Next rotation:</strong> ${hrs.toString().padStart(2, "0")}:${mins
+        .toString()
+        .padStart(2, "0")}:${secs.toString().padStart(2, "0")} (UTC)`;
     }
 
     updateCountdown();
@@ -56,10 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const zones = [...new Set(safariData.map(p => p.zone))];
     zoneTableBody.innerHTML = '';
     zones.forEach(zone => {
-      const current = safariData.find(p => p.zone === zone && p.available);
+      const rotations = [...new Set(safariData.filter(p => p.zone === zone && p.available).map(p => p.rotation))];
       const keyNames = safariData.filter(p => p.zone === zone && p.available).map(p => p.name).join(', ');
+
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${zone}</td><td>${current?.rotation || '—'}</td><td>${keyNames || '—'}</td>`;
+      tr.innerHTML = `<td>${zone}</td><td>${rotations.join(', ') || '—'}</td><td>${keyNames || '—'}</td>`;
       zoneTableBody.appendChild(tr);
     });
   }
@@ -71,8 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = template.content.cloneNode(true);
 
       card.querySelector('.pheno-name').textContent = p.name;
-      card.querySelector('.pheno-sprite').src =
-        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.dex}.png`;
+      card.querySelector('.pheno-sprite').src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.dex}.png`;
       card.querySelector('.pheno-types').textContent = `Type: ${p.types.join(', ')}`;
       card.querySelector('.pheno-locations').innerHTML = `<strong>Zone:</strong> ${p.zone} (${p.rotation})`;
       card.querySelector('.pheno-method').innerHTML = `<strong>Method:</strong> ${p.method}`;
@@ -85,6 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
         saveCaughtMap();
         render();
       });
+
+      if (p.notes) {
+        const notes = document.createElement('div');
+        notes.className = 'pheno-notes';
+        notes.innerHTML = `<em>${p.notes}</em>`;
+        card.querySelector('.pheno-card').appendChild(notes);
+      }
 
       grid.appendChild(card);
     });
@@ -99,8 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
+  // ✅ Fetch path fixed here — no leading slash
   fetch('/many/assets/data/safari-data.json')
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
     .then(data => {
       safariData = applyCaughtStatus(data);
       filterCheckbox.addEventListener('change', render);

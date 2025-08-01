@@ -3,63 +3,68 @@ site_url: https://shinylegion.github.io/many
 
 theme:
   name: material
-  palette:
-      primary: custom
-      accent: custom
-  font:
-    text: Inter
-    code: Fira Mono
   custom_dir: overrides
   logo: assets/img/transparent.png
   favicon: assets/img/favicon.png
   palette:
     scheme: slate
+    primary: custom
+    accent: custom
+  font:
+    text: Inter
+    code: Fira Mono
   features:
+    #- navigation.instant
     - navigation.sections
     - navigation.expand
     - navigation.tabs
-    - navigation.top
     - navigation.breadcrumbs
-
+    - content.hide
+    - content.action.edit
+    - content.code.annotate
+    - content.tooltips
+    - content.tabs.link
+    - navigation.top
   plugins:
     - icons
 
-  markdown_extensions:
-    - pymdownx.superfences
-    - pymdownx.tabbed
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed
 
 extra:
   year: !ENV [YEAR, "2025"]
  
 extra_css:
-  - assets/css/universal.css
-  - assets/css/guides/honey-tree.css
-  - assets/css/comp/poke-tooltips.css
-  - assets/css/showcase/showcase.css
-  - assets/css/showcase/shinywars.css
-  - assets/css/showcase/living-dex.css
-  - assets/css/utilities/shunt-planner.css
-  - assets/css/utilities/pheno-tracker.css
-  - assets/css/utilities/safari-tracker.css
-
-
+  - /many/assets/css/universal.css
+  - /many/assets/css/guides/honey-tree.css
+  - /many/assets/css/comp/poke-tooltips.css
+  - /many/assets/css/showcase/showcase.css
+  - /many/assets/css/showcase/shinywars.css
+  - /many/assets/css/showcase/living-dex.css
+  - /many/assets/css/utilities/shunt-planner.css
+  - /many/assets/css/utilities/pheno-tracker.css
+  - /many/assets/css/utilities/safari-tracker.css
+  - /many/assets/css/oracle/oracle.css
 
 extra_javascript:
-  - assets/js/theme-loader.js
-  - assets/js/extra.js
-  - assets/js/pokemon.js
-  - assets/js/word-split.js
-  - assets/js/showcase/shinies.js
-  - assets/js/showcase/shinywars.js
-  - assets/js/showcase/living-dex.js
-  - assets/js/utilities/rps/rps.js
-  - assets/js/utilities/sp/shunt-planner.js
-  - assets/js/utilities/pt/pheno-tracker.js
-  - assets/js/utilities/pt/safari-tracker.js
-
+  - /many/assets/js/theme-loader.js
+  - /many/assets/js/extra.js
+  - /many/assets/js/pokemon.js
+  - /many/assets/js/word-split.js
+  - /many/assets/js/showcase/shinies.js
+  - /many/assets/js/showcase/shinywars.js
+  - /many/assets/js/showcase/living-dex.js
+  - /many/assets/js/utilities/rps/rps.js
+  - /many/assets/js/utilities/sp/shunt-planner.js
+  - /many/assets/js/utilities/pt/pheno-tracker.js
+  - /many/assets/js/utilities/st/safari-tracker.js
+  - /many/assets/js/oracle/oracle.js
 
 nav:
   - Home: index.md
+  - Oracle:
+      - Chat: oracle/index.md
   - Guides:
       - Overview: guides/index.md
       - Honey Trees: guides/honey-trees.md
