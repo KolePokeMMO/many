@@ -109,9 +109,11 @@ function changeExpression(mood) {
 
 /**
  * Summons floating Unown Pokémon images scattered randomly in the oracle room.
+ * Has a chance to spawn shiny versions based on configurable shinyChance.
  */
 function summonRunes() {
   const container = document.getElementById("oracle-room");
+  const shinyChance = 0.5; // ~1.22% shiny chance
 
   for (let i = 0; i < 15; i++) {
     const rune = document.createElement("div");
@@ -119,16 +121,26 @@ function summonRunes() {
     rune.style.top = `${Math.random() * 100}%`;
     rune.style.left = `${Math.random() * 100}%`;
 
-    const randomIndex = Math.floor(Math.random() * 50) + 1;
+    // Choose a base Unown index (1 to 28) — representing A to ? (non-shiny)
+    const base = Math.floor(Math.random() * 28);
+    let imgIndex = 1 + base * 2; // starts at 1, 3, 5, ..., 55
+
+    // If shiny triggers, use the even number (shiny counterpart)
+    if (Math.random() < shinyChance) {
+      console.log(`✨ Shiny Unown-${imgIndex} appeared!`);
+      imgIndex += 1; // switch to shiny (2, 4, 6, ..., 56)
+    }
+
     const img = document.createElement("img");
-    img.src = `/many/assets/img/oracle/unowns/unown-${randomIndex}.png`;
-    img.alt = `Unown ${randomIndex}`;
-    img.className = "floating-unown"; // so you can style it separately
+    img.src = `/many/assets/img/oracle/unowns/unown-${imgIndex}.png`;
+    img.alt = `Unown ${imgIndex}`;
+    img.className = "floating-unown";
 
     rune.appendChild(img);
     container.appendChild(rune);
   }
 }
+
 
 
 /**
