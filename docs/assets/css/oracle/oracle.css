@@ -327,3 +327,27 @@
   font-size: 1rem;
   line-height: 1.4;
 }
+
+.shiny-sparkle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 254px;
+  height: 254px;
+  pointer-events: none;
+  background: radial-gradient(white, transparent);
+  animation: sparkle 1s infinite ease-in-out;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.5) rotate(45deg);
+    opacity: 0.2;
+  }
+}

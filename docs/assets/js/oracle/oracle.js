@@ -113,7 +113,7 @@ function changeExpression(mood) {
  */
 function summonRunes() {
   const container = document.getElementById("oracle-room");
-  const shinyChance = 0.5; // ~1.22% shiny chance
+  const shinyChance = 0.1; // ~1.22% shiny chance
 
   for (let i = 0; i < 15; i++) {
     const rune = document.createElement("div");
@@ -121,14 +121,13 @@ function summonRunes() {
     rune.style.top = `${Math.random() * 100}%`;
     rune.style.left = `${Math.random() * 100}%`;
 
-    // Choose a base Unown index (1 to 28) — representing A to ? (non-shiny)
     const base = Math.floor(Math.random() * 28);
-    let imgIndex = 1 + base * 2; // starts at 1, 3, 5, ..., 55
+    let imgIndex = 1 + base * 2;
 
-    // If shiny triggers, use the even number (shiny counterpart)
-    if (Math.random() < shinyChance) {
+    const isShiny = Math.random() < shinyChance;
+    if (isShiny) {
       console.log(`✨ Shiny Unown-${imgIndex} appeared!`);
-      imgIndex += 1; // switch to shiny (2, 4, 6, ..., 56)
+      imgIndex += 1;
     }
 
     const img = document.createElement("img");
@@ -137,11 +136,16 @@ function summonRunes() {
     img.className = "floating-unown";
 
     rune.appendChild(img);
+
+    if (isShiny) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "shiny-sparkle";
+      rune.appendChild(sparkle);
+    }
+
     container.appendChild(rune);
   }
 }
-
-
 
 /**
  * Initializes the rune canvas animation with floating rune characters.
@@ -223,7 +227,6 @@ function hideExtraPanel() {
     panel.classList.add("hidden");
   }, 500); // match CSS transition duration
 }
-
 
 // Initialize runes and canvas animations after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
