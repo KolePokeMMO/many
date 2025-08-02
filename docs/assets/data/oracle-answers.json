@@ -48,5 +48,25 @@
     "keywords": ["help", "commands", "how do i use this"],
     "response": "Ask me anything about the game. Use clear words... or I may misunderstand and frown at you.",
     "mood": "confused"
+  },
+  {
+    "keywords": ["misc", "misc2"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "mischievous"
+  },
+  {
+    "keywords": ["wor", "worried"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "worried"
+  },
+  {
+    "keywords": ["sad", "sadness"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "sad"
+  },
+  {
+    "keywords": ["shock", "shocked"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "shocked"
   }
 ]

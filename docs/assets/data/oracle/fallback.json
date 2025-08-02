@@ -1,0 +1,12 @@
+[
+  {
+    "fallback": true,
+    "response": "Was that… even English? Try again I guess… maybe look at some of these example questions...",
+    "mood": "confused",
+    "extra": {
+      "header": "Try These Questions:",
+      "body": "<ul>\n  <li>\"What's the meaning of life?\"</li>\n  <li>\"Will I become a master trainer?\"</li>\n  <li>\"Tell me about shiny hunting tips.\"</li>\n  <li>\"How do I use repels effectively?\"</li>\n</ul>",
+      "footer": "Ask any of the above or your own!"
+    }
+  }
+]
