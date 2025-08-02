@@ -1,4 +1,4 @@
-// oracle.js — Cleaned & Organised for maximum cuddles and code clarity 💙
+// oracle.js — Cleaned & Organised for code clarity
 
 const chatLog = document.getElementById("chat-log");
 const chatForm = document.getElementById("chat-form");
@@ -138,10 +138,18 @@ function summonRunes() {
     rune.appendChild(img);
 
     if (isShiny) {
-      const sparkle = document.createElement("div");
-      sparkle.className = "shiny-sparkle";
-      rune.appendChild(sparkle);
-    }
+  const sparkleWrapper = document.createElement("div");
+  sparkleWrapper.className = "shiny-sparkle";
+
+  for (let j = 0; j < 6; j++) {
+    const star = document.createElement("span");
+    star.className = "sparkle sparkle-" + j;
+    sparkleWrapper.appendChild(star);
+  }
+
+  rune.appendChild(sparkleWrapper);
+}
+
 
     container.appendChild(rune);
   }
