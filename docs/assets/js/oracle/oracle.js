@@ -13,6 +13,8 @@ const MOODS = [
   "shocked", "bored", "mischievous", "idle"
 ];
 
+document.querySelector('.oracle-left').classList.add('slide-left');
+
 function normalize(text) {
   return text
     .toLowerCase()
@@ -266,23 +268,37 @@ function initRuneCanvas() {
   })();
 }
 
-function showExtraPanel(extra) {
-  const panel = document.getElementById("oracle-extra");
-  const header = document.getElementById("extra-header");
-  const body = document.getElementById("extra-body");
-  const footer = document.getElementById("extra-footer");
+function showOracleExtra(header, body, footer) {
+  const chatArea = document.getElementById("chat-area");
+  const extraPanel = document.getElementById("oracle-extra");
 
-  header.textContent = extra.header || "";
-  body.innerHTML = extra.body || "";
-  footer.textContent = extra.footer || "";
-  panel.classList.add("visible");
-  panel.classList.remove("hidden");
+  // Inject content
+  document.getElementById("extra-header").textContent = header || '';
+  document.getElementById("extra-body").innerHTML = body || '';
+  document.getElementById("extra-footer").innerHTML = footer || '';
+
+  // Step 1: Shift chat (adjust margin if needed)
+  chatArea.style.marginRight = "520px"; // 500px panel + gap
+  extraPanel.classList.remove("hidden");
+
+  // Step 2: Short delay before showing panel animation
+  setTimeout(() => {
+    extraPanel.classList.add("reveal");
+  }, 150); // enough time for chat to shift
 }
+
 
 function hideExtraPanel() {
   const panel = document.getElementById("oracle-extra");
-  panel.classList.remove("visible");
-  setTimeout(() => panel.classList.add("hidden"), 500);
+  const chatWrapper = document.getElementById("oracle-chat-wrapper");
+
+  panel.classList.remove("reveal");
+
+  // Unshift chat box after panel closes
+  setTimeout(() => {
+    panel.classList.add("hidden");
+    chatWrapper.style.marginRight = "0";
+  }, 600);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -308,7 +324,12 @@ chatForm.addEventListener("submit", e => {
 
   setTimeout(() => {
     typeMessage(reply);
-    if (extra) showExtraPanel(extra);
-    else hideExtraPanel();
+    if (extra) {
+  const { header, body, footer } = extra;
+  showOracleExtra(header, body, footer);
+} else {
+  hideExtraPanel();
+}
+
   }, 200);
 });

@@ -368,3 +368,72 @@
     opacity: 0.2;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Oracle Extra Panel Animation */
+#oracle-extra {
+  width: 500px;
+  margin-left: 1rem;
+  background: rgba(19, 19, 19, 0.85);
+  border: 2px solid #75cdfd;
+  border-radius: 0;
+  box-shadow: 0 0 20px #75cdfd99;
+  backdrop-filter: blur(3px);
+  color: #d0eaff;
+
+  /* Starting state: collapsed height + 5px */
+  overflow: hidden;
+  max-height: 5px;
+  padding: 0 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  transition:
+    max-height 0.6s ease,
+    opacity 0.4s ease 0.4s,
+    padding 0.3s ease 0.4s;
+}
+
+/* Reveal state: fully expanded */
+#oracle-extra.reveal {
+  max-height: 300px;
+  padding: 1rem 1.5rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Contents fade-in */
+#oracle-extra h2,
+#oracle-extra div,
+#oracle-extra footer {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#oracle-extra.reveal h2,
+#oracle-extra.reveal div,
+#oracle-extra.reveal footer {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+
+.oracle-left {
+  transition: transform 0.5s ease;
+}
+.oracle-left.slide-left {
+  transform: translateX(300px); /* or margin-right: 500px if preferred */
+}
