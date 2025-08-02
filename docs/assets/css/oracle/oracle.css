@@ -2,7 +2,6 @@
    === Oracle Chamber CSS ===
    ============================ */
 
-
 /* =====================
    === Backgrounds ===
    ===================== */
@@ -37,7 +36,6 @@
   z-index: 0;
 }
 
-
 /* =========================
    === Oracle Room Base ===
    ========================= */
@@ -57,11 +55,11 @@
 
 .oracle-layout {
   display: flex;
-  gap: 2rem;
-  justify-content: center;
+  flex-wrap: nowrap;  /* important so it stays side-by-side */
+  gap: 2rem;          /* add gap for spacing */
+  
   align-items: flex-start;
-  margin-top: 2rem;
-  flex-wrap: wrap;
+  position: relative;
 }
 
 .oracle-left {
@@ -69,8 +67,37 @@
   flex-direction: column;
   align-items: center;
   max-width: 600px;
+  /* transition: transform 0.6s ease-in-out; */
+  transition: transform 0.4s ease, margin 0.4s ease;
+  will-change: transform;
+  flex-shrink: 0;
+  width: 600px;
 }
 
+/* Slide left when extra panel is visible */
+.oracle-left.slide-left {
+  transform: translateX(-320px); /* Room for extra panel + spacing */
+}
+
+@media (max-width: 1000px) {
+  .oracle-left.slide-left {
+    transform: translateX(0);  /* Don't shift on small screens */
+  }
+
+  #oracle-extra {
+    display: none !important;  /* Or turn into a modal/overlay */
+    flex-shrink: 0;
+  }
+}
+
+.oracle-left {
+  transition: transform 0.4s ease 0.6s; /* delay when sliding back (no .slide-left) */
+}
+
+.oracle-left.slide-left {
+  transition: transform 0.4s ease 0s; /* no delay sliding left */
+  transform: translateX(-320px);
+}
 
 /* ========================
    === Oracle Avatar ===
@@ -97,12 +124,9 @@
   animation: morphDitto 0.6s ease;
 }
 
-
-
 #oracle-mood.morphing {
   animation: morphDitto 1.2s ease;
 }
-
 
 /* ============================
    === Floating Elements ===
@@ -159,6 +183,43 @@
 }
 
 
+
+.star {
+  position: absolute;
+  width: var(--star-size);
+  height: var(--star-size);
+  background: #fffacd;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  animation: sparkleMove var(--star-duration) ease-out forwards;
+  transform: rotate(var(--rot));
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+
+@keyframes starburst {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--rot)) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--rot)) scale(0);
+    opacity: 0;
+  }
+}
+
+
 /* =============================
    === Chat & Input Styles ===
    ============================= */
@@ -168,9 +229,9 @@
   max-width: 600px;
   padding: 1rem;
   background: rgba(19, 19, 19, 0.85);
-  border: 2px solid #75cdfd;
+  border: 2px solid var(--main-accent-color);
   border-radius: 0;
-  box-shadow: 0 0 20px #75cdfd99;
+  
   backdrop-filter: blur(3px);
   z-index: 3;
 }
@@ -179,10 +240,10 @@
   max-height: 300px;
   margin-bottom: 1rem;
   overflow-y: auto;
-  font-family: 'Caveat Brush', cursive;
+  
   font-size: 0.7rem;
   color: #00ff22;
-  animation: glow-chat 2s infinite alternate ease-in-out;
+  
 }
 
 #chat-log .message {
@@ -191,12 +252,12 @@
 }
 
 #chat-log .user {
-  color: #e4eff1;
+  color: #dddddd;
   font-size: 0.7rem;
 }
 
 #chat-log .oracle {
-  color: #75cdfd;
+  color: var(--main-accent-color);
   font-size: 0.7rem;
   font-style: italic;
 }
@@ -206,12 +267,12 @@
 }
 
 #chat-log::-webkit-scrollbar-thumb {
-  background-color: #75cdfd;
+  background-color: var(--main-accent-color);
   border-radius: 10px;
 }
 
 .message.oracle a {
-  color: #8ae6ff;
+  color: var(--main-accent-color);
   font-weight: 500;
   text-decoration: underline;
   transition: all 0.3s ease;
@@ -219,7 +280,7 @@
 
 .message.oracle a:hover {
   color: #fff;
-  text-shadow: 0 0 6px #8ae6ff;
+  text-shadow: 0 0 6px var(--main-accent-color);
   transform: scale(1.05);
 }
 
@@ -248,33 +309,39 @@
 }
 
 #chat-form button:hover {
-  background: #75cdfd;
+  background: var(--main-accent-color);
 }
-
 
 /* ============================
    === Oracle Extra Panel ===
    ============================ */
 
 #oracle-extra {
-  padding: 1rem 1.5rem;
-  width: 500px;
+  width: 550px;
   max-height: 300px;
-  overflow-y: auto;
-  color: #d0eaff;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  margin-left: 1rem;
+  align-self: stretch;
+  max-width: 600px;
+  background: rgba(19, 19, 19, 0.85);
+  color: #dddddd;
+  margin-left: -320px;
   margin-top: 230px;
+  opacity: 0;
+  border: 2px solid var(--main-accent-color);
+  backdrop-filter: blur(3px);
+  padding: 1rem 1.5rem;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background: rgba(19, 19, 19, 0.85);
-  border: 2px solid #75cdfd;
-  border-radius: 0;
-  box-shadow: 0 0 20px #75cdfd99;
-  backdrop-filter: blur(3px);
+}
+
+
+#oracle-extra.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease .5s, transform 0.4s ease;
+  pointer-events: auto;
 }
 
 #oracle-extra.visible {
@@ -283,23 +350,23 @@
 }
 
 #oracle-extra.hidden {
-  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  visibility: hidden;  /* smoother than display: none */
 }
 
 #oracle-extra h2 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
   font-size: 0.7rem;
-  color: #75cdfd;
+  color: var(--main-accent-color);
+  margin: 0 0 0.5rem 0;
 }
 
 #oracle-extra div {
-  margin-bottom: 0.6rem;
   font-size: 0.7rem;
   line-height: 1.4;
+  margin-bottom: 0.6rem;
 }
-
 
 /* ==========================
    === Mood Colour Glow ===
@@ -314,7 +381,6 @@
 .mood-bored       { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
 .mood-mischievous { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
 .mood-thoughtful  { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
-
 
 /* =========================
    === Keyframe Animations ===
@@ -353,11 +419,6 @@
   50%      { opacity: 0.45; }
 }
 
-@keyframes glow-chat {
-  from { text-shadow: 0 0 8px #75cdfd; }
-  to   { text-shadow: 0 0 14px #b4e7fe; }
-}
-
 @keyframes sparkle {
   0%, 100% {
     transform: scale(1) rotate(0deg);
@@ -369,71 +430,22 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-/* Oracle Extra Panel Animation */
-#oracle-extra {
-  width: 500px;
-  margin-left: 1rem;
-  background: rgba(19, 19, 19, 0.85);
-  border: 2px solid #75cdfd;
-  border-radius: 0;
-  box-shadow: 0 0 20px #75cdfd99;
-  backdrop-filter: blur(3px);
-  color: #d0eaff;
-
-  /* Starting state: collapsed height + 5px */
-  overflow: hidden;
-  max-height: 5px;
-  padding: 0 1.5rem;
-  opacity: 0;
-  pointer-events: none;
+.oracle-content-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  transition:
-    max-height 0.6s ease,
-    opacity 0.4s ease 0.4s,
-    padding 0.3s ease 0.4s;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;  /* default: center content horizontally */
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: 300px;
+  gap: 2rem;
 }
 
-/* Reveal state: fully expanded */
-#oracle-extra.reveal {
-  max-height: 300px;
-  padding: 1rem 1.5rem;
-  opacity: 1;
-  pointer-events: auto;
+.oracle-content-wrapper.extra-visible {
+  justify-content: flex-start !important;  /* align left when extra panel is visible */
 }
 
-/* Contents fade-in */
-#oracle-extra h2,
-#oracle-extra div,
-#oracle-extra footer {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-#oracle-extra.reveal h2,
-#oracle-extra.reveal div,
-#oracle-extra.reveal footer {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.8s;
-}
-
-.oracle-left {
-  transition: transform 0.5s ease;
-}
-.oracle-left.slide-left {
-  transform: translateX(300px); /* or margin-right: 500px if preferred */
+.oracle-content-wrapper.centered {
+  justify-content: center !important;
 }
