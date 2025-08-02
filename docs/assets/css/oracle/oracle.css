@@ -15,16 +15,6 @@
   z-index: -10;
 }
 
-.fog-overlay {
-  position: fixed;
-  inset: 0;
-  background: url('../img/oracle/fog.gif') repeat;
-  opacity: 0.07;
-  animation: fog-drift 60s linear infinite;
-  pointer-events: none;
-  z-index: -5;
-}
-
 #rune-canvas {
   position: fixed;
   inset: 0;
@@ -42,8 +32,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, #75cdfd40 0%, transparent 60%);
-  animation: pulse-bg 6s ease-in-out infinite;
+  background: radial-gradient(ellipse at center, #75cdfd40 0%, transparent 40%);
+  animation: pulse-bg 3s ease-in-out infinite;
   z-index: 0;
 }
 
@@ -107,14 +97,7 @@
   animation: morphDitto 0.6s ease;
 }
 
-#oracle-mood-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, #75cdfd4d, transparent 70%);
-  animation: pulse-glow 3s ease-in-out infinite;
-  z-index: 1;
-}
+
 
 #oracle-mood.morphing {
   animation: morphDitto 1.2s ease;
@@ -136,9 +119,9 @@
 }
 
 .floating-unown {
-  width: 240px;
-  height: 240px;
-  opacity: 0.7;
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
   transition: transform 0.3s ease;
 }
 
@@ -147,17 +130,32 @@
   opacity: 1;
 }
 
+/* ============================
+   === Tiny Star Sparkles ===
+   ============================ */
+
 .shiny-sparkle {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 254px;
-  height: 254px;
+  top: 50%;
+  left: 50%;
   pointer-events: none;
-  background: radial-gradient(white, transparent);
-  animation: sparkle 1s infinite ease-in-out;
-  opacity: 0.8;
-  z-index: 2;
+  overflow: visible;
+}
+
+.shiny-sparkle .star {
+  position: absolute;
+  width: var(--star-size);
+  height: var(--star-size);
+  background: radial-gradient(circle, #ffff88 0%, rgba(255,255,136,0) 70%);
+  opacity: 0;
+  border-radius: 50%;
+  animation: star-fade var(--star-duration) ease-in-out infinite;
+}
+
+@keyframes star-fade {
+  0%   { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.5) rotate(var(--rot)); }
+  20%  { opacity: 1; transform: translate(var(--dx), var(--dy)) scale(1)   rotate(var(--rot)); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.5) rotate(var(--rot)); }
 }
 
 
@@ -259,11 +257,8 @@
    ============================ */
 
 #oracle-extra {
-  background: rgba(0, 0, 0, 0.75);
-  border-left: 3px solid #75cdfd;
-  border-radius: 10px;
   padding: 1rem 1.5rem;
-  width: 300px;
+  width: 500px;
   max-height: 300px;
   overflow-y: auto;
   color: #d0eaff;
@@ -275,6 +270,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  background: rgba(19, 19, 19, 0.85);
+  border: 2px solid #75cdfd;
+  border-radius: 0;
+  box-shadow: 0 0 20px #75cdfd99;
+  backdrop-filter: blur(3px);
 }
 
 #oracle-extra.visible {
@@ -290,13 +290,13 @@
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 0.7rem;
   color: #75cdfd;
 }
 
 #oracle-extra div {
   margin-bottom: 0.6rem;
-  font-size: 1rem;
+  font-size: 0.7rem;
   line-height: 1.4;
 }
 
@@ -305,10 +305,15 @@
    === Mood Colour Glow ===
    ========================== */
 
-.mood-happy    { box-shadow: 0 0 40px 20px rgba(100,255,100,0.4) !important; }
-.mood-angry    { box-shadow: 0 0 40px 20px rgba(255,80,80,0.4)   !important; }
-.mood-confused { box-shadow: 0 0 40px 20px rgba(255,200,76,0.4)  !important; }
-.mood-smug     { box-shadow: 0 0 40px 20px rgba(82,82,82,0.4)    !important; }
+.mood-happy       { box-shadow: 0 0 40px 20px rgba(0, 255, 34, 0.4) !important; }
+.mood-angry       { box-shadow: 0 0 40px 20px rgba(255, 0, 0, 0.4)   !important; }
+.mood-confused    { box-shadow: 0 0 40px 20px rgba(124, 124, 124, 0.4)  !important; }
+.mood-smug        { box-shadow: 0 0 40px 20px rgba(119, 0, 255, 0.4)    !important; }
+.mood-sad         { box-shadow: 0 0 40px 20px rgba(0, 47, 255, 0.4)    !important; }
+.mood-shocked     { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
+.mood-bored       { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
+.mood-mischievous { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
+.mood-thoughtful  { box-shadow: 0 0 40px 20px rgba(255, 255, 120, 0.4) !important; }
 
 
 /* =========================

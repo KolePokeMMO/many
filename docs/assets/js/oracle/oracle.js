@@ -1,53 +1,127 @@
-// oracle.js — Cleaned & Organised for code clarity
+// oracle.js — Modular Q&A loader + chat UI
 
-const chatLog = document.getElementById("chat-log");
-const chatForm = document.getElementById("chat-form");
+const chatLog   = document.getElementById("chat-log");
+const chatForm  = document.getElementById("chat-form");
 const userInput = document.getElementById("user-input");
-const moodGlow = document.getElementById("oracle-mood-glow");
+const moodGlow  = document.getElementById("oracle-mood-glow");
 const oracleImg = document.getElementById("oracle-img");
 
 let oracleData = [];
 
-// — Load Oracle Answers from JSON file
-fetch("/many/assets/data/oracle-answers.json")
-  .then(response => response.json())
-  .then(data => oracleData = data)
-  .catch(err => console.error("Failed to load oracle data:", err));
+const MOODS = [
+  "happy", "angry", "confused", "smug", "sad",
+  "shocked", "bored", "mischievous", "idle"
+];
 
-/**
- * Generate Oracle's response based on user input keywords.
- * Returns an object with text, mood, and optional extra info.
- */
-function generateOracleResponse(input) {
-  input = input.toLowerCase();
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+async function loadOracleData() {
+  try {
+    const moodArrays = await Promise.all(
+      MOODS.map(mood =>
+        fetch(`/many/assets/data/oracle/${mood}.json`)
+          .then(res => res.ok ? res.json() : [])
+          .catch(() => [])
+      )
+    );
+    oracleData = moodArrays.flat();
+
+    const fallback = await fetch(`/many/assets/data/oracle/fallback.json`)
+      .then(res => res.ok ? res.json() : [])
+      .catch(() => []);
+    oracleData.push(...fallback);
+
+    console.log(`Loaded Oracle data: ${oracleData.length} entries`);
+  } catch (err) {
+    console.error("Error loading Oracle data:", err);
+  }
+}
+
+loadOracleData();
+
+function generateOracleResponse(userInput) {
+  const normalizedInput = normalize(userInput);
+  const inputWords = normalizedInput.split(/\s+/);
+
+  const synonymsMap = {
+    "shiny": ["sparkly", "glossy", "rare"],
+    "repel": ["repels", "repelling", "avoid"],
+    "trainer": ["champion", "battler"],
+    "tips": ["advice", "tricks", "guide"],
+    "life": ["existence", "purpose", "meaning"],
+    "use": ["how", "way", "method"]
+  };
+
+  function expandSynonyms(word) {
+    const synonyms = synonymsMap[word] || [];
+    return [word, ...synonyms];
+  }
+
+  function calculateConfidence(entryKeywords, inputWords) {
+    let matchCount = 0;
+
+    for (const keyword of entryKeywords) {
+      const keyVariants = expandSynonyms(keyword.toLowerCase());
+
+      if (inputWords.some(input => keyVariants.some(kv => input.includes(kv)))) {
+        matchCount++;
+      }
+    }
+
+    return matchCount / (entryKeywords.length || 1);
+  }
+
+  let bestMatch = null;
+  let bestScore = 0;
 
   for (const entry of oracleData) {
-    if (entry.keywords.some(keyword => input.includes(keyword))) {
-      return {
-        text: entry.response,
-        mood: entry.mood || "happy",
-        extra: entry.extra
-      };
+    if (!entry.keywords || !Array.isArray(entry.keywords)) continue;
+
+    const confidence = calculateConfidence(entry.keywords, inputWords);
+
+    if (confidence > bestScore) {
+      bestMatch = entry;
+      bestScore = confidence;
     }
   }
 
-  // Default fallback response
+  console.groupCollapsed("🔍 Oracle Match Log");
+  console.log("📝 Input:", userInput);
+  console.log("💡 Matched Entry:", bestMatch ? bestMatch.response : "None");
+  console.log("📊 Confidence Score:", bestScore.toFixed(2));
+  if (!bestMatch || bestScore < 0.3) {
+    console.warn("⚠️ No good match found. Falling back.");
+  }
+  console.groupEnd();
+
+  if (!bestMatch || bestScore < 0.3) {
+    const fallback = oracleData.find(e => e.fallback);
+    return {
+      text: fallback?.response || "I'm lost in translation…",
+      mood: fallback?.mood || "confused",
+      extra: fallback?.extra || null
+    };
+  }
+
   return {
-    text: "Hmm... I do not know that answer. Come back with knowledge.",
-    mood: "confused"
+    text: bestMatch.response,
+    mood: bestMatch.mood || "idle",
+    extra: bestMatch.extra || null
   };
 }
 
-/**
- * Types out the oracle's message letter by letter.
- * Supports HTML tags by typing only plain text, then replacing with full HTML after typing.
- */
 function typeMessage(text) {
   const msgEl = document.createElement("div");
   msgEl.className = "message oracle";
   chatLog.appendChild(msgEl);
 
-  const plainText = text.replace(/<[^>]*>?/gm, ""); // Strip HTML tags for typing effect
+  const plainText = text.replace(/<[^>]*>?/gm, "");
   let i = 0;
 
   function step() {
@@ -56,7 +130,6 @@ function typeMessage(text) {
       chatLog.scrollTop = chatLog.scrollHeight;
       setTimeout(step, 40);
     } else {
-      // After typing finished, replace with original text (including HTML)
       msgEl.innerHTML = text;
     }
   }
@@ -64,100 +137,90 @@ function typeMessage(text) {
   step();
 }
 
-/**
- * Sets the mood glow element's class to reflect the current mood.
- */
 function setMood(mood) {
-  moodGlow.className = ""; // reset
+  moodGlow.className = "";
   moodGlow.classList.add(`mood-${mood}`);
 }
 
-/**
- * Changes oracle's facial expression with morph animation,
- * then resets back to idle after 10 seconds.
- */
 function changeExpression(mood) {
-  const moodMap = {
-    happy: "/many/assets/img/oracle/happy-eevee.png",
-    angry: "/many/assets/img/oracle/angry-pikachu.png",
-    confused: "/many/assets/img/oracle/confused-psyduck.png",
-    smug: "assets/img/oracle/smug.png",
-    idle: "/many/assets/img/oracle/shiny-ditto.png",
+  const moodVariants = {
+    happy:       { prefix: "happy",       count: 5 },
+    angry:       { prefix: "angry",       count: 5 },
+    confused:    { prefix: "confused",    count: 5 },
+    smug:        { prefix: "smug",        count: 5 },
+    sad:         { prefix: "sad",         count: 5 },
+    shocked:     { prefix: "shocked",     count: 5 },
+    bored:       { prefix: "bored",       count: 5 },
+    mischievous: { prefix: "mischievous", count: 5 },
+    idle:        { prefix: "shiny-ditto", count: 1 }
   };
 
-  // Trigger morph animation by reflow trick
+  const info = moodVariants[mood] || moodVariants.idle;
+  const idx  = Math.floor(Math.random() * info.count) + 1;
+  const url  = `/many/assets/img/oracle/moods/${info.prefix}-${idx}.png`;
+
   oracleImg.classList.remove("morphing");
-  void oracleImg.offsetWidth; // force reflow
+  void oracleImg.offsetWidth;
   oracleImg.classList.add("morphing");
+  oracleImg.src = url;
 
-  oracleImg.src = moodMap[mood] || moodMap.idle;
-
-  // Reset to idle after 10 seconds with morph animation
   setTimeout(() => {
     oracleImg.classList.remove("morphing");
     void oracleImg.offsetWidth;
     oracleImg.classList.add("morphing");
-    oracleImg.src = moodMap.idle;
+    const idleInfo = moodVariants.idle;
+    const idleIdx  = Math.floor(Math.random() * idleInfo.count) + 1;
+    oracleImg.src = `/many/assets/img/oracle/moods/${idleInfo.prefix}-${idleIdx}.png`;
 
-    moodGlow.className = ""; // remove mood glow
-
-    setTimeout(() => {
-      oracleImg.classList.remove("morphing");
-    }, 600); // animation duration
+    moodGlow.className = "";
+    setTimeout(() => oracleImg.classList.remove("morphing"), 600);
   }, 6000);
 }
 
-/**
- * Summons floating Unown Pokémon images scattered randomly in the oracle room.
- * Has a chance to spawn shiny versions based on configurable shinyChance.
- */
 function summonRunes() {
-  const container = document.getElementById("oracle-room");
-  const shinyChance = 0.1; // ~1.22% shiny chance
+  const container   = document.getElementById("oracle-room");
+  const shinyChance = 1 / 9000;
 
   for (let i = 0; i < 15; i++) {
     const rune = document.createElement("div");
     rune.className = "floating-rune";
-    rune.style.top = `${Math.random() * 100}%`;
+    rune.style.top  = `${Math.random() * 100}%`;
     rune.style.left = `${Math.random() * 100}%`;
 
     const base = Math.floor(Math.random() * 28);
     let imgIndex = 1 + base * 2;
-
     const isShiny = Math.random() < shinyChance;
-    if (isShiny) {
-      console.log(`✨ Shiny Unown-${imgIndex} appeared!`);
-      imgIndex += 1;
-    }
+    if (isShiny) imgIndex++;
 
     const img = document.createElement("img");
     img.src = `/many/assets/img/oracle/unowns/unown-${imgIndex}.png`;
     img.alt = `Unown ${imgIndex}`;
     img.className = "floating-unown";
-
     rune.appendChild(img);
 
     if (isShiny) {
-  const sparkleWrapper = document.createElement("div");
-  sparkleWrapper.className = "shiny-sparkle";
-
-  for (let j = 0; j < 6; j++) {
-    const star = document.createElement("span");
-    star.className = "sparkle sparkle-" + j;
-    sparkleWrapper.appendChild(star);
-  }
-
-  rune.appendChild(sparkleWrapper);
-}
-
+      const sparkleWrapper = document.createElement("div");
+      sparkleWrapper.className = "shiny-sparkle";
+      for (let j = 0; j < 8; j++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        const angle = Math.random() * 2 * Math.PI;
+        const dist = 30 + Math.random() * 20;
+        star.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+        star.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+        star.style.setProperty("--star-size", 4 + Math.random() * 4 + "px");
+        star.style.setProperty("--star-duration", 800 + Math.random() * 400 + "ms");
+        star.style.setProperty("--rot", Math.random() * 360 + "deg");
+        star.style.animationDelay = Math.random() * 400 + "ms";
+        sparkleWrapper.appendChild(star);
+      }
+      rune.appendChild(sparkleWrapper);
+    }
 
     container.appendChild(rune);
   }
 }
 
-/**
- * Initializes the rune canvas animation with floating rune characters.
- */
 function initRuneCanvas() {
   const canvas = document.getElementById("rune-canvas");
   const ctx = canvas.getContext("2d");
@@ -187,7 +250,6 @@ function initRuneCanvas() {
       ctx.fillStyle = "#8E2DE2";
       ctx.fillText(this.char, this.x, this.y);
       ctx.restore();
-
       this.y -= this.speed;
       if (this.y < -20) {
         this.y = height + 20;
@@ -197,21 +259,13 @@ function initRuneCanvas() {
   }
 
   const runes = Array.from({ length: 50 }, () => new Rune());
-
-  function animate() {
+  (function animate() {
     ctx.clearRect(0, 0, width, height);
-    for (const rune of runes) {
-      rune.draw();
-    }
+    runes.forEach(r => r.draw());
     requestAnimationFrame(animate);
-  }
-
-  animate();
+  })();
 }
 
-/**
- * Shows the extra info panel with provided content.
- */
 function showExtraPanel(extra) {
   const panel = document.getElementById("oracle-extra");
   const header = document.getElementById("extra-header");
@@ -219,9 +273,8 @@ function showExtraPanel(extra) {
   const footer = document.getElementById("extra-footer");
 
   header.textContent = extra.header || "";
-  body.textContent = extra.body || "";
+  body.innerHTML = extra.body || "";
   footer.textContent = extra.footer || "";
-
   panel.classList.add("visible");
   panel.classList.remove("hidden");
 }
@@ -229,48 +282,33 @@ function showExtraPanel(extra) {
 function hideExtraPanel() {
   const panel = document.getElementById("oracle-extra");
   panel.classList.remove("visible");
-
-  // Optional: after fade out, add hidden class for accessibility / layout
-  setTimeout(() => {
-    panel.classList.add("hidden");
-  }, 500); // match CSS transition duration
+  setTimeout(() => panel.classList.add("hidden"), 500);
 }
 
-// Initialize runes and canvas animations after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
   summonRunes();
   initRuneCanvas();
 });
 
-// Handle chat form submission
 chatForm.addEventListener("submit", e => {
   e.preventDefault();
-
   const text = userInput.value.trim();
   if (!text) return;
 
-  // Add user's message to chat log
   const userMsg = document.createElement("div");
   userMsg.className = "message user";
   userMsg.textContent = text;
   chatLog.appendChild(userMsg);
-
   chatLog.scrollTop = chatLog.scrollHeight;
   userInput.value = "";
 
-  // Generate oracle reply
   const { text: reply, mood, extra } = generateOracleResponse(text);
-
   setMood(mood);
   changeExpression(mood);
 
-  // Delay oracle typing and extra panel show for smoother experience
   setTimeout(() => {
     typeMessage(reply);
-    if (extra) {
-      showExtraPanel(extra);
-    } else {
-      hideExtraPanel();
-    }
+    if (extra) showExtraPanel(extra);
+    else hideExtraPanel();
   }, 200);
 });
