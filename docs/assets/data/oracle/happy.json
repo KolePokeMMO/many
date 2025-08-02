@@ -12,5 +12,14 @@
             "body": "Leppa Berries restore 10 PP to a move. Plant them in rich soil, water them at 4-hour intervals...",
             "footer": "You can find Leppa berries on Route 210 or buy them in the GTL."
         }
+    },
+    {
+        "keywords": [
+            "leppa",
+            "leppa guide",
+            "leppa berries"
+        ],
+        "response": "You can view the leppa guide here.",
+        "mood": "happy"
     }
 ]
