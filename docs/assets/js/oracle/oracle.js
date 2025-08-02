@@ -5,6 +5,48 @@ const chatForm  = document.getElementById("chat-form");
 const userInput = document.getElementById("user-input");
 const moodGlow  = document.getElementById("oracle-mood-glow");
 const oracleImg = document.getElementById("oracle-img");
+const wrapper = document.querySelector(".oracle-content-wrapper");
+
+// === Shiny Ditto Randomizer ===
+const DITTO_NORMAL = "/many/assets/img/oracle/normal-ditto.png";
+const DITTO_SHINY  = "/many/assets/img/oracle/shiny-ditto.png";
+
+function maybeMakeDittoShiny() {
+  const isShiny = Math.random() < 0.5; // 10% chance
+
+  if (isShiny) {
+    oracleImg.src = DITTO_SHINY;
+
+    const sparkleWrapper = document.createElement("div");
+    sparkleWrapper.className = "shiny-sparkle";
+
+    for (let j = 0; j < 8; j++) {
+      const star = document.createElement("div");
+      star.className = "star";
+
+      const angle = Math.random() * 2 * Math.PI;
+      const dist = 90 + Math.random() * 60; // was 30–50, now 60–100
+
+      star.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+      star.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+      star.style.setProperty("--star-size", 8 + Math.random() * 8 + "px"); // slightly larger stars
+      star.style.setProperty("--star-duration", 800 + Math.random() * 400 + "ms");
+      star.style.setProperty("--rot", Math.random() * 360 + "deg");
+      star.style.animationDelay = Math.random() * 400 + "ms";
+
+      sparkleWrapper.appendChild(star);
+    }
+
+    // Position relative to oracle image
+    oracleImg.parentElement.appendChild(sparkleWrapper);
+  } else {
+    oracleImg.src = DITTO_NORMAL;
+  }
+}
+
+
+maybeMakeDittoShiny();
+
 
 let oracleData = [];
 
@@ -12,8 +54,6 @@ const MOODS = [
   "happy", "angry", "confused", "smug", "sad",
   "shocked", "bored", "mischievous", "idle"
 ];
-
-document.querySelector('.oracle-left').classList.add('slide-left');
 
 function normalize(text) {
   return text
@@ -96,7 +136,7 @@ function generateOracleResponse(userInput) {
   console.groupCollapsed("🔍 Oracle Match Log");
   console.log("📝 Input:", userInput);
   console.log("💡 Matched Entry:", bestMatch ? bestMatch.response : "None");
-  console.log("📊 Confidence Score:", bestScore.toFixed(2));
+  console.log("📈 Confidence Score:", bestScore.toFixed(2));
   if (!bestMatch || bestScore < 0.3) {
     console.warn("⚠️ No good match found. Falling back.");
   }
@@ -154,7 +194,7 @@ function changeExpression(mood) {
     shocked:     { prefix: "shocked",     count: 5 },
     bored:       { prefix: "bored",       count: 5 },
     mischievous: { prefix: "mischievous", count: 5 },
-    idle:        { prefix: "shiny-ditto", count: 1 }
+    idle:        { prefix: "normal-ditto", count: 1 }
   };
 
   const info = moodVariants[mood] || moodVariants.idle;
@@ -181,7 +221,7 @@ function changeExpression(mood) {
 
 function summonRunes() {
   const container   = document.getElementById("oracle-room");
-  const shinyChance = 1 / 9000;
+  const shinyChance = 1 / 100;
 
   for (let i = 0; i < 15; i++) {
     const rune = document.createElement("div");
@@ -269,42 +309,49 @@ function initRuneCanvas() {
 }
 
 function showOracleExtra(header, body, footer) {
-  const chatArea = document.getElementById("chat-area");
   const extraPanel = document.getElementById("oracle-extra");
+  const oracleLeft = document.querySelector(".oracle-left");
 
-  // Inject content
   document.getElementById("extra-header").textContent = header || '';
   document.getElementById("extra-body").innerHTML = body || '';
   document.getElementById("extra-footer").innerHTML = footer || '';
 
-  // Step 1: Shift chat (adjust margin if needed)
-  chatArea.style.marginRight = "520px"; // 500px panel + gap
+  oracleLeft.classList.add("slide-left");
   extraPanel.classList.remove("hidden");
 
-  // Step 2: Short delay before showing panel animation
+  wrapper.classList.add("extra-visible");  // <-- add this class when extra is visible
+  console.log("extra-visible toggled:", wrapper.classList.contains("extra-visible"));
+
+
   setTimeout(() => {
     extraPanel.classList.add("reveal");
-  }, 150); // enough time for chat to shift
+  }, 50);
 }
 
-
 function hideExtraPanel() {
-  const panel = document.getElementById("oracle-extra");
-  const chatWrapper = document.getElementById("oracle-chat-wrapper");
+  const extraPanel = document.getElementById("oracle-extra");
+  const oracleLeft = document.querySelector(".oracle-left");
 
-  panel.classList.remove("reveal");
+  extraPanel.classList.remove("reveal");
+  oracleLeft.classList.remove("slide-left");
 
-  // Unshift chat box after panel closes
   setTimeout(() => {
-    panel.classList.add("hidden");
-    chatWrapper.style.marginRight = "0";
-  }, 600);
+    extraPanel.classList.add("hidden");
+
+    wrapper.classList.remove("extra-visible");  // <-- remove class when hidden
+  }, 500);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   summonRunes();
   initRuneCanvas();
+
+  // Start centered because extra panel is hidden initially
+  wrapper.classList.remove("extra-visible");
+  // So flex + justify-content:center works by default
 });
+
+
 
 chatForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -325,11 +372,10 @@ chatForm.addEventListener("submit", e => {
   setTimeout(() => {
     typeMessage(reply);
     if (extra) {
-  const { header, body, footer } = extra;
-  showOracleExtra(header, body, footer);
-} else {
-  hideExtraPanel();
-}
-
+      const { header, body, footer } = extra;
+      showOracleExtra(header, body, footer);
+    } else {
+      hideExtraPanel();
+    }
   }, 200);
 });

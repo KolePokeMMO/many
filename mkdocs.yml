@@ -64,7 +64,7 @@ extra_javascript:
 nav:
   - Home: index.md
   - Oracle:
-      - Chat: oracle/index.md
+      - Oracle Chamber: oracle/index.md
   - Guides:
       - Overview: guides/index.md
       - Honey Trees: guides/honey-trees.md
