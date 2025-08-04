@@ -46,6 +46,7 @@ extra_css:
   - /many/assets/css/utilities/pheno-tracker.css
   - /many/assets/css/utilities/safari-tracker.css
   - /many/assets/css/oracle/oracle.css
+  - /many/assets/css/oracle/daily.css
 
 extra_javascript:
   - /many/assets/js/theme-loader.js
@@ -60,11 +61,13 @@ extra_javascript:
   - /many/assets/js/utilities/pt/pheno-tracker.js
   - /many/assets/js/utilities/st/safari-tracker.js
   - /many/assets/js/oracle/oracle.js
+  - /many/assets/js/oracle/daily.js
 
 nav:
   - Home: index.md
   - Oracle:
       - Oracle Chamber: oracle/index.md
+      - Daily Oracle: oracle/daily.md
   - Guides:
       - Overview: guides/index.md
       - Honey Trees: guides/honey-trees.md
