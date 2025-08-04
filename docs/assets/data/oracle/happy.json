@@ -15,10 +15,11 @@
     },
     {
         "keywords": [
-            "test"
-
+            "travel",
+             "port city",
+            "new region"
         ],
-        "response": "You can view the leppa guide here.",
+        "response": "The designated port cities are Vermilion in Kanto, Olivine in Johto, Slateport in Hoenn, Pastoria in Sinnoh, and Castelia in Unova.",
         "mood": "happy"
     }
 ]
