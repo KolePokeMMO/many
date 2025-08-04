@@ -10,14 +10,11 @@ hide:
   <div class="candles-background"></div>
   <div class="oracle-layout">
     <div class="oracle-content-wrapper">
-
       <div class="oracle-left">
-
         <div class="oracle-wrapper">
           <img id="oracle-img" src="/many/assets/img/oracle/normal-ditto.png" alt="Oracle" />
           <div id="oracle-mood-glow"></div>
         </div>
-
         <div id="chat-area">
           <div id="chat-log"></div>
           <form id="chat-form">
@@ -25,15 +22,12 @@ hide:
             <button type="submit">🔮</button>
           </form>
         </div>
-
       </div>
-
       <div id="oracle-extra" class="hidden">
         <h2 id="extra-header"></h2>
         <div id="extra-body"></div>
         <div id="extra-footer"></div>
       </div>
-
     </div>
   </div>
 

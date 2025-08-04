@@ -44,9 +44,7 @@ function maybeMakeDittoShiny() {
   }
 }
 
-
 maybeMakeDittoShiny();
-
 
 let oracleData = [];
 
