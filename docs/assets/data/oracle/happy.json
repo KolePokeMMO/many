@@ -21,5 +21,14 @@
         ],
         "response": "The designated port cities are Vermilion in Kanto, Olivine in Johto, Slateport in Hoenn, Pastoria in Sinnoh, and Castelia in Unova.",
         "mood": "happy"
+    },
+    {
+        "keywords": [
+            "lose my pokemon",
+            "lose my items",
+            "new region"
+        ],
+        "response": "All items will transfer with you, except for HMs and key items. Pokemon will be sent to your PC.",
+        "mood": "happy"
     }
 ]
