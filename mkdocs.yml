@@ -27,7 +27,6 @@ theme:
     - navigation.top
   plugins:
     - icons
-    - search: false
 
 markdown_extensions:
   - pymdownx.superfences

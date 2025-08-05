@@ -1,0 +1,72 @@
+[
+  {
+    "keywords": ["make money", "get rich", "fast cash"],
+    "response": "Ahh... chasing riches, are we? Rerun gyms, farm Everstones, or grind Trainer Tower if you're bold.",
+    "mood": "smug"
+  },
+  {
+    "keywords": ["how to breed", "breeding guide", "egg moves"],
+    "response": "To create new life, visit the Daycare. Use Everstones to pass nature, braces to pass IVs. Think carefully, it costs a lot...",
+    "mood": "happy"
+  },
+  {
+    "keywords": ["secret shiny", "what is a secret shiny", "shiny chance"],
+    "response": "A secret shiny... a whisper from the void. 1 in a million — no sparkle, only subtle glory.",
+    "mood": "mysterious"
+  },
+  {
+    "keywords": ["how to get to sinnoh", "start sinnoh", "where is sinnoh"],
+    "response": "The ferry at the port leads to Sinnoh... but only if you've proven yourself in Kanto or Hoenn first.",
+    "mood": "happy"
+  },
+  {
+    "keywords": ["alpha", "what is an alpha", "alpha pokemon"],
+    "response": "Alphas are titans — powerful, relentless, and usually found once a week. Their location changes at midnight UTC.",
+    "mood": "smug"
+  },
+  {
+    "keywords": ["are you evil", "are you a ghost", "who are you"],
+    "response": "I am many voices. I am the curse. I am your guide... and sometimes your doom.",
+    "mood": "angry"
+  },
+  {
+    "keywords": ["tell me a joke", "make me laugh", "funny"],
+    "response": "What do you call a ghost with a job? A spectre-employed. *sighs deeply*",
+    "mood": "confused"
+  },
+{
+  "keywords": ["leppa", "leppa guide", "leppa berries"],
+  "response": "You can view the leppa guide here.",
+  "mood": "happy",
+  "extra": {
+    "header": "Leppa Berry Farming Guide",
+    "body": "Leppa Berries restore 10 PP to a move. Plant them in rich soil, water them at 4-hour intervals...",
+    "footer": "You can find Leppa berries on Route 210 or buy them in the GTL."
+  }
+},
+  {
+    "keywords": ["help", "commands", "how do i use this"],
+    "response": "Ask me anything about the game. Use clear words... or I may misunderstand and frown at you.",
+    "mood": "confused"
+  },
+  {
+    "keywords": ["misc", "misc2"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "mischievous"
+  },
+  {
+    "keywords": ["wor", "worried"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "worried"
+  },
+  {
+    "keywords": ["sad", "sadness"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "sad"
+  },
+  {
+    "keywords": ["shock", "shocked"],
+    "response": "Ask me that again... I got an answer for you...",
+    "mood": "shocked"
+  }
+]
