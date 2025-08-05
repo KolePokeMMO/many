@@ -1,10 +1,16 @@
 [
     {
         "keywords": [
-            "misc",
-            "mischievous"
+            "1",
+            "2",
+            "3"
         ],
-        "response": "This is a mischievous test.",
-        "mood": "mischievous"
+        "response": "Response",
+        "mood": "happy",
+        "extra": {
+            "header": "Header",
+            "body": "Body",
+            "footer": "Footer"
+        }
     }
 ]

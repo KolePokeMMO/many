@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
     });
   });
+
 });
 
 // Inject SVG logo inline for theme-aware colouring
@@ -77,7 +78,6 @@ fetch('/many/assets/img/spiritomb.svg')
       svgEl.setAttribute('aria-label', 'Team Mascot');
     }
   })
-
 
   .catch(err => {
     console.error('Failed to load SVG:', err);

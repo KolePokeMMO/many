@@ -1,0 +1,16 @@
+[
+    {
+        "keywords": [
+            "1",
+            "2",
+            "3"
+        ],
+        "response": "Response",
+        "mood": "happy",
+        "extra": {
+            "header": "Header",
+            "body": "Body",
+            "footer": "Footer"
+        }
+    }
+]
