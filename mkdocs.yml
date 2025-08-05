@@ -27,6 +27,7 @@ theme:
     - navigation.top
   plugins:
     - icons
+    - search: false
 
 markdown_extensions:
   - pymdownx.superfences
@@ -47,6 +48,7 @@ extra_css:
   - /many/assets/css/utilities/safari-tracker.css
   - /many/assets/css/oracle/oracle.css
   - /many/assets/css/oracle/daily.css
+  - /many/assets/css/oracle/admin.css
 
 extra_javascript:
   - /many/assets/js/theme-loader.js
@@ -62,6 +64,7 @@ extra_javascript:
   - /many/assets/js/utilities/st/safari-tracker.js
   - /many/assets/js/oracle/oracle.js
   - /many/assets/js/oracle/daily.js
+  - /many/assets/js/oracle/admin.js
 
 nav:
   - Home: index.md

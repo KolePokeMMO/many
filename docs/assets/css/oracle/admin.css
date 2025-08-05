@@ -1,0 +1,250 @@
+/* Dark, clean admin style */
+
+
+
+#oracle-admin {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-pane {
+  padding: 1rem;
+  overflow-y: auto;
+  border-right: 1px solid var(--main-fg-border-color);
+}
+
+.admin-pane.left {
+  width: 260px;
+  background: #1e1e1e;
+  border-right: 1px solid var(--main-fg-border-color);
+}
+
+.admin-pane.right {
+  flex-grow: 1;
+  background: var(--main-bg-color);
+  border-left: 1px solid var(--main-fg-border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+#json-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--main-fg-border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#json-header h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.0rem;
+}
+
+#download-json {
+  background: var(--main-accent-color);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#download-json:hover {
+  filter: brightness(0.85); /* makes it 15% darker */
+}
+
+#json-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#json-list li {
+  padding: 0.3rem 0.3rem;
+  cursor: pointer;
+  border-radius: 0px;
+  transition: background 0.15s ease;
+}
+
+#json-list li:hover,
+#json-list li.selected {
+  background: var(--main-accent-color);
+  color: #fff;
+}
+
+#entry-list-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#add-entry-btn {
+  background: #2a9d8f;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+  transition: background 0.2s ease;
+}
+
+#add-entry-btn:hover {
+  background: #1f6d5a;
+}
+
+#entry-list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.entry-card {
+  background: var(--main-fg-border-color);
+  border-radius: 6px;
+  padding: 0.35rem 1rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-summary {
+  flex-grow: 1;
+  font-size: .7rem;
+  overflow-wrap: anywhere;
+}
+
+.entry-actions button {
+  margin-left: 0.5rem;
+  background: #e76f51;
+  border: none;
+  color: white;
+  padding: 0.25rem 0.45rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.entry-actions button:hover {
+  background: #bb4b34;
+}
+
+/* Modal Styles */
+#modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#modal-box {
+  background: var(--main-bg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0px;
+  width: 600px;
+  max-width: 95vw;
+  padding: 0.7rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-box h3 {
+  margin: 0 0 0.7rem 0;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+}
+
+#modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+#modal-form label {
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #ddd;
+}
+
+#modal-form input[type="text"],
+#modal-form textarea {
+  padding: 0.3rem;
+  border-radius: 0px;
+  border: none;
+  background: var(--main-fg-border-color);
+  color: #eee;
+  font-size: 0.7rem;
+  resize: vertical;
+  min-height: 30px;
+}
+
+#modal-form textarea {
+  min-height: 40px;
+}
+
+/* Override focus and hover styles */
+#modal-form input[type="text"]:focus,
+#modal-form textarea:focus,
+#modal-form input[type="text"]:hover,
+#modal-form textarea:hover {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: var(--main-fg-border-color); /* or a hover tint if desired */
+}
+
+.modal-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.modal-actions button {
+  background: var(--main-accent-color);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.modal-actions button#modal-cancel {
+  background: var(--main-fg-border-color);
+}
+
+.modal-actions button:hover {
+  filter: brightness(1.2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#field-mood {
+  width: 30%; /* or set a fixed width like 200px */
+  background-color: var(--main-fg-color); /* or any custom colour */
+  color: #fff; /* text colour */
+  padding: 0.3rem;
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0px;
+  font-size: 0.7rem;
+  appearance: none; /* optional: removes OS default styles */
+  cursor: pointer;
+}

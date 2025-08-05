@@ -318,7 +318,7 @@
 
 #oracle-extra {
   width: 550px;
-  max-height: 300px;
+
   align-self: stretch;
   max-width: 600px;
   background: rgba(19, 19, 19, 0.85);
@@ -449,3 +449,96 @@
 .oracle-content-wrapper.centered {
   justify-content: center !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.oracle-extra h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #9fd;
+}
+
+.oracle-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.oracle-suggestions li {
+  margin: 0.3rem 0;
+}
+
+.oracle-suggestions button {
+  background: #15161a;
+  color: #cff;
+  border: 1px solid #2c2e35;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.oracle-suggestions button:hover {
+  background: #1d1f26;
+}
+
+.oracle-suggestions .conf {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.suggestion-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style-type: none !important;
+}
+
+.suggestion-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0px;
+  background: var(--main-fg-color);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.suggestion-button:hover {
+  border-color: var(--main-accent-color);
+}
+
+.suggestion-button .icon {
+  font-size: 1.2em;
+  margin-right: 8px;
+}
+
+.suggestion-button .confidence {
+  font-size: 0.9em;
+  color: #777;
+  margin: 0rem .5rem;
+}
+
+
