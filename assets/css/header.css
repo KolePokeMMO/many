@@ -19,7 +19,7 @@
 	font-size: clamp(1.2rem, 14vw, 1.2rem);
 	font-weight: 400;
 	line-height: 2.1;
-	padding-left: 170px;
+	padding-left: 200px;
 	text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
 }
 
@@ -67,6 +67,9 @@
    Header Logo Resizing
 ──────────────────────────────────────────────── */
 
+.md-header__button.md-logo {
+  margin: -0.8rem !important;
+}
 /* Logo container */
 .md-header__button.md-logo {
 	width: auto;
@@ -75,13 +78,13 @@
 
 @media screen and (min-width: 768px) {
 	.md-header__button.md-logo {
-		width: 110px;
+		width: 235px;
 	}
 }
 
 /* Logo image */
 .md-header__button.md-logo img {
-	width: 300px !important;
+	width: 400px !important;
 	height: auto !important;
 	margin: 0 !important;
 	min-height: 100px;
