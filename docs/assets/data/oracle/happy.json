@@ -24,32 +24,12 @@
         "mood": "happy"
     },
     {
-        "id": "travel-two",
         "keywords": [
-            "travel two",
-            "port city",
+            "lose my pokemon",
+            "lose my items",
             "new region"
         ],
-        "response": "bla bla bla",
+        "response": "All items will transfer with you, except for HMs and key items. Pokemon will be sent to your PC.",
         "mood": "happy"
-    },
-  {
-    "id": "unique-entry-id",
-
-    "keywords": [
-      "keyword1",
-      "keyword phrase 2",
-      "alternative keyword"
-    ],
-
-    "response": "Your concise, helpful response goes here.",
-
-    "mood": "happy",
-
-    "extra": {
-      "header": "Optional Header Title",
-      "body": "Detailed explanation or guide content can go here. Supports longer text.",
-      "footer": "Optional footer text or links."
     }
-  }
 ]
