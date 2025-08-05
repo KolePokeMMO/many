@@ -1,0 +1,35 @@
+[
+    {
+        "keywords": [
+            "leppa",
+            "leppa guide",
+            "leppa berries"
+        ],
+        "response": "You can view the leppa guide here.",
+        "mood": "happy",
+        "extra": {
+            "header": "Leppa Berry Farming Guide",
+            "body": "Leppa Berries restore 10 PP to a move. Plant them in rich soil, water them at 4-hour intervals...",
+            "footer": "You can find Leppa berries on Route 210 or buy them in the GTL."
+        }
+    },
+    {
+        "id": "travel",
+        "keywords": [
+            "travel",
+            "port city",
+            "new region"
+        ],
+        "response": "The designated port cities are Vermilion in Kanto, Olivine in Johto, Slateport in Hoenn, Pastoria in Sinnoh, and Castelia in Unova.",
+        "mood": "happy"
+    },
+    {
+        "keywords": [
+            "lose my pokemon",
+            "lose my items",
+            "new region"
+        ],
+        "response": "All items will transfer with you, except for HMs and key items. Pokemon will be sent to your PC.",
+        "mood": "happy"
+    }
+]

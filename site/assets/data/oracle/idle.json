@@ -1,0 +1,29 @@
+[
+  {
+    "keywords": [
+      "1",
+      "2",
+      "3"
+    ],
+    "response": "Response",
+    "mood": "happy",
+    "extra": {
+      "header": "Header",
+      "body": "Body",
+      "footer": "Footer"
+    }
+  },
+  {
+    "original": "This is a test",
+    "response": "Of course it's a test! It's always a test!",
+    "mood": "angry",
+    "keywords": [
+      "testing"
+    ],
+    "extra": {
+      "header": "It's",
+      "body": "A",
+      "footer": "Test"
+    }
+  }
+]
