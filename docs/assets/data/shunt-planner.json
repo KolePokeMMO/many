@@ -44,6 +44,17 @@
     "slot_percent": 3
   },
   {
+    "pokemon": "Golett",
+    "region": "Unova",
+    "route": "Dragonspiral Tower",
+    "method": "sweet-scent",
+    "repel_level": null,
+    "sweet_scent": true,
+    "alpha": false,
+    "notes": "Found in Dragonspiral Tower via Sweet Scent. Available in 5-slot hordes on 2F–4F",
+    "slot_percent": 100
+  },
+  {
     "pokemon": "Tyrunt",
     "region": "unova",
     "route": "Ancient Ruins",
