@@ -105,7 +105,7 @@
 ──────────────────────────────────────────────── */
 .extra-header-div {
   position: absolute;
-  top: 0.3rem;
+  top: 1rem;
   right: 3.5rem; /* just to the left of the search icon */
   z-index: 10;
 }
