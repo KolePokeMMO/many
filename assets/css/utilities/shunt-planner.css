@@ -23,17 +23,13 @@ body.shunt-mode {
    Layout Container
 ==================================================== */
 .shunt-container {
-  max-width: 100%;
-  margin: 0 auto;
-  background: var(--main-bg-color);
-  padding: 0rem;
-  border-radius: 0px;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr; /* Left - Middle - Right */
+  display: flex;
+  align-items: stretch; /* ensures all 3 columns match tallest */
   gap: 1rem;
-  height: calc(100vh - 4rem);
+  width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 
@@ -47,7 +43,11 @@ body.shunt-mode {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow-y: auto;
+  overflow: hidden;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 15%;
+  min-width: 150px;
 }
 
 .shunt-filters label,
@@ -76,9 +76,13 @@ body.shunt-mode {
   background: var(--main-fg-color);
   border-radius: 0px;
   padding: 1rem;
-  overflow-y: auto;
+  overflow-y: auto;       /* scroll only this one */
   color: var(--text-light);
   font-size: 0.6rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 55%;
+  min-width: 300px;
 }
 
 .shunt-results h4 {
@@ -97,14 +101,12 @@ body.shunt-mode {
   border-bottom: 1px solid var(--main-fg-border-color);
 }
 
-.shunt-entry li strong{
- 
+.shunt-entry li strong {
   color: var(--main-accent-color-light);
   margin-right: 0.5rem;
   display: inline-block;
   min-width: 2.5rem;
 }
-
 
 
 /* ====================================================
@@ -118,10 +120,14 @@ body.shunt-mode {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow-y: auto;
+  overflow-y: visible;
   color: var(--main-accent-color);
   font-size: 0.7rem;
   margin-top: 0px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 30%;
+  min-width: 250px;
 }
 
 
@@ -130,11 +136,12 @@ body.shunt-mode {
 ==================================================== */
 #pinned-target {
   font-style: italic;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   background: #212121;
   border: 1px solid #252525;
-  border-radius: 6px;
+  border-radius: 0px;
   min-height: 40px;
+  margin-top: 1rem;
 }
 
 
@@ -151,7 +158,11 @@ body.shunt-mode {
   font-family: 'Segoe UI', sans-serif;
   font-size: 0.6rem;
 }
-
+#notes:focus {
+  outline: none;
+  border: 1px solid var(--main-accent-color);
+  box-shadow: 0 0 0 0px rgba(79, 195, 247, 0.3);
+}
 
 /* ====================================================
    Action Buttons (Save/Clear Notes)
@@ -173,6 +184,13 @@ body.shunt-mode {
   background: var(--main-accent-color-light);
 }
 
+.notes-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
 
 /* ====================================================
    Responsive Adjustments
@@ -187,11 +205,17 @@ body.shunt-mode {
   .shunt-filters,
   .shunt-results,
   .shunt-controls {
+    flex-basis: auto;
+    min-width: auto;
     height: auto;
     max-height: none;
   }
 }
 
+
+/* ====================================================
+   Sprites & Encounters
+==================================================== */
 .shunt-sprites {
   text-align: left;
 }
@@ -214,41 +238,76 @@ body.shunt-mode {
   height: 84px;
   object-fit: contain;
   border-radius: 4px;
-image-rendering: crisp-edges;
-image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+.encounter-box {
+  border: 1px solid #262626;
+  background: #1a1a1a;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.encounter-box label {
+  font-weight: bold;
+  color: #ccc;
+}
+
+.encounter-box span {
+  margin-right: 0.3rem;
+}
+
+.encounter-box input[type="number"] {
+  width: 100px;
+  margin-left: 0.5em;
+}
+
+.caught-checkbox {
+  display: flex;
+  align-items: center;
+  border-radius: 0px !important;
+}
+
+#pinned-encounter {
+  width: 100px;
+  margin-left: 0.5em;
+  padding: 0.3rem;
+  background: #212121;
+  border: 1px solid #1b1b1b;
+}
+
+#pinned-caught {
+  margin-left: 0.3em;
+  padding-top: 0;
+  accent-color: var(--main-accent-color);
 }
 
 
-
-
-
-
-
-
-
-
-
-
+/* ====================================================
+   Gold Reflective Border
+==================================================== */
 .gold-reflect-border {
   border: 1px solid transparent;
   border-radius: 1px;
-  background-image: 
-    linear-gradient(#1e1e1e, #1e1e1e), /* Background fill */
-    linear-gradient(45deg, #FFD700, #FFA500, #FFEF8B, #FFD700); /* Gold gradient border */
+  background-image:
+    linear-gradient(#1e1e1e, #1e1e1e),
+    linear-gradient(45deg, #FFD700, #FFA500, #FFEF8B, #FFD700);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
   transition: box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .gold-reflect-border:hover {
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 255, 200, 0.2);
-}
-
-.gold-reflect-border {
-  position: relative;
-  overflow: hidden;
-  /* include all styles from above here */
 }
 
 .gold-reflect-border::before {
@@ -268,4 +327,3 @@ image-rendering: pixelated;
   60%  { transform: translateX(100%) rotate(25deg); }
   100% { transform: translateX(100%) rotate(25deg); }
 }
-

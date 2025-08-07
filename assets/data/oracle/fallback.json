@@ -1,43 +1,46 @@
 [
   {
     "fallback": true,
-    "response": "Hmm\u2026 I didn\u2019t catch that. Try rephrasing or explore these example questions:",
+    "response": "Hmm… I didn’t catch that. Try rephrasing or explore these example questions:",
     "mood": "confused",
     "extra": {
       "header": "Try These Questions:",
-      "body": "<ul class='suggestion-list'>\n  <li><button class='suggestion-button' data-keywords=\"What's the meaning of life?\"><span class='icon'>\u2728</span> <span class='label'>What's the meaning of life?</span></button></li>\n  <li><button class='suggestion-button' data-keywords=\"Tell me about egg incubators.\"><span class='icon'>\ud83e\udd5a</span> <span class='label'>Tell me about egg incubators.</span></button></li>\n  <li><button class='suggestion-button' data-keywords=\"Tell me about legendary Pok\u00e9mon.\"><span class='icon'>\ud83d\udc51</span> <span class='label'>Tell me about legendary Pok\u00e9mon.</span></button></li>\n  <li><button class='suggestion-button' data-keywords=\"How do I use repels effectively?\"><span class='icon'>\ud83d\udee1\ufe0f</span> <span class='label'>How do I use repels effectively?</span></button></li>\n</ul>",
+      "body": "<ul class='suggestion-list'>\n  <li><button class='suggestion-button' data-keywords=\"What's the meaning of life?\"><span class='icon'>✨</span> <span class='label'>What's the meaning of life?</span></button></li>\n  <li><button class='suggestion-button' data-keywords=\"Tell me about egg incubators.\"><span class='icon'>🥚</span> <span class='label'>Tell me about egg incubators.</span></button></li>\n  <li><button class='suggestion-button' data-keywords=\"Tell me about legendary Pokémon.\"><span class='icon'>👑</span> <span class='label'>Tell me about legendary Pokémon.</span></button></li>\n  <li><button class='suggestion-button' data-keywords=\"How do I use repels effectively?\"><span class='icon'>🛡️</span> <span class='label'>How do I use repels effectively?</span></button></li>\n</ul>",
       "footer": "<p class='hint'>Tap a suggestion to try it!</p>"
     }
   },
   {
+    "id": "meaning-life",
     "keywords": [
       "meaning",
       "life",
       "what's the meaning of life",
       "meaning of life"
     ],
-    "response": "Ah, the meaning of life! Some say it\u2019s love, others say it\u2019s adventure. For me? It\u2019s all about shining bright like a shiny Pok\u00e9mon. \u2728",
+    "response": "Ah, the meaning of life! Some say it’s love, others say it’s adventure. For me? It’s all about shining bright like a shiny Pokémon. ✨",
     "mood": "smug"
   },
   {
+    "id": "egg-incubators",
     "keywords": [
       "egg incubator",
       "incubators",
       "how do egg incubators work"
     ],
-    "response": "Egg Incubators help hatch your Pok\u00e9mon eggs faster. Talk to the old man at the daycare to get started!",
+    "response": "Egg Incubators help hatch your Pokémon eggs faster. Talk to the old man at the daycare to get started!",
     "mood": "happy",
     "extra": {
       "header": "Egg Incubators Info",
-      "body": "<p>To obtain Egg Incubators, talk to the old man at the Daycare.<br>Eggs no longer hatch while in your Party.</p><p>Players can acquire up to 8 permanent Incubators throughout the storyline:</p><ul><li>5 from meeting the Daycare Man in each region</li><li>1 after defeating the Elite Four</li><li>1 after defeating Ho-Oh in a rematch</li></ul><p>Incubation can be sped up by placing a Pok\u00e9mon with Flame Body or Magma Armor into a special PC slot.<br>Incubators are fully managed without needing to visit a PC.</p><p>Eligible players automatically receive bonus incubators upon meeting the Daycare Man.</p>",
+      "body": "<p>To obtain Egg Incubators, talk to the old man at the Daycare.<br>Eggs no longer hatch while in your Party.</p><p>Players can acquire up to 8 permanent Incubators throughout the storyline:</p><ul><li>5 from meeting the Daycare Man in each region</li><li>1 after defeating the Elite Four</li><li>1 after defeating Ho-Oh in a rematch</li></ul><p>Incubation can be sped up by placing a Pokémon with Flame Body or Magma Armor into a special PC slot.<br>Incubators are fully managed without needing to visit a PC.</p><p>Eligible players automatically receive bonus incubators upon meeting the Daycare Man.</p>",
       "footer": ""
     }
   },
   {
+    "id": "legendary-pokemon",
     "keywords": [
       "legendary",
       "roaming legendary",
-      "legendary Pok\u00e9mon",
+      "legendary Pokémon",
       "rayquaza",
       "zekrom",
       "mewtwo",
@@ -46,26 +49,27 @@
       "catch legendary",
       "how to get legendary"
     ],
-    "response": "You cannot permanently keep any legendaries in PokeMMO. Some are catchable but won\u2019t stay with you long.",
+    "response": "You cannot permanently keep any legendaries in PokeMMO. Some are catchable but won’t stay with you long.",
     "mood": "smug",
     "extra": {
-      "header": "Legendary Pok\u00e9mon Mechanics",
-      "body": "<p>You cannot permanently keep any legendaries in PokeMMO. Some are available to catch, but they won\u2019t stay in your possession.</p>\n<p><strong>Zekrom</strong> is temporarily available during the Unova storyline for two battles. It leaves your party automatically afterward.</p>\n<p>Each region has one <strong>roaming legendary</strong> (e.g. Rayquaza, Mewtwo, Keldeo, Arceus) that can appear in the wild. Once caught:</p>\n<ul>\n  <li>You are automatically opted into <strong>PvP duels</strong>.</li>\n  <li>If you <strong>lose a duel</strong>, the legendary transfers to the victor.</li>\n  <li>If you stay unchallenged too long or log out, it flees.</li>\n</ul>\n<p>\ud83d\udcd8 <a href=\"https://forums.pokemmo.eu/index.php?/topic/81062-legendary-pokemon-guide/\" target=\"_blank\" rel=\"noopener noreferrer\">Legendary Pok\u00e9mon Guide</a></p>\n<p>If you just want a legendary marked as 'seen' in your Pok\u00e9dex:<br>\n\ud83d\udd0d <a href=\"https://forums.pokemmo.eu/index.php?/topic/75473-list-of-hidden-pokemons-for-pokedex/\" target=\"_blank\" rel=\"noopener noreferrer\">List of Hidden Pok\u00e9mon for Pok\u00e9dex Completion</a></p>\n<p>\ud83c\udf00 Future updates will include Mystery Dungeon-style content where non-Uber legendaries can be caught after being defeated.</p>\n<p>\u2728 Preview: <a href=\"https://imgur.com/a/NBIRZAq\" target=\"_blank\" rel=\"noopener noreferrer\">Dungeon Feature Teaser</a></p>",
+      "header": "Legendary Pokémon Mechanics",
+      "body": "<p>You cannot permanently keep any legendaries in PokeMMO. Some are available to catch, but they won’t stay in your possession.</p>\n<p><strong>Zekrom</strong> is temporarily available during the Unova storyline for two battles. It leaves your party automatically afterward.</p>\n<p>Each region has one <strong>roaming legendary</strong> (e.g. Rayquaza, Mewtwo, Keldeo, Arceus) that can appear in the wild. Once caught:</p>\n<ul>\n  <li>You are automatically opted into <strong>PvP duels</strong>.</li>\n  <li>If you <strong>lose a duel</strong>, the legendary transfers to the victor.</li>\n  <li>If you stay unchallenged too long or log out, it flees.</li>\n</ul>\n<p>📘 <a href=\"https://forums.pokemmo.eu/index.php?/topic/81062-legendary-pokemon-guide/\" target=\"_blank\" rel=\"noopener noreferrer\">Legendary Pokémon Guide</a></p>\n<p>If you just want a legendary marked as 'seen' in your Pokédex:<br>\n🔍 <a href=\"https://forums.pokemmo.eu/index.php?/topic/75473-list-of-hidden-pokemons-for-pokedex/\" target=\"_blank\" rel=\"noopener noreferrer\">List of Hidden Pokémon for Pokédex Completion</a></p>\n<p>🌈 Future updates will include Mystery Dungeon-style content where non-Uber legendaries can be caught after being defeated.</p>\n<p>✨ Preview: <a href=\"https://imgur.com/a/NBIRZAq\" target=\"_blank\" rel=\"noopener noreferrer\">Dungeon Feature Teaser</a></p>",
       "footer": ""
     }
   },
   {
+    "id": "repel-tips",
     "keywords": [
       "repels",
       "repel tips",
       "how do i use repels effectively"
     ],
-    "response": "Repels help you avoid unwanted Pok\u00e9mon and give you more control over your encounters. Use them strategically to target specific spawns.",
+    "response": "Repels help you avoid unwanted Pokémon and give you more control over your encounters. Use them strategically to target specific spawns.",
     "mood": "smug",
     "extra": {
       "header": "Repel Tricks & Strategy",
-      "body": "<p>Repels prevent wild Pok\u00e9mon encounters below your party lead\u2019s level. Use this to <strong>target higher-level slots</strong> more precisely.</p><p><strong>Repel Trick Examples:</strong></p><ul><li>In Dragonspiral Tower, use a <code>Lv. 42</code> lead to block all but Druddigon spawns on Floor 2.</li><li>In Cliffside Cave, a <code>Lv. 25</code> lead filters all but Lv. 28\u201330 tier spawns.</li></ul><p>To use repels efficiently:</p><ul><li>Know the level ranges of local encounters.</li><li>Bring a lead Pok\u00e9mon at the target encounter level.</li><li>Use Super Repels\u2014they\u2019re the most cost-effective per step.</li></ul>",
-      "footer": "<p class='hint'>Want to try a repel trick? Ask me about a location and your target Pok\u00e9mon!</p>"
+      "body": "<p>Repels prevent wild Pokémon encounters below your party lead’s level. Use this to <strong>target higher-level slots</strong> more precisely.</p><p><strong>Repel Trick Examples:</strong></p><ul><li>In Dragonspiral Tower, use a <code>Lv. 42</code> lead to block all but Druddigon spawns on Floor 2.</li><li>In Cliffside Cave, a <code>Lv. 25</code> lead filters all but Lv. 28–30 tier spawns.</li></ul><p>To use repels efficiently:</p><ul><li>Know the level ranges of local encounters.</li><li>Bring a lead Pokémon at the target encounter level.</li><li>Use Super Repels—they’re the most cost-effective per step.</li></ul>",
+      "footer": "<p class='hint'>Want to try a repel trick? Ask me about a location and your target Pokémon!</p>"
     }
   }
 ]

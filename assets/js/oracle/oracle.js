@@ -451,21 +451,28 @@ document.addEventListener("DOMContentLoaded", () => {
 // === Suggestion Button Clicks ===
 document.addEventListener("click", e => {
   const btn = e.target.closest(".suggestion-button");
-  if (btn?.dataset?.id) {
+  if (!btn) return;
+
+  if (btn.dataset.id) {
     const id = btn.dataset.id;
     const entry = oracleData.find(e => e.id === id);
     if (entry) {
-      // Store selected entry for direct display
       lastOracleEntry = entry;
-
-      // Show user message with the suggestion label for UX
-      const label = (entry.original || entry.keywords?.join(" ") || "Ask");
-
+      const label = entry.original || entry.keywords?.join(" ") || "Ask";
       userInput.value = label;
       setTimeout(() => chatForm.requestSubmit(), 10);
+      return;
     }
   }
+
+  // 🧠 New logic: Fallback buttons using `data-keywords`
+  if (btn.dataset.keywords) {
+    const label = btn.dataset.keywords;
+    userInput.value = label;
+    setTimeout(() => chatForm.requestSubmit(), 10);
+  }
 });
+
 
 // === Chat Submission ===
 chatForm.addEventListener("submit", e => {
