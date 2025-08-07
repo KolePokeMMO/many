@@ -13,11 +13,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Could not load Pokémon data:", err);
     }
 
-    targetTags.forEach(tag => {
-        document.querySelectorAll(tag).forEach(el => {
-            if (el.classList.contains("processed")) return;
-
-            el.innerHTML = el.innerHTML.replace(/\[(p:)?([^\]]+)\]/gi, (match, prefix, content) => {
+    const walkAndReplace = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const replaced = node.nodeValue.replace(/\[(p:)?([^\]]+)\]/gi, (match, prefix, content) => {
                 const displayContent = content.trim();
 
                 if (prefix && prefix.toLowerCase() === "p:") {
@@ -69,14 +67,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </div>
                     `;
 
-                    return `
-                        <span class="pokemon-highlight tooltip-container">
-                            ${poke.name}
-                            <span class="tooltip">${tooltip}</span>
-                        </span>`;
+                    const container = document.createElement("span");
+                    container.classList.add("pokemon-highlight", "tooltip-container");
+                    container.innerHTML = `${poke.name}<span class="tooltip">${tooltip}</span>`;
+                    return container.outerHTML;
                 }
 
-                // Generic bracketed text styling
+                // Bracketed text styling
                 let cssClass = "bracketed";
                 const upper = displayContent.toUpperCase();
 
@@ -93,7 +90,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return `<span class="${cssClass}">${displayContent}</span>`;
             });
 
-            el.classList.add("processed");
+            if (replaced !== node.nodeValue) {
+                const span = document.createElement("span");
+                span.innerHTML = replaced;
+                node.replaceWith(...span.childNodes);
+            }
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            // Avoid rewriting annotation icons or tooltips
+            if (node.closest(".annotate, .annotation")) return;
+
+            Array.from(node.childNodes).forEach(walkAndReplace);
+        }
+    };
+
+    targetTags.forEach(tag => {
+        document.querySelectorAll(tag).forEach(el => {
+            if (!el.classList.contains("processed")) {
+                walkAndReplace(el);
+                el.classList.add("processed");
+            }
         });
     });
 });
