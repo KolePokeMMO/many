@@ -1,3 +1,4 @@
+/* CLOSE DOWN THE SITE
 (function redirectUnlessLocalhost() {
   const allowedHosts = ['127.0.0.1:8000', 'localhost:8000'];
   const isLocalhost = allowedHosts.includes(location.host);
@@ -10,7 +11,7 @@
     location.replace('https://shinylegion.github.io/many/sorry.html');
   }
 })();
-
+*/
 
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname.endsWith("/honey-trees/")) {
