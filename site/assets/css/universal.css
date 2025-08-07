@@ -529,4 +529,72 @@ html:not(.theme-loading) body {
 
 
 
+/* ────────────────────────────────────────────────
+   Remove search bar for now
+──────────────────────────────────────────────── */
+.md-search {
+  display: none !important;
+}
 
+.md-content__inner .md-typeset > h1:first-of-type {
+    display: none !important;
+}
+
+.md-content__inner > h1 {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+
+
+/* ────────────────────────────────────────────────
+   Admonition and Annotation Styles
+──────────────────────────────────────────────── */
+/* Base Admonition Styling (dark mode friendly) */
+.md-typeset .admonition.note, .md-typeset details.note {
+  border-color: var(--main-accent-border-color);
+}
+
+.md-typeset .admonition, .md-typeset details {
+  background-color: var(--md-admonition-bg-color);
+  border-radius: 0rem;
+  box-shadow: var(--md-shadow-z1);
+  color: var(--md-admonition-fg-color);
+}
+
+.md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
+  background-color: var(--main-accent-color);
+  -webkit-mask-image: var(--md-admonition-icon--note);
+  mask-image: var(--md-admonition-icon--note);
+}
+@media screen {
+  .md-tooltip--active + .md-annotation__index::after, :hover > .md-annotation__index::after {
+    background-color: var(--main-accent-color);
+
+  }
+}
+.md-typeset .admonition, .md-typeset details {
+  background-color: var(--main-fg-color);
+  border-radius: 0rem;
+  box-shadow: var(--md-shadow-z1);
+  color: var(--md-admonition-fg-color);
+}
+.md-typeset .note > .admonition-title, .md-typeset .note > summary {
+  background-color: var(--main-fg-border-color);
+}
+
+.md-tooltip {
+  background-color: var(--main-fg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0rem;
+  box-shadow: var(--md-shadow-z2);
+  color: var(--md-default-fg-color);
+
+}

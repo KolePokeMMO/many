@@ -2,8 +2,6 @@
 title: Honey Tree Guide
 description: Honey Tree Walkthrough for shiny hunting.
 status: new
-
-
 ---
 
 <section class="info-section">

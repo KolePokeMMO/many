@@ -25,12 +25,23 @@ theme:
     - content.tooltips
     - content.tabs.link
     - navigation.top
+
   plugins:
     - icons
 
 markdown_extensions:
   - pymdownx.superfences
-  - pymdownx.tabbed
+  #- pymdownx.annotate
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - footnotes
+  - admonition
 
 extra:
   year: !ENV [YEAR, "2025"]
@@ -40,7 +51,6 @@ extra_css:
   - /many/assets/css/guides/honey-tree.css
   - /many/assets/css/comp/poke-tooltips.css
   - /many/assets/css/showcase/showcase.css
-  - /many/assets/css/showcase/shinywars.css
   - /many/assets/css/showcase/living-dex.css
   - /many/assets/css/utilities/shunt-planner.css
   - /many/assets/css/utilities/pheno-tracker.css
@@ -55,7 +65,6 @@ extra_javascript:
   - /many/assets/js/pokemon.js
   - /many/assets/js/word-split.js
   - /many/assets/js/showcase/shinies.js
-  - /many/assets/js/showcase/shinywars.js
   - /many/assets/js/showcase/living-dex.js
   - /many/assets/js/utilities/rps/rps.js
   - /many/assets/js/utilities/sp/shunt-planner.js
@@ -84,6 +93,7 @@ nav:
       - Shiny Wars: showcase/shiny-wars.md
   - Utilities:
       - ✨ Shunt Planner: utilities/shunt-planner.md
+      - Project PRNG: utilities/prng/index.md
       - Trackers:
         - Pheno Tracker: utilities/trackers/pheno-tracker.md
         - Safari Tracker: utilities/trackers/safari-tracker.md
