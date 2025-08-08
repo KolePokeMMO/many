@@ -1,7 +1,7 @@
 /* ==============================
-   Hangman Game - Main Container
+   Hangmon Game - Main Container
    ============================== */
-.hangman-container {
+.hangmon-container {
   display: flex;
   flex-direction: row;
   gap: 32px;
@@ -14,7 +14,7 @@
 }
 
 /* Left column: image + message box */
-.hangman-left-column {
+.hangmon-left-column {
   flex: 0 0 280px;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@
 }
 
 /* Middle column: login or game */
-.hangman-middle-column {
+.hangmon-middle-column {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -111,7 +111,7 @@
 
 
 /* Login / Start Screen */
-.hangman-login {
+.hangmon-login {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -122,7 +122,7 @@
   border: 1px solid var(--main-fg-border-color);
 }
 
-.hangman-login h2 {
+.hangmon-login h2 {
   font-weight: 400;
   font-size: 1.0rem;
   letter-spacing: 0.04em;
@@ -130,7 +130,7 @@
   margin-bottom: 12px;
 }
 
-.hangman-login label {
+.hangmon-login label {
   font-weight: 400;
   font-size: 0.8rem;
   color: #cfcfcf;
@@ -139,7 +139,7 @@
   gap: 6px;
 }
 
-.hangman-login input {
+.hangmon-login input {
   padding: 12px 14px;
   font-size: 0.7rem;
   border-radius: 4px;
@@ -150,11 +150,11 @@
   outline-offset: 2px;
 }
 
-.hangman-login input:focus {
+.hangmon-login input:focus {
   border-color: var(--main-accent-color);
 }
 
-.hangman-login button {
+.hangmon-login button {
   margin-top: 10px;
   background: var(--main-accent-color);
   border: none;
@@ -167,13 +167,13 @@
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.hangman-login button:hover {
+.hangmon-login button:hover {
   background: var(--main-accent-color-light);
   color: #eee;
 }
 
 /* Game Area */
-#hangman-game-wrapper {
+#hangmon-game-wrapper {
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -187,7 +187,7 @@
   margin: 0 auto;
 }
 
-#hangman-game {
+#hangmon-game {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -312,7 +312,7 @@
 }
 
 /* Right column: leaderboard */
-.hangman-right-column {
+.hangmon-right-column {
   flex: 0 0 280px;
   border-radius: 0px;
   padding: 0px 20px;

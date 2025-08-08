@@ -26,7 +26,7 @@ const db = getDatabase(app);
 const nameInput = document.getElementById('player-name');
 const pinInput = document.getElementById('player-pin');
 const startButton = document.getElementById('start-game');
-const gameContainerWrapper = document.getElementById('hangman-game-wrapper');
+const gameContainerWrapper = document.getElementById('hangmon-game-wrapper');
 const loginContainer = document.getElementById('login-screen');
 const wordDisplay = document.getElementById('word-display');
 const letterButtons = document.getElementById('letter-buttons');
@@ -50,7 +50,7 @@ let playerPin = '';
 
 // Local Storage keys
 function localKey(key) {
-  return `hangman-${key}`;
+  return `hangmon-${key}`;
 }
 
 // Show messages inside left column message box
@@ -73,7 +73,7 @@ function showMessage(text, type = 'info', duration = 4000) {
 // Load word list from your JSON file
 async function loadWordList() {
   try {
-    const response = await fetch('/many/assets/data/hangman-words.json');
+    const response = await fetch('/many/assets/data/hangmon-words.json');
     if (!response.ok) throw new Error('Failed to load word list');
     const words = await response.json();
     return words;
@@ -197,7 +197,7 @@ async function endGame(won) {
 // Update player stats in Firebase
 async function updatePlayerStats(won) {
   if (!playerName) return;
-  const playerRef = ref(db, `hangman/scores/${playerName}`);
+  const playerRef = ref(db, `hangmon/scores/${playerName}`);
   const snapshot = await get(playerRef);
   let data = {};
   if (snapshot.exists()) {
@@ -241,7 +241,7 @@ function calculateScore(won) {
 
 // Load and display leaderboard
 function loadLeaderboard() {
-  const scoresRef = ref(db, 'hangman/scores');
+  const scoresRef = ref(db, 'hangmon/scores');
   onValue(scoresRef, (snapshot) => {
     const scores = snapshot.val();
     if (!scores) {
@@ -272,7 +272,7 @@ function loadLeaderboard() {
 async function startNewRound() {
   const words = await loadWordList();
   if (words.length === 0) {
-    showMessage('No words found! Please check your hangman-words.json file.', 'error', 6000);
+    showMessage('No words found! Please check your hangmon-words.json file.', 'error', 6000);
     return;
   }
   const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
@@ -291,7 +291,7 @@ startButton.addEventListener('click', async () => {
     return;
   }
 
-  const playerRef = ref(db, `hangman/scores/${name}`);
+  const playerRef = ref(db, `hangmon/scores/${name}`);
   const snapshot = await get(playerRef);
 
   if (snapshot.exists()) {
