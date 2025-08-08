@@ -53,25 +53,31 @@ document.addEventListener('DOMContentLoaded', () => {
 fetch('/many/assets/img/logo-lux.svg')
   .then(response => response.text())
   .then(svg => {
+    if (!svg.includes('<svg')) return; // sanity check on fetched content
+
     const container = document.getElementById('lux-logo');
+    if (!container) return; // ✅ Don't continue if element not found
+
     container.innerHTML = svg;
 
-    // Optional: add a class to the SVG for styling
     const svgEl = container.querySelector('svg');
     if (svgEl) {
       svgEl.classList.add('injected-logo');
       svgEl.setAttribute('role', 'img');
       svgEl.setAttribute('aria-label', 'Team Mascot');
     }
-  })
+  });
 
+
+// Inject Spiritomb if present
 fetch('/many/assets/img/spiritomb.svg')
   .then(response => response.text())
   .then(svg => {
     const container = document.getElementById('spiritomb');
+    if (!container) return; // ✅ Prevent crash if not present
+
     container.innerHTML = svg;
 
-    // Optional: add a class to the SVG for styling
     const svgEl = container.querySelector('svg');
     if (svgEl) {
       svgEl.classList.add('injected-spiritomb');
@@ -79,7 +85,7 @@ fetch('/many/assets/img/spiritomb.svg')
       svgEl.setAttribute('aria-label', 'Team Mascot');
     }
   })
-
   .catch(err => {
     console.error('Failed to load SVG:', err);
   });
+

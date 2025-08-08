@@ -26,4 +26,4 @@
   </div>
 </div>
 
-<script src="/many/assets/js/utilities/rps/rps.js" type="module"></script>
+<script defer src="/many/assets/js/utilities/rps/rps.js"></script>

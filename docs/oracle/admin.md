@@ -32,3 +32,6 @@ hide:
     </div>
   </div>
 </div>
+
+<link rel="stylesheet" href="/many/assets/css/oracle/admin.css">
+<script defer src="/many/assets/js/oracle/admin.js"></script>
