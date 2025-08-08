@@ -1738,38 +1738,64 @@
   <p>A Shiny Legion experiment to test character-based RNG in PokeMMO. Upload your Archetype data, track your characters, and help uncover the truth.</p>
 </div>
 
-<div id="prng-upload-section">
-  <h2>📂 Upload Archetype Encounter File</h2>
-  <input type="file" id="encounterFile" accept=".txt" />
-  <form id="characterForm" style="display:none">
-    <input type="text" id="playerName" placeholder="Your name" required />
-    <input type="text" id="charName" placeholder="Character name" required />
-    <select id="region" required>
-      <option value="">Select region</option>
-      <option value="Kanto">Kanto</option>
-      <option value="Johto">Johto</option>
-      <option value="Hoenn">Hoenn</option>
-      <option value="Sinnoh">Sinnoh</option>
-      <option value="Unova">Unova</option>
-    </select>
-    <textarea id="notes" placeholder="Optional notes..."></textarea>
-    <label>
-      <input type="checkbox" id="completedRun" />
-      Mark as completed (Reached E4)
-    </label>
-    <input
-      type="number"
-      id="hoursPlayed"
-      placeholder="Hours played (from Trainer Card)"
-      style="display:none"
-      min="0"
-      step="0.1"
-    />
-    <button type="submit">Submit Character</button>
-  </form>
-  <div id="uploadSuccess" style="display:none">
-    <p>Character data padded. Download the JSON code and share it with Kole or Kelly on discord.</p>
-    <a id="downloadJson" href="#" download style="display:inline-block; cursor:pointer; user-select:none;">💾 Download JSON</a>
+<div id="prng-top-row">
+  <!-- Upload Section -->
+  <div id="prng-upload-section">
+    <h2>📂 Upload Archetype Encounter File</h2>
+    <input type="file" id="encounterFile" accept=".txt" />
+      <p class="file-location-note">
+        Location: C:\Program Files\PokeMMO\data\mods\archetype-counter-main\src\stored\<span id="profile-name-placeholder">Profile Name</span>
+      </p>
+      <p class="file-location-note">
+        Make sure you start a new profile or clear encounters each time you make a new character, then choose that profile to upload here.
+      </p>
+    <form id="characterForm">
+      <input type="text" id="playerName" placeholder="Your name" required />
+      <input type="text" id="charName" placeholder="Character name" required />
+      <select id="region" required>
+        <option value="">Select region</option>
+        <option value="Kanto">Kanto</option>
+        <option value="Johto">Johto</option>
+        <option value="Hoenn">Hoenn</option>
+        <option value="Sinnoh">Sinnoh</option>
+        <option value="Unova">Unova</option>
+      </select>
+      <textarea id="notes" placeholder="Optional notes..."></textarea>
+      <label>
+        <input type="checkbox" id="completedRun" />
+        Mark as completed (Reached E4)
+      </label>
+      <input
+        type="number"
+        id="hoursPlayed"
+        placeholder="Hours played (from Trainer Card)"
+        min="0"
+        step="0.1"
+      />
+      <button type="submit">Submit Character</button>
+    </form>
+    <div id="uploadSuccess">
+      <p>Character data padded. Download the JSON code and share it with Kole or Kelly on Discord.</p>
+      <a id="downloadJson" href="#" download>💾 Download JSON</a>
+    </div>
+  </div>
+
+  <!-- Directions Box -->
+  <div id="prng-directions">
+    <h3>🧭 Directions</h3>
+    <ul>
+      <li>Upload the <strong>.txt</strong> file from the Archetype tool.</li>
+      <li>Fill in your player and character name.</li>
+      <li>Select the region your character started in.</li>
+      <li>If you reached the Elite Four, tick the "completed" checkbox to reveal the hours field.</li>
+      <li>Click Submit to convert your file into JSON.</li>
+      <li>Download and share it via Discord.</li>
+    </ul>
+  </div>
+
+  <!-- Solo Button Column -->
+  <div id="prng-solo-button-wrapper">
+    <button id="solo-toggle">View Recommended Solo Pokémon</button>
   </div>
 </div>
 
@@ -1796,14 +1822,11 @@
     <option value="Yes">Found shiny</option>
     <option value="No">No shiny</option>
   </select>
-
   <button id="clearFilters" type="button">Clear Filters</button>
-
 </div>
 
-<p><button id="solo-toggle">View Recommended Solo Pokémon</button></p>
 <div id="solo-slideout" class="solo-panel">
-
+  <!-- Solo Pokémon content remains unchanged -->
 <div class="solo-pokemon">
   <img src="https://play.pokemonshowdown.com/sprites/ani/starmie.gif" alt="Starmie">
   <h3>Starmie</h3>
@@ -1869,6 +1892,7 @@
   </p>
 </div>
 
+
 </div>
 
 <div id="prng-grid"></div>
@@ -1876,17 +1900,17 @@
 <script src="/many/assets/js/utilities/prng/prng.js"></script>
 <p><link rel="stylesheet" href="/many/assets/css/utilities/prng.css" /></p>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.getElementById("solo-toggle");
-  const panel = document.getElementById("solo-slideout");
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("solo-toggle");
+    const panel = document.getElementById("solo-slideout");
 
-  toggle.addEventListener("click", () => {
-    panel.classList.toggle("visible");
-    toggle.textContent = panel.classList.contains("visible")
-      ? "Hide Recommended Solo Pokémon"
-      : "View Recommended Solo Pokémon";
+    toggle.addEventListener("click", () => {
+      panel.classList.toggle("visible");
+      toggle.textContent = panel.classList.contains("visible")
+        ? "Hide Recommended Solo Pokémon"
+        : "View Recommended Solo Pokémon";
+    });
   });
-});
 </script>
 
 
