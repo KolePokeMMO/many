@@ -360,3 +360,163 @@
 .hidden {
   display: none !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   🎮 Hangmon Game Styles
+   ========================================================================== */
+
+/* == Wrapper and Core Layout == */
+#hangmon-game-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.hangmon-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Game Section */
+.hangmon-column.game {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Ash Image Section */
+.hangmon-column.ash {
+  flex: 0 0 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hangmon-column.ash img {
+  width: 100%;
+  max-width: 220px;
+}
+
+/* Leaderboard Section */
+.hangmon-column.leaderboard {
+  flex: 0 0 280px;
+  min-width: 260px;
+}
+
+/* == Login Box == */
+#hangmon-login-box {
+  padding: 1.5rem;
+  background: var(--md-default-bg-color);
+  border-radius: 0.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+#hangmon-login-box input {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#hangmon-login-box button {
+  width: 100%;
+}
+
+/* == Game Area == */
+#hangmon-game-box {
+  background: var(--md-default-bg-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+#hangmon-word-display {
+  font-size: 1.75rem;
+  letter-spacing: 0.2rem;
+  word-break: break-word;
+}
+
+/* == Letters == */
+.hangmon-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+.hangmon-letter {
+  padding: 0.6rem 0.9rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: var(--md-default-fg-color--lighter);
+  color: var(--md-primary-bg-color);
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.hangmon-letter:disabled {
+  background: var(--md-default-fg-color--lightest);
+  cursor: not-allowed;
+}
+
+/* == Stats & Leaderboard == */
+#hangmon-stats,
+#hangmon-leaderboard {
+  background: var(--md-default-bg-color);
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+#hangmon-leaderboard ol {
+  padding-left: 1.2rem;
+}
+
+/* ==========================================================================
+   📱 Mobile Responsiveness
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  #hangmon-game-wrapper {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .hangmon-column.ash {
+    display: none;
+  }
+
+  #hangmon-word-display {
+    font-size: 1.5rem;
+  }
+
+  .hangmon-letter {
+    flex: 1 1 14%;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  #hangmon-login-box,
+  #hangmon-game-box,
+  #hangmon-stats,
+  #hangmon-leaderboard {
+    padding: 1rem;
+  }
+}
