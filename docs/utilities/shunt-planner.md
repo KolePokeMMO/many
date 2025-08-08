@@ -19,7 +19,7 @@ title: Shunt Planner
 
     <label for="target-select">Target Pokémon</label>
     <select id="target-select">
-      <option value="">-- Choose a target --</option>
+      <option value="none">-- Choose a target --</option>
     </select>
 
     <label for="method-select">Hunt Method</label>

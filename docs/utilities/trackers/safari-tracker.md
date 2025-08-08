@@ -86,3 +86,6 @@
   - Daily binocular-based spawn shifts in 6 areas.  
   - Notable: Carnivine, Croagunk, Skorupi
 </details>
+
+<link rel="stylesheet" href="/many/assets/css/utilities/safari-tracker.css">
+<script defer src="/many/assets/js/utilities/st/safari-tracker.js"></script>

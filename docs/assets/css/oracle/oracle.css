@@ -9,7 +9,7 @@
 #oracle-bg {
   position: fixed;
   inset: 0;
-  background: #0b0b0f url('../img/oracle/bg-1.jpg') no-repeat center center;
+  background-color: #0b0b0f;
   background-size: cover;
   z-index: -10;
 }

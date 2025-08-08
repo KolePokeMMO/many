@@ -23,3 +23,5 @@
 
 </section>
 
+<link rel="stylesheet" href="/many/assets/css/showcase/living-dex.css">
+<script defer src="/many/assets/js/showcase/living-dex.js"></script>

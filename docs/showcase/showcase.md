@@ -34,3 +34,6 @@
 
 <div id="pagination" class="pagination"></div>
 <div id="shiny-grid" class="shiny-grid"></div>
+
+<link rel="stylesheet" href="/many/assets/css/showcase/showcase.css">
+<script defer src="/many/assets/js/showcase/shinies.js"></script>

@@ -30,3 +30,6 @@ title: Daily Oracle
   </div>
 
 </div>
+
+<link rel="stylesheet" href="/many/assets/css/oracle/daily.css">
+<script defer src="/many/assets/js/oracle/daily.js"></script>

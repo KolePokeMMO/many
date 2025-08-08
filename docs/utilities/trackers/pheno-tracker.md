@@ -102,3 +102,6 @@
     <div class="pheno-method"></div>
   </div>
 </template>
+
+<link rel="stylesheet" href="/many/assets/css/utilities/pheno-tracker.css">
+<script defer src="/many/assets/js/utilities/st/pheno-tracker.js"></script>

@@ -225,7 +225,7 @@ async function initPlanner() {
   // When user changes target, update pinned target & sprites & load progress
   targetSelect.addEventListener("change", (e) => {
     const val = e.target.value;
-    if (val) {
+    if (val && val !== "none") {
       pinnedTargetEl.textContent = val;
       localStorage.setItem("shuntPinnedTarget", val);
       const formatted = val.toLowerCase().replace(/ /g, '-');
