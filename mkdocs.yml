@@ -87,7 +87,7 @@ nav:
         - Exp Training: utilities/training/exp-training.md
       - Games:
         - Rock, Paper, Scissors: utilities/games/rps.md
-        - Hangman: utilities/games/hangman.md
+        - Hangmon: utilities/games/hangmon.md
   - Database:
       - Bag: 
         - Items: utilities/bag/items.md
