@@ -48,5 +48,30 @@
         "notes": ""
       }
     ]
+  },
+  {
+    "player": "DeeHo",
+    "characters": [
+      {
+        "characterName": "ShinyDee",
+        "region": "Johto",
+        "status": "Active",
+        "dateCompleted": null,
+        "hoursPlayed": null,
+        "encounters": 31,
+        "shinyCount": 0,
+        "eggs": 0,
+        "fossils": 0,
+        "alphas": 0,
+        "legendaries": 0,
+        "battles": {
+          "single": 31,
+          "double": 0,
+          "triple": 0,
+          "horde": 0
+        },
+        "notes": ""
+      }
+    ]
   }
 ]
