@@ -1,26 +1,26 @@
 [
   {
-    "player": "Test",
+    "player": "Kole",
     "characters": [
       {
-        "characterName": "KoleXI",
+        "characterName": "KoleX",
         "region": "Kanto",
-        "status": "Completed",
-        "dateCompleted": "2025-08-06",
-        "hoursPlayed": 12.5,
-        "encounters": 4215,
-        "shinyCount": 1,
-        "eggs": 3,
-        "fossils": 21,
-        "alphas": 1,
-        "legendaries": 1,
+        "status": "Active",
+        "dateCompleted": null,
+        "hoursPlayed": null,
+        "encounters": 3,
+        "shinyCount": 0,
+        "eggs": 0,
+        "fossils": 0,
+        "alphas": 0,
+        "legendaries": 0,
         "battles": {
-          "single": 234,
-          "double": 32,
-          "triple": 3,
-          "horde": 734
+          "single": 3,
+          "double": 0,
+          "triple": 0,
+          "horde": 0
         },
-        "notes": "No shiny found before E4."
+        "notes": "Let's get shinies! \\o/"
       }
     ]
   }
