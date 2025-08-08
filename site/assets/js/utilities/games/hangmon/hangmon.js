@@ -196,39 +196,36 @@ async function endGame(won) {
 
 // Update player stats in Firebase
 async function updatePlayerStats(won) {
-  if (!playerName) return;
   const playerRef = ref(db, `hangmon/scores/${playerName}`);
   const snapshot = await get(playerRef);
-  let data = {};
-  if (snapshot.exists()) {
-    data = snapshot.val();
-  } else {
-    data = {
-      pin: playerPin,
-      totalScore: 0,
-      gamesPlayed: 0,
-      wins: 0,
-      fastestWin: null,
-      accuracy: null,
-    };
-  }
+  const data = snapshot.exists() ? snapshot.val() : {};
 
   const totalGames = (data.gamesPlayed || 0) + 1;
   const totalWins = (data.wins || 0) + (won ? 1 : 0);
-  const newTotalScore = (data.totalScore || 0) + calculateScore(won);
-  const fastestWin = won && (data.fastestWin === null || timer < data.fastestWin) ? timer : data.fastestWin;
+  const currentScore = (data.totalScore || 0) + (won ? currentWord.length * 10 : 0);
 
-  const totalLetters = currentWord.replace(/\s/g, '').length;
-  const accuracy = ((totalLetters - wrongGuesses) / totalLetters * 100).toFixed(1);
+  let fastestWin;
+  if (won) {
+    if (data.fastestWin === undefined || data.fastestWin === null || timer < data.fastestWin) {
+      fastestWin = timer;
+    } else {
+      fastestWin = data.fastestWin;
+    }
+  } else {
+    fastestWin = data.fastestWin ?? null;
+  }
+
+  const accuracy = Math.round((totalWins / totalGames) * 1000) / 10;
 
   await update(playerRef, {
     gamesPlayed: totalGames,
     wins: totalWins,
-    totalScore: newTotalScore,
-    fastestWin: fastestWin,
+    totalScore: currentScore,
+    fastestWin: fastestWin, // never undefined
     accuracy: accuracy,
   });
 }
+
 
 // Scoring function
 function calculateScore(won) {
@@ -240,33 +237,35 @@ function calculateScore(won) {
 }
 
 // Load and display leaderboard
-function loadLeaderboard() {
+async function loadLeaderboard() {
   const scoresRef = ref(db, 'hangmon/scores');
-  onValue(scoresRef, (snapshot) => {
-    const scores = snapshot.val();
-    if (!scores) {
-      leaderboardEl.innerHTML = '<li>No players yet.</li>';
-      return;
-    }
-    const players = Object.entries(scores).map(([name, data]) => ({
-      name,
-      score: data.totalScore || 0,
-      wins: data.wins || 0,
-      games: data.gamesPlayed || 0,
-      fastestWin: data.fastestWin,
-      accuracy: data.accuracy,
-    }));
-    players.sort((a, b) => b.score - a.score);
-    leaderboardEl.innerHTML = '';
-    for (const p of players) {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <strong>${p.name}</strong> - Score: ${p.score} | Wins: ${p.wins} | Games: ${p.games} | Fastest: ${p.fastestWin !== null ? p.fastestWin + 's' : 'N/A'} | Accuracy: ${p.accuracy}%
-      `;
-      leaderboardEl.appendChild(li);
-    }
-  });
+  const snapshot = await get(scoresRef);
+  if (!snapshot.exists()) {
+    leaderboardEl.innerHTML = '<li>No players yet.</li>';
+    return;
+  }
+
+  const scores = snapshot.val();
+  const players = Object.entries(scores).map(([name, data]) => ({
+    name,
+    score: data.totalScore || 0,
+    wins: data.wins || 0,
+    games: data.gamesPlayed || 0,
+    fastestWin: data.fastestWin,
+    accuracy: data.accuracy,
+  }));
+  players.sort((a, b) => b.score - a.score);
+
+  leaderboardEl.innerHTML = '';
+  for (const p of players) {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <strong>${p.name}</strong> - Score: ${p.score} | Wins: ${p.wins} | Games: ${p.games} | Fastest: ${p.fastestWin !== null ? p.fastestWin + 's' : 'N/A'} | Accuracy: ${p.accuracy}%
+    `;
+    leaderboardEl.appendChild(li);
+  }
 }
+
 
 // Start a new round
 async function startNewRound() {
