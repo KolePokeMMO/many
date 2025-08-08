@@ -1,6 +1,6 @@
 [
   {
-    "player": "Kole",
+    "player": "Test",
     "characters": [
       {
         "characterName": "KoleXI",
@@ -21,46 +21,6 @@
           "horde": 734
         },
         "notes": "No shiny found before E4."
-      },
-      {
-        "characterName": "KoleXII",
-        "region": "Kanto",
-        "status": "Completed",
-        "dateCompleted": "2025-08-07",
-        "hoursPlayed": 2,
-        "encounters": 0,
-        "shinyCount": 0,
-        "eggs": 0,
-        "fossils": 0,
-        "alphas": 0,
-        "legendaries": 0,
-        "battles": {
-          "single": 0,
-          "double": 0,
-          "triple": 0,
-          "horde": 0
-        },
-        "notes": "Another useless alt"
-      },
-      {
-        "characterName": "Kole",
-        "region": "Unova",
-        "status": "Active",
-        "dateCompleted": null,
-        "hoursPlayed": null,
-        "encounters": 69203,
-        "shinyCount": 0,
-        "eggs": 60,
-        "fossils": 30,
-        "alphas": 4,
-        "legendaries": 0,
-        "battles": {
-          "single": 0,
-          "double": 0,
-          "triple": 0,
-          "horde": 6
-        },
-        "notes": "Testing"
       }
     ]
   }
