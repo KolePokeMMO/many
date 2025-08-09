@@ -1725,7 +1725,23 @@
   <div class="hangmon-left-column">
     <div class="image-placeholder">
       <!-- Put your image here -->
-      <img src="/many/assets/img/ash-vector.png" alt="Hangmon Game Image" />
+<div class="image-placeholder">
+  <svg id="hangmon-svg" width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gallows -->
+    <line x1="20" y1="280" x2="180" y2="280" stroke="#ccc" stroke-width="4"/>
+    <line x1="50" y1="280" x2="50" y2="20" stroke="#ccc" stroke-width="4"/>
+    <line x1="50" y1="20" x2="140" y2="20" stroke="#ccc" stroke-width="4"/>
+    <line x1="140" y1="20" x2="140" y2="50" stroke="#ccc" stroke-width="4"/>
+
+    <!-- Body parts (all hidden initially) -->
+    <circle id="head" cx="140" cy="70" r="20" stroke="#ccc" stroke-width="4" fill="none" class="hidden"/>
+    <line id="body" x1="140" y1="90" x2="140" y2="160" stroke="#ccc" stroke-width="4" class="hidden"/>
+    <line id="left-arm" x1="140" y1="110" x2="110" y2="140" stroke="#ccc" stroke-width="4" class="hidden"/>
+    <line id="right-arm" x1="140" y1="110" x2="170" y2="140" stroke="#ccc" stroke-width="4" class="hidden"/>
+    <line id="left-leg" x1="140" y1="160" x2="120" y2="210" stroke="#ccc" stroke-width="4" class="hidden"/>
+    <line id="right-leg" x1="140" y1="160" x2="160" y2="210" stroke="#ccc" stroke-width="4" class="hidden"/>
+  </svg>
+</div>
     </div>
     <div id="message-box" class="message-box hidden" role="alert" aria-live="polite"></div>
   </div>

@@ -26,6 +26,7 @@ const db = getDatabase(app);
 const nameInput = document.getElementById('player-name');
 const pinInput = document.getElementById('player-pin');
 const startButton = document.getElementById('start-game');
+const restartButton = document.getElementById('restart-game');
 const gameContainerWrapper = document.getElementById('hangmon-game-wrapper');
 const loginContainer = document.getElementById('login-screen');
 const wordDisplay = document.getElementById('word-display');
@@ -36,6 +37,23 @@ const wrongCountEl = document.getElementById('wrong-count');
 const timerEl = document.getElementById('game-timer');
 const leaderboardEl = document.getElementById('leaderboard');
 const messageBox = document.getElementById('message-box');
+
+const faceParts = [
+  document.getElementById('eye-left'),
+  document.getElementById('eye-left2'),
+  document.getElementById('eye-right'),
+  document.getElementById('eye-right2'),
+  document.getElementById('sad-mouth')
+];
+
+function addHangmanFace() {
+  faceParts.forEach(part => part.classList.remove('hidden'));
+}
+
+function resetHangmanFace() {
+  faceParts.forEach(part => part.classList.add('hidden'));
+}
+
 
 let currentWord = '';
 let guessedLetters = new Set();
@@ -84,6 +102,7 @@ async function loadWordList() {
   }
 }
 
+
 // Initialize the game UI for a new word
 function initGame(word) {
   currentWord = word.toLowerCase();
@@ -91,8 +110,12 @@ function initGame(word) {
   wrongGuesses = 0;
   timer = 0;
   gameActive = true;
-  
+
   updateHangmanImage(); // reset all parts hidden
+  resetHangmanFace();
+
+  restartButton.classList.add('hidden');  // Hide restart on new game start
+  restartButton.disabled = true;
 
   updateWordDisplay();
   wrongCountEl.textContent = wrongGuesses;
@@ -112,10 +135,18 @@ function initGame(word) {
 }
 
 // Update displayed word with guessed letters and underscores
+//function updateWordDisplay() {
+//  const display = [...currentWord].map(char => guessedLetters.has(char) || char === ' ' ? char : '_').join(' ');
+//  wordDisplay.textContent = display;
+//}
+
 function updateWordDisplay() {
-  const display = [...currentWord].map(char => guessedLetters.has(char) || char === ' ' ? char : '_').join(' ');
-  wordDisplay.textContent = display;
+  const display = [...currentWord]
+    .map(char => guessedLetters.has(char) || char === ' ' ? char : '_')
+    .join('\u00A0'); // non-breaking space
+  wordDisplay.innerHTML = display.replace(/ /g, '&nbsp; &nbsp;'); // bigger gap for actual spaces
 }
+
 
 // Create letter buttons for guessing
 function createLetterButtons() {
@@ -183,20 +214,27 @@ async function endGame(won) {
   guessSubmit.disabled = true;
 
   if (won) {
-    showMessage(`You guessed it right! The word was "${currentWord}".`, 'success', 6000);
+    showMessage(`You guessed it right! The word was "${currentWord}".`, 'success', 0);
   } else {
-    showMessage(`Game over! The word was "${currentWord}".`, 'error', 6000);
+    showMessage(`Game over! The word was "${currentWord}".`, 'error', 0);
     guessedLetters = new Set([...currentWord]);
     updateWordDisplay();
+    addHangmanFace(); // 👈 add sad face if lost
   }
 
   await updatePlayerStats(won);
   loadLeaderboard();
 
-  setTimeout(() => {
-    startNewRound();
-  }, 2500);
+  // Show restart button next to submit
+  restartButton.classList.remove('hidden');
+  restartButton.disabled = false;
 }
+
+restartButton.addEventListener('click', () => {
+  restartButton.classList.add('hidden');
+  messageBox.classList.add('hidden');
+  startNewRound();
+});
 
 // Update player stats in Firebase
 async function updatePlayerStats(won) {
@@ -307,6 +345,7 @@ async function startNewRound() {
   const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
   initGame(word);
   updateHangmanImage(); // reset all parts hidden
+  restartButton.classList.add('hidden');
 }
 
 // Event listeners
