@@ -198,7 +198,8 @@
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
   word-spacing: 0.8rem; /* add spacing for actual space characters */
-  white-space: pre-wrap; /* preserve spaces */
+  /*white-space: pre-wrap;  preserve spaces */
+  white-space: normal; /* allow wrapping, but won't break in the middle of a word */
   font-weight: 900;
   text-align: center;
   background: var(--main-fg-color);
@@ -534,3 +535,32 @@
 #hangmon-svg .hidden {
   opacity: 0;
 }
+
+/* Match restart button to submit button style */
+#restart-game {
+  margin-top: 10px;
+  width: 100%;
+  background: var(--main-accent-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 6px;
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+#restart-game:hover:enabled {
+  border-color: var(--main-accent-color-light);
+  color: #eee;
+}
+
+#restart-game:disabled {
+  background: #2e2e32;
+  border-color: #252529;
+  color: #666;
+  cursor: default;
+  box-shadow: none;
+}
+
