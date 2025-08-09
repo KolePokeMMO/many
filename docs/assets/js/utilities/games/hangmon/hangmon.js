@@ -91,6 +91,8 @@ function initGame(word) {
   wrongGuesses = 0;
   timer = 0;
   gameActive = true;
+  
+  updateHangmanImage(); // reset all parts hidden
 
   updateWordDisplay();
   wrongCountEl.textContent = wrongGuesses;
@@ -142,6 +144,7 @@ function handleLetterGuess(letter, button) {
   } else {
     wrongGuesses++;
     wrongCountEl.textContent = wrongGuesses;
+    updateHangmanImage();
     if (wrongGuesses >= maxWrong) {
       endGame(false);
     }
@@ -164,6 +167,7 @@ function handleWordGuess() {
   } else {
     wrongGuesses++;
     wrongCountEl.textContent = wrongGuesses;
+    updateHangmanImage();
     if (wrongGuesses >= maxWrong) {
       endGame(false);
     }
@@ -227,6 +231,32 @@ async function updatePlayerStats(won) {
 }
 
 
+
+
+const hangmanParts = [
+  document.getElementById('head'),
+  document.getElementById('body'),
+  document.getElementById('left-arm'),
+  document.getElementById('right-arm'),
+  document.getElementById('left-leg'),
+  document.getElementById('right-leg')
+];
+
+function updateHangmanImage() {
+  hangmanParts.forEach((part, index) => {
+    if (index < wrongGuesses) {
+      part.classList.remove('hidden');
+    } else {
+      part.classList.add('hidden');
+    }
+  });
+}
+
+
+
+
+
+
 // Scoring function
 function calculateScore(won) {
   if (!won) return 0;
@@ -276,6 +306,7 @@ async function startNewRound() {
   }
   const word = words[Math.floor(Math.random() * words.length)].toLowerCase();
   initGame(word);
+  updateHangmanImage(); // reset all parts hidden
 }
 
 // Event listeners
