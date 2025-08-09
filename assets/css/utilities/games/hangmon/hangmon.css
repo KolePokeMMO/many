@@ -520,3 +520,17 @@
     padding: 1rem;
   }
 }
+
+
+#hangmon-svg .hidden {
+  visibility: hidden;
+}
+
+#hangmon-svg line,
+#hangmon-svg circle {
+  transition: visibility 0.2s ease, opacity 0.2s ease;
+}
+
+#hangmon-svg .hidden {
+  opacity: 0;
+}
