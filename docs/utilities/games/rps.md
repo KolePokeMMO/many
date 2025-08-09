@@ -26,4 +26,5 @@
   </div>
 </div>
 
+<link rel="stylesheet" href="/many/assets/css/utilities/games/rps/rps.css" />
 <script defer src="/many/assets/js/utilities/rps/rps.js"></script>
