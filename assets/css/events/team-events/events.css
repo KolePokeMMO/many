@@ -1,0 +1,221 @@
+/* ==============================
+   events.css — Team Events page
+   ==============================
+   Purpose: 2-column layout (main + page-tall sidebar)
+   Keep this file in: /many/assets/css/events/team-events/events.css
+*/
+
+/* ------------------------------
+   Page container grid (2 columns)
+   ------------------------------ */
+.event-guide-container {
+  display: grid;
+  grid-template-columns: 1fr 320px;    /* main column (fluid) + right sidebar (fixed) */
+  grid-auto-rows: auto;
+  gap: 1.5rem 2rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  margin-top: -58px; /* your existing override */
+}
+
+/* ------------------------------
+   Hero image (spans both columns)
+   ------------------------------ */
+.hero-image {
+  grid-column: 1 / 1;   /* span full width (both columns) */
+  height: 90%;
+  display: block;
+  overflow: hidden;
+  padding: 1rem;
+  background: var(--main-bg-color-light);
+  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+              linear-gradient(to top, var(--main-accent-color), #000000, #000000, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ------------------------------
+   MAIN COLUMN: ensure it occupies left column
+   ------------------------------ */
+/* Put each main section into the first column */
+.event-info,
+.event-media,
+.event-hosts {
+  grid-column: 1 / 2;    /* main (left) column only */
+}
+
+/* ------------------------------
+   Event info (2x2 grid inside main column)
+   ------------------------------ */
+.event-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.2rem 2rem;
+}
+
+/* Individual info article card styles */
+.event-info article {
+  padding: 1rem;
+  background: var(--main-bg-color-light);
+  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+              linear-gradient(to top, var(--main-accent-color), #000000, #000000, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+
+/* clear explicit placements — keep content flow in the 2x2 grid */
+.about-event { grid-column: 1 / 2; grid-row: 1 / 2; }
+.directions   { grid-column: 2 / 3; grid-row: 1 / 2; }
+.event-rules  { grid-column: 1 / 2; grid-row: 2 / 3; }
+.event-rewards{ grid-column: 2 / 3; grid-row: 2 / 3; }
+
+/* ------------------------------
+   Event media (thumbnails + shinies) inside main column
+   ------------------------------ */
+.event-media {
+  display: grid;
+  grid-template-columns: 2fr 1fr;  /* left: screenshots, right: shinies (inside main column) */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.screenshot-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.screenshot-grid h2 {
+  margin-bottom: 1rem;
+}
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.thumbnails img {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.thumbnails img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+/* Shinies column (within the main column layout) */
+.shinies-found {
+  padding: 1rem;
+  background: var(--main-bg-color-light);
+  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+              linear-gradient(to top, var(--main-accent-color), #000000, #000000, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+
+.shinies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* ------------------------------
+   Event hosts (bottom of main column)
+   ------------------------------ */
+.event-hosts {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--main-bg-color-light);
+  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+              linear-gradient(to top, var(--main-accent-color), #000000, #000000, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+
+/* ------------------------------
+   RIGHT SIDEBAR (page-tall)
+   ------------------------------ */
+.sidebar-right {
+  grid-column: 2 / 3;
+  grid-row: 1 / -1;
+  position: sticky;
+  top: 90px;
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem;
+  background: var(--main-bg-color-light);
+  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+              linear-gradient(to top, var(--main-accent-color), #000000, #000000, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+}
+
+
+
+/* ------------------------------
+   Section headings
+   ------------------------------ */
+.event-guide-container h2 {
+  font-size: 0.8rem;
+    font-weight: 400;
+  color: var(--main-accent-color);
+  margin: 0 0 0.6rem 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--main-accent-color);
+}
+
+.event-guide-container h3 {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--main-accent-color);
+  margin: 0 0 0.4rem 0;
+}
+
+/* ------------------------------
+   Small device responsiveness
+   ------------------------------ */
+@media (max-width: 900px) {
+  .event-guide-container {
+    grid-template-columns: 1fr;  /* stack everything into a single column */
+    padding: 1rem;
+  }
+
+  .hero-image { grid-column: 1 / -1; height: auto; }
+
+  /* Make the main sections use full width */
+  .event-info,
+  .event-media,
+  .event-hosts,
+  .sidebar-right {
+    grid-column: 1 / -1;
+  }
+
+  .event-info { grid-template-columns: 1fr; }
+
+  .event-media { grid-template-columns: 1fr; }
+  .sidebar-right { position: static; }
+}
+
+/* ------------------------------
+   Tiny typographic tweaks used site-wide
+   ------------------------------ */
+.event-guide-container li,
+.event-guide-container strong {
+  font-size: 0.7rem;
+  line-height: 1.35;
+}

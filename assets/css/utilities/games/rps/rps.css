@@ -1,0 +1,175 @@
+/* ────────────────────────────────────────────────
+   Styles for Utility - Rock Paper Scissors Game
+──────────────────────────────────────────────── */
+
+/* Base container for the game interface */
+.rps-container {
+  background: #111;
+  border: 2px solid var(--main-accent-border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  color: var(--main-accent-color);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.rps-container h1, h2, h3 {
+  color: var(--main-accent-color);
+  text-align: left;
+  margin-top: 0;
+}
+
+/* Setup block */
+.setup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.setup input,
+.setup button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: var(--main-bg-color);
+  border: 1px solid var(--main-fg-border-color);
+  color: white;
+  border-radius: 0.5rem;
+}
+
+.setup button:hover {
+  background: var(--main-fg-color);
+}
+
+/* RPS Buttons */
+.rps-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.rps-buttons button {
+  padding: 0.75rem 1.5rem;
+  background: var(--main-bg-color);
+  color: var(--main-accent-color);
+  border: 1px solid var(--main-accent-border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.rps-buttons button:hover {
+  background: var(--main-fg-color);
+}
+
+/* Result text */
+.result {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* History styles */
+#history-list {
+  margin-top: 1rem;
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid var(--main-fg-border-color);
+  padding: 10px;
+  background: var(--main-bg-color);
+}
+
+#history-list ul {
+  list-style: none;
+  padding: 0;
+  background: var(--main-bg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-radius: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#history-list li {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--main-accent-color-light);
+  color: #aaa;
+  background: var(--main-bg-color);
+}
+
+/* Player name display */
+.name-display {
+  font-style: italic;
+  margin-top: 1rem;
+  color: #17dd05;
+  text-align: center;
+}
+
+/* Text input styles */
+.rps-container input[type="text"] {
+  background-color: var(--main-bg-color);
+  color: var(--main-accent-color);
+  border: 1px solid var(--main-accent-border-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  width: 220px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.rps-container input[type="text"]::placeholder {
+  color: #888;
+}
+
+.rps-container input[type="text"]:focus {
+  outline: none;
+  border-color: var(--main-accent-border-color);
+  background-color: var(--main-bg-color);
+}
+
+.rps-game h2 {
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+/* ─────────────────────────────────────────────
+   ✅ Responsive Fixes for Mobile Devices
+───────────────────────────────────────────── */
+@media screen and (max-width: 600px) {
+  .rps-container {
+    padding: 1rem;
+  }
+
+  .setup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .setup input,
+  .setup button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .rps-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .rps-buttons button {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  .result {
+    font-size: 1.1rem;
+  }
+
+  #history-list {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
