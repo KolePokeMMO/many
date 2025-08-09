@@ -66,10 +66,15 @@ nav:
       - Overview: guides/index.md
       - Honey Trees: guides/honey-trees.md
   - Events:
-      - Team Shunts: events/team-shunts.md
-      - Team Events: events/team-events.md
-      - Team Bounties: events/team-bounties.md
-      - PokeMMO Events: events/poke-mmo-events.md
+      - Team Shunts:
+          - Overview: events/team-shunts/index.md
+          - History: events/team-shunts/history.md
+      - Team Bounties:
+          - Overview: events/team-bounties/index.md
+          - History: events/team-bounties/history.md
+      - Team Events:
+          - Overview: events/team-events/index.md
+          - Event 1: events/team-events/event/event1.md
   - Showcase:
       - Shiny Showcase: showcase/showcase.md
       - Shiny Dex: showcase/shiny-dex.md

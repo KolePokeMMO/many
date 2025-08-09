@@ -1734,12 +1734,20 @@
     <line x1="140" y1="20" x2="140" y2="50" stroke="#ccc" stroke-width="4"/>
 
     <!-- Body parts (all hidden initially) -->
-    <circle id="head" cx="140" cy="70" r="20" stroke="#ccc" stroke-width="4" fill="none" class="hidden"/>
-    <line id="body" x1="140" y1="90" x2="140" y2="160" stroke="#ccc" stroke-width="4" class="hidden"/>
-    <line id="left-arm" x1="140" y1="110" x2="110" y2="140" stroke="#ccc" stroke-width="4" class="hidden"/>
-    <line id="right-arm" x1="140" y1="110" x2="170" y2="140" stroke="#ccc" stroke-width="4" class="hidden"/>
-    <line id="left-leg" x1="140" y1="160" x2="120" y2="210" stroke="#ccc" stroke-width="4" class="hidden"/>
-    <line id="right-leg" x1="140" y1="160" x2="160" y2="210" stroke="#ccc" stroke-width="4" class="hidden"/>
+    <circle id="head" cx="140" cy="70" r="20" stroke="var(--main-accent-color)" stroke-width="4" fill="none" class="hidden"/>
+
+    <line id="eye-left" x1="132" y1="62" x2="138" y2="68" stroke="var(--main-accent-color)" stroke-width="2" class="hidden"/>
+    <line id="eye-left2" x1="138" y1="62" x2="132" y2="68" stroke="var(--main-accent-color)" stroke-width="2" class="hidden"/>
+    <line id="eye-right" x1="142" y1="62" x2="148" y2="68" stroke="var(--main-accent-color)" stroke-width="2" class="hidden"/>
+    <line id="eye-right2" x1="148" y1="62" x2="142" y2="68" stroke="var(--main-accent-color)" stroke-width="2" class="hidden"/>
+    <path id="sad-mouth" d="M 132 78 Q 140 70 148 78" stroke="var(--main-accent-color)" stroke-width="2" fill="none" class="hidden"/>
+
+    <line id="body" x1="140" y1="90" x2="140" y2="160" stroke="var(--main-accent-color)" stroke-width="4" class="hidden"/>
+    <line id="left-arm" x1="140" y1="110" x2="110" y2="140" stroke="var(--main-accent-color)" stroke-width="4" class="hidden"/>
+    <line id="right-arm" x1="140" y1="110" x2="170" y2="140" stroke="var(--main-accent-color)" stroke-width="4" class="hidden"/>
+    <line id="left-leg" x1="140" y1="160" x2="120" y2="210" stroke="var(--main-accent-color)" stroke-width="4" class="hidden"/>
+    <line id="right-leg" x1="140" y1="160" x2="160" y2="210" stroke="var(--main-accent-color)" stroke-width="4" class="hidden"/>
+
   </svg>
 </div>
     </div>
@@ -1781,6 +1789,7 @@
           spellcheck="false"
         />
         <button id="submit-guess">Submit</button>
+        <button id="restart-game" class="hidden">Play Again</button>
         <div class="game-info" aria-live="polite">
           <div>Wrong Guesses: <span id="wrong-count">0</span></div>
           <div>Time: <span id="game-timer">0s</span></div>
