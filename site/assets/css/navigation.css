@@ -48,8 +48,10 @@
 /* ─── Active Tab Link ──────────────────────────── */
 .md-tabs__item--active .md-tabs__link {
 	color: #000000;
-	font-weight: 800;
+	font-weight: 400;
 	opacity: 1;
+	padding-bottom: 3px;
+	border-bottom: 4px solid rgba(0, 0, 0, 0.4);
 }
 
 /* ─── Navigation Link (Lifted Style) ───────────── */
