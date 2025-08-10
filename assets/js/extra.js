@@ -123,3 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sidebar = document.querySelector('.md-sidebar.md-sidebar--primary');
+  if (sidebar) {
+    sidebar.classList.add('glowing-border-spin');
+  }
+});
