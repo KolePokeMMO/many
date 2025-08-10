@@ -75,7 +75,7 @@
 	margin-right: 30px;
 	min-height: 623px;
 	overflow: hidden;
-	width: auto;
+  z-index: 10000 !important; /* Ensure sidebar is above other content */
 }
 
 /* Layout – Scrollable area */
