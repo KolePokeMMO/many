@@ -22,16 +22,105 @@
    Hero image (spans both columns)
    ------------------------------ */
 .hero-image {
-  grid-column: 1 / 1;   /* span full width (both columns) */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem;  /* space so text isn’t on edge */
+  grid-column: 1 / 1;
   height: 90%;
-  display: block;
-  overflow: hidden;
-  padding: 1rem;
-  background: var(--main-bg-color-light);
-  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
-              linear-gradient(to top, var(--main-accent-color), #000000, #000000, var(--main-accent-color)) border-box;
+  border-radius: 0;
+  background:
+    linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+    linear-gradient(to top, var(--main-accent-color), #222222, #222222, var(--main-accent-color)) border-box;
   border: 1px solid transparent;
-  border-radius: 0.5rem;
+  transition: background 0.1s linear;
+  background-color: transparent;
+  color: var(--main-accent-color);
+  gap: 2rem;
+}
+
+/* make sure your content inside .hero-image, if any, is above the image */
+.hero-image > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero SVG styling */
+.hero-svg {
+  width: 275px;
+  height: auto;
+  flex-shrink: 0;
+  color: var(--main-accent-color);
+  transition: filter 0.3s ease;
+}
+
+
+
+
+
+
+
+
+@keyframes wavyGhost {
+  0%, 100% { transform: translateX(0) scale(1); opacity: 1; }
+  50% { transform: translateX(5px) scale(0.99); opacity: 0.85; }
+}
+
+.wavy-ghost {
+  animation: wavyGhost 4s infinite ease-in-out;
+  transform-origin: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* or center if you want them centered */
+  justify-content: center;
+  z-index: 2;
+  user-select: none;
+  padding-left: 2rem;
+}
+
+.hero-text h1 {
+  color: var(--main-accent-color);
+  font-size: 6rem;
+  font-weight: 900; /* bolder, baby */
+  letter-spacing: 0.25em; /* space it out to match EVENTS width */
+  margin: 0;
+  line-height: 1;
+}
+
+.hero-text p {
+  color: #cecece;
+  font-size: 4.35rem;
+  font-weight: 500; /* lighter, softer */
+  letter-spacing: 0.23em;
+  margin: 0;
+  line-height: 1;
+}
+
+
+
+
+.team-text {
+  fill: var(--main-accent-color);
+  font-family: 'Archivo Black', sans-serif;
 }
 
 .hero-image img {
