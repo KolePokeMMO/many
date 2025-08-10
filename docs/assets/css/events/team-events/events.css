@@ -55,13 +55,6 @@
   transition: filter 0.3s ease;
 }
 
-
-
-
-
-
-
-
 @keyframes wavyGhost {
   0%, 100% { transform: translateX(0) scale(1); opacity: 1; }
   50% { transform: translateX(5px) scale(0.99); opacity: 0.85; }
@@ -71,18 +64,6 @@
   animation: wavyGhost 4s infinite ease-in-out;
   transform-origin: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -317,3 +298,106 @@
 
 
 
+@media (max-width: 900px) {
+  /* Stack main container into a single column */
+  .event-guide-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin-top: 0; /* Remove negative margin for small screens */
+  }
+
+  /* Hero image spans full width and adjusts height nicely */
+  .hero-image {
+    grid-column: 1 / -1;
+    height: auto;
+    flex-direction: column; /* stack SVG and text vertically */
+    padding-left: 0;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* SVG scales responsively and stays centered */
+  .hero-svg {
+    width: 70vw;  /* Responsive width, max 70% of viewport */
+    max-width: 300px; /* Keep it from getting too huge */
+    height: auto;
+    margin: 0 auto;
+  }
+
+  /* Hero text centers and gets some breathing room */
+  .hero-text {
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+  }
+
+  .hero-text h1 {
+    font-size: 4rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-text p {
+    font-size: 2.8rem;
+    letter-spacing: 0.13em;
+  }
+
+  /* Main sections become full width */
+  .event-info,
+  .event-media,
+  .event-hosts,
+  .sidebar-right {
+    grid-column: 1 / -1;
+  }
+
+  /* Event info switches to one column for readability */
+  .event-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Event media stacks screenshots and shinies vertically */
+  .event-media {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Sidebar becomes relative and full width below main content */
+  .sidebar-right {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Thumbnails get smaller and spaced better */
+  .thumbnails {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .thumbnails img {
+    border-radius: 0.25rem;
+  }
+
+  /* Section headings slightly bigger for clarity on small */
+  .event-guide-container h2 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .event-guide-container h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Text sizes tweak for readability */
+  .event-guide-container p,
+  .event-guide-container li,
+  .event-guide-container strong {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}

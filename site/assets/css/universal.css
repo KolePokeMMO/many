@@ -364,7 +364,13 @@ html:not(.theme-loading) body {
 
 
 
-
+body .glowing-border {
+  background: var(--main-bg-color-light);
+  background: linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+              linear-gradient(to top, var(--main-accent-color), #222222, #222222, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  transition: background 0.1s linear;
+}
 
 /* special scrolling border */
 body .glowing-border-spin {
