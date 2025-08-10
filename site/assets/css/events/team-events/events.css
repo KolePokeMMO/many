@@ -400,4 +400,15 @@
     font-size: 0.8rem;
     line-height: 1.4;
   }
+
+  /* Stack all .event-info articles vertically */
+  .event-info {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important; /* reset any row restrictions */
+  }
+
+  /* Optionally, add some spacing between the articles */
+  .event-info article {
+    margin-bottom: 1rem;
+  }
 }
