@@ -403,12 +403,14 @@
 
   /* Stack all .event-info articles vertically */
   .event-info {
+    display: grid !important;
     grid-template-columns: 1fr !important;
-    grid-template-rows: none !important; /* reset any row restrictions */
+    grid-template-rows: auto !important;
   }
 
-  /* Optionally, add some spacing between the articles */
   .event-info article {
-    margin-bottom: 1rem;
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    margin-bottom: 1.5rem;
   }
 }
