@@ -45,7 +45,7 @@ description: "Learn all about the Team Event, rules, rewards, and history."
         <!-- more thumbnails -->
       </div>
     </div>
-    <div class="shinies-found" aria-label="Shinies found during the event">
+    <div class="shinies-found glowing-border-spin" aria-label="Shinies found during the event">
       <h2>Shinies Found</h2>
       <div class="shinies-list">
         <!-- Icons or images of shinies found -->
@@ -60,7 +60,7 @@ description: "Learn all about the Team Event, rules, rewards, and history."
   </section>
 
   <!-- RIGHT SIDEBAR (page-tall) -->
-  <aside class="sidebar-right" aria-label="Event sidebar">
+  <aside class="sidebar-right glowing-border-spin" aria-label="Event sidebar">
     <div class="sidebar-inner">
       <h2>Event Quick Info</h2>
       <p><strong>Date:</strong> <!-- date here --></p>

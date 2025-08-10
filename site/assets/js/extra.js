@@ -89,3 +89,37 @@ fetch('/many/assets/img/spiritomb.svg')
     console.error('Failed to load SVG:', err);
   });
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  let lastScrollY = window.scrollY;
+  let rotation = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - lastScrollY;
+
+    rotation += delta * 0.5;
+    rotation %= 360;
+
+    document.querySelectorAll('.glowing-border-spin').forEach(el => {
+      el.style.setProperty('--border-rotation', `${rotation}deg`);
+    });
+
+    lastScrollY = currentScrollY;
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+});

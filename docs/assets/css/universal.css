@@ -19,14 +19,15 @@
 :root[data-theme="shiny"] {
   --main-accent-border-color: #e9c152;
   --main-accent-color: #ce9719;
+  --main-accent-color-rgb: 206, 151, 25;
   --main-accent-color-light: #e9c152;
 }
 
 :root[data-theme="fire"] {
   --main-accent-border-color: #f05b2a;
   --main-accent-color: #f0521b;
+  --main-accent-color-rgb: 240, 82, 27;
   --main-accent-color-light: #f05b2a;
-  
 }
 
 :root[data-theme="water"] {
@@ -46,6 +47,7 @@
 :root[data-theme="dark"] {
   --main-accent-border-color: #8a7e9b;
   --main-accent-color: #796e89;
+  --main-accent-color-rgb: 121, 110, 137;
   --main-accent-color-light: #8a7e9b;
 }
 
@@ -85,6 +87,10 @@
 }
 [data-theme="water"] .md-header__button .md-logo img {
   content: url("/many/assets/img/logo-water.png") !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html, body {
@@ -352,4 +358,49 @@ html:not(.theme-loading) body {
   box-shadow: var(--md-shadow-z2);
   color: var(--md-default-fg-color);
 
+}
+
+
+
+
+
+
+
+/* special scrolling border */
+body .glowing-border-spin {
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  padding: 1rem;
+  background: 
+    linear-gradient(var(--main-bg-color-light, #141414), var(--main-bg-color-light, #141414)) padding-box,
+    conic-gradient(
+      from calc(var(--border-rotation, 0deg) - 90deg),
+      rgba(var(--main-accent-color-rgb), 0) 0deg,
+      rgba(var(--main-accent-color-rgb), 1) 15deg,
+      rgba(var(--main-accent-color-rgb), 1) 45deg,
+      rgba(var(--main-accent-color-rgb), 0) 60deg,
+      #222222 60deg 135deg,
+      rgba(var(--main-accent-color-rgb), 0) 135deg,
+      rgba(var(--main-accent-color-rgb), 1) 150deg,
+      rgba(var(--main-accent-color-rgb), 1) 180deg,
+      rgba(var(--main-accent-color-rgb), 0) 195deg,
+      #222222 195deg 360deg
+    ) border-box,
+    conic-gradient(
+      from calc(var(--border-rotation, 0deg) - 90deg),
+      rgba(var(--main-accent-color-rgb), 0) 0deg,
+      rgba(var(--main-accent-color-rgb), 0.4) 20deg,
+      rgba(var(--main-accent-color-rgb), 0.8) 30deg,
+      rgba(var(--main-accent-color-rgb), 0.4) 40deg,
+      rgba(var(--main-accent-color-rgb), 0) 50deg,
+      rgba(0, 0, 0, 0) 50deg 130deg,
+      rgba(var(--main-accent-color-rgb), 0) 130deg,
+      rgba(var(--main-accent-color-rgb), 0.4) 140deg,
+      rgba(var(--main-accent-color-rgb), 0.8) 155deg,
+      rgba(var(--main-accent-color-rgb), 0.4) 170deg,
+      rgba(var(--main-accent-color-rgb), 0) 180deg,
+      rgba(0, 0, 0, 0) 180deg 360deg
+    ) border-box;
+  z-index: 10;
+  transition: background 0.1s linear;
 }
