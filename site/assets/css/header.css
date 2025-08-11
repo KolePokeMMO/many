@@ -1,113 +1,115 @@
 /* ────────────────────────────────────────────────
-   Header Adjustments
-   File: header.css
+   Header Base Styles
 ──────────────────────────────────────────────── */
-
-/* Layout – Header bar */
 .md-header {
-	background-color: var(--main-bg-color);
-	border-bottom: 2px solid var(--main-accent-border-color);
-	box-shadow: none; /* remove the old shadow */
+  background-color: var(--main-bg-color);
+  border-bottom: 2px solid var(--main-accent-border-color);
+  box-shadow: none; /* remove old shadow */
+  position: sticky; /* for absolute positioning inside */
 }
 
-/* Typography – Header title */
+/* Header Title Typography */
 .md-header__title {
-	align-items: center;
-
-	display: flex;
-	font-family: 'Quicksand', cursive;
-	font-size: clamp(1.2rem, 14vw, 1.2rem);
-	font-weight: 400;
-	line-height: 2.1;
-	padding-left: 200px;
-	text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+  align-items: center;
+  display: flex;
+  font-family: 'Quicksand', cursive;
+  font-size: clamp(1.2rem, 14vw, 1.2rem);
+  font-weight: 100;
+  padding-left: 25px;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+  color: var(--main-accent-color); /* Added for consistent color */
 }
 
-/* Logo highlight – "Shiny Legion" */
+/* Title highlights */
 .md-header__title .shiny-legion {
-	color: #daa30c; /* teal */
-	font-weight: 400;
+  color: #daa30c; /* teal */
+  font-weight: 400;
 }
 
-/* Logo highlight – "Many" */
 .md-header__title .many {
-	animation: shinyFlash 14s ease-in-out infinite;
-	background: linear-gradient(
-		120deg,
-		var(--main-accent-color) 10%,
-		var(--main-accent-color-light) 25%,
-		#ffffff 50%,
-		var(--main-accent-color-light) 75%,
-		var(--main-accent-color) 90%
-	);
-	background-clip: text;
-	background-size: 250% 250%;
-	color: transparent;
-	font-weight: bold;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  animation: shinyFlash 14s ease-in-out infinite;
+  background: linear-gradient(
+    120deg,
+    var(--main-accent-color) 10%,
+    var(--main-accent-color-light) 25%,
+    #ffffff 50%,
+    var(--main-accent-color-light) 75%,
+    var(--main-accent-color) 90%
+  );
+  background-clip: text;
+  background-size: 250% 250%;
+  color: transparent;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* ────────────────────────────────────────────────
-   Keyframes – Shiny Flash Animation
-──────────────────────────────────────────────── */
+/* Keyframes for shiny flash */
 @keyframes shinyFlash {
-	0% {
-		background-position: 200% 0%;
-	}
-	50% {
-		background-position: 0% 100%;
-	}
-	100% {
-		background-position: 200% 0%;
-	}
+  0% {
+    background-position: 200% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
 }
 
 /* ────────────────────────────────────────────────
-   Header Logo Resizing
+   Logo Styling
 ──────────────────────────────────────────────── */
 
+/* Container adjustments */
 .md-header__button.md-logo {
   margin: -0.8rem !important;
-}
-/* Logo container */
-.md-header__button.md-logo {
-	width: auto;
-	height: auto;
+  width: auto;
+  height: auto;
+  display: block !important; /* ensures visible on mobile */
 }
 
-@media screen and (min-width: 768px) {
-	.md-header__button.md-logo {
-		width: 235px;
-	}
-}
-
-/* Logo image */
+/* Logo image base styling */
 .md-header__button.md-logo img {
-	width: 400px !important;
-	height: auto !important;
-	margin: 0 !important;
-	min-height: 100px;
-	object-fit: contain;
-	padding: 0 !important;
-	
+  height: auto;
+  max-height: 64px;
+  min-height: 100px; /* keeping earlier min-height */
+  object-fit: contain;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
+/* Logo image sizing on desktop */
 @media screen and (min-width: 768px) {
-	.md-header__button.md-logo img {
-		max-height: 64px;
-	}
+
+
+  .md-header__button.md-logo img {
+    width: 400px !important; /* Latest important size */
+    max-height: 64px;
+  }
 }
 
+
+
+/* Extra padding & max width for logo image on mobile */
+@media screen and (max-width: 767px) {
+  .md-logo img {
+    max-width: 300px;
+    padding: 0.5rem 1rem;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
 
 /* ────────────────────────────────────────────────
-   Extra Header Div
+   Extra Header Div (Optional Button, etc.)
 ──────────────────────────────────────────────── */
 .extra-header-div {
   position: absolute;
   top: 1rem;
-  right: 3.5rem; /* just to the left of the search icon */
-  z-index: 10;
+  right: 3.5rem; /* just left of search icon */
+  z-index: 2000;
 }
 
 .extra-header-div .my-button {
@@ -126,17 +128,92 @@
   }
 }
 
-/* Hide the search bar only on small screens */
-@media screen and (max-width: 768px) {
-  .md-header__search, #__search {
-    display: none !important;
+
+/* ────────────────────────────────────────────────
+   Hamburger Menu Icon
+──────────────────────────────────────────────── */
+
+/* Base styles for all screens */
+.md-header__button.md-icon--menu {
+  display: none; /* Hide by default */
+  position: relative;
+  margin-left: 0.5rem; /* a little space from logo */
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.25s;
+}
+
+/* Show hamburger next to logo on small and medium screens */
+@media screen and (max-width: 991px) {  /* up to medium screens */
+  .md-header__button.md-icon--menu {
+    display: flex; /* visible and flex to align nicely */
+    align-items: center;
   }
-  
+}
+
+/* Hide hamburger completely on large/full screens */
+@media screen and (min-width: 992px) {
+  .md-header__button.md-icon--menu {
+    display: none !important; /* force hidden on big screens */
+  }
+}
+
+.md-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* keep above other elements */
 }
 
 
+/* Logo styling */
+.md-header__button.md-logo img {
+  max-height: 48px; /* adjust as needed */
+  width: auto;
+}
+
+/* Hamburger hidden on large screens */
+.md-header__button.md-icon--menu {
+  display: none; /* hide by default */
+  cursor: pointer;
+  margin-left: 1rem; /* spacing to right of logo */
+}
+
+/* Show hamburger on small and medium screens */
+@media screen and (max-width: 991px) {
+  .md-header__button.md-icon--menu {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Hide hamburger on large screens */
+@media screen and (min-width: 992px) {
+  .md-header__button.md-icon--menu {
+    display: none !important;
+  }
+}
+
+
+
+
+
 /* ────────────────────────────────────────────────
-   Header Theme Buttons
+   Search Bar and Search Icon Hiding on Mobile
+──────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .md-header__search,
+  #__search,
+  .md-search {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ────────────────────────────────────────────────
+   Header Theme Buttons (like dark mode toggles)
 ──────────────────────────────────────────────── */
 .md-header__button.md-search.theme-buttons {
   display: flex;
@@ -169,44 +246,116 @@
 .theme-icon {
   width: 30px;
   height: 30px;
-  fill: var(--icon-color, #ccc); /* default */
+  fill: var(--icon-color, #ccc);
   transition: fill 0.3s ease;
 }
 
+/* ────────────────────────────────────────────────
+   Mobile Layout Fixes: Logo, Menu, Title Stacking, Hamburger Position
+──────────────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+  /* Stack header vertically, center align */
+  .md-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Logo margin bottom for spacing */
+  .md-logo {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Page title below logo, centered */
 
 
+  /* Hamburger menu top-right, absolute */
+  .md-header__button.md-icon--menu {
+    order: 1;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 10;
+  }
 
+  /* Menu container styling for full width */
+  .md-header__menu,
+  .md-header__nav {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    top: 3.5rem !important;
+    background-color: var(--main-bg-color) !important;
+    z-index: 10000 !important;
+    padding: 1rem 1.5rem;
+  }
 
-
-
-
-
-
-
-
-
-
-
-/* Base logo image adjustments */
-.md-header__button.md-logo img {
-  width: 180px;
-  height: auto;
-  max-height: 64px;
-  object-fit: contain;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Tighter logo on smaller screens */
-@media screen and (max-width: 768px) {
-  .md-header__button.md-logo img {
-    width: 140px;
-    max-height: 48px;
+  /* Menu items large enough for tap */
+  .md-header__nav a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    color: var(--sidebar-link);
   }
 }
 
+
+/* ----------------------------------
+   Mobile Theme Dropdown
+---------------------------------- */
+.theme-buttons-mobile {
+  display: none;
+  position: relative;
+  margin-right: 0.5rem;
+  margin-top: 1.0rem;
+}
+
+.theme-dropdown-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.theme-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: var(--main-bg-color);
+  border: 1px solid var(--main-accent-border-color);
+  border-radius: 6px;
+  padding: 0.25rem;
+  z-index: 3000;
+}
+
+.theme-dropdown-menu button {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.theme-dropdown-menu button img,
+.theme-dropdown-menu button svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Mobile view: hide desktop buttons, show dropdown */
 @media screen and (max-width: 768px) {
-  .md-header__button.md-logo {
-    display: block !important;
+  .theme-buttons-desktop {
+    display: none;
   }
+  .theme-buttons-mobile {
+    display: block;
+  }
+}
+
+/* Show menu when toggled */
+.theme-buttons-mobile.open .theme-dropdown-menu {
+  display: block;
 }

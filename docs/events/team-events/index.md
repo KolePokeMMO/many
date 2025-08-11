@@ -1,13 +1,13 @@
 ---
-title: "Team Events Overview"
 description: "Learn all about the Team Event, rules, rewards, and history."
 ---
+
+<h1></h1>
 
 <link rel="stylesheet" href="/many/assets/css/events/team-events/events.css" />
 
 <div class="event-guide-container">
 
-  <!-- Hero Image: spans full page width (both columns) -->
 <!-- Hero Image: spans full page width (both columns) -->
 <section class="hero-image glowing-border" aria-label="Event hero image">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 402 458" class="hero-svg">
