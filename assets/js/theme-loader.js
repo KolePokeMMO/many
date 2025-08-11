@@ -3,3 +3,4 @@ document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.setAttribute("data-theme", theme);
   document.body.style.display = "block"; // always show page
 });
+
