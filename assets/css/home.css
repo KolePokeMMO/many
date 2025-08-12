@@ -1,0 +1,50 @@
+/* home.css */
+
+/* ────────────────────────────────────────────────
+   Stat Card Layout
+──────────────────────────────────────────────── */
+.team-stats {
+  margin: 3rem 0;
+  font-size: 0.7rem;
+}
+
+.team-stats-grid {
+  align-items: stretch;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.stat-card {
+  background: var(--main-fg-color);
+  border: 1px solid var(--main-fg-border-color);
+  border-left: 5px solid var(--main-accent-color-light);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.stat-card h3 {
+  margin-top: 0;
+}
+
+.stat-image {
+  margin: 0.5rem 0;
+  width: 100px;
+}
+
+.stat-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.stat-note {
+  color: var(--md-typeset-color);
+  margin: 0;
+}
+
+.stat-value {
+  color: var(--md-accent-fg-color);
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}

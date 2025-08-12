@@ -201,56 +201,6 @@ html:not(.theme-loading) body {
   margin: 0 0 1.25em;
 }
 
-/* ────────────────────────────────────────────────
-   Stat Card Layout
-──────────────────────────────────────────────── */
-.team-stats {
-  margin: 3rem 0;
-  font-size: 0.7rem;
-}
-
-.team-stats-grid {
-  align-items: stretch;
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.stat-card {
-  background: var(--main-fg-color);
-  border: 1px solid var(--main-fg-border-color);
-  border-left: 5px solid var(--main-accent-color-light);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-}
-
-.stat-card h3 {
-  margin-top: 0;
-}
-
-.stat-image {
-  margin: 0.5rem 0;
-  width: 100px;
-}
-
-.stat-list {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.stat-note {
-  color: var(--md-typeset-color);
-  margin: 0;
-}
-
-.stat-value {
-  color: var(--md-accent-fg-color);
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
-}
-
-
 
 /* ────────────────────────────────────────────────
    Admin Panel Styles
@@ -284,7 +234,6 @@ html:not(.theme-loading) body {
 }
 
 
-
 /* ────────────────────────────────────────────────
    Remove search bar for now
 ──────────────────────────────────────────────── */
@@ -307,7 +256,6 @@ html:not(.theme-loading) body {
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
 }
-
 
 
 /* ────────────────────────────────────────────────
@@ -352,12 +300,7 @@ html:not(.theme-loading) body {
   border-radius: 0rem;
   box-shadow: var(--md-shadow-z2);
   color: var(--md-default-fg-color);
-
 }
-
-
-
-
 
 body .glowing-border {
   background: var(--main-bg-color-light);
@@ -406,7 +349,6 @@ body .glowing-border-spin {
   transition: background 0.1s linear;
 }
 
-
 .box {
   padding: 1rem;
   background:
@@ -415,13 +357,6 @@ body .glowing-border-spin {
   border: 1px solid transparent;
   border-radius: 0rem;
 }
-
-
-
-
-
-
-
 
 /* Hide the search icon label entirely */
 .md-header__button.md-icon[for="__search"] {
