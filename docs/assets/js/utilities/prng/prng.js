@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Parse Archetype .txt file content to stats object
     function parseArchetypeTxt(text) {
-        // Default stats
         const stats = {
             encounters: 0,
             eggs: 0,
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Lines & regex to extract data
         const lines = text.split('\n');
         const mapping = {
             'Encountered_Count': 'encounters',
@@ -101,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         form.style.display = 'block';
         uploadSuccess.style.display = 'none';
 
-        // Clear old inputs
         playerNameInput.value = '';
         charNameInput.value = '';
         regionSelect.value = '';
@@ -111,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hoursInput.required = false;
         hoursInput.value = '';
 
-        // Store parsed stats for submission
         newEntry = { ...stats };
     }
 
@@ -133,9 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', e => {
         e.preventDefault();
 
-        // Basic validation done by required attributes
-
-        // Build new character object
         const character = {
             characterName: charNameInput.value.trim(),
             region: regionSelect.value,
@@ -158,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Check if player exists in prngData
         let playerObj = prngData.find(p => p.player.toLowerCase() === playerName.toLowerCase());
         if (!playerObj) {
             playerObj = { player: playerName, characters: [] };
@@ -166,15 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         playerObj.characters.push(character);
 
-        // Show success message & download button
         uploadSuccess.style.display = 'block';
         form.style.display = 'none';
 
-        // Prepare JSON download
         const blob = new Blob([JSON.stringify(prngData, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
 
-        // Trigger download immediately
         const tempLink = document.createElement('a');
         tempLink.href = url;
         tempLink.download = `prng-${playerName.replace(/\s+/g, '_').toLowerCase()}.json`;
@@ -182,14 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tempLink.click();
         document.body.removeChild(tempLink);
 
-        // Clean up the blob
         setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-
-        // Clear file input for next upload
         fileInput.value = '';
 
-        // Update grid view
         renderGrid(prngData);
     });
 
@@ -263,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGrid(prngData);
     });
 
-
     // Render character cards grid
     function renderGrid(data) {
         prngGrid.innerHTML = '';
@@ -328,11 +312,39 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
 
+    const soloToggle = document.getElementById("solo-toggle");
+    const soloPanel = document.getElementById("solo-slideout");
 
-    // Add event listeners to filters/search
-    [searchInput, statusFilter, regionFilter, shinyFilter].forEach(input => {
-        input.addEventListener('input', () => renderGrid(prngData));
-        input.addEventListener('change', () => renderGrid(prngData));
+    const suppliesToggle = document.getElementById("supplies-toggle");
+    const suppliesPanel = document.getElementById("supplies-slideout");
+
+    soloToggle.addEventListener("click", () => {
+        const isVisible = soloPanel.classList.toggle("visible");
+
+        // Just slide the solo panel, no button text change
+
+        // If showing solo panel, hide supplies panel
+        if (isVisible && suppliesPanel.classList.contains("visible")) {
+            suppliesPanel.classList.remove("visible");
+        }
+    });
+
+    suppliesToggle.addEventListener("click", () => {
+        const isVisible = suppliesPanel.classList.toggle("visible");
+
+        // Just slide the supplies panel, no button text change
+
+        // If showing supplies panel, hide solo panel
+        if (isVisible && soloPanel.classList.contains("visible")) {
+            soloPanel.classList.remove("visible");
+        }
+    });
+
+    document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const panel = btn.parentElement;
+        panel.classList.remove('visible');
+    });
     });
 
     // Initial load

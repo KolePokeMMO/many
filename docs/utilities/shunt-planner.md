@@ -6,7 +6,7 @@ title: Shunt Planner
 
 <div class="shunt-container">
 
-  <div class="shunt-filters">
+  <div class="shunt-filters box">
     <label for="region-select">Region</label>
     <select id="region-select">
       <option value="any">Any Region</option>
@@ -31,11 +31,11 @@ title: Shunt Planner
     </select>
   </div>
 
-  <div class="shunt-results" id="results">
+  <div class="shunt-results box" id="results">
     <!-- Filtered data will appear here -->
   </div>
 
-  <div class="shunt-controls">
+  <div class="shunt-controls box">
     <div id="pinned-target">None selected</div>
 
     <!-- Added inputs for tracking encounters & caught status of pinned target -->

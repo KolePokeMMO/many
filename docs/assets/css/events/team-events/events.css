@@ -83,7 +83,7 @@
 
 /* Each info box gets base style */
 .event-info article {
-   'composes' — keep .event-box in HTML instead */
+  
 }
 .about-event   { grid-column: 1 / 2; grid-row: 1 / 2; }
 .directions    { grid-column: 2 / 3; grid-row: 1 / 2; }
