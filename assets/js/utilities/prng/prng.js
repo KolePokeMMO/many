@@ -173,8 +173,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Prepare JSON download
         const blob = new Blob([JSON.stringify(prngData, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
-        downloadBtn.href = url;
-        downloadBtn.download = `prng-${playerName.replace(/\s+/g, '_').toLowerCase()}.json`;
+
+        // Trigger download immediately
+        const tempLink = document.createElement('a');
+        tempLink.href = url;
+        tempLink.download = `prng-${playerName.replace(/\s+/g, '_').toLowerCase()}.json`;
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+
+        // Clean up the blob
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
 
         // Clear file input for next upload
         fileInput.value = '';

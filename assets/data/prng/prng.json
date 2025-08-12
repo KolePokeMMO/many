@@ -8,19 +8,19 @@
         "status": "Active",
         "dateCompleted": null,
         "hoursPlayed": null,
-        "encounters": 3,
+        "encounters": 68,
         "shinyCount": 0,
         "eggs": 0,
         "fossils": 0,
         "alphas": 0,
         "legendaries": 0,
         "battles": {
-          "single": 3,
+          "single": 65,
           "double": 0,
-          "triple": 0,
+          "triple": 1,
           "horde": 0
         },
-        "notes": "Let's get shinies! \\o/"
+        "notes": "Test"
       }
     ]
   },

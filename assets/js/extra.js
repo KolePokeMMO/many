@@ -160,17 +160,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return; // ignore empty or just '#'
+
+    try {
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
       }
-    });
+    } catch (err) {
+      console.warn('Invalid selector for smooth scroll:', href);
+    }
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const sidebar = document.querySelector('.md-sidebar.md-sidebar--primary');
