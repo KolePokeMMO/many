@@ -55,17 +55,17 @@
       {
         "characterName": "ShinyDee",
         "region": "Johto",
-        "status": "Active",
-        "dateCompleted": null,
-        "hoursPlayed": null,
-        "encounters": 31,
+        "status": "Complete",
+        "dateCompleted": "2025-08-12",
+        "hoursPlayed": 6,
+        "encounters": 221,
         "shinyCount": 0,
         "eggs": 0,
         "fossils": 0,
         "alphas": 0,
         "legendaries": 0,
         "battles": {
-          "single": 31,
+          "single": 221,
           "double": 0,
           "triple": 0,
           "horde": 0
