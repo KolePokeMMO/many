@@ -407,7 +407,14 @@ body .glowing-border-spin {
 }
 
 
-
+.box {
+  padding: 1rem;
+  background:
+    linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
+    linear-gradient(to top, var(--main-accent-color), #222222, #222222, var(--main-accent-color)) border-box;
+  border: 1px solid transparent;
+  border-radius: 0rem;
+}
 
 
 
