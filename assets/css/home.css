@@ -48,3 +48,83 @@
   font-weight: bold;
   margin: 0.5rem 0;
 }
+
+
+
+
+
+
+
+/* === Announcements list styling === */
+#latest-announcements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+#latest-announcements-list li {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #222222;
+  line-height: 1.4;
+  color: #a8a8a8;
+}
+
+#latest-announcements-list li:last-child {
+  border-bottom: none;
+}
+
+#latest-announcements-list strong {
+  color: var(--main-accent-color); /* a nice blue for usernames */
+  font-weight: 600;
+}
+
+#latest-announcements-list small {
+  color: #707070;
+  font-size: 0.55rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* === Discord mention and channel link styles === */
+.discord-user-mention,
+.discord-channel-mention {
+  color: var(--main-accent-color);
+  text-decoration: none;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.discord-user-mention:hover,
+.discord-channel-mention:hover {
+  text-decoration: underline;
+}
+
+/* === Emojis styling === */
+.discord-emoji {
+  height: 1.2em;
+  vertical-align: middle;
+  margin-left: 0.15em;
+  margin-right: 0.15em;
+}
+
+/* === Links inside announcement content === */
+#latest-announcements-list a {
+  color: var(--main-accent-color-light);
+  text-decoration: none;
+}
+
+#latest-announcements-list a:hover {
+  text-decoration: underline;
+}
+
+/* Avatar styling next to announcement */
+.announcement-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+  object-fit: cover;
+  display: inline-block;
+}

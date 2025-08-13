@@ -72,12 +72,16 @@ async function loadLatestAnnouncements() {
 latest.forEach(announcement => {
   const li = document.createElement('li');
 
-li.innerHTML = `
-  <strong>${announcement.username}:</strong>
-  ${announcement.content}
-  <br>
-  <small>${new Date(announcement.timestamp).toLocaleString()}</small>
-`;
+  // Insert a <br> after the first '@everyone' occurrence
+  let contentWithBreak = announcement.content.replace(/@everyone/, '@everyone<br>');
+
+  li.innerHTML = `
+    <img src="${announcement.avatar}" alt="${announcement.username}'s avatar" class="announcement-avatar" />
+    <strong>${announcement.username}:</strong>
+    ${contentWithBreak}
+    <br>
+    <small>${new Date(announcement.timestamp).toLocaleString()}</small>
+  `;
 
   list.appendChild(li);
 });
@@ -89,3 +93,4 @@ li.innerHTML = `
 }
 
 document.addEventListener('DOMContentLoaded', loadLatestAnnouncements);
+
