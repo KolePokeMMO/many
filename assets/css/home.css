@@ -67,7 +67,7 @@
   padding: 0.6rem 1rem;
   border-bottom: 1px solid #222222;
   line-height: 1.4;
-  color: #a8a8a8;
+  color: #ececec;
 }
 
 #latest-announcements-list li:last-child {
@@ -80,7 +80,7 @@
 }
 
 #latest-announcements-list small {
-  color: #707070;
+  color: #ececec;
   font-size: 0.55rem;
   display: block;
   margin-top: 0.2rem;
