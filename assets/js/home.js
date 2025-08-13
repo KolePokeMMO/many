@@ -1,32 +1,6 @@
 // home.js
 
 // -------------------------
-// Random "latest shiny" card (unchanged)
-// -------------------------
-fetch("assets/data/latest-shinies.json")
-    .then(res => res.json())
-    .then(data => {
-        const shiny = data[Math.floor(Math.random() * data.length)];
-        const name = shiny.pokemon;
-        const trainer = shiny.trainer;
-        const date = shiny.date;
-
-        document.getElementById("latest-shiny-img").src =
-            `https://play.pokemonshowdown.com/sprites/gen5ani-shiny/${name.toLowerCase()}.gif`;
-        document.getElementById("latest-shiny-img").alt = `Shiny ${name}`;
-
-        document.getElementById("latest-shiny-name").textContent =
-            `Shiny ${name.charAt(0).toUpperCase() + name.slice(1)}`;
-
-        document.getElementById("latest-shiny-caption").textContent =
-            `Caught by ${trainer} — ${date}`;
-    })
-    .catch(err => {
-        console.error("Error loading shiny data:", err);
-        document.getElementById("latest-shiny-caption").textContent = "Unable to load shiny info.";
-    });
-
-// -------------------------
 // Announcements
 // -------------------------
 function makeDiscordLinks(text) {
@@ -52,7 +26,7 @@ function makeDiscordLinks(text) {
 
 async function loadLatestAnnouncements() {
     try {
-        const response = await fetch('/many/assets/data/discord-feeds/discord-announcements.json');
+        const response = await fetch('assets/data/discord-feeds/discord-announcements.json');
         if (!response.ok) throw new Error('Failed to load announcements JSON');
 
         const announcements = await response.json();
@@ -88,41 +62,41 @@ document.addEventListener('DOMContentLoaded', loadLatestAnnouncements);
 // Group consecutive posts by same user within 10 minutes
 // -------------------------
 function groupShinyPosts(posts) {
-  const grouped = [];
-  let lastEntry = null;
+    const grouped = [];
+    let lastEntry = null;
 
-  posts.forEach(post => {
-    const postTime = new Date(post.timestamp);
+    posts.forEach(post => {
+        const postTime = new Date(post.timestamp);
 
-    // Extract images from post content
-    const contentImages = extractImageUrlsFromContent(post.content);
-    // Remove image URLs from raw content
-    let cleanedContent = replaceRawImageUrlsWithLinks(post.content);
+        // Extract images from post content
+        const contentImages = extractImageUrlsFromContent(post.content);
+        // Remove image URLs from raw content
+        let cleanedContent = post.content || '';
 
-    if (
-      lastEntry &&
-      post.username === lastEntry.username &&
-      postTime - new Date(lastEntry.timestamp) <= 10 * 60 * 1000
-    ) {
-      // Merge attachments
-      lastEntry.attachments = [...(lastEntry.attachments || []), ...(post.attachments || []), ...contentImages];
+        if (
+            lastEntry &&
+            post.username === lastEntry.username &&
+            postTime - new Date(lastEntry.timestamp) <= 10 * 60 * 1000
+        ) {
+            // Merge attachments
+            lastEntry.attachments = [...(lastEntry.attachments || []), ...(post.attachments || []), ...contentImages];
 
-      // Merge content text
-      lastEntry.content = [lastEntry.content, cleanedContent].filter(Boolean).join("\n");
+            // Merge content text
+            lastEntry.content = [lastEntry.content, cleanedContent].filter(Boolean).join("\n");
 
-      // Keep timestamp as earliest (or latest if you prefer)
-      if (postTime < new Date(lastEntry.timestamp)) lastEntry.timestamp = post.timestamp;
-    } else {
-      lastEntry = {
-        ...post,
-        attachments: [...(post.attachments || []), ...contentImages],
-        content: cleanedContent
-      };
-      grouped.push(lastEntry);
-    }
-  });
+            // Keep timestamp as earliest (or latest if you prefer)
+            if (postTime < new Date(lastEntry.timestamp)) lastEntry.timestamp = post.timestamp;
+        } else {
+            lastEntry = {
+                ...post,
+                attachments: [...(post.attachments || []), ...contentImages],
+                content: cleanedContent
+            };
+            grouped.push(lastEntry);
+        }
+    });
 
-  return grouped;
+    return grouped;
 }
 
 
@@ -187,36 +161,43 @@ function addImgFallback(imgEl, originalUrl) {
     });
 }
 
+// ---- NEW replaceRawImageUrlsWithLinks ----
 function replaceRawImageUrlsWithLinks(content) {
     if (!content) return '';
-    // Create a temporary div to parse HTML safely
-    const div = document.createElement('div');
-    div.innerHTML = content;
 
-    // Walk through text nodes only
-    const walker = document.createTreeWalker(div, NodeFilter.SHOW_TEXT, null, false);
-    while (walker.nextNode()) {
-        const node = walker.currentNode;
-        const replaced = node.nodeValue.replace(
-            /(https?:\/\/\S+\.(?:png|jpg|jpeg|gif|webp))/gi,
-            url => `<a href="${url}" target="_blank" referrerpolicy="no-referrer">Original Image Link</a>`
-        );
-        if (replaced !== node.nodeValue) {
-            const span = document.createElement('span');
-            span.innerHTML = replaced;
-            node.parentNode.replaceChild(span, node);
-        }
+    // Match only valid URLs
+    const urlRegex = /(https?:\/\/\S+\.(?:png|jpg|jpeg|gif|webp))/gi;
+    const urls = [...new Set(content.match(urlRegex) || [])]; // dedupe
+
+    // Remove image URLs from text
+    let textOnly = content.replace(urlRegex, '').trim();
+
+    let output = '';
+    if (textOnly) output += textOnly;
+
+    if (urls.length) {
+        if (textOnly) output += '<br>'; // only one break between text and links
+        // Add links side by side
+        output += urls
+            .filter(Boolean) // remove empty strings
+            .map(u => `<a href="${u}" target="_blank" referrerpolicy="no-referrer">Original Image Link</a>`)
+            .join(' '); // spaces between links
     }
 
-    return div.innerHTML;
+    return output;
 }
+
+
+
+
 
 // -------------------------
 // Latest Shinies
 // -------------------------
 async function loadLatestShinies() {
     try {
-        const response = await fetch('/many/assets/data/discord-feeds/discord-shiny-flex.json');
+        const response = await fetch('assets/data/discord-feeds/discord-shiny-flex.json');
+
         if (!response.ok) throw new Error('Failed to load shiny flex JSON');
 
         const shinies = await response.json();
@@ -244,20 +225,22 @@ async function loadLatestShinies() {
             // Extract images from content & attachments
             const contentImages = extractImageUrlsFromContent(entry.content);
             const attachmentImages = (entry.attachments || []).filter(isLikelyImageUrl);
-            const allImages = [...new Set([...attachmentImages, ...contentImages])].slice(0, 3);
 
-            // Replace raw URLs in content with "Shiny Image" links
-            // let contentHtml = replaceRawImageUrlsWithLinks(entry.content);
-            let contentHtml = entry.content;  // use merged & preprocessed content
+            // Merge and dedupe, but remove any empty strings
+            const allImages = [...new Set([...attachmentImages, ...contentImages])].filter(Boolean).slice(0, 3);
+
 
             // Header + content
+            let contentHtml = replaceRawImageUrlsWithLinks(entry.content || '');
+
             shinyDiv.innerHTML = `
-        <div class="shiny-user">
-          <img src="${entry.avatar}" alt="${entry.username} avatar" class="shiny-avatar" referrerpolicy="no-referrer" />
-          <strong>${entry.username}</strong>
-        </div>
-        <div class="shiny-content">${contentHtml}</div>
-      `;
+            <div class="shiny-user">
+                <img src="${entry.avatar}" alt="${entry.username} avatar" class="shiny-avatar" referrerpolicy="no-referrer" />
+                <strong>${entry.username}</strong>
+            </div>
+            <div class="shiny-content">${contentHtml}</div>
+            `;
+
 
             // Image grid
             if (allImages.length > 0) {
