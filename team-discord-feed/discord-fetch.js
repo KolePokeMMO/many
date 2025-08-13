@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const targetFile = path.join(__dirname, '../docs/assets/data/discord-feeds/discord-announcements.json');
-
 require('dotenv').config();
 const { Client, GatewayIntentBits, ChannelType } = require('discord.js');
 
@@ -16,40 +14,82 @@ const CHANNELS = [
   { id: process.env.TEAM_EVENTS_CHANNEL_ID, file: 'discord-team-events.json' }
 ];
 
-function parseDiscordMarkdown(text) {
-  if (!text) return '';
-  return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // bold
-    .replace(/\*(.*?)\*/g, '<em>$1</em>') // italics
-    .replace(/```([\s\S]+?)```/g, '<pre><code>$1</code></pre>') // code block
-    .replace(/`([^`]+)`/g, '<code>$1</code>') // inline code
-    .replace(/https?:\/\/\S+/g, url => `<a href="${url}" target="_blank">${url}</a>`); // links
+function replaceUserMentions(content, channel) {
+  return content.replace(/<@!?(\d+)>/g, (match, userId) => {
+    const member = channel.guild.members.cache.get(userId);
+    if (member) {
+      const displayName = member.displayName || member.user.username;
+      const url = `https://discord.com/users/${userId}`;
+      return `<a href="${url}" target="_blank" rel="noopener" class="discord-user-mention">@${displayName}</a>`;
+    }
+    return match;
+  });
 }
 
-// Fetch messages from a normal text channel
+function replaceChannelMentions(content, channel) {
+  return content.replace(/<#(\d+)>/g, (match, channelId) => {
+    const ch = channel.guild.channels.cache.get(channelId);
+    if (ch) {
+      const url = `https://discord.com/channels/${channel.guild.id}/${channelId}`;
+      return `<a href="${url}" target="_blank" rel="noopener" class="discord-channel-mention">#${ch.name}</a>`;
+    }
+    return match;
+  });
+}
+
+function replaceCustomEmojis(content) {
+  return content.replace(/<a?:([^:]+):(\d+)>/g, (match, emojiName, emojiId) => {
+    const isAnimated = match.startsWith('<a:');
+    const ext = isAnimated ? 'gif' : 'png';
+    const url = `https://cdn.discordapp.com/emojis/${emojiId}.${ext}`;
+    return `<img src="${url}" alt=":${emojiName}:" class="discord-emoji" style="height:1em; vertical-align:middle;" />`;
+  });
+}
+
+function parseDiscordMarkdown(text, channel) {
+  if (!text) return '';
+
+  let content = text;
+  content = replaceUserMentions(content, channel);
+  content = replaceChannelMentions(content, channel);
+  content = replaceCustomEmojis(content);
+
+  // Markdown replacements:
+  content = content
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // bold
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')             // italics
+    .replace(/```([\s\S]+?)```/g, '<pre><code>$1</code></pre>') // code block
+    .replace(/`([^`]+)`/g, '<code>$1</code>');         // inline code
+
+  // Only replace URLs not already inside an <a> tag
+  content = content.replace(/(^|[^"'>])(https?:\/\/[^\s<]+)/g, (match, prefix, url) => {
+    return `${prefix}<a href="${url}" target="_blank">${url}</a>`;
+  });
+
+  return content;
+}
+
+
 async function fetchChannelMessages(channel, limit = 20) {
   const messages = await channel.messages.fetch({ limit });
   const messagesArray = Array.from(messages.values()).reverse();
 
   const data = [];
   for (const m of messagesArray) {
-    // Only use member.displayName, no fallback to username
-    const displayName = m.member?.displayName || 'Unknown Member';
+    const displayName = m.member?.displayName || m.author.username || 'Unknown Member';
 
     data.push({
       id: m.id,
       username: displayName,
       avatar: m.author.displayAvatarURL(),
-      content: parseDiscordMarkdown(m.content),
+      content: parseDiscordMarkdown(m.content, channel),
       attachments: m.attachments.map(a => a.url),
       timestamp: m.createdAt
     });
   }
-
   return data;
 }
 
-// Fetch messages from a forum channel
 async function fetchForumChannelMessages(forumChannel, limitPerThread = 20) {
   const activeThreads = await forumChannel.threads.fetchActive();
   const archivedThreads = await forumChannel.threads.fetchArchived();
@@ -62,13 +102,13 @@ async function fetchForumChannelMessages(forumChannel, limitPerThread = 20) {
     const messagesArray = Array.from(messages.values()).reverse();
 
     for (const m of messagesArray) {
-      const displayName = m.member?.displayName || 'Unknown Member';
+      const displayName = m.member?.displayName || m.author.username || 'Unknown Member';
 
       allMessages.push({
         id: m.id,
         username: displayName,
         avatar: m.author.displayAvatarURL(),
-        content: parseDiscordMarkdown(m.content),
+        content: parseDiscordMarkdown(m.content, forumChannel),
         attachments: m.attachments.map(a => a.url),
         timestamp: m.createdAt
       });
@@ -88,6 +128,7 @@ const client = new Client({
     1024 // GuildMessageThreads
   ]
 });
+
 
 const outputFolder = path.join(__dirname, '../docs/assets/data/discord-feeds');
 if (!fs.existsSync(outputFolder)) {
@@ -121,7 +162,6 @@ async function runFetchCycle() {
         oldData = JSON.parse(raw);
       }
 
-      // Only write if data changed
       if (JSON.stringify(newData) !== JSON.stringify(oldData)) {
         fs.writeFileSync(outputPath, JSON.stringify(newData, null, 2));
         console.log(`💾 Updated ${ch.file} with ${newData.length} messages`);
@@ -136,13 +176,14 @@ async function runFetchCycle() {
   console.log(`Fetch cycle finished at ${new Date().toLocaleTimeString()}\n`);
 }
 
-client.once('ready', () => {
+client.once('ready', async () => {
   console.log(`✅ Logged in as ${client.user.tag}`);
 
-  // Run once immediately
-  runFetchCycle();
+  for (const guild of client.guilds.cache.values()) {
+    await guild.members.fetch();
+  }
 
-  // Then every 5 minutes
+  await runFetchCycle();
   setInterval(runFetchCycle, FETCH_INTERVAL);
 });
 
