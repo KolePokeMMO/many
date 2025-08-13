@@ -73,5 +73,30 @@
         "notes": ""
       }
     ]
+  },
+  {
+    "player": "EmmiBlack",
+    "characters": [
+      {
+        "characterName": "EmmiBIack",
+        "region": "Kanto",
+        "status": "Active",
+        "dateCompleted": null,
+        "hoursPlayed": null,
+        "encounters": 27,
+        "shinyCount": 0,
+        "eggs": 0,
+        "fossils": 0,
+        "alphas": 0,
+        "legendaries": 0,
+        "battles": {
+          "single": 30,
+          "double": 0,
+          "triple": 1,
+          "horde": 5
+        },
+        "notes": ""
+      }
+    ]
   }
 ]
