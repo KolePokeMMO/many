@@ -1,0 +1,3 @@
+# Local environment files
+.env
+team-discord-feed/.env
