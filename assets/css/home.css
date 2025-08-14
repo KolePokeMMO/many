@@ -309,11 +309,39 @@
   max-height: 90vh;
 }
 
+/* Event list day heading with calendar icon background */
+/* Event list day heading styled as a calendar icon */
 .event-list h3 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.7rem;
+  height: 1.7rem;
   margin: 0 0 0.25rem;
-  font-size: 0.6rem;
-  color: var(--main-accent-color);
+  padding-top: 11px;
+
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white; /* day number */
+  background-color: #4c4c4c; /* medium grey body */
+
+  border-radius: 0.25rem;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Top strip of the calendar */
+.event-list h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  background: var(--main-accent-color);
+}
+
 
 .event-list p {
   margin: 0 0 1rem;
