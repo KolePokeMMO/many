@@ -335,6 +335,21 @@ document.addEventListener('DOMContentLoaded', loadLatestShinies);
 // Smart Google Sheet Calendar
 // -------------------------
 
+// Capitalize words but keep known acronyms/format codes uppercase
+function smartTitleCase(str) {
+  // List of acronyms or codes you want preserved exactly
+  const preserve = ['NP', 'F-4', 'F-6', 'L-4']; 
+
+  return str.split(/\s+/).map(word => {
+    // If the word matches any preserved acronym/code exactly, keep as is
+    if (preserve.includes(word.toUpperCase())) return word.toUpperCase();
+
+    // Otherwise, capitalize first letter
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(' ');
+}
+
+
 // Lightweight CSV parser (handles quotes & newlines)
 function parseCSV(csv) {
   const rows = [];
@@ -410,7 +425,7 @@ function renderCalendar(weeks) {
       const eventHTML = eventText
         .split(/\r?\n/)
         .filter(Boolean)
-        .map(e => `<span class="event">${e}</span>`)
+        .map(e => `<span class="event">${smartTitleCase(e)}</span>`)
         .join('<br>');
 
       html += `<td class="${isToday ? 'today' : ''}">${eventHTML}${dateNum ? `<span class="date-number">${dateNum}</span>` : ''}</td>`;
@@ -421,6 +436,7 @@ function renderCalendar(weeks) {
   html += '</tbody></table>';
   cal.innerHTML = html;
 }
+
 
 function renderEventList(weeks) {
   const list = document.getElementById('event-list');
@@ -442,7 +458,7 @@ function renderEventList(weeks) {
 
       html += `<h3>${dateNum}</h3>`;
       eventText.split(/\r?\n/).filter(Boolean).forEach(line => {
-        html += `<p>${line}</p>`;
+        html += `<p>${smartTitleCase(line)}</p>`;
       });
       html += '<hr>';
     }
@@ -450,6 +466,7 @@ function renderEventList(weeks) {
 
   list.innerHTML = html;
 }
+
 
 
 
