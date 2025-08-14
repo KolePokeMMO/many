@@ -16,26 +16,33 @@
 }
 
 .rps-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem 1.25rem 2rem;
+
+
   color: var(--main-accent-color);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
-/* Header */
+/* =====================================================
+   RPS Header
+===================================================== */
 .rps-header {
-  border: 2px solid var(--main-fg-border-color);
-  background: var(--main-bg-color-light);
-  border-radius: 1rem;
-  overflow: hidden;
-  margin-bottom: 1rem;
+  width: 100%;                 /* full width of container */
+  max-width: 800px;            /* optional max width */
+  margin: 0 auto;              /* center horizontally */
+  padding: 1rem 0;             /* vertical spacing */
+  text-align: center;          /* centre the image */
 }
+
 .rps-header img {
-  width: 100%;
-  height: auto;
+  width: 100%;                 /* scale image to container width */
+           /* optional max image width */
+  height: auto;                /* maintain aspect ratio */
   display: block;
+  margin: 0 auto;              /* center image */
+  border-radius: 0.5rem;       /* optional rounded corners */
+
 }
+
 
 /* Main grid: left = create/join, right = scoring log */
 .rps-main-grid {
@@ -45,9 +52,7 @@
   margin-bottom: 1rem;
 }
 .rps-card {
-  background: var(--main-bg-color-light);
-  border: 2px solid var(--main-fg-border-color);
-  border-radius: 1rem;
+
   padding: 1rem;
 }
 
@@ -60,12 +65,12 @@
 }
 .rps-room-setup input,
 .rps-room-setup button {
-  padding: 0.75rem;
-  border-radius: 0.6rem;
-  border: 1px solid var(--main-accent-color);
+  padding: 0.45rem;
+  border-radius: 0rem;
+  border: 1px solid var(--main-fg-color);
   background: var(--main-bg-color);
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 .rps-room-setup button {
   cursor: pointer;

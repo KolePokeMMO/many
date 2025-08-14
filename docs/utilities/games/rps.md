@@ -3,7 +3,7 @@
 <div id="rps-app" class="rps-container">
   <!-- Header / Cover -->
   <div class="rps-header">
-    <img src="/many/assets/img/pokemon-cover.jpg" alt="Pokémon Duel" />
+    <img src="/many/assets/img/pokemon-cover.png" alt="Pokémon Duel" />
   </div>
 
   <!-- Main content grid -->
@@ -11,9 +11,9 @@
     <!-- Left column: Room creation/join -->
     <div class="rps-left">
       <div class="rps-room-setup">
-        <input type="text" id="player-name-input" placeholder="Your Trainer Name" />
+        <input type="text" id="player-name-input" placeholder="Trainer Name" />
         <input type="text" id="room-id-input" placeholder="Room Name" />
-        <button id="create-room-btn">Create / Join Room</button>
+        <button id="create-room-btn">Create | Join</button>
       </div>
     </div>
 
