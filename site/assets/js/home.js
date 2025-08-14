@@ -337,14 +337,14 @@ document.addEventListener('DOMContentLoaded', loadLatestShinies);
 
 // Capitalize words but keep known acronyms/format codes uppercase
 function smartTitleCase(str) {
-  // List of acronyms or codes you want preserved exactly
+  // List of acronyms or codes we want preserved exactly
   const preserve = ['NP', 'F-4', 'F-6', 'L-4']; 
 
   return str.split(/\s+/).map(word => {
     // If the word matches any preserved acronym/code exactly, keep as is
     if (preserve.includes(word.toUpperCase())) return word.toUpperCase();
 
-    // Otherwise, capitalize first letter
+    // Otherwise, capitalize first letter and fix Kelly's CRAP grammar
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
   }).join(' ');
 }
@@ -420,7 +420,13 @@ function renderCalendar(weeks) {
     for (let i = 0; i < 7; i++) {
       const dateNum = week.dates[i] || '';
       const eventText = week.events[i] || '';
+
       const isToday = Number(dateNum) === todayNum;
+      const isPast = dateNum && Number(dateNum) < todayNum; // before today
+
+      const classes = [];
+      if (isToday) classes.push('today');
+      if (isPast) classes.push('past-day');
 
       const eventHTML = eventText
         .split(/\r?\n/)
@@ -428,7 +434,7 @@ function renderCalendar(weeks) {
         .map(e => `<span class="event">${smartTitleCase(e)}</span>`)
         .join('<br>');
 
-      html += `<td class="${isToday ? 'today' : ''}">${eventHTML}${dateNum ? `<span class="date-number">${dateNum}</span>` : ''}</td>`;
+      html += `<td class="${classes.join(' ')}">${eventHTML}${dateNum ? `<span class="date-number">${dateNum}</span>` : ''}</td>`;
     }
     html += '</tr>';
   });
@@ -436,6 +442,7 @@ function renderCalendar(weeks) {
   html += '</tbody></table>';
   cal.innerHTML = html;
 }
+
 
 
 function renderEventList(weeks) {
