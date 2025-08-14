@@ -464,7 +464,7 @@ boot();
 // ===== ONE-TIME CLEANUP =====
 import { getDatabase, ref, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-const db = getDatabase();
-remove(ref(db, "rooms")) // replace "games" with your root node
+const db2 = getDatabase();
+remove(ref(db2, "rooms")) // replace "games" with your root node
   .then(() => console.log("🔥 All game history wiped."))
   .catch((err) => console.error("Error wiping:", err));
