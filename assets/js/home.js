@@ -413,28 +413,50 @@ function renderCalendar(weeks) {
   html += '</tr></thead><tbody>';
 
   const today = new Date();
-  const todayNum = today.getDate();
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
+  let lastDate = 0;
 
   weeks.forEach(week => {
     html += '<tr>';
     for (let i = 0; i < 7; i++) {
-      const dateNum = week.dates[i] || '';
+      const raw = week.dates[i];
+      const dateNum = Number(raw) || 0;
       const eventText = week.events[i] || '';
 
-      const isToday = Number(dateNum) === todayNum;
-      const isPast = dateNum && Number(dateNum) < todayNum; // before today
+      let classes = [];
+      let eventHTML = '';
+      let dateHTML = '';
 
-      const classes = [];
-      if (isToday) classes.push('today');
-      if (isPast) classes.push('past-day');
+      if (dateNum) {
+        // Detect rollover: if numbers reset (e.g. from 30 → 1), bump month
+        if (dateNum < lastDate) {
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+        }
+        lastDate = dateNum;
 
-      const eventHTML = eventText
-        .split(/\r?\n/)
-        .filter(Boolean)
-        .map(e => `<span class="event">${smartTitleCase(e)}</span>`)
-        .join('<br>');
+        const cellDate = new Date(currentYear, currentMonth, dateNum);
 
-      html += `<td class="${classes.join(' ')}">${eventHTML}${dateNum ? `<span class="date-number">${dateNum}</span>` : ''}</td>`;
+        if (cellDate.toDateString() === today.toDateString()) {
+          classes.push('today');
+        } else if (cellDate < today) {
+          classes.push('past-day');
+        }
+
+        dateHTML = `<span class="date-number">${dateNum}</span>`;
+
+        eventHTML = eventText
+          .split(/\r?\n/)
+          .filter(Boolean)
+          .map(e => `<span class="event">${smartTitleCase(e)}</span>`)
+          .join('<br>');
+      }
+
+      html += `<td class="${classes.join(' ')}">${eventHTML}${dateHTML}</td>`;
     }
     html += '</tr>';
   });
@@ -444,26 +466,38 @@ function renderCalendar(weeks) {
 }
 
 
-
 function renderEventList(weeks) {
   const list = document.getElementById('event-list');
-  
-  // Keep the title
   let html = `<h2>Upcoming Events</h2>`;
 
   const today = new Date();
-  const todayNum = today.getDate();
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
+  let lastDate = 0;
 
   weeks.forEach(week => {
     for (let i = 0; i < 7; i++) {
-      const dateNum = Number(week.dates[i]) || 0;
+      const raw = week.dates[i];
+      const dateNum = Number(raw) || 0;
       const eventText = week.events[i] || '';
       if (!dateNum || !eventText) continue;
 
-      // Skip past dates
-      if (dateNum < todayNum) continue;
+      // Detect rollover
+      if (dateNum < lastDate) {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+      }
+      lastDate = dateNum;
 
-      html += `<h3>${dateNum}</h3>`;
+      const cellDate = new Date(currentYear, currentMonth, dateNum);
+
+      // Skip past events
+      if (cellDate < today) continue;
+
+      html += `<h3>${cellDate.toDateString()}</h3>`;
       eventText.split(/\r?\n/).filter(Boolean).forEach(line => {
         html += `<p>${smartTitleCase(line)}</p>`;
       });
@@ -473,8 +507,5 @@ function renderEventList(weeks) {
 
   list.innerHTML = html;
 }
-
-
-
 
 document.addEventListener('DOMContentLoaded', loadGoogleCalendar);
