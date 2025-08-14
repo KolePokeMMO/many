@@ -1,19 +1,10 @@
-/* rps.js — Fixed: Play Again, separate Live Log vs History, atomic round finish */
+/* Clean rebuild — GitHub Pages hash routing, atomic rounds with roundId, no spam, reliable Play Again */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
-  getDatabase,
-  ref,
-  set,
-  onValue,
-  push,
-  update,
-  remove,
-  onDisconnect,
-  get,
-  runTransaction
+  getDatabase, ref, set, update, push, onValue, get, runTransaction, onDisconnect
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-/* ---------------- FIREBASE ---------------- */
+/* ---------------- Firebase ---------------- */
 const firebaseConfig = {
   apiKey: "AIzaSyBVbb67rvWjdY279rAo8BEyPTNKZVGqfIY",
   authDomain: "sl-rps.firebaseapp.com",
@@ -26,310 +17,415 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-/* ---------------- Utilities ---------------- */
-function getRoomName() {
-  const hash = window.location.hash || "";
-  if (!hash.startsWith("#/room/")) return null;
-  return decodeURIComponent(hash.split("/")[2] || "");
+/* ---------------- Helpers ---------------- */
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+const choiceEmoji = { grass:"🌿", fire:"🔥", water:"💧" };
+
+function beats(a, b) {
+  return (a==="grass" && b==="water") ||
+         (a==="water" && b==="fire") ||
+         (a==="fire" && b==="grass");
+}
+function decide(a,b){ if(a===b) return 0; return beats(a,b) ? 1 : 2; }
+
+function getRoomFromHash() {
+  const h = location.hash;
+  if (!h.startsWith("#/room/")) return null;
+  return decodeURIComponent(h.split("/")[2] || "");
 }
 
-function determineWinner(a, b) {
-  if (a === b) return null;
-  if ((a === "grass" && b === "water") ||
-      (a === "water" && b === "fire") ||
-      (a === "fire"  && b === "grass")) return 1;
-  return 2;
+function uid() { return (crypto?.randomUUID?.() || Math.random().toString(36).slice(2)) }
+
+/* Strict per-round choice: { roundId, pick|null } so stale writes don’t leak */
+async function setPlayerChoice(room, playerId, name, roundId, pick) {
+  const playerRef = ref(db, `rps/rooms/${room}/players/${playerId}`);
+  await set(playerRef, { name, choice: { roundId, pick } });
 }
 
-function ensureElement({ parent = document, tag = "div", id = null, classes = [], insertAfter = null }) {
-  let el = id ? document.getElementById(id) : null;
-  if (!el) {
-    el = document.createElement(tag);
-    if (id) el.id = id;
-    classes.forEach(c => el.classList.add(c));
-    if (insertAfter && insertAfter.parentNode) insertAfter.parentNode.insertBefore(el, insertAfter.nextSibling);
-    else parent.appendChild(el);
+/* ---------------- DOM boot ---------------- */
+function ensureShell() {
+  const app = document.getElementById("rps-app");
+  if (!app) {
+    const div = document.createElement("div");
+    div.id = "rps-app";
+    div.className = "rps-container";
+    document.body.appendChild(div);
+    return div;
   }
-  return el;
+  return app;
 }
 
 /* ---------------- Front page ---------------- */
-function initFrontPage() {
-  const appDiv = document.getElementById("rps-app") || ensureElement({ id: "rps-app", tag: "div", classes: ["rps-container"] });
+function drawFrontPage() {
+  const app = ensureShell();
+  app.innerHTML = `
+    <div class="rps-header">
+      <img src="/many/assets/img/pokemon-cover.jpg" alt="Pokémon Duel Cover" onerror="this.style.display='none'">
+    </div>
 
-  let setup = appDiv.querySelector(".rps-room-setup");
-  if (!setup) {
-    setup = document.createElement("div");
-    setup.className = "rps-room-setup";
-    setup.innerHTML = `
-      <input type="text" id="player-name-input" placeholder="Your Trainer Name" />
-      <input type="text" id="room-id-input" placeholder="Room Name" />
-      <button id="create-room-btn">Create / Join Room</button>
-    `;
-    appDiv.prepend(setup);
-  }
+    <div class="rps-main-grid">
+      <div class="rps-card">
+        <h3>Create / Join Room</h3>
+        <div class="rps-room-setup">
+          <input id="fp-name" placeholder="Your Trainer Name" />
+          <input id="fp-room" placeholder="Room Name" />
+          <button id="fp-join">Create / Join</button>
+        </div>
+      </div>
 
-  document.getElementById("create-room-btn").onclick = () => {
-    const name = (document.getElementById("player-name-input")?.value || "").trim();
-    const room = (document.getElementById("room-id-input")?.value || "").trim();
-    if (!name || !room) return alert("Please enter a name and a room.");
-    localStorage.setItem(`rps-player-name-${room}`, name);
-    window.location.hash = `/room/${encodeURIComponent(room)}`;
-    showRoomUI(room);
-  };
+      <div class="rps-card">
+        <h3>Scoring Log (all rooms)</h3>
+        <ul id="global-scoring-log"></ul>
+      </div>
+    </div>
+
+    <div id="rps-room"></div>
+  `;
+
+  $("#fp-join").addEventListener("click", () => {
+    const name = ($("#fp-name").value || "").trim();
+    const room = ($("#fp-room").value || "").trim();
+    if (!name || !room) { alert("Enter name and room."); return; }
+    localStorage.setItem(`rps-name-${room}`, name);
+    location.hash = `#/room/${encodeURIComponent(room)}`;
+    drawRoom(room);
+  });
+
+  // Show global scoring log (summaries across rooms)
+  attachGlobalScoringLog();
+}
+
+/* ---------------- Global Scoring Log (right column) ---------------- */
+function attachGlobalScoringLog() {
+  const roomsRef = ref(db, `rps/rooms`);
+  const ul = $("#global-scoring-log");
+  onValue(roomsRef, (snap) => {
+    const rooms = snap.val() || {};
+    const summaries = [];
+
+    for (const [room, data] of Object.entries(rooms)) {
+      const hist = data.history || {};
+      const playersMap = (data.players || {});
+      // Compute quick summary
+      let games = 0, p1Total = 0, p2Total = 0, lastWinner = "—";
+      const names = new Set(Object.values(playersMap).map(p => p?.name).filter(Boolean));
+      for (const h of Object.values(hist)) {
+        games++;
+        if (h.winnerId) {
+          lastWinner = (h.winnerId === h.player1Id) ? (h.player1Name || "P1") : (h.player2Name || "P2");
+        }
+      }
+      summaries.push({
+        room,
+        players: Array.from(names).slice(0, 2).join(" vs "),
+        games,
+        lastWinner
+      });
+    }
+
+    summaries.sort((a,b)=> b.games - a.games);
+    ul.innerHTML = "";
+    for (const s of summaries.slice(0, 30)) {
+      const li = document.createElement("li");
+      li.textContent = `${s.players || s.room} — Games: ${s.games} — Last winner: ${s.lastWinner}`;
+      ul.appendChild(li);
+    }
+  });
 }
 
 /* ---------------- Room UI ---------------- */
-async function showRoomUI(room) {
-  const appDiv = document.getElementById("rps-app") || ensureElement({ id: "rps-app", tag: "div", classes: ["rps-container"] });
+async function drawRoom(room) {
+  const app = ensureShell();
+  const node = $("#rps-room", app);
+  node.innerHTML = `
+    <div class="rps-card">
+      <div class="rps-room-top">
+        <div class="rps-room-title">Room: ${room}</div>
+        <div class="rps-actions">
+          <button class="rps-btn" id="copy-link">Copy Room Link</button>
+        </div>
+      </div>
+      <div class="rps-players" id="players-line">Players: <em>waiting…</em></div>
 
-  const playerIdKey = `rps-player-id-${room}`;
-  const playerNameKey = `rps-player-name-${room}`;
-
-  let playerId = localStorage.getItem(playerIdKey);
-  if (!playerId) {
-    playerId = crypto.randomUUID();
-    localStorage.setItem(playerIdKey, playerId);
-  }
-  let playerName = localStorage.getItem(playerNameKey) || "";
-  if (!playerName) {
-    playerName = prompt("Enter your Trainer name:") || `Trainer-${playerId.slice(0,6)}`;
-    localStorage.setItem(playerNameKey, playerName);
-  }
-
-  let roomContainer = document.getElementById("rps-room-container");
-  if (!roomContainer) {
-    roomContainer = document.createElement("div");
-    roomContainer.id = "rps-room-container";
-    roomContainer.className = "rps-game";
-    appDiv.appendChild(roomContainer);
-  }
-
-  const roomTitle = ensureElement({ parent: roomContainer, tag: "h2", id: "room-title" });
-  roomTitle.textContent = `Room: ${room}`;
-
-  let controls = roomContainer.querySelector(".rps-controls");
-  if (!controls) {
-    controls = document.createElement("div");
-    controls.className = "rps-controls";
-    controls.innerHTML = `
-      <div id="players-list">Players:</div>
-      <button id="copy-link-btn">Copy Room Link</button>
       <div class="rps-choices">
-        <button data-choice="grass">🌿 Grass</button>
-        <button data-choice="fire">🔥 Fire</button>
-        <button data-choice="water">💧 Water</button>
+        <button class="rps-btn" data-choice="grass">${choiceEmoji.grass} Grass</button>
+        <button class="rps-btn" data-choice="fire">${choiceEmoji.fire} Fire</button>
+        <button class="rps-btn" data-choice="water">${choiceEmoji.water} Water</button>
+        <button class="rps-btn" id="play-again" style="margin-left: .5rem;">Play Again</button>
       </div>
-      <div class="rps-results">
-        <p>You chose: <span id="you-choice">-</span></p>
-        <p>Opponent chose: <span id="opp-choice">-</span></p>
-        <p>Round Result: <strong id="round-result">-</strong></p>
-        <button id="play-again-btn">Play Again</button>
-        <div id="rps-status" aria-live="polite" style="margin-top:8px;"></div>
+
+      <div class="rps-status" id="status">Choose your move!</div>
+      <div class="rps-result" id="result-line">
+        You: <span id="you">-</span> &nbsp;|&nbsp; Opponent: <span id="opp">-</span> &nbsp;|&nbsp;
+        Result: <span id="res">-</span>
       </div>
-    `;
-    roomContainer.appendChild(controls);
-  }
 
-  let historyWrap = document.getElementById("rps-history-wrap");
-  if (!historyWrap) {
-    historyWrap = document.createElement("div");
-    historyWrap.id = "rps-history-wrap";
-    historyWrap.innerHTML = `<h3>Game History</h3><ul id="history-list" class="rps-history-list"></ul>`;
-    roomContainer.appendChild(historyWrap);
-  }
+      <div class="rps-split">
+        <div class="rps-list">
+          <h4>Live Match Log</h4>
+          <ul id="live-log"></ul>
+        </div>
+        <div class="rps-list">
+          <h4>Game History (this room)</h4>
+          <ul id="history"></ul>
+        </div>
+      </div>
+    </div>
+  `;
 
-  const copyBtn = document.getElementById("copy-link-btn");
-  const choiceButtons = Array.from(roomContainer.querySelectorAll(".rps-choices button"));
-  const youEl = document.getElementById("you-choice");
-  const oppEl = document.getElementById("opp-choice");
-  const resultEl = document.getElementById("round-result");
-  const playAgainBtn = document.getElementById("play-again-btn");
-  const statusEl = document.getElementById("rps-status");
-  const historyList = document.getElementById("history-list");
-  const playersList = document.getElementById("players-list");
+  /* ------- Identity & refs ------- */
+  const nameKey = `rps-name-${room}`;
+  const idKey = `rps-id-${room}`;
+  const myName = localStorage.getItem(nameKey) || prompt("Your Trainer Name?") || `Trainer-${Math.random().toString(36).slice(2,7)}`;
+  localStorage.setItem(nameKey, myName);
 
-  const playersRef = ref(db, `rps/rooms/${room}/players`);
-  const playerRef = ref(db, `rps/rooms/${room}/players/${playerId}`);
+  let myId = localStorage.getItem(idKey);
+  if (!myId) { myId = uid(); localStorage.setItem(idKey, myId); }
+
+  const roomRef         = ref(db, `rps/rooms/${room}`);
+  const playersRef      = ref(db, `rps/rooms/${room}/players`);
+  const meRef           = ref(db, `rps/rooms/${room}/players/${myId}`);
   const currentRoundRef = ref(db, `rps/rooms/${room}/currentRound`);
-  const historyRef = ref(db, `rps/rooms/${room}/history`);
+  const historyRef      = ref(db, `rps/rooms/${room}/history`);
 
-  await set(playerRef, { name: playerName, choice: null });
-  onDisconnect(playerRef).remove();
+  // Join room (presence)
+  await set(meRef, { name: myName, choice: { roundId: null, pick: null }, joinedAt: Date.now() });
+  onDisconnect(meRef).remove();
 
-  let localSubmitting = false;
-
-  choiceButtons.forEach(btn => {
-    btn.onclick = async () => {
-      if (localSubmitting) return;
-      try {
-        const currentPlayerSnapshot = await get(playerRef);
-        const currentPlayerData = currentPlayerSnapshot.val() || {};
-        if (currentPlayerData.choice) {
-          statusEl.textContent = "Choice already made — waiting for opponent.";
-          return;
-        }
-      } catch (e) {
-        console.error(e);
-      }
-
-      const chosen = btn.dataset.choice;
-      localSubmitting = true;
-      try {
-        await set(playerRef, { name: playerName, choice: chosen });
-        youEl.textContent = chosen;
-        statusEl.textContent = "Waiting for opponent...";
-      } catch (e) {
-        console.error(e);
-        statusEl.textContent = "Failed to submit choice.";
-      } finally {
-        localSubmitting = false;
-      }
-    };
+  // Ensure currentRound exists with a roundId
+  await runTransaction(currentRoundRef, (cur) => {
+    if (!cur || !cur.roundId) {
+      return { roundId: uid(), status: "waiting", createdAt: Date.now() };
+    }
+    return cur;
   });
 
-  /* ---------------- Play Again ---------------- */
-  playAgainBtn.onclick = async () => {
-    try {
-      // Reset only your choice
-      await set(playerRef, { name: playerName, choice: null });
-      youEl.textContent = "-";
-      oppEl.textContent = "-";
-      resultEl.textContent = "-";
-      statusEl.textContent = "Choose your move!";
+  /* ------- UI elements ------- */
+  const statusEl  = $("#status");
+  const youEl     = $("#you");
+  const oppEl     = $("#opp");
+  const resEl     = $("#res");
+  const liveLog   = $("#live-log");
+  const histList  = $("#history");
+  const playersLine = $("#players-line");
+  const playAgainBtn = $("#play-again");
+  const copyBtn      = $("#copy-link");
+  const choiceBtns   = $$(".rps-choices .rps-btn[data-choice]");
 
-      // Clear current round if finished
-      const crSnap = await get(currentRoundRef);
-      const cr = crSnap.val();
-      if (cr && cr.status === "finished") {
-        await set(currentRoundRef, { status: null });
-      }
-    } catch (e) {
-      console.error("Play again failed", e);
-    }
-  };
-
-  copyBtn.onclick = () => {
+  /* ------- Copy link ------- */
+  copyBtn.addEventListener("click", () => {
     const url = `${location.origin}${location.pathname}#/room/${encodeURIComponent(room)}`;
-    navigator.clipboard.writeText(url).then(() => {
+    navigator.clipboard.writeText(url).then(()=>{
       statusEl.textContent = "Room link copied!";
-    }).catch(() => {
-      statusEl.textContent = "Copy failed — please copy manually.";
-    });
+    }).catch(()=>{ statusEl.textContent = "Copy failed — copy manually."; });
+  });
+
+  /* ------- Enable/disable helpers ------- */
+  const setChoicesEnabled = (v) => {
+    choiceBtns.forEach(b => b.disabled = !v);
   };
 
-  /* ---------------- Track players join/leave ---------------- */
+  /* ------- Listen: players (list + opp detection) ------- */
   onValue(playersRef, (snap) => {
     const players = snap.val() || {};
-    playersList.innerHTML = "Players:<br>" + Object.values(players).map(p => p.name).join("<br>");
+    const entries = Object.entries(players);
+    // players list line
+    const parts = entries.map(([pid,p]) => {
+      const nm = p?.name || "Unknown";
+      return pid === myId ? `<span class="you">${nm} (you)</span>` : nm;
+    });
+    playersLine.innerHTML = `Players: ${parts.length ? parts.join(" • ") : "<em>waiting…</em>"}`;
+
+    // Update “opp” label visibility only after both choose in same round (handled below)
   });
 
-  /* ---------------- Core: atomic finish ---------------- */
+  /* ------- Core: choices & finishing (per roundId) ------- */
+  let currentRoundId = null;
+
+  // Keep currentRoundId in sync
+  onValue(currentRoundRef, (snap) => {
+    const cur = snap.val();
+    if (!cur) return;
+    currentRoundId = cur.roundId;
+
+    // When a round is finished, show result; when awaiting, reset UI message
+    if (cur.status === "finished") {
+      // UI is updated via history push below
+      setChoicesEnabled(true);   // allow picking for next round after Play Again
+      playAgainBtn.disabled = false;
+    } else {
+      // waiting
+      statusEl.textContent = "Choose your move!";
+      resEl.textContent = "-";
+    }
+  });
+
+  // Click to choose (records ONLY for current roundId)
+  choiceBtns.forEach(btn => {
+    btn.addEventListener("click", async () => {
+      if (!currentRoundId) return;
+      setChoicesEnabled(false); // prevent double clicks
+      const pick = btn.dataset.choice;
+      await setPlayerChoice(room, myId, myName, currentRoundId, pick);
+      youEl.textContent = `${choiceEmoji[pick]} ${pick}`;
+      statusEl.textContent = "Locked. Waiting for opponent…";
+      // Re-enable; we’ll lock again when evaluating
+      setChoicesEnabled(true);
+    });
+  });
+
+  // Evaluate when BOTH picks exist for the SAME roundId.
   onValue(playersRef, async (snap) => {
     const players = snap.val() || {};
     const ids = Object.keys(players);
-    if (ids.length < 2) {
-      statusEl.textContent = "Waiting for opponent to join...";
+    if (ids.length < 2 || !currentRoundId) {
+      oppEl.textContent = "-";
       return;
     }
 
-    const aId = ids[0];
-    const bId = ids.find(id => id !== aId) || ids[1];
-    const a = players[aId];
-    const b = players[bId];
+    // Find an opponent
+    const oppId = ids.find(id => id !== myId);
+    const me    = players[myId];
+    const opp   = players[oppId];
 
-    if (aId === playerId) {
-      youEl.textContent = a?.choice || "-";
-      oppEl.textContent = b?.choice || "-";
-    } else {
-      youEl.textContent = b?.choice || "-";
-      oppEl.textContent = a?.choice || "-";
-    }
+    const myChoice  = me?.choice || { roundId: null, pick: null };
+    const oppChoice = opp?.choice || { roundId: null, pick: null };
 
-    if (!a?.choice || !b?.choice) {
-      const me = players[playerId];
-      statusEl.textContent = me?.choice ? "Waiting for opponent..." : "Choose your move!";
+    // Only reveal opponent AFTER both picks are in for this roundId
+    const bothChosenSameRound = (myChoice.roundId === currentRoundId && myChoice.pick) &&
+                                (oppChoice.roundId === currentRoundId && oppChoice.pick);
+
+    youEl.textContent = myChoice.pick ? `${choiceEmoji[myChoice.pick]} ${myChoice.pick}` : "-";
+    oppEl.textContent = bothChosenSameRound ? `${choiceEmoji[oppChoice.pick]} ${oppChoice.pick}` : "-";
+
+    if (!bothChosenSameRound) {
+      statusEl.textContent = myChoice.pick ? "Waiting for opponent…" : "Choose your move!";
+      resEl.textContent = "-";
       return;
     }
 
-    const winnerNum = determineWinner(a.choice, b.choice);
-    const winnerId = winnerNum === 1 ? aId : winnerNum === 2 ? bId : null;
+    // Try to finish atomically ONCE per round using a transaction
+    const aId = ids[0], bId = ids.find(i => i !== aId) || ids[1];
+    const a   = players[aId]; const b = players[bId];
 
     const roundPayload = {
+      roundId: currentRoundId,
       status: "finished",
       player1Id: aId,
       player2Id: bId,
-      player1Choice: a.choice,
-      player2Choice: b.choice,
-      player1Name: a.name || "",
-      player2Name: b.name || "",
-      winnerId: winnerId || null,
+      player1Name: a?.name || "P1",
+      player2Name: b?.name || "P2",
+      player1Choice: a?.choice?.pick || null,
+      player2Choice: b?.choice?.pick || null,
+      winnerId: (()=>{
+        const who = decide(a?.choice?.pick, b?.choice?.pick);
+        return who === 0 ? null : (who === 1 ? aId : bId);
+      })(),
       timestamp: Date.now()
     };
 
     try {
-      const tr = await runTransaction(currentRoundRef, (current) => {
-        if (current && current.status === "finished") return;
+      const tr = await runTransaction(currentRoundRef, (cur) => {
+        // Only finish if we are still on the same round and not finished
+        if (!cur || cur.roundId !== currentRoundId) return cur;
+        if (cur.status === "finished") return; // abort
         return roundPayload;
       }, { applyLocally: false });
 
       if (tr.committed) {
+        // We are the winner of the transaction -> push to history exactly once
         await push(historyRef, roundPayload);
-        statusEl.textContent = "Round finished (results recorded).";
-      } else {
-        statusEl.textContent = "Round already recorded by other player.";
       }
-    } catch (err) {
-      console.error("Transaction failed:", err);
-      statusEl.textContent = "Error finishing round. Try again.";
+      // Either way, UI will update below via history listener
+    } catch (e) {
+      console.error("Round finish transaction failed:", e);
     }
   });
 
-  /* ---------------- Current round listener ---------------- */
-  onValue(currentRoundRef, (snap) => {
-    const round = snap.val();
-    if (!round || round.status !== "finished") return;
-
-    const amPlayer1 = round.player1Id === playerId;
-    const myChoice = amPlayer1 ? round.player1Choice : round.player2Choice;
-    const theirChoice = amPlayer1 ? round.player2Choice : round.player1Choice;
-    youEl.textContent = myChoice || "-";
-    oppEl.textContent = theirChoice || "-";
-
-    let txt;
-    if (round.winnerId === null) txt = "It's a tie!";
-    else if (round.winnerId === playerId) txt = "You win!";
-    else txt = "You lose!";
-    resultEl.textContent = txt;
-    statusEl.textContent = "Round finished!";
-  });
-
-  /* ---------------- Room history listener (this room only) ---------------- */
+  /* ------- History (room only) + Live Log ------- */
   onValue(historyRef, (snap) => {
-    const history = snap.val() || {};
-    const entries = Object.values(history).sort((a,b) => (b.timestamp||0) - (a.timestamp||0));
-    historyList.innerHTML = "";
+    const hist = snap.val() || {};
+    const entries = Object.values(hist).sort((a,b)=> (b.timestamp||0) - (a.timestamp||0));
+
+    // Game History list
+    histList.innerHTML = "";
     for (const e of entries) {
-      const p1 = e.player1Name || e.player1Id || "P1";
-      const p2 = e.player2Name || e.player2Id || "P2";
-      const outcome = e.winnerId ? (e.winnerId === e.player1Id ? `${p1} won` : `${p2} won`) : "It's a tie!";
+      const outcome = e.winnerId
+        ? (e.winnerId === e.player1Id ? `${e.player1Name} won` : `${e.player2Name} won`)
+        : "It's a tie!";
       const li = document.createElement("li");
-      li.textContent = `${p1}: ${e.player1Choice} vs ${p2}: ${e.player2Choice} → ${outcome}`;
-      historyList.appendChild(li);
+      li.textContent = `${e.player1Name}: ${e.player1Choice} vs ${e.player2Name}: ${e.player2Choice} → ${outcome}`;
+      histList.appendChild(li);
+    }
+
+    // Live Match Log = most recent entry
+    liveLog.innerHTML = "";
+    if (entries[0]) {
+      const e = entries[0];
+      const outcome = e.winnerId
+        ? (e.winnerId === e.player1Id ? `${e.player1Name} won` : `${e.player2Name} won`)
+        : "It's a tie!";
+      const li = document.createElement("li");
+      li.textContent = `${e.player1Name}: ${e.player1Choice} vs ${e.player2Name}: ${e.player2Choice} → ${outcome}`;
+      liveLog.appendChild(li);
+
+      // Also update the prominent “Result” line
+      const amP1 = e.player1Id === myId;
+      const myPick   = amP1 ? e.player1Choice : e.player2Choice;
+      const theirPick= amP1 ? e.player2Choice : e.player1Choice;
+      youEl.textContent = `${choiceEmoji[myPick]} ${myPick}`;
+      oppEl.textContent = `${choiceEmoji[theirPick]} ${theirPick}`;
+
+      if (!e.winnerId) { resEl.textContent = "It's a tie!"; resEl.className = "tie"; }
+      else if (e.winnerId === myId) { resEl.textContent = "You win!"; resEl.className = "win"; }
+      else { resEl.textContent = "You lose!"; resEl.className = "lose"; }
+
+      statusEl.textContent = "Round finished!";
+      playAgainBtn.disabled = false;
+      setChoicesEnabled(true);
+    }
+  });
+
+  /* ------- Play Again: advance roundId, keep choices bound to new round ------- */
+  playAgainBtn.addEventListener("click", async () => {
+    playAgainBtn.disabled = true;
+    setChoicesEnabled(false);
+    youEl.textContent = "-";
+    oppEl.textContent = "-";
+    resEl.textContent = "-";
+    statusEl.textContent = "Starting next round…";
+
+    try {
+      // Advance the round atomically; only if we’re still on the same finished round
+      const newId = uid();
+      await runTransaction(currentRoundRef, (cur) => {
+        // Always allow advancing to a new round id
+        return { roundId: newId, status: "waiting", createdAt: Date.now() };
+      });
+      // Reset ONLY my choice (opponent handles their own)
+      await setPlayerChoice(room, myId, myName, newId, null);
+      currentRoundId = newId;
+
+      statusEl.textContent = "Choose your move!";
+      setChoicesEnabled(true);
+    } catch (e) {
+      console.error("Play again failed:", e);
+      statusEl.textContent = "Play Again failed. Try refresh.";
+      playAgainBtn.disabled = false;
+      setChoicesEnabled(true);
     }
   });
 }
 
-/* ---------------- App init ---------------- */
-function initApp() {
-  const room = getRoomName();
-  if (!room) initFrontPage();
-  else showRoomUI(room);
+/* ---------------- Router ---------------- */
+function boot() {
+  const room = getRoomFromHash();
+  drawFrontPage();
+  if (room) drawRoom(room);
 }
-
 window.addEventListener("hashchange", () => {
-  const r = getRoomName();
-  if (r) showRoomUI(r);
+  boot();
 });
-
-initApp();
+boot();
