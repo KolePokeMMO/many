@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Wipe RPS History</title></head>
+<body>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBVbb67rvWjdY279rAo8BEyPTNKZVGqfIY",
+  authDomain: "sl-rps.firebaseapp.com",
+  databaseURL: "https://sl-rps-default-rtdb.firebaseio.com",
+  projectId: "sl-rps",
+  storageBucket: "sl-rps.firebasestorage.app",
+  messagingSenderId: "670763987872",
+  appId: "1:670763987872:web:7dd535b257065e9fd82ac5"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+remove(ref(db, "rps/rooms")) // <- change if your root is different
+  .then(() => console.log("🔥 All game history wiped."))
+  .catch((err) => console.error("Error wiping:", err));
+</script>
+</body>
+</html>

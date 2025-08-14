@@ -1,7 +1,7 @@
 /* Clean rebuild — GitHub Pages hash routing, atomic rounds with roundId, no spam, reliable Play Again */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
-  getDatabase, ref, set, update, push, onValue, get, runTransaction, onDisconnect
+  getDatabase, ref, remove, set, update, push, onValue, get, runTransaction, onDisconnect
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 /* ---------------- Firebase ---------------- */
@@ -460,11 +460,3 @@ window.addEventListener("hashchange", () => {
   boot();
 });
 boot();
-
-// ===== ONE-TIME CLEANUP =====
-import { getDatabase, ref, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-const db2 = getDatabase();
-remove(ref(db2, "rooms")) // replace "games" with your root node
-  .then(() => console.log("🔥 All game history wiped."))
-  .catch((err) => console.error("Error wiping:", err));
