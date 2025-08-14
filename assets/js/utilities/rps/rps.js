@@ -38,13 +38,15 @@ function determineWinner(p1, p2) {
   return 1;
 }
 
-// Get room name from URL
+// Get room name from URL hash
 function getRoomName() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("room");
+  // Expect format: #/room/ROOMNAME
+  const hash = window.location.hash;
+  if (!hash.startsWith("#/room/")) return null;
+  return decodeURIComponent(hash.split("/")[2] || "");
 }
 
-// Initialize front page
+// Navigate to room using hash
 function initFrontPage() {
   const createBtn = document.getElementById("create-room-btn");
   createBtn.addEventListener("click", () => {
@@ -52,9 +54,13 @@ function initFrontPage() {
     const room = document.getElementById("room-id-input").value.trim();
     if (!name || !room) return alert("Enter both name and room.");
     localStorage.setItem(`rps-player-name-${room}`, name);
-    window.location.href = `/many/utilities/rps/?room=${encodeURIComponent(room)}`;
+    // Use hash instead of query param
+    window.location.hash = `/room/${encodeURIComponent(room)}`;
+    // Trigger room load
+    showRoomUI(room);
   });
 }
+
 
 // Show room UI
 async function showRoomUI(room) {
@@ -194,3 +200,22 @@ if (!roomName) {
 } else {
   showRoomUI(roomName);
 }
+
+// SPA init
+function initApp() {
+  const roomName = getRoomName();
+  if (!roomName) {
+    initFrontPage();
+  } else {
+    showRoomUI(roomName);
+  }
+}
+
+// Listen to hash changes (dynamic room navigation)
+window.addEventListener("hashchange", () => {
+  const roomName = getRoomName();
+  if (roomName) showRoomUI(roomName);
+});
+
+// Start app
+initApp();
