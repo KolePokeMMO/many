@@ -1,45 +1,5 @@
 [
   {
-    "id": "1403947512288510013",
-    "username": "PokeMMO #pve-alerts",
-    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
-    "content": "~~@Alpha Swarms~~",
-    "attachments": [],
-    "timestamp": "2025-08-10T03:46:11.013Z"
-  },
-  {
-    "id": "1403988888749609053",
-    "username": "PokeMMO #pve-alerts",
-    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
-    "content": "~~@Swarms~~",
-    "attachments": [],
-    "timestamp": "2025-08-10T06:30:35.930Z"
-  },
-  {
-    "id": "1404016066069528667",
-    "username": "PokeMMO #pve-alerts",
-    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
-    "content": "~~@Alpha Swarms~~",
-    "attachments": [],
-    "timestamp": "2025-08-10T08:18:35.508Z"
-  },
-  {
-    "id": "1404176641873154200",
-    "username": "PokeMMO #pve-alerts",
-    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
-    "content": "~~@Phenomena~~",
-    "attachments": [],
-    "timestamp": "2025-08-10T18:56:39.763Z"
-  },
-  {
-    "id": "1404200306027397181",
-    "username": "PokeMMO #pve-alerts",
-    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
-    "content": "~~@Phenomena~~",
-    "attachments": [],
-    "timestamp": "2025-08-10T20:30:41.737Z"
-  },
-  {
     "id": "1404202371923447951",
     "username": "PokeMMO #pve-alerts",
     "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
@@ -158,5 +118,45 @@
     "content": "~~@Alpha Swarms~~",
     "attachments": [],
     "timestamp": "2025-08-13T18:16:12.940Z"
+  },
+  {
+    "id": "1405267176373489705",
+    "username": "PokeMMO #pve-alerts",
+    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
+    "content": "[Original Message Deleted]",
+    "attachments": [],
+    "timestamp": "2025-08-13T19:10:03.449Z"
+  },
+  {
+    "id": "1405286978299236353",
+    "username": "PokeMMO #pve-alerts",
+    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
+    "content": "~~@Swarms~~",
+    "attachments": [],
+    "timestamp": "2025-08-13T20:28:44.596Z"
+  },
+  {
+    "id": "1405413824126914562",
+    "username": "PokeMMO #pve-alerts",
+    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
+    "content": "~~@Alpha Swarms~~",
+    "attachments": [],
+    "timestamp": "2025-08-14T04:52:46.998Z"
+  },
+  {
+    "id": "1405492059170799637",
+    "username": "PokeMMO #pve-alerts",
+    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
+    "content": "~~@Alpha Swarms~~",
+    "attachments": [],
+    "timestamp": "2025-08-14T10:03:39.686Z"
+  },
+  {
+    "id": "1405581397640609925",
+    "username": "PokeMMO #pve-alerts",
+    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
+    "content": "~~@Alpha Swarms~~",
+    "attachments": [],
+    "timestamp": "2025-08-14T15:58:39.637Z"
   }
 ]
