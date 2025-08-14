@@ -262,3 +262,158 @@
   text-decoration: underline;      /* remove underline on hover */
 }
 
+
+
+
+
+
+
+/* ===============================
+   Google Sheet Calendar Styling
+   =============================== */
+/* ===============================
+   Google Sheet Calendar Styling
+   =============================== */
+
+/* ------------------------------
+   Calendar Container
+   ------------------------------ */
+.calendar-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
+  padding: 0rem;
+  color: #e2e2e2;
+}
+
+.calendar-container h2 {
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  color: var(--main-accent-color);
+}
+
+@media (max-width: 768px) {
+  .calendar-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------
+   Event List Sidebar
+   ------------------------------ */
+.event-list {
+  background-color: var(--main-fg-color);
+  padding: 1rem;
+  border-radius: 0rem;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.event-list h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.6rem;
+  color: var(--main-accent-color);
+}
+
+.event-list p {
+  margin: 0 0 1rem;
+  font-size: 0.7rem;
+}
+
+/* ------------------------------
+   Dark Calendar Table
+   ------------------------------ */
+.dark-calendar {
+  background-color: var(--main-fg-color);
+  padding: 1rem;
+  border-radius: 0rem;
+  box-sizing: content-box;
+  width: fit-content;
+}
+
+.dark-calendar table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 0 !important;
+}
+
+.dark-calendar th {
+  background-color: var(--main-accent-color);
+  color: #e2e2e2;
+  font-weight: 500;
+  padding: 0.5rem;
+  border: 1px solid var(--main-accent-color);
+  border-bottom: 0;
+}
+
+.dark-calendar td {
+  border: 1px solid var(--main-fg-border-color);
+  height: 80px;
+  vertical-align: top;
+  padding: 0.25rem;
+  font-size: 0.7rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #141414;
+}
+
+/* ------------------------------
+   Date Number Overlay
+   ------------------------------ */
+.dark-calendar td .date-number {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 0.6rem;
+  color: var(--main-accent-color);
+  font-weight: bold;
+}
+
+/* ------------------------------
+   Today Highlight (bottom-border glow confined)
+   ------------------------------ */
+.dark-calendar td.today {
+  position: relative; /* needed for ::after */
+  background-color: var(--main-bg-color); /* dark background */
+  color: white;
+  border-bottom: 0px solid var(--main-accent-color); /* base border */
+  overflow: hidden; /* ensures glow doesn’t escape */
+}
+
+.dark-calendar td.today .date-number {
+  color: white;
+}
+
+/* pseudo-element for pulsing glow */
+.dark-calendar td.today::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* matches border thickness */
+  background: var(--main-accent-color);
+  opacity: 0.5;
+  transform: scaleY(1);
+  transform-origin: bottom;
+  animation: pulse-bottom 1.2s infinite;
+}
+
+@keyframes pulse-bottom {
+  0%   { opacity: 0.4; transform: scaleY(1); }
+  50%  { opacity: 1;   transform: scaleY(2); }
+  100% { opacity: 0.4; transform: scaleY(1); }
+}
+
+
+
+
+/* ------------------------------
+   Event Styling
+   ------------------------------ */
+.dark-calendar .event {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.25rem;
+}
