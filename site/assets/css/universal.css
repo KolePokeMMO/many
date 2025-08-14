@@ -63,14 +63,14 @@
   --accent-yellow: #ffeb3b;
 
   --main-bg-color: #121212;
-  --main-bg-color-light: #141414;
+  --main-bg-color-light: #181818;
   --main-bg-color-dark: color-mix(in srgb, var(--main-bg-color) 70%, rgb(0, 0, 0) 30%);
 
   --main-bg-border-color: #444444;
 
   --main-fg-border-color: #444444;
   
-  --main-fg-color: #151515;
+  --main-fg-color: #1f1f1f;
 
   --sidebar-link: #E0E0E0;
   --sidebar-link-hover: #ffffff;
@@ -353,7 +353,7 @@ body .glowing-border-spin {
   padding: 1rem;
   background:
     linear-gradient(var(--main-bg-color-light), var(--main-bg-color-light)) padding-box,
-    linear-gradient(to top, var(--main-accent-color), #222222, #222222, var(--main-accent-color)) border-box;
+    linear-gradient(to top, var(--main-accent-color), #3a3a3a, #3a3a3a, var(--main-accent-color)) border-box;
   border: 1px solid transparent;
   border-radius: 0rem;
 }
