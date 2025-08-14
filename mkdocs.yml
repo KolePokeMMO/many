@@ -93,6 +93,7 @@ nav:
       - Games:
         - Rock, Paper, Scissors: utilities/games/rps.md
         - Hangmon: utilities/games/hangmon.md
+        - Crossy Graveyard: utilities/games/cgg.md
   - Database:
       - Bag: 
         - Items: utilities/bag/items.md
