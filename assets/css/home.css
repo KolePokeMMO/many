@@ -434,3 +434,16 @@
   font-size: 0.7rem;
   padding: 0.15rem 0.25rem;
 }
+
+/* Past days - diagonal stripe overlay */
+.dark-calendar td.past-day {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(76, 76, 76, .1) 0px,
+      rgba(76, 76, 76, .3) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  background-color: #141414; /* keep base color */
+}
