@@ -82,7 +82,7 @@ async function showGameUI(room) {
       localStorage.setItem(nameKey, playerName);
     }
   }
-
+ 
   appDiv.innerHTML = `
     <div class="rps-game" style="display:flex; gap:20px;">
       <div style="flex:1;">
