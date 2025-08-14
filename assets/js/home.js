@@ -326,3 +326,131 @@ function openModal(imageUrl) {
 }
 
 document.addEventListener('DOMContentLoaded', loadLatestShinies);
+
+
+
+
+
+// -------------------------
+// Smart Google Sheet Calendar
+// -------------------------
+
+// Lightweight CSV parser (handles quotes & newlines)
+function parseCSV(csv) {
+  const rows = [];
+  let inQuotes = false;
+  let row = [];
+  let value = '';
+
+  for (let i = 0; i < csv.length; i++) {
+    const c = csv[i];
+    const next = csv[i + 1];
+
+    if (c === '"') {
+      if (inQuotes && next === '"') { // Escaped quote
+        value += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (c === ',' && !inQuotes) {
+      row.push(value);
+      value = '';
+    } else if (c === '\n' && !inQuotes) {
+      row.push(value);
+      rows.push(row);
+      row = [];
+      value = '';
+    } else {
+      value += c;
+    }
+  }
+  // Push last row
+  if (value || row.length) row.push(value), rows.push(row);
+  return rows;
+}
+
+async function loadGoogleCalendar() {
+  const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSmhtZPAeMZTZAoK69wF2Oo0kRnSpxEpuWefXjtowM2KqKwdfKqRRUT91wTrKCPZp7MPTBfEFPTZ0j_/pub?output=csv&gid=1515078614';
+  const resp = await fetch(sheetURL);
+  const csv = await resp.text();
+
+  const rows = parseCSV(csv);
+
+  // Skip header row
+  const dataRows = rows.slice(1);
+
+  const weeks = [];
+  for (let i = 0; i < dataRows.length; i += 2) {
+    const dateRow = dataRows[i].map(c => c.trim());
+    const eventRow = (dataRows[i+1] || []).map(c => c.trim());
+    weeks.push({ dates: dateRow, events: eventRow });
+  }
+
+  renderCalendar(weeks);
+  renderEventList(weeks);
+}
+
+function renderCalendar(weeks) {
+  const cal = document.getElementById('calendar');
+  let html = '<table><thead><tr>';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => html += `<th>${d}</th>`);
+  html += '</tr></thead><tbody>';
+
+  const today = new Date();
+  const todayNum = today.getDate();
+
+  weeks.forEach(week => {
+    html += '<tr>';
+    for (let i = 0; i < 7; i++) {
+      const dateNum = week.dates[i] || '';
+      const eventText = week.events[i] || '';
+      const isToday = Number(dateNum) === todayNum;
+
+      const eventHTML = eventText
+        .split(/\r?\n/)
+        .filter(Boolean)
+        .map(e => `<span class="event">${e}</span>`)
+        .join('<br>');
+
+      html += `<td class="${isToday ? 'today' : ''}">${eventHTML}${dateNum ? `<span class="date-number">${dateNum}</span>` : ''}</td>`;
+    }
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  cal.innerHTML = html;
+}
+
+function renderEventList(weeks) {
+  const list = document.getElementById('event-list');
+  
+  // Keep the title
+  let html = `<h2>Upcoming Events</h2>`;
+
+  const today = new Date();
+  const todayNum = today.getDate();
+
+  weeks.forEach(week => {
+    for (let i = 0; i < 7; i++) {
+      const dateNum = Number(week.dates[i]) || 0;
+      const eventText = week.events[i] || '';
+      if (!dateNum || !eventText) continue;
+
+      // Skip past dates
+      if (dateNum < todayNum) continue;
+
+      html += `<h3>${dateNum}</h3>`;
+      eventText.split(/\r?\n/).filter(Boolean).forEach(line => {
+        html += `<p>${line}</p>`;
+      });
+      html += '<hr>';
+    }
+  });
+
+  list.innerHTML = html;
+}
+
+
+
+document.addEventListener('DOMContentLoaded', loadGoogleCalendar);
