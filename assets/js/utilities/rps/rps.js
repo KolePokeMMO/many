@@ -101,39 +101,70 @@ function drawFrontPage() {
 function attachGlobalScoringLog() {
   const roomsRef = ref(db, `rps/rooms`);
   const ul = $("#global-scoring-log");
+
   onValue(roomsRef, (snap) => {
     const rooms = snap.val() || {};
-    const summaries = [];
+    const rows = [];
 
-    for (const [room, data] of Object.entries(rooms)) {
-      const hist = data.history || {};
-      const playersMap = (data.players || {});
-      // Compute quick summary
-      let games = 0, p1Total = 0, p2Total = 0, lastWinner = "—";
-      const names = new Set(Object.values(playersMap).map(p => p?.name).filter(Boolean));
-      for (const h of Object.values(hist)) {
-        games++;
-        if (h.winnerId) {
-          lastWinner = (h.winnerId === h.player1Id) ? (h.player1Name || "P1") : (h.player2Name || "P2");
-        }
+    for (const [roomName, data] of Object.entries(rooms)) {
+      const histObj = data.history || {};
+      const entries = Object.values(histObj).sort(
+        (a, b) => (a.timestamp || 0) - (b.timestamp || 0)
+      );
+
+      const totalGames = entries.length;
+
+      // Tally wins per player name (based on history)
+      const winTally = Object.create(null);
+      const nameSet = new Set();
+
+      for (const e of entries) {
+        if (e.player1Name) nameSet.add(e.player1Name);
+        if (e.player2Name) nameSet.add(e.player2Name);
+        if (!e.winnerId) continue; // tie -> no increment
+        const winnerName = (e.winnerId === e.player1Id) ? (e.player1Name || "P1") : (e.player2Name || "P2");
+        winTally[winnerName] = (winTally[winnerName] || 0) + 1;
       }
-      summaries.push({
-        room,
-        players: Array.from(names).slice(0, 2).join(" vs "),
-        games,
-        lastWinner
+
+      // Prefer current players for naming; fall back to history names
+      const currentPlayers = Object.values(data.players || {});
+      let p1Name, p2Name;
+
+      if (currentPlayers.length >= 2) {
+        p1Name = currentPlayers[0]?.name || "P1";
+        p2Name = currentPlayers[1]?.name || "P2";
+      } else {
+        const histNames = Array.from(nameSet);
+        p1Name = histNames[0] || "P1";
+        p2Name = histNames[1] || "P2";
+      }
+
+      const p1Score = winTally[p1Name] || 0;
+      const p2Score = winTally[p2Name] || 0;
+
+      let winnerText = "Tie";
+      if (p1Score > p2Score) winnerText = p1Name;
+      else if (p2Score > p1Score) winnerText = p2Name;
+
+      rows.push({
+        roomName,
+        totalGames,
+        line: `${roomName} — Games: ${totalGames} — ${p1Name} ${p1Score} : ${p2Name} ${p2Score} [Winner: ${winnerText}]`,
       });
     }
 
-    summaries.sort((a,b)=> b.games - a.games);
+    // Sort rooms by games played desc for a useful overview
+    rows.sort((a, b) => b.totalGames - a.totalGames);
+
     ul.innerHTML = "";
-    for (const s of summaries.slice(0, 30)) {
+    for (const r of rows.slice(0, 50)) {
       const li = document.createElement("li");
-      li.textContent = `${s.players || s.room} — Games: ${s.games} — Last winner: ${s.lastWinner}`;
+      li.textContent = r.line;
       ul.appendChild(li);
     }
   });
 }
+
 
 /* ---------------- Room UI ---------------- */
 async function drawRoom(room) {
@@ -429,3 +460,11 @@ window.addEventListener("hashchange", () => {
   boot();
 });
 boot();
+
+// ===== ONE-TIME CLEANUP =====
+import { getDatabase, ref, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const db = getDatabase();
+remove(ref(db, "rooms")) // replace "games" with your root node
+  .then(() => console.log("🔥 All game history wiped."))
+  .catch((err) => console.error("Error wiping:", err));
