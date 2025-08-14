@@ -1,4 +1,4 @@
-/* rps.js — Fixed: hide opponent until both choose, robust Play Again reset, preserves CSS selectors */
+/* rps.js — Play Again + reveal + history fixes (drop-in replacement) */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
   getDatabase,
@@ -95,7 +95,7 @@ async function showRoomUI(room) {
   if (!roomContainer) {
     roomContainer = document.createElement("div");
     roomContainer.id = "rps-room-container";
-    roomContainer.className = "rps-game-ui"; // match your CSS
+    roomContainer.className = "rps-game-ui";
     appDiv.appendChild(roomContainer);
   }
 
@@ -153,13 +153,24 @@ async function showRoomUI(room) {
   await set(playerRef, { name: playerName, choice: null });
   onDisconnect(playerRef).remove();
 
+  // enable UI
+  choiceButtons.forEach(b => b.disabled = false);
+  playAgainBtn.disabled = false;
+
   // local guard
   let localSubmitting = false;
 
-  // choice handler: only set this player's choice, never reveal opponent
+  // choice handler
   choiceButtons.forEach(btn => {
     btn.onclick = async () => {
       if (localSubmitting) return;
+      // if a round is currently finished, disallow choosing until cleared
+      const crSnap = await get(currentRoundRef).catch(()=>null);
+      if (crSnap && crSnap.exists() && crSnap.val().status === "finished") {
+        statusEl.textContent = "Round finished; click Play Again to start a new round.";
+        return;
+      }
+
       // quick check if we already have a choice this round
       const cur = await get(playerRef).catch(()=>null);
       if (cur && cur.val() && cur.val().choice) {
@@ -184,36 +195,30 @@ async function showRoomUI(room) {
 
   /* Play Again:
      - reset only this player's choice to null
-     - then check playersRef: if both players choices are null, atomically reset currentRound.status to null
+     - attempt to clear currentRound.status if it is finished (any player can clear it)
   */
   playAgainBtn.onclick = async () => {
     try {
+      // clear only our player choice
       await set(playerRef, { name: playerName, choice: null });
       youEl.textContent = "-";
       oppEl.textContent = "-";
       resultEl.textContent = "-";
       statusEl.textContent = "Choose your move!";
-
-      // check players: if both players have choice === null (or no choice), reset currentRound
-      const playersSnap = await get(playersRef);
-      const players = playersSnap.val() || {};
-      const ids = Object.keys(players);
-      if (ids.length >= 2) {
-        const a = players[ids[0]];
-        const b = players[ids[1]];
-        const aHas = !!(a && a.choice);
-        const bHas = !!(b && b.choice);
-        if (!aHas && !bHas) {
-          // both cleared — attempt safe transaction to clear currentRound only if finished
-          await runTransaction(currentRoundRef, (cur) => {
-            if (!cur) return { status: null };
-            if (cur.status === "finished") return { status: null };
-            return; // abort if not finished
-          }).catch(()=>{/* ignore */});
+      // attempt to clear currentRound.status (safe: only clears if status === 'finished')
+      await runTransaction(currentRoundRef, (cur) => {
+        if (!cur) return; // nothing to change
+        if (cur.status === "finished") {
+          // clear status while preserving other fields (so history remains)
+          return { ...cur, status: null };
         }
-      }
+        return; // abort if not finished
+      }).catch(()=>{/* ignore transaction errors */});
+      // re-enable choices for this client
+      choiceButtons.forEach(b => b.disabled = false);
     } catch (e) {
       console.error("Play again error:", e);
+      statusEl.textContent = "Play Again failed.";
     }
   };
 
@@ -224,9 +229,9 @@ async function showRoomUI(room) {
   };
 
   /* ---------------- playersRef listener
-     - Show YOUR current choice (if any)
-     - DO NOT show opponent's choice unless both choices exist.
-     - When both exist, attempt atomic finish via transaction (transaction will prevent duplicates).
+     - Show YOUR current choice immediately
+     - DO NOT show opponent's choice unless currentRound.status === 'finished'
+     - When both choices exist, attempt atomic finish via transaction
   */
   onValue(playersRef, async (snap) => {
     const players = snap.val() || {};
@@ -241,17 +246,21 @@ async function showRoomUI(room) {
     const a = players[aId] || {};
     const b = players[bId] || {};
 
-    // Show only your own choice immediately; hide opponent until both chosen
+    // Update your choice display only
     const me = players[playerId];
     youEl.textContent = me?.choice || "-";
-    // hide opponent until both choices exist
+
+    // If both haven't chosen, hide opponent choice
     if (!a.choice || !b.choice) {
       oppEl.textContent = "-";
       statusEl.textContent = me?.choice ? "Waiting for opponent..." : "Choose your move!";
       return;
     }
 
-    // both choices exist -> attempt atomic finish (payload uses names too)
+    // Both choices exist -> attempt to finish
+    // disable choice buttons while finishing to avoid races
+    choiceButtons.forEach(b => b.disabled = true);
+
     const roundPayload = {
       status: "finished",
       player1Id: aId,
@@ -265,13 +274,13 @@ async function showRoomUI(room) {
     };
 
     try {
-      const tr = await runTransaction(currentRoundRef, (cur) => {
+      const tr = await runTransaction(ref(db, `rps/rooms/${room}/currentRound`), (cur) => {
         if (cur && cur.status === "finished") return; // abort
         return roundPayload;
       }, { applyLocally: false });
 
       if (tr.committed) {
-        // only the committer pushes history
+        // push history only once by committer
         await push(historyRef, roundPayload);
         statusEl.textContent = "Round finished (recorded).";
       } else {
@@ -280,38 +289,41 @@ async function showRoomUI(room) {
     } catch (err) {
       console.error("Finish transaction error:", err);
       statusEl.textContent = "Error finishing round.";
+      // re-enable choices so user isn't stuck if transaction failed
+      choiceButtons.forEach(b => b.disabled = false);
     }
   });
 
-  /* ---------------- currentRound single-source UI
-     - When status finished, reveal both choices & result.
-     - When status is not finished/cleared, show neutral UI (opponent hidden).
-  */
+  /* ---------------- currentRound UI (single source of truth) ---------------- */
   onValue(currentRoundRef, (snap) => {
     const round = snap.val();
     if (!round || round.status !== "finished") {
-      // round cleared or not started
+      // allow choosing again (unless a player already has a choice)
+      choiceButtons.forEach(b => b.disabled = false);
       resultEl.textContent = "-";
-      // keep opponent hidden until both players choose
-      if (!youEl.textContent || youEl.textContent === "-") statusEl.textContent = "Choose your move!";
+      // keep opponent hidden until a finished round exists
+      const meChoice = youEl.textContent || "-";
+      statusEl.textContent = meChoice === "-" ? "Choose your move!" : "Waiting for opponent...";
       return;
     }
 
+    // reveal both picks from authoritative round
     const amPlayer1 = round.player1Id === playerId;
     const myChoice = amPlayer1 ? round.player1Choice : round.player2Choice;
     const theirChoice = amPlayer1 ? round.player2Choice : round.player1Choice;
     youEl.textContent = myChoice || "-";
     oppEl.textContent = theirChoice || "-";
-
     let txt;
     if (round.winnerId === null) txt = "It's a tie!";
     else if (round.winnerId === playerId) txt = "You win!";
     else txt = "You lose!";
     resultEl.textContent = txt;
     statusEl.textContent = "Round finished!";
+    // keep choice buttons disabled until someone clears the round
+    choiceButtons.forEach(b => b.disabled = true);
   });
 
-  /* ---------------- history render (uses names if available) ---------------- */
+  /* ---------------- history render ---------------- */
   onValue(historyRef, (snap) => {
     const history = snap.val() || {};
     const entries = Object.values(history).sort((a,b)=> (b.timestamp||0)-(a.timestamp||0));
