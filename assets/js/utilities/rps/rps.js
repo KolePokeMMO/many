@@ -62,20 +62,20 @@ function drawFrontPage() {
   const app = ensureShell();
   app.innerHTML = `
     <div class="rps-header">
-      <img src="/many/assets/img/pokemon-cover.jpg" alt="Pokémon Duel Cover" onerror="this.style.display='none'">
+      <img src="/many/assets/img/pokemon-cover.png" alt="Pokémon Duel Cover" onerror="this.style.display='none'">
     </div>
 
     <div class="rps-main-grid">
-      <div class="rps-card">
+      <div class="rps-card box">
         <h3>Create / Join Room</h3>
         <div class="rps-room-setup">
-          <input id="fp-name" placeholder="Your Trainer Name" />
+          <input id="fp-name" placeholder="Trainer Name" />
           <input id="fp-room" placeholder="Room Name" />
-          <button id="fp-join">Create / Join</button>
+          <button id="fp-join">Create or Join</button>
         </div>
       </div>
 
-      <div class="rps-card">
+      <div class="rps-card box">
         <h3>Scoring Log (all rooms)</h3>
         <ul id="global-scoring-log"></ul>
       </div>
@@ -171,7 +171,7 @@ async function drawRoom(room) {
   const app = ensureShell();
   const node = $("#rps-room", app);
   node.innerHTML = `
-    <div class="rps-card">
+    <div class="rps-card box">
       <div class="rps-room-top">
         <div class="rps-room-title">Room: ${room}</div>
         <div class="rps-actions">
@@ -209,7 +209,7 @@ async function drawRoom(room) {
   /* ------- Identity & refs ------- */
   const nameKey = `rps-name-${room}`;
   const idKey = `rps-id-${room}`;
-  const myName = localStorage.getItem(nameKey) || prompt("Your Trainer Name?") || `Trainer-${Math.random().toString(36).slice(2,7)}`;
+  const myName = localStorage.getItem(nameKey) || prompt("Trainer Name?") || `Trainer-${Math.random().toString(36).slice(2,7)}`;
   localStorage.setItem(nameKey, myName);
 
   let myId = localStorage.getItem(idKey);
