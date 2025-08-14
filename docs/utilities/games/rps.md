@@ -1,28 +1,49 @@
-# Rock, Paper, Scissors
+# Pokémon Duel: Grass 🔹 Fire 🔥 Water 💧
 
 <div id="rps-app" class="rps-container">
-  <h1>Rock Paper Scissors Duel</h1>
-
-  <div class="setup">
-    <input type="text" id="player-name-input" placeholder="Enter your name" />
-    <input type="text" id="room-id-input" placeholder="Enter Room ID" />
-    <button id="create-room-btn">Create Room</button>
-    <button id="join-room-btn">Join Room</button>
+  <!-- Header / Cover -->
+  <div class="rps-header">
+    <img src="/many/assets/img/pokemon-cover.jpg" alt="Pokémon Duel" />
   </div>
 
-  <div class="rps-game" id="rps-ui" style="display: none;">
-    <div class="name-display" id="player-name-display"></div>
-    <div class="rps-buttons">
-      <button data-choice="rock">🪨 Rock</button>
-      <button data-choice="paper">📄 Paper</button>
-      <button data-choice="scissors">✂️ Scissors</button>
+  <!-- Main content grid -->
+  <div class="rps-main-grid">
+    <!-- Left column: Room creation/join -->
+    <div class="rps-left">
+      <div class="rps-room-setup">
+        <input type="text" id="player-name-input" placeholder="Your Trainer Name" />
+        <input type="text" id="room-id-input" placeholder="Room Name" />
+        <button id="create-room-btn">Create / Join Room</button>
+      </div>
     </div>
-    <div class="result" id="result-text"></div>
 
-    <div class="history">
-      <h3>Game History</h3>
+    <!-- Right column: Scoreboard / History -->
+    <div class="rps-right">
+      <h3>Live Match Log</h3>
       <ul id="game-history"></ul>
     </div>
+  </div>
+
+  <!-- Room Game UI (hidden initially) -->
+  <div class="rps-game-ui" id="rps-ui" style="display:none;">
+    <h2 id="room-title"></h2>
+    <button id="copy-link-btn">Copy Room Link</button>
+
+    <div class="rps-choices">
+      <button data-choice="grass">🌿 Grass</button>
+      <button data-choice="fire">🔥 Fire</button>
+      <button data-choice="water">💧 Water</button>
+    </div>
+
+    <div class="rps-result">
+      <p>You chose: <span id="you-choice">-</span></p>
+      <p>Opponent chose: <span id="opponent-choice">-</span></p>
+      <p>Round Result: <strong id="round-result">-</strong></p>
+      <button id="play-again-btn">Play Again</button>
+    </div>
+
+    <h3>Scoreboard</h3>
+    <ul id="scoreboard"></ul>
   </div>
 </div>
 

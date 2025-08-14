@@ -1,13 +1,5 @@
 [
   {
-    "id": "1404202371923447951",
-    "username": "PokeMMO #pve-alerts",
-    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
-    "content": "~~@Alpha Swarms~~",
-    "attachments": [],
-    "timestamp": "2025-08-10T20:38:54.285Z"
-  },
-  {
     "id": "1404316990159589408",
     "username": "PokeMMO #pve-alerts",
     "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
@@ -158,5 +150,13 @@
     "content": "~~@Alpha Swarms~~",
     "attachments": [],
     "timestamp": "2025-08-14T15:58:39.637Z"
+  },
+  {
+    "id": "1405610145849020458",
+    "username": "PokeMMO #pve-alerts",
+    "avatar": "https://cdn.discordapp.com/avatars/1385008180140052500/1cf7c21185a1e17a515319a5f0a0a5d3.webp",
+    "content": "~~@Alpha Swarms~~",
+    "attachments": [],
+    "timestamp": "2025-08-14T17:52:53.744Z"
   }
 ]
