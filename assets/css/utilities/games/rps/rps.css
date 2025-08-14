@@ -134,3 +134,35 @@
     gap: 0.5rem;
   }
 }
+
+/* =========================
+   Buttons & Interaction Fixes
+   Add to bottom of rps.css
+   ========================= */
+
+.rps-controls button,
+.rps-choices button,
+#play-again-btn,
+#copy-link-btn {
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--main-accent-border-color);
+  background: var(--main-bg-color);
+  color: var(--main-accent-color);
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.rps-controls button:hover,
+.rps-choices button:hover,
+#play-again-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* make lists readable */
+.rps-history-list li,
+#room-players li {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.95rem;
+}
