@@ -62,7 +62,7 @@ function drawFrontPage() {
   const app = ensureShell();
   app.innerHTML = `
     <div class="rps-header">
-      <img src="/many/assets/img/pokemon-cover.png" alt="Pokémon Duel Cover" onerror="this.style.display='none'">
+      <img src="/many/assets/img/pokemon-cover.svg" alt="Pokémon Duel Cover" onerror="this.style.display='none'">
     </div>
 
     <div class="rps-main-grid">
