@@ -347,7 +347,7 @@
 }
 
 .dark-calendar td {
-  border: 1px solid var(--main-fg-border-color);
+  border: 1px solid #2d2d2d;
   height: 80px;
   vertical-align: top;
   padding: 0.25rem;
@@ -405,6 +405,23 @@
   100% { opacity: 0.4; transform: scaleY(1); }
 }
 
+/* ------------------------------
+   Calendar Header Styling (days of the week)
+   ------------------------------ */
+.dark-calendar th {
+  background-color: var(--main-accent-color);
+  color: #141414;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-top: 2px solid var(--main-accent-color);
+  border-bottom: 2px solid var(--main-accent-color); /* bottom border already exists */
+  border-right: 1px solid rgb(68, 68, 68);     /* 1px border between days */
+}
+
+/* Remove the right border on the last th so it doesn’t double up */
+.dark-calendar th:last-child {
+  border-right: none;
+}
 
 
 
