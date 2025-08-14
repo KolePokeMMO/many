@@ -1,7 +1,9 @@
 
 .game {
-  width: 100%;
-  height: auto;
+  width: 100%;             /* take full parent width */
+  max-width: 730px;        /* prevent it from growing beyond original */
+  aspect-ratio: 730 / 290; /* keep ratio */
+  height: auto;            /* let aspect-ratio calculate height */
   display: block;
 }
 
